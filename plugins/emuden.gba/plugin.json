@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -115,6 +115,13 @@
           "size": 524108,
           "archive": "zip",
           "entry": "mgba_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mgba-android-arm64-2026-11-12.zip",
+          "sha256": "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
+          "size": 419371,
+          "archive": "zip",
+          "entry": "mgba_libretro_android.so"
         }
       }
     },
@@ -123,7 +130,24 @@
       "type": "libretro-core",
       "name": "VBA Next",
       "license": "GPL-2.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/vba_next-linux-x86_64-2026-11-12.zip",
+          "sha256": "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
+          "size": 246770,
+          "archive": "zip",
+          "entry": "vba_next_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/vba_next-android-arm64-2026-11-12.zip",
+          "sha256": "01af854bec51fe890823c0f54bd71c63eee86d2452477764426c4d483f2ae97f",
+          "size": 150770,
+          "archive": "zip",
+          "entry": "vba_next_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

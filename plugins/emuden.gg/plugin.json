@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gg",
   "name": "Sega Game Gear",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -85,6 +85,13 @@
           "size": 1309370,
           "archive": "zip",
           "entry": "genesis_plus_gx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/genesis_plus_gx-android-arm64-2026-11-12.zip",
+          "sha256": "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
+          "size": 1133943,
+          "archive": "zip",
+          "entry": "genesis_plus_gx_libretro_android.so"
         }
       }
     },
@@ -93,7 +100,24 @@
       "type": "libretro-core",
       "name": "PicoDrive",
       "license": "LicenseRef-PicoDrive",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/picodrive-linux-x86_64-2026-11-12.zip",
+          "sha256": "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
+          "size": 864823,
+          "archive": "zip",
+          "entry": "picodrive_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/picodrive-android-arm64-2026-11-12.zip",
+          "sha256": "8d93599820d6d483256dc9aa93c8841e4f3180c323c5100a583d9f0f96fd4dbe",
+          "size": 604891,
+          "archive": "zip",
+          "entry": "picodrive_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

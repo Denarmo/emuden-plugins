@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.saturn",
   "name": "Sega Saturn",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -90,6 +90,13 @@
           "size": 2274133,
           "archive": "zip",
           "entry": "mednafen_saturn_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_saturn-android-arm64-2026-11-12.zip",
+          "sha256": "f1f79971c41b58237dbb786f85158d3dfa07a5c1ed73cc017c26fefa500f4c17",
+          "size": 1707942,
+          "archive": "zip",
+          "entry": "mednafen_saturn_libretro_android.so"
         }
       }
     },
@@ -98,7 +105,24 @@
       "type": "libretro-core",
       "name": "Yabause",
       "license": "GPL-2.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/yabause-linux-x86_64-2026-11-12.zip",
+          "sha256": "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
+          "size": 525127,
+          "archive": "zip",
+          "entry": "yabause_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/yabause-android-arm64-2026-11-12.zip",
+          "sha256": "d1c9d8cd3c68a7c3e87b637fb4476b406e98c4c1813de4335480e41f5c5a9f90",
+          "size": 348519,
+          "archive": "zip",
+          "entry": "yabause_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

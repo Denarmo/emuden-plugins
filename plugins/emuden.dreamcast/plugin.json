@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.dreamcast",
   "name": "Sega Dreamcast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -93,6 +93,13 @@
           "size": 5978792,
           "archive": "zip",
           "entry": "flycast_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/flycast-android-arm64-2026-11-12.zip",
+          "sha256": "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
+          "size": 4909593,
+          "archive": "zip",
+          "entry": "flycast_libretro_android.so"
         }
       }
     }

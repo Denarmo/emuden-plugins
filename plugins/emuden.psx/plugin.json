@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -165,6 +165,13 @@
           "size": 749426,
           "archive": "zip",
           "entry": "pcsx_rearmed_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/pcsx_rearmed-android-arm64-2026-11-12.zip",
+          "sha256": "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
+          "size": 532374,
+          "archive": "zip",
+          "entry": "pcsx_rearmed_libretro_android.so"
         }
       }
     },
@@ -173,14 +180,48 @@
       "type": "libretro-core",
       "name": "Beetle PSX",
       "license": "GPL-2.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_psx-linux-x86_64-2026-11-12.zip",
+          "sha256": "5aff3e3ec0d154c1fce9bfc37ac3a3e131c9875c3817b0e90c1fd1d01c9e9003",
+          "size": 1779230,
+          "archive": "zip",
+          "entry": "mednafen_psx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_psx-android-arm64-2026-11-12.zip",
+          "sha256": "8e7d41d5cc24fdb1a9634a6a1b2a9138bcd67e2694cc7447943c7500366214bb",
+          "size": 1197222,
+          "archive": "zip",
+          "entry": "mednafen_psx_libretro_android.so"
+        }
+      }
     },
     {
       "id": "swanstation",
       "type": "libretro-core",
       "name": "SwanStation",
       "license": "GPL-3.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/swanstation-linux-x86_64-2026-11-12.zip",
+          "sha256": "886dd5d95a92115a420c63d633face03f88b13f4a6d0e684152840f83cf842a5",
+          "size": 1563961,
+          "archive": "zip",
+          "entry": "swanstation_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/swanstation-android-arm64-2026-11-12.zip",
+          "sha256": "e9fdeb0e5186f5fbdd7fde9dab22fb91e69ceaf130ce3162205c6603d41eb28b",
+          "size": 1740582,
+          "archive": "zip",
+          "entry": "swanstation_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

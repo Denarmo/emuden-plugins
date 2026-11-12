@@ -51,7 +51,7 @@ is added for you. Without `buttons` the RetroPad's own names are shown.
 | Field | Required | Meaning |
 |---|---|---|
 | `id` | yes | For a core, the library's base name: `fceumm` is `fceumm_libretro.dll` |
-| `type` | yes | `libretro-core` or `external-emulator` |
+| `type` | yes | `libretro-core` or `external-emulator`; `system-files` in EmuDEN's own plugins (below) |
 | `name` | yes | Shown to the player |
 | `version`, `license`, `homepage` | no | |
 | `gpu` | no | `none` (default) or `opengl`: the core draws with the graphics card |
@@ -67,13 +67,29 @@ A download:
 | `sha256` | yes | 64 hex digits of the file |
 | `size` | yes | Its exact size in bytes |
 | `archive` | yes | `zip` or `none` |
-| `entry` | cores | The library inside the zip |
+| `entry` | cores | The library inside the zip; for system files the folder to unpack, as `Name/` |
 | `strip_components` | no | Leading folders to drop when a whole zip is unpacked |
 | `rename` | no | The name a single file is stored under |
 | `executable_bit` | no | Mark the program executable (AppImage) |
 
 Unknown keys in a download, in `launch`, `bios`, `sync` and a setting's `apply` are errors. There is
 no 7z support and no installer is ever run.
+
+### System files
+
+Some cores need data of their own beside the BIOS files (PPSSPP its fonts and `ppge_atlas.zim`).
+A `system-files` component is a zip whose folder `entry` is unpacked into the BIOS folder, keeping
+its path, when one of the cores in `cores` is installed (every core of the plugin when `cores` is
+left out):
+
+```json
+{ "id": "ppsspp-assets", "type": "system-files", "name": "PPSSPP assets", "cores": ["ppsspp"],
+  "downloads": { "any": { "url": "https://...", "sha256": "...", "size": 11038871,
+                          "archive": "zip", "entry": "PPSSPP/" } } }
+```
+
+Only the official source may carry one. An EmuDEN that does not know a component type leaves the
+component alone, and the console still plays.
 
 ## `bios`
 

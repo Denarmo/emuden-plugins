@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -87,6 +87,13 @@
           "size": 3490833,
           "archive": "zip",
           "entry": "pcsx2_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/pcsx2-android-arm64-2026-11-12.zip",
+          "sha256": "c1492b8bb629fd36f4b46a29813a5b8275c6c32009a5181bef6f926561abf3b2",
+          "size": 2832106,
+          "archive": "zip",
+          "entry": "pcsx2_libretro_android.so"
         }
       }
     }

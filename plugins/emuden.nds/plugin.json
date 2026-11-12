@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nds",
   "name": "Nintendo DS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -103,6 +103,13 @@
           "size": 897960,
           "archive": "zip",
           "entry": "melonds_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/melonds-android-arm64-2026-11-12.zip",
+          "sha256": "88c732afc53072b299978bd2d1b1f2f3dbe499b642b9d48eaa51ca205d3029ce",
+          "size": 690401,
+          "archive": "zip",
+          "entry": "melonds_libretro_android.so"
         }
       }
     },
@@ -111,7 +118,24 @@
       "type": "libretro-core",
       "name": "melonDS DS",
       "license": "GPL-3.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/melondsds-linux-x86_64-2026-11-12.zip",
+          "sha256": "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
+          "size": 1969455,
+          "archive": "zip",
+          "entry": "melondsds_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/melondsds-android-arm64-2026-11-12.zip",
+          "sha256": "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
+          "size": 2003724,
+          "archive": "zip",
+          "entry": "melondsds_libretro_android.so"
+        }
+      }
     },
     {
       "id": "desmume",
@@ -121,6 +145,23 @@
       "gpu": "none",
       "forced_core_options": {
         "desmume_pointer_type": "touch"
+      },
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/desmume-linux-x86_64-2026-11-12.zip",
+          "sha256": "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
+          "size": 1438999,
+          "archive": "zip",
+          "entry": "desmume_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/desmume-android-arm64-2026-11-12.zip",
+          "sha256": "d2096cac92e7c3bd0c768eb800ad588c85c0765c94284dc6da705af081a4db44",
+          "size": 847738,
+          "archive": "zip",
+          "entry": "desmume_libretro_android.so"
+        }
       }
     }
   ],

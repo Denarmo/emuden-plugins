@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psp",
   "name": "PlayStation Portable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -91,6 +91,33 @@
           "size": 9047431,
           "archive": "zip",
           "entry": "ppsspp_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/ppsspp-android-arm64-2026-11-12.zip",
+          "sha256": "917d92b74b3d002854267320bfdff88c744f90197302fac5bf11a4300a3b64a2",
+          "size": 8219834,
+          "archive": "zip",
+          "entry": "ppsspp_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "ppsspp-assets",
+      "type": "system-files",
+      "name": "PPSSPP assets",
+      "license": "GPL-2.0-or-later",
+      "homepage": "https://github.com/hrydgard/ppsspp",
+      "version": "v1.20.4",
+      "cores": [
+        "ppsspp"
+      ],
+      "downloads": {
+        "any": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/ppsspp-assets-v1.20.4.zip",
+          "sha256": "d1ea569b267d9a211980c8ea4683a6437519963f630324486394ecde28ea4a01",
+          "size": 11038871,
+          "archive": "zip",
+          "entry": "PPSSPP/"
         }
       }
     }

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nes",
   "name": "Nintendo Entertainment System",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -101,6 +101,13 @@
           "size": 699501,
           "archive": "zip",
           "entry": "fceumm_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/fceumm-android-arm64-2026-11-12.zip",
+          "sha256": "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
+          "size": 452046,
+          "archive": "zip",
+          "entry": "fceumm_libretro_android.so"
         }
       }
     },
@@ -109,14 +116,48 @@
       "type": "libretro-core",
       "name": "Nestopia",
       "license": "GPL-2.0-or-later",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/nestopia-linux-x86_64-2026-11-12.zip",
+          "sha256": "3ed615662cb5368cfd6a7567dc56202f836bb40198204cfd084007e509daef18",
+          "size": 807493,
+          "archive": "zip",
+          "entry": "nestopia_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/nestopia-android-arm64-2026-11-12.zip",
+          "sha256": "82b930cbe64e5ae057ccc9891cca2d395e4360f36394369f316a94d9c653c232",
+          "size": 808945,
+          "archive": "zip",
+          "entry": "nestopia_libretro_android.so"
+        }
+      }
     },
     {
       "id": "mesen",
       "type": "libretro-core",
       "name": "Mesen",
       "license": "GPL-3.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mesen-linux-x86_64-2026-11-12.zip",
+          "sha256": "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",
+          "size": 1069140,
+          "archive": "zip",
+          "entry": "mesen_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mesen-android-arm64-2026-11-12.zip",
+          "sha256": "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
+          "size": 1098808,
+          "archive": "zip",
+          "entry": "mesen_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

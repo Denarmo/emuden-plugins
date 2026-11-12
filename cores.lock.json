@@ -214,5 +214,374 @@
     "fetched": "2026-11-12",
     "sha256": "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
     "size": 917066
+  },
+  "flycast:android-arm64": {
+    "core": "flycast",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/flycast_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
+    "size": 4909593
+  },
+  "dolphin:android-arm64": {
+    "core": "dolphin",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/dolphin_libretro_android.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "ae3e6eda123d2989bb729f834da6db4d05a96008e656478c482337c7842856c6",
+    "size": 6421198
+  },
+  "mgba:android-arm64": {
+    "core": "mgba",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mgba_libretro_android.so.zip",
+    "license": "MPL-2.0",
+    "fetched": "2026-11-12",
+    "sha256": "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
+    "size": 419371
+  },
+  "gambatte:linux-x86_64": {
+    "core": "gambatte",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/gambatte_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",
+    "size": 528437
+  },
+  "gambatte:android-arm64": {
+    "core": "gambatte",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/gambatte_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "d762da9f1bdc4d246ee322dec5776d10c9ddf2380180189b1df011c8968b3de4",
+    "size": 434140
+  },
+  "sameboy:linux-x86_64": {
+    "core": "sameboy",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/sameboy_libretro.so.zip",
+    "license": "MIT",
+    "fetched": "2026-11-12",
+    "sha256": "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
+    "size": 120219
+  },
+  "sameboy:android-arm64": {
+    "core": "sameboy",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/sameboy_libretro_android.so.zip",
+    "license": "MIT",
+    "fetched": "2026-11-12",
+    "sha256": "e73af293fd8e23c36e410f13a07a83550d04a16121e2b20c988cb58e77e96d53",
+    "size": 102640
+  },
+  "vba_next:linux-x86_64": {
+    "core": "vba_next",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/vba_next_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
+    "size": 246770
+  },
+  "vba_next:android-arm64": {
+    "core": "vba_next",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/vba_next_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "01af854bec51fe890823c0f54bd71c63eee86d2452477764426c4d483f2ae97f",
+    "size": 150770
+  },
+  "genesis_plus_gx:android-arm64": {
+    "core": "genesis_plus_gx",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/genesis_plus_gx_libretro_android.so.zip",
+    "license": "LicenseRef-Genesis-Plus-GX",
+    "fetched": "2026-11-12",
+    "sha256": "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
+    "size": 1133943
+  },
+  "picodrive:linux-x86_64": {
+    "core": "picodrive",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/picodrive_libretro.so.zip",
+    "license": "LicenseRef-PicoDrive",
+    "fetched": "2026-11-12",
+    "sha256": "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
+    "size": 864823
+  },
+  "picodrive:android-arm64": {
+    "core": "picodrive",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/picodrive_libretro_android.so.zip",
+    "license": "LicenseRef-PicoDrive",
+    "fetched": "2026-11-12",
+    "sha256": "8d93599820d6d483256dc9aa93c8841e4f3180c323c5100a583d9f0f96fd4dbe",
+    "size": 604891
+  },
+  "mupen64plus_next:android-arm64": {
+    "core": "mupen64plus_next",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mupen64plus_next_gles3_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
+    "size": 2201377
+  },
+  "parallel_n64:linux-x86_64": {
+    "core": "parallel_n64",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/parallel_n64_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
+    "size": 3508267
+  },
+  "parallel_n64:android-arm64": {
+    "core": "parallel_n64",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/parallel_n64_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
+    "size": 2441754
+  },
+  "melonds:android-arm64": {
+    "core": "melonds",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/melonds_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "88c732afc53072b299978bd2d1b1f2f3dbe499b642b9d48eaa51ca205d3029ce",
+    "size": 690401
+  },
+  "melondsds:linux-x86_64": {
+    "core": "melondsds",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/melondsds_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
+    "size": 1969455
+  },
+  "melondsds:android-arm64": {
+    "core": "melondsds",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/melondsds_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
+    "size": 2003724
+  },
+  "desmume:linux-x86_64": {
+    "core": "desmume",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/desmume_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
+    "size": 1438999
+  },
+  "desmume:android-arm64": {
+    "core": "desmume",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/desmume_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "d2096cac92e7c3bd0c768eb800ad588c85c0765c94284dc6da705af081a4db44",
+    "size": 847738
+  },
+  "fceumm:android-arm64": {
+    "core": "fceumm",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/fceumm_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
+    "size": 452046
+  },
+  "nestopia:linux-x86_64": {
+    "core": "nestopia",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/nestopia_libretro.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "3ed615662cb5368cfd6a7567dc56202f836bb40198204cfd084007e509daef18",
+    "size": 807493
+  },
+  "nestopia:android-arm64": {
+    "core": "nestopia",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/nestopia_libretro_android.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "82b930cbe64e5ae057ccc9891cca2d395e4360f36394369f316a94d9c653c232",
+    "size": 808945
+  },
+  "mesen:linux-x86_64": {
+    "core": "mesen",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/mesen_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",
+    "size": 1069140
+  },
+  "mesen:android-arm64": {
+    "core": "mesen",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mesen_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
+    "size": 1098808
+  },
+  "retro8:linux-x86_64": {
+    "core": "retro8",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/retro8_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "9edd17472aae26d81c71acd2a664a7ee0dd833a02645c70ac953adedc9f01ea2",
+    "size": 169856
+  },
+  "retro8:android-arm64": {
+    "core": "retro8",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/retro8_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "32c0d3a19ce2f2cac5b10eb8a71b6e36d9ab243a68b3ebf288443862614bbc8a",
+    "size": 253741
+  },
+  "pcsx2:android-arm64": {
+    "core": "pcsx2",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/pcsx2_libretro_android.so.zip",
+    "license": "GPL-3.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "c1492b8bb629fd36f4b46a29813a5b8275c6c32009a5181bef6f926561abf3b2",
+    "size": 2832106
+  },
+  "ppsspp:android-arm64": {
+    "core": "ppsspp",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/ppsspp_libretro_android.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "917d92b74b3d002854267320bfdff88c744f90197302fac5bf11a4300a3b64a2",
+    "size": 8219834
+  },
+  "ppsspp-assets:any": {
+    "core": "ppsspp-assets",
+    "platform": "any",
+    "upstream": "https://github.com/hrydgard/ppsspp/tree/v1.20.4/assets",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "d1ea569b267d9a211980c8ea4683a6437519963f630324486394ecde28ea4a01",
+    "size": 11038871
+  },
+  "pcsx_rearmed:android-arm64": {
+    "core": "pcsx_rearmed",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/pcsx_rearmed_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
+    "size": 532374
+  },
+  "mednafen_psx:linux-x86_64": {
+    "core": "mednafen_psx",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/mednafen_psx_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "5aff3e3ec0d154c1fce9bfc37ac3a3e131c9875c3817b0e90c1fd1d01c9e9003",
+    "size": 1779230
+  },
+  "mednafen_psx:android-arm64": {
+    "core": "mednafen_psx",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mednafen_psx_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "8e7d41d5cc24fdb1a9634a6a1b2a9138bcd67e2694cc7447943c7500366214bb",
+    "size": 1197222
+  },
+  "swanstation:linux-x86_64": {
+    "core": "swanstation",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/swanstation_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "886dd5d95a92115a420c63d633face03f88b13f4a6d0e684152840f83cf842a5",
+    "size": 1563961
+  },
+  "swanstation:android-arm64": {
+    "core": "swanstation",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/swanstation_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "e9fdeb0e5186f5fbdd7fde9dab22fb91e69ceaf130ce3162205c6603d41eb28b",
+    "size": 1740582
+  },
+  "mednafen_saturn:android-arm64": {
+    "core": "mednafen_saturn",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/mednafen_saturn_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "f1f79971c41b58237dbb786f85158d3dfa07a5c1ed73cc017c26fefa500f4c17",
+    "size": 1707942
+  },
+  "yabause:linux-x86_64": {
+    "core": "yabause",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/yabause_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
+    "size": 525127
+  },
+  "yabause:android-arm64": {
+    "core": "yabause",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/yabause_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "d1c9d8cd3c68a7c3e87b637fb4476b406e98c4c1813de4335480e41f5c5a9f90",
+    "size": 348519
+  },
+  "bsnes:linux-x86_64": {
+    "core": "bsnes",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/bsnes_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "d05131706497249882bb6695b57a3307caa4e8769fd1ee99501a716d63361ae3",
+    "size": 1016129
+  },
+  "bsnes:android-arm64": {
+    "core": "bsnes",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/bsnes_libretro_android.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "7b3e779d05fcff3959c997488f7e50f956f05d0d591cfb9cc67b9e62fadec86e",
+    "size": 821602
+  },
+  "snes9x:android-arm64": {
+    "core": "snes9x",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/snes9x_libretro_android.so.zip",
+    "license": "LicenseRef-Snes9x",
+    "fetched": "2026-11-12",
+    "sha256": "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
+    "size": 890362
   }
 }

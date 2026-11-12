@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.snes",
   "name": "Super Nintendo Entertainment System",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -61,7 +61,24 @@
       "type": "libretro-core",
       "name": "bsnes",
       "license": "GPL-3.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/bsnes-linux-x86_64-2026-11-12.zip",
+          "sha256": "d05131706497249882bb6695b57a3307caa4e8769fd1ee99501a716d63361ae3",
+          "size": 1016129,
+          "archive": "zip",
+          "entry": "bsnes_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/bsnes-android-arm64-2026-11-12.zip",
+          "sha256": "7b3e779d05fcff3959c997488f7e50f956f05d0d591cfb9cc67b9e62fadec86e",
+          "size": 821602,
+          "archive": "zip",
+          "entry": "bsnes_libretro_android.so"
+        }
+      }
     },
     {
       "id": "snes9x",
@@ -84,6 +101,13 @@
           "size": 917066,
           "archive": "zip",
           "entry": "snes9x_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/snes9x-android-arm64-2026-11-12.zip",
+          "sha256": "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
+          "size": 890362,
+          "archive": "zip",
+          "entry": "snes9x_libretro_android.so"
         }
       }
     }

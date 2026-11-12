@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.n64",
   "name": "Nintendo 64",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -103,6 +103,13 @@
           "size": 2719493,
           "archive": "zip",
           "entry": "mupen64plus_next_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mupen64plus_next-android-arm64-2026-11-12.zip",
+          "sha256": "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
+          "size": 2201377,
+          "archive": "zip",
+          "entry": "mupen64plus_next_gles3_libretro_android.so"
         }
       }
     },
@@ -111,7 +118,24 @@
       "type": "libretro-core",
       "name": "ParaLLEl N64",
       "license": "GPL-2.0-only",
-      "gpu": "opengl"
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/parallel_n64-linux-x86_64-2026-11-12.zip",
+          "sha256": "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
+          "size": 3508267,
+          "archive": "zip",
+          "entry": "parallel_n64_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/parallel_n64-android-arm64-2026-11-12.zip",
+          "sha256": "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
+          "size": 2441754,
+          "archive": "zip",
+          "entry": "parallel_n64_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

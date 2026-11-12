@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gbc",
   "name": "Game Boy Color",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -97,6 +97,13 @@
           "size": 524108,
           "archive": "zip",
           "entry": "mgba_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mgba-android-arm64-2026-11-12.zip",
+          "sha256": "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
+          "size": 419371,
+          "archive": "zip",
+          "entry": "mgba_libretro_android.so"
         }
       }
     },
@@ -105,14 +112,48 @@
       "type": "libretro-core",
       "name": "Gambatte",
       "license": "GPL-2.0-only",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/gambatte-linux-x86_64-2026-11-12.zip",
+          "sha256": "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",
+          "size": 528437,
+          "archive": "zip",
+          "entry": "gambatte_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/gambatte-android-arm64-2026-11-12.zip",
+          "sha256": "d762da9f1bdc4d246ee322dec5776d10c9ddf2380180189b1df011c8968b3de4",
+          "size": 434140,
+          "archive": "zip",
+          "entry": "gambatte_libretro_android.so"
+        }
+      }
     },
     {
       "id": "sameboy",
       "type": "libretro-core",
       "name": "SameBoy",
       "license": "MIT",
-      "gpu": "none"
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/sameboy-linux-x86_64-2026-11-12.zip",
+          "sha256": "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
+          "size": 120219,
+          "archive": "zip",
+          "entry": "sameboy_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/sameboy-android-arm64-2026-11-12.zip",
+          "sha256": "e73af293fd8e23c36e410f13a07a83550d04a16121e2b20c988cb58e77e96d53",
+          "size": 102640,
+          "archive": "zip",
+          "entry": "sameboy_libretro_android.so"
+        }
+      }
     }
   ],
   "capabilities": {

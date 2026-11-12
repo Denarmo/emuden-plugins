@@ -236,6 +236,13 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None):
             err(f"{path}.type", "does not fit the plugin's engine")
         if "delivery" in component and kind_of != "engine":
             err(f"{path}.delivery", "only for an engine")
+        if kind_of == "system-files" and not reserved:
+            err(f"{path}.type", "only EmuDEN's own plugins have this type")
+        if "cores" in component and kind_of != "system-files":
+            err(f"{path}.cores", "only for system files")
+        for core in component.get("cores", []):
+            if components.get(core, {}).get("type") != "libretro-core":
+                err(f"{path}.cores", f"{core} is not a core of the plugin")
         for platform, download in component.get("downloads", {}).items():
             where = f"{path}.downloads.{platform}"
             if platform not in PLATFORMS + ["any"]:
@@ -259,6 +266,9 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None):
                 err(f"{where}.size", "an unpinned download is capped at 256 MiB")
             if kind_of == "libretro-core" and download["archive"] == "zip" and "entry" not in download:
                 err(f"{where}.entry", "missing: the core library inside the zip")
+            if kind_of == "system-files" and not (
+                    download["archive"] == "zip" and download.get("entry", "").endswith("/")):
+                err(f"{where}.entry", "system files are a zip and a folder inside it, as \"Name/\"")
         launch = component.get("launch")
         if kind_of == "external-emulator" and launch is None:
             err(f"{path}.launch", "missing")
@@ -420,7 +430,8 @@ def usable_platforms(manifest):
         engine = manifest.get("engine")
         components = manifest.get("components", [])
         if engine == "libretro":
-            downloads = [c.get("downloads", {}) for c in components]
+            downloads = [c.get("downloads", {}) for c in components
+                         if c["type"] == "libretro-core"]
             if any(downloads) and not any(platform in d or "any" in d for d in downloads):
                 continue
         elif engine == "external":
@@ -534,7 +545,7 @@ def addon_files(folder):
     return files
 
 
-def validate_addon(folder, repo, namespace=None):
+def validate_addon(folder, repo, namespace=None, trust="third-party"):
     """The problems of an add-on folder, as (path, reason)."""
     problems = []
     try:
@@ -547,7 +558,7 @@ def validate_addon(folder, repo, namespace=None):
         return problems
     if folder.name != manifest["id"] or folder.parent.name != manifest["program_id"]:
         problems.append(("id", "the folder is addons/<program_id>/<id>"))
-    if namespace and manifest["id"].split(".")[0] != namespace:
+    if namespace and trust == "third-party" and manifest["id"].split(".")[0] != namespace:
         problems.append(("id", f"must start with {namespace}."))
     for need in manifest["needs"]:
         if need not in ADDON_CAPABILITIES:
@@ -603,7 +614,7 @@ def pack_addon(folder, out_dir):
     return target
 
 
-def build_catalogue(repo, base, namespace=None):
+def build_catalogue(repo, base, namespace=None, trust="third-party"):
     """Packs every folder of addons/ and rewrites its entry in addons.json. Titles, tags and
     entries without a folder stay as they are."""
     file = repo / "addons.json"
@@ -612,7 +623,7 @@ def build_catalogue(repo, base, namespace=None):
     entries = {entry["id"]: entry for entry in catalogue.get("addons", [])}
     titles = {title["program_id"] for title in catalogue.get("titles", [])}
     for folder in addon_folders(repo):
-        problems = validate_addon(folder, repo, namespace)
+        problems = validate_addon(folder, repo, namespace, trust)
         if problems:
             for path, reason in problems:
                 print(f"{folder}: {path or 'addon.json'}: {reason}", file=sys.stderr)
@@ -708,7 +719,7 @@ def build_index(repo, args):
     if not index["source"]["name"]:
         raise SystemExit("--name is needed the first time: what the source is called in EmuDEN")
     build_catalogue(repo, args.base_url.rstrip("/") + "/" if args.base_url else "packages/",
-                    namespace)
+                    namespace, trust)
     addons = repo / "addons.json"
     if addons.exists():
         problems = []
@@ -851,7 +862,7 @@ def cmd_validate(repo, args):
     failed = False
     for target in [t for t in targets if (t / "addon.json").exists()]:
         targets.remove(target)
-        problems = validate_addon(target.resolve(), repo, args.namespace)
+        problems = validate_addon(target.resolve(), repo, args.namespace, args.trust)
         for path, reason in problems:
             print(f"{target}: {path or 'addon.json'}: {reason}")
         failed = failed or bool(problems)
@@ -885,7 +896,7 @@ def cmd_validate(repo, args):
                 if not problems:
                     print(f"{name}: ok")
         for folder in addon_folders(repo):
-            problems = validate_addon(folder, repo, args.namespace)
+            problems = validate_addon(folder, repo, args.namespace, args.trust)
             for path, reason in problems:
                 print(f"{folder}: {path or 'addon.json'}: {reason}")
             failed = failed or bool(problems)

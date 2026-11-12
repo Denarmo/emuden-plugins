@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gamecube",
   "name": "Nintendo GameCube",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -89,6 +89,13 @@
           "size": 6192667,
           "archive": "zip",
           "entry": "dolphin_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/dolphin-android-arm64-2026-11-12.zip",
+          "sha256": "ae3e6eda123d2989bb729f834da6db4d05a96008e656478c482337c7842856c6",
+          "size": 6421198,
+          "archive": "zip",
+          "entry": "dolphin_libretro_android.so"
         }
       }
     }
