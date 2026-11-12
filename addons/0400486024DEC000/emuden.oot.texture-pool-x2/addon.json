@@ -1,0 +1,43 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.texture-pool-x2",
+  "name": "Texture Pool x2",
+  "legacy_name": "Texture Pool x2 (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "RsMan-Dev"
+  ],
+  "summary": "Doubles the texture memory of the game.",
+  "needs": [
+    "addon.code_patch"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 150,
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0xC2A36C",
+          "bytes": "D56FC094",
+          "expect_bytes": "E82701A9"
+        },
+        {
+          "offset": "0x3C462C0",
+          "bytes": "08F97FD3E82701A9C0035FD6",
+          "expect": "zero-exec-padding"
+        }
+      ]
+    }
+  ]
+}

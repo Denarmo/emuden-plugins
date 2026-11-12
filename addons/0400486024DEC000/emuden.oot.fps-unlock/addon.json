@@ -1,0 +1,52 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.fps-unlock",
+  "name": "FPS Unlock",
+  "legacy_name": "FPS Unlock (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "Dark",
+    "EmuDEN"
+  ],
+  "summary": "Lets the game draw more frames per second. Replaces Dynamic FPS.",
+  "needs": [
+    "addon.code_patch"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 200,
+  "replaces": [
+    "emuden.oot.dynamic-fps"
+  ],
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0x6E6CC4",
+          "bytes": "4F7DD594",
+          "expect_bytes": "2818201E"
+        },
+        {
+          "offset": "0x3C46200",
+          "bytes_file": "blobs/03C46200.bin",
+          "expect": "zero-exec-padding"
+        }
+      ],
+      "state": {
+        "offset": "0x4E9FE00",
+        "size": 16,
+        "expect": "zero-bss"
+      }
+    }
+  ]
+}

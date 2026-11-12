@@ -11,9 +11,10 @@ below works before any source is added.
 |---|---|
 | `index.json` | The list of plugins; the only file the app polls |
 | `index.json.sig`, `keys/source.pub` | The list's signature and the public key it is made with. Not in this folder yet: whoever publishes it makes them (below) |
-| `addons.json` | The add-on catalogue (empty until stage 2) |
+| `addons.json` | The add-on catalogue; `index` rewrites its entries |
+| `addons/<program id>/<id>/` | One folder per Switch 2 add-on |
 | `plugins/<id>/plugin.json` | One folder per plugin |
-| `packages/` | The packed plugins the list points at |
+| `packages/` | The packed plugins and add-ons the lists point at |
 | `schema/` | JSON Schemas for the manifest, the list and the add-on files |
 | `tools/plugin_tool.py` | `validate`, `pack`, `index`, `sign`, `verify`, `keygen`, `pin-cores` |
 | `docs/` | The developer guide |

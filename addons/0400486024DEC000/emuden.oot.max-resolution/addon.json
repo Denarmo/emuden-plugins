@@ -1,0 +1,38 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.max-resolution",
+  "name": "Max Resolution",
+  "legacy_name": "Max Resolution (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "EmuDEN"
+  ],
+  "summary": "Renders the 3D scene at full resolution.",
+  "needs": [
+    "addon.code_patch"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 100,
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0x805BD0",
+          "bytes": "0F020014",
+          "expect_bytes": "E8410036"
+        }
+      ]
+    }
+  ]
+}

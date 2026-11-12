@@ -1,7 +1,257 @@
 {
   "catalogue_version": 1,
   "titles": [
-    { "program_id": "0400486024DEC000", "name": "The Legend of Zelda: Ocarina of Time" }
+    {
+      "program_id": "0400486024DEC000",
+      "name": "The Legend of Zelda: Ocarina of Time"
+    }
   ],
-  "addons": []
+  "addons": [
+    {
+      "id": "emuden.oot.controls",
+      "name": "Controls, Sprint and Button Glyphs",
+      "version": "1.0.0",
+      "summary": "Modern controls, a sprint button and matching button prompts.",
+      "authors": [
+        "EmuDEN"
+      ],
+      "tags": [
+        "controls"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch",
+        "addon.transform.bfotf_add_glyphs"
+      ],
+      "layer_types": [
+        "nso-patch",
+        "transform"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.controls-1.0.0.emuaddon",
+        "sha256": "9eb463142e0cef7ee9e5a971a8b3007b83225cdc80bb70725655fdc8d0c635b7",
+        "size": 7649
+      }
+    },
+    {
+      "id": "emuden.oot.dpad-quick-items",
+      "name": "D-Pad Quick Items",
+      "version": "1.0.0",
+      "summary": "Equips items with the directional buttons.",
+      "authors": [
+        "EmuDEN"
+      ],
+      "tags": [
+        "controls",
+        "gameplay"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.dpad-quick-items-1.0.0.emuaddon",
+        "sha256": "42f2fec7ee5214dc5be072000115f2f1b369c9d3ebbe310fa7ed8dd06f81380c",
+        "size": 3718
+      }
+    },
+    {
+      "id": "emuden.oot.dynamic-fps",
+      "name": "Dynamic FPS by Dark",
+      "version": "1.0.0",
+      "summary": "Adapts the game speed to the frame rate.",
+      "authors": [
+        "Dark"
+      ],
+      "tags": [
+        "performance"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.dynamic-fps-1.0.0.emuaddon",
+        "sha256": "63f2de1fd694d761a7557502d7148f0f43ef432ad8d5225bd817bd21b5f6d739",
+        "size": 808
+      }
+    },
+    {
+      "id": "emuden.oot.fps-unlock",
+      "name": "FPS Unlock",
+      "version": "1.0.0",
+      "summary": "Lets the game draw more frames per second. Replaces Dynamic FPS.",
+      "authors": [
+        "Dark",
+        "EmuDEN"
+      ],
+      "tags": [
+        "performance"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.fps-unlock-1.0.0.emuaddon",
+        "sha256": "467e230cce8321dcd79e84457e3040c3179b0ff779b4bd660e3137e9be8210a4",
+        "size": 852
+      }
+    },
+    {
+      "id": "emuden.oot.max-resolution",
+      "name": "Max Resolution",
+      "version": "1.0.0",
+      "summary": "Renders the 3D scene at full resolution.",
+      "authors": [
+        "EmuDEN"
+      ],
+      "tags": [
+        "graphics"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.max-resolution-1.0.0.emuaddon",
+        "sha256": "1293f097dde3945b3b50d5d3aeef4654c7274b4c544ccb521f6407f40bd4108f",
+        "size": 489
+      }
+    },
+    {
+      "id": "emuden.oot.skip-cutscenes",
+      "name": "Skip Cutscenes",
+      "version": "1.0.0",
+      "summary": "Lets cutscenes be skipped.",
+      "authors": [
+        "EmuDEN"
+      ],
+      "tags": [
+        "gameplay"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.skip-cutscenes-1.0.0.emuaddon",
+        "sha256": "70cedf407e7bc10c04599a895ef98e974b0a06cc1ab54e80b612663524232bf0",
+        "size": 560
+      }
+    },
+    {
+      "id": "emuden.oot.texture-pool-x2",
+      "name": "Texture Pool x2",
+      "version": "1.0.0",
+      "summary": "Doubles the texture memory of the game.",
+      "authors": [
+        "RsMan-Dev"
+      ],
+      "tags": [
+        "graphics",
+        "stability"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.texture-pool-x2-1.0.0.emuaddon",
+        "sha256": "8f8e33ab3349fbc41cbdf01f9bc83d507d133c1708558c8cc524fccefb7f3d3e",
+        "size": 546
+      }
+    },
+    {
+      "id": "emuden.oot.widescreen-3d",
+      "name": "Widescreen 3D",
+      "version": "1.0.0",
+      "summary": "Renders the 3D scene at the aspect ratio of your display.",
+      "authors": [
+        "EmuDEN"
+      ],
+      "tags": [
+        "graphics"
+      ],
+      "program_id": "0400486024DEC000",
+      "game_versions": [
+        "1.0.0"
+      ],
+      "build_ids": [
+        "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348"
+      ],
+      "needs": [
+        "addon.code_patch",
+        "addon.literal.scene_aspect"
+      ],
+      "layer_types": [
+        "nso-patch"
+      ],
+      "package": {
+        "url": "packages/emuden.oot.widescreen-3d-1.0.0.emuaddon",
+        "sha256": "4430e0596239385f2c8a3596cbcd6119695695c6783a6d536a90a1b3344cc67e",
+        "size": 675
+      }
+    }
+  ]
 }

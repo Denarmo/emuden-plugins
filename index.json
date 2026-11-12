@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 4,
-  "generated": "2026-11-12T17:49:04Z",
-  "expires": "2027-03-12T17:49:04Z",
+  "sequence": 5,
+  "generated": "2026-11-12T19:34:28Z",
+  "expires": "2027-03-12T19:34:28Z",
   "plugins": [
     {
       "id": "emuden.dreamcast",
@@ -791,8 +791,8 @@
   ],
   "addons": {
     "url": "addons.json",
-    "sha256": "4c620d0a8e0182123845ad576e49d1ea57f611b1a3cffd7bfeef35174bf3fa93",
-    "size": 153
+    "sha256": "0cb1564832154c967d3511b77a2ad476810df0e2b03b6089e7dd59e704d1beab",
+    "size": 6303
   },
   "trusted_component_sha256": [
     "054ee0e0bbcb29499010823cc89efc6ee314450794b33a4690ee95f601a7047a",

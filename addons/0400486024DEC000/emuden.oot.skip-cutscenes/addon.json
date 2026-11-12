@@ -1,0 +1,63 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.skip-cutscenes",
+  "name": "Skip Cutscenes",
+  "legacy_name": "Skip Cutscenes (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "EmuDEN"
+  ],
+  "summary": "Lets cutscenes be skipped.",
+  "needs": [
+    "addon.code_patch"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 300,
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0xBAD408",
+          "bytes": "35008052",
+          "expect_bytes": "F503012A"
+        },
+        {
+          "offset": "0x276CDFC",
+          "bytes": "36008052",
+          "expect_bytes": "36018A1A"
+        },
+        {
+          "offset": "0x3B3AFCC",
+          "bytes": "E8031F2A",
+          "expect_bytes": "08004039"
+        },
+        {
+          "offset": "0x3B3E8AC",
+          "bytes": "E8031F2A",
+          "expect_bytes": "08004039"
+        },
+        {
+          "offset": "0xE8C2D4",
+          "bytes": "E8031F2A",
+          "expect_bytes": "08004039"
+        },
+        {
+          "offset": "0xB8D668",
+          "bytes": "E9031F2A",
+          "expect_bytes": "09004039"
+        }
+      ]
+    }
+  ]
+}

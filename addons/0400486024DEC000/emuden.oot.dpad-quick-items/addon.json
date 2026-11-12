@@ -1,0 +1,78 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.dpad-quick-items",
+  "name": "D-Pad Quick Items",
+  "legacy_name": "D-Pad Quick Items (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "EmuDEN"
+  ],
+  "summary": "Equips items with the directional buttons.",
+  "needs": [
+    "addon.code_patch"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 450,
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0x3B26BD0",
+          "bytes": "B8D14D94",
+          "expect_bytes": "C91800D0"
+        },
+        {
+          "offset": "0x3B26DA8",
+          "bytes": "47D14D94",
+          "expect_bytes": "A15D48BD"
+        },
+        {
+          "offset": "0x3B27448",
+          "bytes": "A4CF4D14",
+          "expect_bytes": "5E000014"
+        },
+        {
+          "offset": "0x3B275B4",
+          "bytes": "3FCF4D94",
+          "expect_bytes": "C91800B0"
+        },
+        {
+          "offset": "0xA7800C",
+          "bytes": "858D1095",
+          "expect_bytes": "F30300AA"
+        },
+        {
+          "offset": "0x6E6C88",
+          "bytes": "6AD21E95",
+          "expect_bytes": "C82C0290"
+        },
+        {
+          "offset": "0x33BD928",
+          "bytes": "3B776B94",
+          "expect_bytes": "B6507997"
+        },
+        {
+          "offset": "0x33BA880",
+          "bytes": "47846B14",
+          "expect_bytes": "C0035FD6"
+        },
+        {
+          "offset": "0x4E9B000",
+          "bytes_file": "blobs/04E9B000.bin",
+          "expect": "zero-bss"
+        }
+      ]
+    }
+  ]
+}

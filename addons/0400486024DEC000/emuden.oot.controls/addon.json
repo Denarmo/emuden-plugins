@@ -1,0 +1,166 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.controls",
+  "name": "Controls, Sprint and Button Glyphs",
+  "legacy_name": "Controls, Sprint & Button Glyphs (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "EmuDEN"
+  ],
+  "summary": "Modern controls, a sprint button and matching button prompts.",
+  "needs": [
+    "addon.code_patch",
+    "addon.transform.bfotf_add_glyphs"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 350,
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0x3B4FC10",
+          "bytes": "D0D90394",
+          "expect_bytes": "08D30394"
+        },
+        {
+          "offset": "0x3B26BCC",
+          "bytes": "427E0494",
+          "expect_bytes": "091501B9"
+        },
+        {
+          "offset": "0x3B26DA4",
+          "bytes": "D37D0494",
+          "expect_bytes": "0C1501B9"
+        },
+        {
+          "offset": "0x3B27444",
+          "bytes": "247C0494",
+          "expect_bytes": "091501B9"
+        },
+        {
+          "offset": "0x3B275B0",
+          "bytes": "C97B0494",
+          "expect_bytes": "091501B9"
+        },
+        {
+          "offset": "0x3777D98",
+          "bytes": "523A1314",
+          "expect_bytes": "DFFFFF17"
+        },
+        {
+          "offset": "0x150D8A4",
+          "bytes": "9DE39C94",
+          "expect_bytes": "C3D99C94"
+        },
+        {
+          "offset": "0x151B91C",
+          "bytes": "7FAB9C94",
+          "expect_bytes": "A9A19C94"
+        },
+        {
+          "offset": "0x151CA74",
+          "bytes": "29A79C94",
+          "expect_bytes": "539D9C94"
+        },
+        {
+          "offset": "0x151CDF4",
+          "bytes": "49A69C94",
+          "expect_bytes": "739C9C94"
+        },
+        {
+          "offset": "0xA6AE8C",
+          "bytes": "356EC714",
+          "expect_bytes": "091102D0"
+        },
+        {
+          "offset": "0x339BEC4",
+          "bytes": "E1520011",
+          "expect_bytes": "E103172A"
+        },
+        {
+          "offset": "0x339C4B0",
+          "bytes": "C6A82214",
+          "expect_bytes": "B6835FF8"
+        },
+        {
+          "offset": "0x3402F48",
+          "bytes": "430E2194",
+          "expect_bytes": "4EFEFF97"
+        },
+        {
+          "offset": "0x340368C",
+          "bytes": "7B0C2114",
+          "expect_bytes": "F44F43A9"
+        },
+        {
+          "offset": "0x33CF5FC",
+          "bytes": "80DD2114",
+          "expect_bytes": "1F450071"
+        },
+        {
+          "offset": "0x33CF81C",
+          "bytes": "15DD2114",
+          "expect_bytes": "1F450071"
+        },
+        {
+          "offset": "0x33CFA90",
+          "bytes": "81DC2114",
+          "expect_bytes": "FF0300F9"
+        },
+        {
+          "offset": "0x33CFD60",
+          "bytes": "D7DB2114",
+          "expect_bytes": "FF0700F9"
+        },
+        {
+          "offset": "0x34032A4",
+          "bytes": "900E2114",
+          "expect_bytes": "9F4600F1"
+        },
+        {
+          "offset": "0x898680",
+          "bytes": "02B8CE94",
+          "expect_bytes": "4C040094"
+        },
+        {
+          "offset": "0xA6BB58",
+          "bytes": "37C51095",
+          "expect_bytes": "F30300AA"
+        },
+        {
+          "offset": "0x3C46300",
+          "bytes_file": "blobs/03C46300.bin",
+          "expect": "zero-exec-padding"
+        },
+        {
+          "offset": "0x4E9D000",
+          "bytes_file": "blobs/04E9D000.bin",
+          "expect": "zero-bss"
+        }
+      ],
+      "state": {
+        "offset": "0x4E9F800",
+        "size": 1408,
+        "expect": "zero-bss"
+      }
+    },
+    {
+      "type": "transform",
+      "transform": "bfotf_add_glyphs",
+      "target": "romfs:/Font2/Scalable/External.Nin_Ounce_NVN2.bfotf.zs",
+      "glyphs_file": "font/glyphs.json",
+      "charstrings_file": "font/charstrings.bin"
+    }
+  ]
+}

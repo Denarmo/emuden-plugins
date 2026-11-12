@@ -1,0 +1,58 @@
+{
+  "addon_version": 1,
+  "id": "emuden.oot.widescreen-3d",
+  "name": "Widescreen 3D",
+  "legacy_name": "Widescreen 3D (built-in)",
+  "version": "1.0.0",
+  "authors": [
+    "EmuDEN"
+  ],
+  "summary": "Renders the 3D scene at the aspect ratio of your display.",
+  "needs": [
+    "addon.code_patch",
+    "addon.literal.scene_aspect"
+  ],
+  "program_id": "0400486024DEC000",
+  "builds": [
+    {
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "game_version": "1.0.0"
+    }
+  ],
+  "default_enabled": true,
+  "order": 400,
+  "enable_when": {
+    "setting": "aspect_ratio",
+    "not_in": [
+      "16:9",
+      "window"
+    ]
+  },
+  "layers": [
+    {
+      "type": "nso-patch",
+      "module": "main",
+      "build_id": "E0F3CCFAF50065AE4EA01EB5AEB13B1A45DA3348",
+      "records": [
+        {
+          "offset": "0x4C5334",
+          "bytes": "D303DE14",
+          "expect_bytes": "604241BD"
+        },
+        {
+          "offset": "0x3C46280",
+          "bytes": "604241BDF000001C11D4B07ED000001C2022301E4C0000548000001C27FC2117398EE33F0AD7233C398EE33F",
+          "expect": "zero-exec-padding"
+        }
+      ],
+      "literals": [
+        {
+          "offset": "0x3C462A8",
+          "type": "f32",
+          "from": "scene_aspect"
+        }
+      ]
+    }
+  ]
+}
