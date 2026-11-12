@@ -1,0 +1,115 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.dreamcast",
+  "name": "Sega Dreamcast",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Dreamcast games with Flycast.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "dreamcast",
+      "name": "Dreamcast",
+      "group": "sega",
+      "order": 1500,
+      "content": {
+        "extensions": [
+          "gdi",
+          "cdi",
+          "chd",
+          "cue",
+          "m3u"
+        ],
+        "folder_aliases": [
+          "dc"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": false,
+        "native_size": [
+          640,
+          480
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sega - Dreamcast",
+        "rdb": "Sega - Dreamcast"
+      },
+      "achievements": {
+        "rcheevos_console": 40
+      },
+      "cores": [
+        "flycast"
+      ],
+      "bios": [
+        {
+          "label": "Dreamcast BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "dc/dc_boot.bin",
+              "optional": true
+            },
+            {
+              "path": "dc/dc_flash.bin",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "flycast",
+      "type": "libretro-core",
+      "name": "Flycast",
+      "license": "GPL-2.0-only",
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/flycast-windows-x86_64-2026-11-12.zip",
+          "sha256": "6ebb1c0544799c09f76b7db667dbc1a0cdc8a23118c04f5d5742b6a04ad89e60",
+          "size": 6479426,
+          "archive": "zip",
+          "entry": "flycast_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/flycast-linux-x86_64-2026-11-12.zip",
+          "sha256": "d6620e03da13317513f62e09d04489d2f48e1216402eaed805ccce68d63c05de",
+          "size": 5978792,
+          "archive": "zip",
+          "entry": "flycast_libretro.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

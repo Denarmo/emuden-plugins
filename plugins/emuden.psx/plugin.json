@@ -1,0 +1,201 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.psx",
+  "name": "PlayStation",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "PlayStation games with PCSX ReARMed.",
+  "api": 1,
+  "needs": [
+    "engine.libretro",
+    "content.multi_file"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "psx",
+      "name": "PlayStation",
+      "group": "sony",
+      "order": 1600,
+      "content": {
+        "extensions": [
+          "cue",
+          "chd",
+          "pbp",
+          "m3u",
+          "iso",
+          "img"
+        ],
+        "folder_aliases": [
+          "ps1",
+          "playstation",
+          "ps",
+          "psone"
+        ],
+        "zip": "unpack",
+        "multi_file": {
+          "index": [
+            "m3u",
+            "cue"
+          ],
+          "members": [
+            "bin"
+          ],
+          "loose_members": true,
+          "track_naming": "redump"
+        }
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": false,
+        "native_size": [
+          320,
+          240
+        ],
+        "buttons": [
+          {
+            "pad": "b",
+            "label": "Cross"
+          },
+          {
+            "pad": "a",
+            "label": "Circle"
+          },
+          {
+            "pad": "y",
+            "label": "Square"
+          },
+          {
+            "pad": "x",
+            "label": "Triangle"
+          },
+          {
+            "pad": "l",
+            "label": "L1"
+          },
+          {
+            "pad": "r",
+            "label": "R1"
+          },
+          {
+            "pad": "l2",
+            "label": "L2"
+          },
+          {
+            "pad": "r2",
+            "label": "R2"
+          },
+          {
+            "pad": "l3",
+            "label": "L3"
+          },
+          {
+            "pad": "r3",
+            "label": "R3"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          },
+          {
+            "pad": "select",
+            "label": "Select"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sony - PlayStation",
+        "rdb": "Sony - PlayStation"
+      },
+      "achievements": {
+        "rcheevos_console": 12
+      },
+      "cores": [
+        "pcsx_rearmed",
+        "mednafen_psx",
+        "swanstation"
+      ],
+      "bios": [
+        {
+          "label": "PlayStation BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "scph5500.bin",
+              "optional": true
+            },
+            {
+              "path": "scph5501.bin",
+              "optional": true
+            },
+            {
+              "path": "scph5502.bin",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "pcsx_rearmed",
+      "type": "libretro-core",
+      "name": "PCSX ReARMed",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx_rearmed-windows-x86_64-2026-11-12.zip",
+          "sha256": "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
+          "size": 847074,
+          "archive": "zip",
+          "entry": "pcsx_rearmed_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx_rearmed-linux-x86_64-2026-11-12.zip",
+          "sha256": "3bf73a3ced9c9b0aeea232407aaeffed37c482022690be0c312b2b248d3c95d1",
+          "size": 749426,
+          "archive": "zip",
+          "entry": "pcsx_rearmed_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "mednafen_psx",
+      "type": "libretro-core",
+      "name": "Beetle PSX",
+      "license": "GPL-2.0-only",
+      "gpu": "none"
+    },
+    {
+      "id": "swanstation",
+      "type": "libretro-core",
+      "name": "SwanStation",
+      "license": "GPL-3.0-only",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

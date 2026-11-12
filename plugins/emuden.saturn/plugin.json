@@ -1,0 +1,119 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.saturn",
+  "name": "Sega Saturn",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Saturn games with Beetle Saturn.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "saturn",
+      "name": "Saturn",
+      "group": "sega",
+      "order": 1400,
+      "content": {
+        "extensions": [
+          "cue",
+          "chd",
+          "m3u",
+          "iso"
+        ],
+        "folder_aliases": [
+          "ss",
+          "segasaturn"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.6,
+        "handheld": false,
+        "right_stick_holds": false
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sega - Saturn",
+        "rdb": "Sega - Saturn"
+      },
+      "achievements": {
+        "rcheevos_console": 39
+      },
+      "cores": [
+        "mednafen_saturn",
+        "yabause"
+      ],
+      "bios": [
+        {
+          "label": "Saturn BIOS",
+          "any_one": true,
+          "files": [
+            {
+              "path": "sega_101.bin",
+              "optional": false
+            },
+            {
+              "path": "mpr-17933.bin",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "mednafen_saturn",
+      "type": "libretro-core",
+      "name": "Beetle Saturn",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mednafen_saturn-windows-x86_64-2026-11-12.zip",
+          "sha256": "9a91dcd9c483d4d45dc5cf38773d24f2cf3aba681c8537afe01d94d7eadb7b02",
+          "size": 1787221,
+          "archive": "zip",
+          "entry": "mednafen_saturn_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mednafen_saturn-linux-x86_64-2026-11-12.zip",
+          "sha256": "5acc273818695920a9e117b71cdd78b793c42cd73619849588ab2c32de19a74a",
+          "size": 2274133,
+          "archive": "zip",
+          "entry": "mednafen_saturn_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "yabause",
+      "type": "libretro-core",
+      "name": "Yabause",
+      "license": "GPL-2.0-only",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

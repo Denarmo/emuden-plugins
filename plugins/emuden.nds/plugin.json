@@ -1,0 +1,155 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.nds",
+  "name": "Nintendo DS",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Nintendo DS games with melonDS.",
+  "api": 1,
+  "needs": [
+    "engine.libretro",
+    "settings.v1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "nds",
+      "name": "Nintendo DS",
+      "group": "nintendo",
+      "order": 800,
+      "content": {
+        "extensions": [
+          "nds"
+        ],
+        "folder_aliases": [
+          "ds",
+          "nintendods"
+        ],
+        "zip": "unpack",
+        "header_title": [
+          {
+            "offset": 0,
+            "length": 12,
+            "encoding": "ascii"
+          }
+        ]
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": false
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Nintendo DS",
+        "rdb": "Nintendo - Nintendo DS"
+      },
+      "achievements": {
+        "rcheevos_console": 18
+      },
+      "cores": [
+        "melonds",
+        "melondsds",
+        "desmume"
+      ],
+      "bios": [
+        {
+          "label": "Nintendo DS BIOS and firmware",
+          "any_one": false,
+          "files": [
+            {
+              "path": "bios7.bin",
+              "optional": true
+            },
+            {
+              "path": "bios9.bin",
+              "optional": true
+            },
+            {
+              "path": "firmware.bin",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "melonds",
+      "type": "libretro-core",
+      "name": "melonDS",
+      "license": "GPL-3.0-only",
+      "gpu": "none",
+      "forced_core_options": {
+        "melonds_touch_mode": "Touch"
+      },
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/melonds-windows-x86_64-2026-11-12.zip",
+          "sha256": "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
+          "size": 1254979,
+          "archive": "zip",
+          "entry": "melonds_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/melonds-linux-x86_64-2026-11-12.zip",
+          "sha256": "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
+          "size": 897960,
+          "archive": "zip",
+          "entry": "melonds_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "melondsds",
+      "type": "libretro-core",
+      "name": "melonDS DS",
+      "license": "GPL-3.0-only",
+      "gpu": "none"
+    },
+    {
+      "id": "desmume",
+      "type": "libretro-core",
+      "name": "DeSmuME",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "forced_core_options": {
+        "desmume_pointer_type": "touch"
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "settings": [
+    {
+      "key": "screens",
+      "label": "Screens",
+      "help": "How the two screens are laid out. The choices come from the emulator.",
+      "type": "choice",
+      "scope": "game",
+      "live": true,
+      "apply": {
+        "core_option_contains": "screen_layout"
+      }
+    }
+  ],
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

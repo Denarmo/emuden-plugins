@@ -1,0 +1,106 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.snes",
+  "name": "Super Nintendo Entertainment System",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Super Nintendo games with Snes9x.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "snes",
+      "name": "Super Nintendo",
+      "group": "nintendo",
+      "order": 300,
+      "content": {
+        "extensions": [
+          "sfc",
+          "smc",
+          "fig",
+          "swc",
+          "bs"
+        ],
+        "folder_aliases": [
+          "sfc",
+          "superfamicom",
+          "supernintendo"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.37,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Super Nintendo Entertainment System",
+        "rdb": "Nintendo - Super Nintendo Entertainment System"
+      },
+      "achievements": {
+        "rcheevos_console": 3
+      },
+      "cores": [
+        "bsnes",
+        "snes9x"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "bsnes",
+      "type": "libretro-core",
+      "name": "bsnes",
+      "license": "GPL-3.0-only",
+      "gpu": "none"
+    },
+    {
+      "id": "snes9x",
+      "type": "libretro-core",
+      "name": "Snes9x",
+      "license": "LicenseRef-Snes9x",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/snes9x-windows-x86_64-2026-11-12.zip",
+          "sha256": "e2a220b62dd9a7b412143db713ebe726c1ee23ad3533b0a00f94e89d75a9ee42",
+          "size": 1316254,
+          "archive": "zip",
+          "entry": "snes9x_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/snes9x-linux-x86_64-2026-11-12.zip",
+          "sha256": "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
+          "size": 917066,
+          "archive": "zip",
+          "entry": "snes9x_libretro.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

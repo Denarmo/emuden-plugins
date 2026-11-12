@@ -1,0 +1,46 @@
+{
+  "manifest_version": 1,
+  "id": "jdoe.xbox360-xenia",
+  "name": "Xbox 360 (Xenia Canary)",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "external",
+  "publisher": "jdoe",
+  "license": "MIT",
+  "summary": "Runs Xbox 360 games in Xenia Canary.",
+  "api": 1,
+  "needs": ["engine.external", "settings.v1"],
+  "platforms": ["windows-x86_64"],
+  "systems": [{
+    "id": "xbox360", "name": "Xbox 360", "short_name": "360",
+    "group": "microsoft", "order": 2300,
+    "content": { "extensions": ["iso", "xex", "zar"], "folder_aliases": ["x360", "xbox 360"],
+                 "folder_only_extensions": ["iso", "xex"], "zip": "no" },
+    "presentation": { "cover_aspect": 0.71, "handheld": false },
+    "artwork": { "libretro_thumbnails": "Microsoft - Xbox 360", "rdb": null },
+    "emulator": "xenia",
+    "bios": []
+  }],
+  "components": [{
+    "id": "xenia", "type": "external-emulator", "name": "Xenia Canary", "version": "2026.10",
+    "license": "BSD-3-Clause",
+    "downloads": {
+      "windows-x86_64": { "url": "https://github.com/xenia-canary/xenia-canary-releases/releases/download/experimental/xenia_canary_windows.zip",
+                          "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "size": 1, "archive": "zip" }
+    },
+    "launch": {
+      "executable": { "windows-x86_64": "xenia_canary.exe" },
+      "args": ["{rom}"],
+      "working_dir": "{emulator_dir}",
+      "create_files": [{ "path": "portable.txt", "content": "" }]
+    }
+  }],
+  "capabilities": {},
+  "settings": [
+    { "key": "fullscreen", "label": "Start in fullscreen", "type": "toggle", "scope": "game",
+      "default": true, "inherit": "video.fullscreen", "apply": { "args": ["--fullscreen={value}"] } },
+    { "key": "vsync", "label": "Vertical sync", "type": "toggle", "scope": "game", "default": true,
+      "apply": { "args": ["--vsync={value}"] } }
+  ],
+  "sync": { "saves": false, "settings": true, "paths": [] }
+}

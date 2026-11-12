@@ -1,0 +1,137 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.nes",
+  "name": "Nintendo Entertainment System",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "NES and Famicom games with FCEUmm.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "nes",
+      "name": "NES",
+      "group": "nintendo",
+      "order": 200,
+      "content": {
+        "extensions": [
+          "nes",
+          "fds",
+          "unf",
+          "unif"
+        ],
+        "folder_aliases": [
+          "famicom",
+          "fc",
+          "nintendo"
+        ],
+        "zip": "unpack",
+        "hash_variants": [
+          {
+            "skip_bytes": 16,
+            "min_size": 17
+          }
+        ]
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true,
+        "buttons": [
+          {
+            "pad": "a",
+            "label": "A"
+          },
+          {
+            "pad": "b",
+            "label": "B"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          },
+          {
+            "pad": "select",
+            "label": "Select"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Nintendo Entertainment System",
+        "rdb": "Nintendo - Nintendo Entertainment System"
+      },
+      "achievements": {
+        "rcheevos_console": 7
+      },
+      "cores": [
+        "fceumm",
+        "nestopia",
+        "mesen"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "fceumm",
+      "type": "libretro-core",
+      "name": "FCEUmm",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/fceumm-windows-x86_64-2026-11-12.zip",
+          "sha256": "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
+          "size": 655481,
+          "archive": "zip",
+          "entry": "fceumm_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/fceumm-linux-x86_64-2026-11-12.zip",
+          "sha256": "89821a79f422fcc87062511db141228ba91e18f4bc06bb8ccb40490f8386b370",
+          "size": 699501,
+          "archive": "zip",
+          "entry": "fceumm_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "nestopia",
+      "type": "libretro-core",
+      "name": "Nestopia",
+      "license": "GPL-2.0-or-later",
+      "gpu": "none"
+    },
+    {
+      "id": "mesen",
+      "type": "libretro-core",
+      "name": "Mesen",
+      "license": "GPL-3.0-only",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

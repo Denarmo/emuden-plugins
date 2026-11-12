@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmuDEN Switch 2 add-on (addon.json)",
+  "type": "object",
+  "required": ["addon_version", "id", "name", "version", "needs", "program_id", "layers"],
+  "properties": {
+    "addon_version": { "type": "integer", "minimum": 1, "maximum": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string" },
+    "authors": { "type": "array", "items": { "type": "string" } },
+    "legacy_name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^[0-9]{1,9}\\.[0-9]{1,9}\\.[0-9]{1,9}$" },
+    "needs": { "type": "array", "items": { "type": "string" } },
+    "program_id": { "type": "string", "pattern": "^[0-9A-F]{16}$" },
+    "builds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["module", "build_id"],
+        "properties": {
+          "module": { "type": "string" },
+          "build_id": { "type": "string", "pattern": "^[0-9A-Fa-f]{40,64}$" },
+          "game_version": { "type": "string" }
+        }
+      }
+    },
+    "default_enabled": { "type": "boolean" },
+    "order": { "type": "integer" },
+    "replaces": { "type": "array", "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "requires": { "type": "array", "items": { "type": "string" } },
+    "enable_when": {
+      "type": ["object", "null"],
+      "required": ["setting", "not_in"],
+      "properties": {
+        "setting": { "enum": ["aspect_ratio"] },
+        "not_in": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "additionalProperties": false,
+        "properties": {
+          "type": { "enum": ["nso-patch", "transform", "exefs", "romfs", "romfslite", "romfs_ext", "cheats"] },
+          "dir": { "type": "string", "pattern": "^(?![/\\\\])(?!.*(^|/)\\.\\.(/|$))[^\\\\:]+$" },
+          "module": { "type": "string" },
+          "build_id": { "type": "string", "pattern": "^[0-9A-Fa-f]{40,64}$" },
+          "state": {
+            "type": "object",
+            "required": ["offset", "size", "expect"],
+            "additionalProperties": false,
+            "properties": {
+              "offset": { "$ref": "#/$defs/offset" },
+              "size": { "type": "integer", "minimum": 1 },
+              "expect": { "enum": ["zero-bss"] }
+            }
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["offset"],
+              "additionalProperties": false,
+              "properties": {
+                "offset": { "$ref": "#/$defs/offset" },
+                "bytes": { "$ref": "#/$defs/hex" },
+                "bytes_file": { "type": "string" },
+                "expect_bytes": { "$ref": "#/$defs/hex" },
+                "expect": { "enum": ["zero-exec-padding", "zero-bss"] }
+              }
+            }
+          },
+          "literals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["offset", "type", "from"],
+              "additionalProperties": false,
+              "properties": {
+                "offset": { "$ref": "#/$defs/offset" },
+                "type": { "enum": ["f32"] },
+                "from": { "enum": ["scene_aspect"] }
+              }
+            }
+          },
+          "transform": { "enum": ["bfotf_add_glyphs"] },
+          "target": { "type": "string" },
+          "glyphs_file": { "type": "string" },
+          "charstrings_file": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "offset": { "type": "string", "pattern": "^0x[0-9A-Fa-f]{1,16}$" },
+    "hex": { "type": "string", "pattern": "^([0-9A-Fa-f]{2})+$" }
+  }
+}

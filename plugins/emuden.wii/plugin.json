@@ -1,0 +1,108 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.wii",
+  "name": "Nintendo Wii",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Wii games with Dolphin.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "wii",
+      "name": "Wii",
+      "group": "nintendo",
+      "order": 1000,
+      "content": {
+        "extensions": [
+          "wbfs",
+          "rvz",
+          "wad",
+          "iso"
+        ],
+        "folder_aliases": [],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": false,
+        "native_size": [
+          640,
+          480
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Wii",
+        "rdb": "Nintendo - Wii"
+      },
+      "achievements": {
+        "rcheevos_console": 19
+      },
+      "cores": [
+        "dolphin"
+      ],
+      "bios": [
+        {
+          "label": "Dolphin Sys folder",
+          "any_one": false,
+          "files": [
+            {
+              "path": "dolphin-emu/Sys/",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "dolphin",
+      "type": "libretro-core",
+      "name": "Dolphin",
+      "license": "GPL-2.0-or-later",
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/dolphin-windows-x86_64-2026-11-12.zip",
+          "sha256": "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
+          "size": 7593543,
+          "archive": "zip",
+          "entry": "dolphin_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/dolphin-linux-x86_64-2026-11-12.zip",
+          "sha256": "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
+          "size": 6192667,
+          "archive": "zip",
+          "entry": "dolphin_libretro.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

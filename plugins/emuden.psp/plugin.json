@@ -1,0 +1,113 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.psp",
+  "name": "PlayStation Portable",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "PSP games with PPSSPP.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "psp",
+      "name": "PSP",
+      "group": "sony",
+      "order": 1800,
+      "content": {
+        "extensions": [
+          "iso",
+          "cso",
+          "pbp"
+        ],
+        "folder_aliases": [
+          "playstationportable"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.6,
+        "handheld": true,
+        "right_stick_holds": false,
+        "native_size": [
+          480,
+          272
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sony - PlayStation Portable",
+        "rdb": "Sony - PlayStation Portable"
+      },
+      "achievements": {
+        "rcheevos_console": 41
+      },
+      "cores": [
+        "ppsspp"
+      ],
+      "bios": [
+        {
+          "label": "PPSSPP assets",
+          "any_one": false,
+          "files": [
+            {
+              "path": "PPSSPP/ppge_atlas.zim",
+              "optional": true
+            },
+            {
+              "path": "PPSSPP/flash0/font/",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "ppsspp",
+      "type": "libretro-core",
+      "name": "PPSSPP",
+      "license": "GPL-2.0-or-later",
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/ppsspp-windows-x86_64-2026-11-12.zip",
+          "sha256": "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5",
+          "size": 6700756,
+          "archive": "zip",
+          "entry": "ppsspp_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/ppsspp-linux-x86_64-2026-11-12.zip",
+          "sha256": "054ee0e0bbcb29499010823cc89efc6ee314450794b33a4690ee95f601a7047a",
+          "size": 9047431,
+          "archive": "zip",
+          "entry": "ppsspp_libretro.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

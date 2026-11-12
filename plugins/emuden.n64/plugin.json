@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.n64",
+  "name": "Nintendo 64",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Nintendo 64 games with Mupen64Plus-Next.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "n64",
+      "name": "Nintendo 64",
+      "group": "nintendo",
+      "order": 700,
+      "content": {
+        "extensions": [
+          "n64",
+          "z64",
+          "v64"
+        ],
+        "folder_aliases": [
+          "nintendo64"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.37,
+        "handheld": false,
+        "right_stick_holds": false,
+        "native_size": [
+          320,
+          240
+        ],
+        "buttons": [
+          {
+            "pad": "b",
+            "label": "A"
+          },
+          {
+            "pad": "y",
+            "label": "B"
+          },
+          {
+            "pad": "l2",
+            "label": "Z"
+          },
+          {
+            "pad": "l",
+            "label": "L"
+          },
+          {
+            "pad": "r",
+            "label": "R"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Nintendo 64",
+        "rdb": "Nintendo - Nintendo 64"
+      },
+      "achievements": {
+        "rcheevos_console": 2
+      },
+      "cores": [
+        "mupen64plus_next",
+        "parallel_n64"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "mupen64plus_next",
+      "type": "libretro-core",
+      "name": "Mupen64Plus-Next",
+      "license": "GPL-2.0-only",
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mupen64plus_next-windows-x86_64-2026-11-12.zip",
+          "sha256": "b06f13abd1cbd97d00cbf321011cb6a9c1bd7b41676112703466fd3ad3ed81b2",
+          "size": 3057854,
+          "archive": "zip",
+          "entry": "mupen64plus_next_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mupen64plus_next-linux-x86_64-2026-11-12.zip",
+          "sha256": "aabdd1309913bd3e86dc497fd451b0cf681a9d1264767876a6fa038f7a862c0d",
+          "size": 2719493,
+          "archive": "zip",
+          "entry": "mupen64plus_next_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "parallel_n64",
+      "type": "libretro-core",
+      "name": "ParaLLEl N64",
+      "license": "GPL-2.0-only",
+      "gpu": "opengl"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

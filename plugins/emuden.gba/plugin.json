@@ -1,0 +1,144 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.gba",
+  "name": "Game Boy Advance",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Game Boy Advance games with mGBA.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "gba",
+      "name": "Game Boy Advance",
+      "group": "nintendo",
+      "order": 600,
+      "content": {
+        "extensions": [
+          "gba"
+        ],
+        "folder_aliases": [
+          "gameboyadvance"
+        ],
+        "zip": "unpack",
+        "header_title": [
+          {
+            "offset": 160,
+            "length": 12,
+            "encoding": "ascii"
+          }
+        ]
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true,
+        "buttons": [
+          {
+            "pad": "a",
+            "label": "A"
+          },
+          {
+            "pad": "b",
+            "label": "B"
+          },
+          {
+            "pad": "l",
+            "label": "L"
+          },
+          {
+            "pad": "r",
+            "label": "R"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          },
+          {
+            "pad": "select",
+            "label": "Select"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Game Boy Advance",
+        "rdb": "Nintendo - Game Boy Advance"
+      },
+      "achievements": {
+        "rcheevos_console": 5
+      },
+      "cores": [
+        "mgba",
+        "vba_next"
+      ],
+      "bios": [
+        {
+          "label": "Game Boy Advance BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "gba_bios.bin",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "mgba",
+      "type": "libretro-core",
+      "name": "mGBA",
+      "license": "MPL-2.0",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mgba-windows-x86_64-2026-11-12.zip",
+          "sha256": "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
+          "size": 569966,
+          "archive": "zip",
+          "entry": "mgba_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mgba-linux-x86_64-2026-11-12.zip",
+          "sha256": "405e33556dcf4300a30cd6ad8b0ff49e87eae0a1ea1b4f372ada7a89212f2302",
+          "size": 524108,
+          "archive": "zip",
+          "entry": "mgba_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "vba_next",
+      "type": "libretro-core",
+      "name": "VBA Next",
+      "license": "GPL-2.0-only",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.genesis",
+  "name": "Sega Genesis / Mega Drive",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Genesis and Mega Drive games with Genesis Plus GX.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "genesis",
+      "name": "Genesis / Mega Drive",
+      "group": "sega",
+      "order": 1300,
+      "content": {
+        "extensions": [
+          "md",
+          "gen",
+          "smd",
+          "bin"
+        ],
+        "folder_aliases": [
+          "megadrive",
+          "md",
+          "segagenesis"
+        ],
+        "folder_only_extensions": [
+          "md"
+        ],
+        "zip": "unpack",
+        "header_title": [
+          {
+            "offset": 336,
+            "length": 48,
+            "encoding": "ascii"
+          }
+        ]
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true,
+        "buttons": [
+          {
+            "pad": "y",
+            "label": "A"
+          },
+          {
+            "pad": "b",
+            "label": "B"
+          },
+          {
+            "pad": "a",
+            "label": "C"
+          },
+          {
+            "pad": "l",
+            "label": "X"
+          },
+          {
+            "pad": "x",
+            "label": "Y"
+          },
+          {
+            "pad": "r",
+            "label": "Z"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          },
+          {
+            "pad": "select",
+            "label": "Mode"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sega - Mega Drive - Genesis",
+        "rdb": "Sega - Mega Drive - Genesis"
+      },
+      "achievements": {
+        "rcheevos_console": 1
+      },
+      "cores": [
+        "genesis_plus_gx",
+        "picodrive"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "genesis_plus_gx",
+      "type": "libretro-core",
+      "name": "Genesis Plus GX",
+      "license": "LicenseRef-Genesis-Plus-GX",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/genesis_plus_gx-windows-x86_64-2026-11-12.zip",
+          "sha256": "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
+          "size": 944681,
+          "archive": "zip",
+          "entry": "genesis_plus_gx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/genesis_plus_gx-linux-x86_64-2026-11-12.zip",
+          "sha256": "847a246dc5e093a5c062a36e2dafbf5e7adda05ce0f65b644a7d40ae26975cc4",
+          "size": 1309370,
+          "archive": "zip",
+          "entry": "genesis_plus_gx_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "picodrive",
+      "type": "libretro-core",
+      "name": "PicoDrive",
+      "license": "LicenseRef-PicoDrive",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

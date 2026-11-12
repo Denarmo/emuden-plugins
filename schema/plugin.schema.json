@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmuDEN plugin manifest (plugin.json)",
+  "type": "object",
+  "required": ["manifest_version", "id", "name", "version", "kind", "publisher", "license", "api", "needs"],
+  "properties": {
+    "manifest_version": { "type": "integer", "minimum": 1, "maximum": 1 },
+    "id": { "$ref": "#/$defs/plugin_id" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 512 },
+    "version": { "$ref": "#/$defs/version" },
+    "kind": { "enum": ["console", "player-pack", "tweak-tool"] },
+    "engine": { "enum": ["libretro", "external", "switch2", "pcstore"] },
+    "publisher": { "type": "string", "minLength": 1 },
+    "license": { "type": "string", "minLength": 1 },
+    "homepage": { "type": "string" },
+    "summary": { "type": "string" },
+    "api": { "type": "integer", "minimum": 1 },
+    "needs": { "type": "array", "items": { "type": "string" } },
+    "platforms": { "$ref": "#/$defs/platforms" },
+    "depends": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/plugin_id" },
+          "version": { "type": "string" }
+        }
+      }
+    },
+    "systems": { "type": "array", "items": { "$ref": "#/$defs/system" } },
+    "components": { "type": "array", "items": { "$ref": "#/$defs/component" } },
+    "capabilities": { "$ref": "#/$defs/capabilities" },
+    "settings": { "type": "array", "items": { "$ref": "#/$defs/setting" } },
+    "sync": { "$ref": "#/$defs/sync" },
+    "borders": { "type": "array" },
+    "shader_presets": { "type": "array" }
+  },
+  "$defs": {
+    "plugin_id": { "type": "string", "minLength": 3, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$" },
+    "system_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,31}$" },
+    "version": { "type": "string", "pattern": "^[0-9]{1,9}\\.[0-9]{1,9}\\.[0-9]{1,9}$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "platform": { "enum": ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64", "any"] },
+    "platforms": { "type": "array", "items": { "$ref": "#/$defs/platform" } },
+    "extension": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]{0,15}$" },
+    "relative_path": { "type": "string", "minLength": 1, "pattern": "^(?![/\\\\])(?!.*(^|/)\\.\\.(/|$))[^\\\\:{]+$" },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "save_states": { "type": "boolean" }, "rewind": { "type": "boolean" },
+        "fast_forward": { "type": "boolean" }, "run_ahead": { "type": "boolean" },
+        "cheats": { "type": "boolean" }, "netplay": { "type": "boolean" },
+        "achievements": { "type": "boolean" }, "addons": { "type": "boolean" }
+      }
+    },
+    "system": {
+      "type": "object",
+      "required": ["id", "name", "group", "order", "content", "presentation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/system_id" },
+        "name": { "type": "string", "minLength": 1 },
+        "short_name": { "type": "string" },
+        "group": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "order": { "type": "integer" },
+        "platforms": { "$ref": "#/$defs/platforms" },
+        "content": {
+          "type": "object",
+          "properties": {
+            "extensions": { "type": "array", "items": { "$ref": "#/$defs/extension" } },
+            "compound_extensions": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]*(\\.[a-z0-9][a-z0-9_+-]*)+$" } },
+            "folder_aliases": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[^/\\\\:A-Z]+$" } },
+            "folder_only_extensions": { "type": "array", "items": { "$ref": "#/$defs/extension" } },
+            "zip": { "enum": ["unpack", "pass", "no"] },
+            "multi_file": {
+              "type": ["object", "null"],
+              "properties": {
+                "index": { "type": "array", "items": { "$ref": "#/$defs/extension" } },
+                "members": { "type": "array", "items": { "$ref": "#/$defs/extension" } },
+                "loose_members": { "type": "boolean" },
+                "track_naming": { "enum": ["", "redump"] }
+              }
+            },
+            "magic": { "type": "array", "items": { "type": "object", "required": ["offset", "bytes"],
+              "properties": { "offset": { "type": "integer", "minimum": 0 }, "bytes": { "type": "string", "pattern": "^([0-9A-Fa-f]{2})+$" } } } },
+            "header_title": { "type": "array", "items": { "type": "object", "required": ["offset", "length"],
+              "properties": { "offset": { "type": "integer", "minimum": 0 }, "length": { "type": "integer", "minimum": 1, "maximum": 256 }, "encoding": { "enum": ["ascii"] } } } },
+            "hash_variants": { "type": "array", "items": { "type": "object", "required": ["skip_bytes"],
+              "properties": { "skip_bytes": { "type": "integer", "minimum": 1 }, "min_size": { "type": "integer", "minimum": 0 } } } },
+            "cover_is_rom": { "type": "boolean" },
+            "scanner": { "enum": ["switch2", "pcstore"] }
+          }
+        },
+        "presentation": {
+          "type": "object",
+          "properties": {
+            "cover_aspect": { "type": "number", "minimum": 0.2, "maximum": 5 },
+            "handheld": { "type": "boolean" },
+            "right_stick_holds": { "type": "boolean" },
+            "native_size": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 16384 }, "minItems": 2, "maxItems": 2 },
+            "buttons": {
+              "type": "array", "maxItems": 16,
+              "items": {
+                "type": "object", "required": ["pad", "label"],
+                "properties": {
+                  "pad": { "enum": ["b", "y", "select", "start", "up", "down", "left", "right", "a", "x", "l", "r", "l2", "r2", "l3", "r3"] },
+                  "label": { "type": "string", "minLength": 1, "maxLength": 24 }
+                }
+              }
+            }
+          }
+        },
+        "artwork": {
+          "type": "object",
+          "properties": {
+            "libretro_thumbnails": { "type": ["string", "null"] },
+            "rdb": { "type": ["string", "null"] }
+          }
+        },
+        "achievements": { "type": "object", "required": ["rcheevos_console"],
+          "properties": { "rcheevos_console": { "type": "integer", "minimum": 1, "maximum": 65535 } } },
+        "romm_slugs": { "type": "array", "items": { "type": "string" } },
+        "cores": { "type": "array", "items": { "type": "string" } },
+        "emulator": { "type": "string" },
+        "bios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "files"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "any_one": { "type": "boolean" },
+              "files": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["path"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "path": { "type": "string", "minLength": 1 },
+                    "optional": { "type": "boolean" },
+                    "sha256": { "type": "array", "items": { "$ref": "#/$defs/sha256" } }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "capabilities": { "$ref": "#/$defs/capabilities" }
+      }
+    },
+    "download": {
+      "type": "object",
+      "required": ["archive"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "pattern": "^https://[^\\s\"\\\\<>?#@]+$", "maxLength": 2048 },
+        "sha256": { "anyOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "size": { "type": "integer", "minimum": 0 },
+        "archive": { "enum": ["zip", "none"] },
+        "entry": { "$ref": "#/$defs/relative_path" },
+        "strip_components": { "type": "integer", "minimum": 0, "maximum": 8 },
+        "executable_bit": { "type": "boolean" },
+        "rename": { "type": "string", "pattern": "^[^/\\\\:{]+$", "maxLength": 128 },
+        "integrity": { "enum": ["unpinned"] },
+        "file": { "type": "string" }
+      }
+    },
+    "launch": {
+      "type": "object",
+      "required": ["executable", "args"],
+      "additionalProperties": false,
+      "properties": {
+        "executable": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/$defs/relative_path" } },
+        "user_provided_setting": { "type": "string" },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "working_dir": { "enum": ["{emulator_dir}", "{data_dir}", "{rom_dir}"] },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "create_files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path"],
+            "additionalProperties": false,
+            "properties": {
+              "path": { "type": "string", "minLength": 1 },
+              "content": { "type": "string", "maxLength": 65536 }
+            }
+          }
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": ["id", "type", "name"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]{0,63}$" },
+        "type": { "enum": ["libretro-core", "external-emulator", "engine", "tool"] },
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" },
+        "license": { "type": "string" },
+        "homepage": { "type": "string" },
+        "gpu": { "enum": ["none", "opengl"] },
+        "forced_core_options": { "type": "object", "additionalProperties": { "type": "string" } },
+        "delivery": { "type": "object", "additionalProperties": { "enum": ["builtin", "bundled-library", "download"] } },
+        "downloads": { "type": "object", "additionalProperties": { "$ref": "#/$defs/download" } },
+        "launch": { "$ref": "#/$defs/launch" }
+      }
+    },
+    "apply": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "core_option": { "type": "string", "minLength": 1 },
+        "map": { "type": "object", "additionalProperties": { "type": "string" } },
+        "core_option_contains": { "type": "string", "minLength": 1 },
+        "player": { "enum": ["picture", "fast_forward", "run_ahead", "screen_size", "border", "volume", "mute_fast_forward", "low_latency"] },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "args_if_true": { "type": "array", "items": { "type": "string" } },
+        "args_if_false": { "type": "array", "items": { "type": "string" } },
+        "env": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,63}$" },
+        "launch_var": { "enum": [true] },
+        "native_setting": { "type": "string", "minLength": 1 }
+      }
+    },
+    "setting": {
+      "type": "object",
+      "required": ["key", "type", "scope", "apply"],
+      "properties": {
+        "key": { "type": "string", "pattern": "^[a-z][a-z0-9_]{0,47}$" },
+        "label": { "type": "string" },
+        "help": { "type": "string" },
+        "section": { "type": "string" },
+        "type": { "enum": ["toggle", "choice", "range", "text", "path"] },
+        "choices": { "type": "array", "items": { "type": "object", "required": ["label"],
+          "properties": { "value": { "type": "string" }, "label": { "type": "string", "minLength": 1 } } } },
+        "min": { "type": "number" }, "max": { "type": "number" }, "step": { "type": "number" },
+        "suffix": { "type": "string" },
+        "path_kind": { "enum": ["file", "folder"] },
+        "default": { "type": ["string", "boolean", "number"] },
+        "scope": { "enum": ["console", "game"] },
+        "live": { "type": "boolean" },
+        "inherit": { "type": "string" },
+        "platforms": { "$ref": "#/$defs/platforms" },
+        "systems": { "type": "array", "items": { "$ref": "#/$defs/system_id" } },
+        "when_core": { "type": "string" },
+        "apply": { "$ref": "#/$defs/apply" }
+      }
+    },
+    "sync": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "saves": { "type": "boolean" }, "states": { "type": "boolean" },
+        "settings": { "type": "boolean" }, "cheats": { "type": "boolean" },
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "path", "toggle"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,31}$" },
+              "path": { "$ref": "#/$defs/relative_path" },
+              "toggle": { "enum": ["saves", "play-data", "captures", "settings"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

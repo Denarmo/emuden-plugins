@@ -1,0 +1,133 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.gbc",
+  "name": "Game Boy Color",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Game Boy Color games with mGBA.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "gbc",
+      "name": "Game Boy Color",
+      "group": "nintendo",
+      "order": 500,
+      "content": {
+        "extensions": [
+          "gbc"
+        ],
+        "folder_aliases": [
+          "gameboycolor"
+        ],
+        "zip": "unpack",
+        "header_title": [
+          {
+            "offset": 308,
+            "length": 11,
+            "encoding": "ascii"
+          }
+        ]
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true,
+        "buttons": [
+          {
+            "pad": "a",
+            "label": "A"
+          },
+          {
+            "pad": "b",
+            "label": "B"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          },
+          {
+            "pad": "select",
+            "label": "Select"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Game Boy Color",
+        "rdb": "Nintendo - Game Boy Color"
+      },
+      "achievements": {
+        "rcheevos_console": 6
+      },
+      "cores": [
+        "mgba",
+        "gambatte",
+        "sameboy"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "mgba",
+      "type": "libretro-core",
+      "name": "mGBA",
+      "license": "MPL-2.0",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mgba-windows-x86_64-2026-11-12.zip",
+          "sha256": "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
+          "size": 569966,
+          "archive": "zip",
+          "entry": "mgba_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mgba-linux-x86_64-2026-11-12.zip",
+          "sha256": "405e33556dcf4300a30cd6ad8b0ff49e87eae0a1ea1b4f372ada7a89212f2302",
+          "size": 524108,
+          "archive": "zip",
+          "entry": "mgba_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "gambatte",
+      "type": "libretro-core",
+      "name": "Gambatte",
+      "license": "GPL-2.0-only",
+      "gpu": "none"
+    },
+    {
+      "id": "sameboy",
+      "type": "libretro-core",
+      "name": "SameBoy",
+      "license": "MIT",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

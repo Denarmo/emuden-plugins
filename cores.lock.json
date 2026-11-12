@@ -1,0 +1,218 @@
+{
+  "flycast:windows-x86_64": {
+    "core": "flycast",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/flycast_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "6ebb1c0544799c09f76b7db667dbc1a0cdc8a23118c04f5d5742b6a04ad89e60",
+    "size": 6479426
+  },
+  "flycast:linux-x86_64": {
+    "core": "flycast",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/flycast_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "d6620e03da13317513f62e09d04489d2f48e1216402eaed805ccce68d63c05de",
+    "size": 5978792
+  },
+  "dolphin:windows-x86_64": {
+    "core": "dolphin",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/dolphin_libretro.dll.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
+    "size": 7593543
+  },
+  "dolphin:linux-x86_64": {
+    "core": "dolphin",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/dolphin_libretro.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
+    "size": 6192667
+  },
+  "mgba:windows-x86_64": {
+    "core": "mgba",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/mgba_libretro.dll.zip",
+    "license": "MPL-2.0",
+    "fetched": "2026-11-12",
+    "sha256": "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
+    "size": 569966
+  },
+  "mgba:linux-x86_64": {
+    "core": "mgba",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/mgba_libretro.so.zip",
+    "license": "MPL-2.0",
+    "fetched": "2026-11-12",
+    "sha256": "405e33556dcf4300a30cd6ad8b0ff49e87eae0a1ea1b4f372ada7a89212f2302",
+    "size": 524108
+  },
+  "genesis_plus_gx:windows-x86_64": {
+    "core": "genesis_plus_gx",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/genesis_plus_gx_libretro.dll.zip",
+    "license": "LicenseRef-Genesis-Plus-GX",
+    "fetched": "2026-11-12",
+    "sha256": "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
+    "size": 944681
+  },
+  "genesis_plus_gx:linux-x86_64": {
+    "core": "genesis_plus_gx",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/genesis_plus_gx_libretro.so.zip",
+    "license": "LicenseRef-Genesis-Plus-GX",
+    "fetched": "2026-11-12",
+    "sha256": "847a246dc5e093a5c062a36e2dafbf5e7adda05ce0f65b644a7d40ae26975cc4",
+    "size": 1309370
+  },
+  "mupen64plus_next:windows-x86_64": {
+    "core": "mupen64plus_next",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/mupen64plus_next_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "b06f13abd1cbd97d00cbf321011cb6a9c1bd7b41676112703466fd3ad3ed81b2",
+    "size": 3057854
+  },
+  "mupen64plus_next:linux-x86_64": {
+    "core": "mupen64plus_next",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/mupen64plus_next_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "aabdd1309913bd3e86dc497fd451b0cf681a9d1264767876a6fa038f7a862c0d",
+    "size": 2719493
+  },
+  "melonds:windows-x86_64": {
+    "core": "melonds",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/melonds_libretro.dll.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
+    "size": 1254979
+  },
+  "melonds:linux-x86_64": {
+    "core": "melonds",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/melonds_libretro.so.zip",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
+    "size": 897960
+  },
+  "fceumm:windows-x86_64": {
+    "core": "fceumm",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/fceumm_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
+    "size": 655481
+  },
+  "fceumm:linux-x86_64": {
+    "core": "fceumm",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/fceumm_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "89821a79f422fcc87062511db141228ba91e18f4bc06bb8ccb40490f8386b370",
+    "size": 699501
+  },
+  "pcsx2:windows-x86_64": {
+    "core": "pcsx2",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/pcsx2_libretro.dll.zip",
+    "license": "GPL-3.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "bc30ca3aa147f239832ec2ad36096ffbfa0ed7fb022d3cbf7e84b12d1827b51d",
+    "size": 3218587
+  },
+  "pcsx2:linux-x86_64": {
+    "core": "pcsx2",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/pcsx2_libretro.so.zip",
+    "license": "GPL-3.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "f9d6f7e4e74a4ceab62c01896fb228b2bca852bacb8a15ffe80422d6787d6cdc",
+    "size": 3490833
+  },
+  "ppsspp:windows-x86_64": {
+    "core": "ppsspp",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/ppsspp_libretro.dll.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5",
+    "size": 6700756
+  },
+  "ppsspp:linux-x86_64": {
+    "core": "ppsspp",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/ppsspp_libretro.so.zip",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-12",
+    "sha256": "054ee0e0bbcb29499010823cc89efc6ee314450794b33a4690ee95f601a7047a",
+    "size": 9047431
+  },
+  "pcsx_rearmed:windows-x86_64": {
+    "core": "pcsx_rearmed",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/pcsx_rearmed_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
+    "size": 847074
+  },
+  "pcsx_rearmed:linux-x86_64": {
+    "core": "pcsx_rearmed",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/pcsx_rearmed_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "3bf73a3ced9c9b0aeea232407aaeffed37c482022690be0c312b2b248d3c95d1",
+    "size": 749426
+  },
+  "mednafen_saturn:windows-x86_64": {
+    "core": "mednafen_saturn",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/mednafen_saturn_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "9a91dcd9c483d4d45dc5cf38773d24f2cf3aba681c8537afe01d94d7eadb7b02",
+    "size": 1787221
+  },
+  "mednafen_saturn:linux-x86_64": {
+    "core": "mednafen_saturn",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/mednafen_saturn_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-12",
+    "sha256": "5acc273818695920a9e117b71cdd78b793c42cd73619849588ab2c32de19a74a",
+    "size": 2274133
+  },
+  "snes9x:windows-x86_64": {
+    "core": "snes9x",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/snes9x_libretro.dll.zip",
+    "license": "LicenseRef-Snes9x",
+    "fetched": "2026-11-12",
+    "sha256": "e2a220b62dd9a7b412143db713ebe726c1ee23ad3533b0a00f94e89d75a9ee42",
+    "size": 1316254
+  },
+  "snes9x:linux-x86_64": {
+    "core": "snes9x",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/snes9x_libretro.so.zip",
+    "license": "LicenseRef-Snes9x",
+    "fetched": "2026-11-12",
+    "sha256": "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
+    "size": 917066
+  }
+}

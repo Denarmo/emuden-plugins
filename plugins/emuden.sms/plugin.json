@@ -1,0 +1,114 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.sms",
+  "name": "Sega Master System",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Master System games with Genesis Plus GX.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "sms",
+      "name": "Master System",
+      "group": "sega",
+      "order": 1100,
+      "content": {
+        "extensions": [
+          "sms"
+        ],
+        "folder_aliases": [
+          "mastersystem"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true,
+        "buttons": [
+          {
+            "pad": "b",
+            "label": "1"
+          },
+          {
+            "pad": "a",
+            "label": "2"
+          },
+          {
+            "pad": "start",
+            "label": "Start"
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sega - Master System - Mark III",
+        "rdb": "Sega - Master System - Mark III"
+      },
+      "achievements": {
+        "rcheevos_console": 11
+      },
+      "cores": [
+        "genesis_plus_gx",
+        "picodrive"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "genesis_plus_gx",
+      "type": "libretro-core",
+      "name": "Genesis Plus GX",
+      "license": "LicenseRef-Genesis-Plus-GX",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/genesis_plus_gx-windows-x86_64-2026-11-12.zip",
+          "sha256": "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
+          "size": 944681,
+          "archive": "zip",
+          "entry": "genesis_plus_gx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/genesis_plus_gx-linux-x86_64-2026-11-12.zip",
+          "sha256": "847a246dc5e093a5c062a36e2dafbf5e7adda05ce0f65b644a7d40ae26975cc4",
+          "size": 1309370,
+          "archive": "zip",
+          "entry": "genesis_plus_gx_libretro.so"
+        }
+      }
+    },
+    {
+      "id": "picodrive",
+      "type": "libretro-core",
+      "name": "PicoDrive",
+      "license": "LicenseRef-PicoDrive",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

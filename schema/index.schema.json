@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmuDEN plugin source index (index.json)",
+  "type": "object",
+  "required": ["index_version", "source", "sequence", "generated", "expires", "plugins"],
+  "properties": {
+    "index_version": { "type": "integer", "minimum": 1, "maximum": 1 },
+    "source": {
+      "type": "object",
+      "required": ["name"],
+      "properties": { "name": { "type": "string", "minLength": 1 }, "homepage": { "type": "string" } }
+    },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "generated": { "$ref": "#/$defs/time" },
+    "expires": { "$ref": "#/$defs/time" },
+    "plugins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "kind", "api", "needs", "platforms", "code", "package"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "pattern": "^[0-9]{1,9}\\.[0-9]{1,9}\\.[0-9]{1,9}$" },
+          "kind": { "enum": ["console", "player-pack", "tweak-tool"] },
+          "engine": { "enum": ["libretro", "external", "switch2", "pcstore", "none"] },
+          "publisher": { "type": "string" },
+          "summary": { "type": "string" },
+          "group": { "type": "string" },
+          "systems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "folder_aliases": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          },
+          "api": { "type": "integer", "minimum": 1 },
+          "needs": { "type": "array", "items": { "type": "string" } },
+          "platforms": { "type": "array", "items": { "type": "string" } },
+          "code": { "enum": ["none", "cores", "external"] },
+          "package": { "$ref": "#/$defs/file" },
+          "download_size": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+          "download_hosts": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "addons": { "$ref": "#/$defs/file" },
+    "trusted_component_sha256": { "type": "array", "items": { "$ref": "#/$defs/sha256" } },
+    "revoked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "versions"],
+        "properties": {
+          "id": { "type": "string" },
+          "versions": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "blocked_sha256": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sha256"],
+        "properties": { "sha256": { "$ref": "#/$defs/sha256" }, "reason": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "time": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "file": {
+      "type": "object",
+      "required": ["url", "sha256", "size"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "minLength": 1, "pattern": "^(https://[^\\s\"\\\\<>?#@]+|(?![/\\\\])(?!.*(^|/)\\.\\.(/|$))[^\\\\:?#]+)$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "size": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

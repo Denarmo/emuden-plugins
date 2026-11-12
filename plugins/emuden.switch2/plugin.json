@@ -1,0 +1,164 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.switch2",
+  "name": "Nintendo Switch 2",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "switch2",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "The built-in Switch 2 emulator.",
+  "api": 1,
+  "needs": [
+    "engine.switch2",
+    "settings.v1"
+  ],
+  "platforms": [
+    "windows-x86_64",
+    "linux-x86_64",
+    "linux-aarch64",
+    "macos-arm64",
+    "android-arm64"
+  ],
+  "systems": [
+    {
+      "id": "switch2",
+      "name": "Nintendo Switch 2",
+      "short_name": "Switch 2",
+      "group": "nintendo",
+      "order": 0,
+      "content": {
+        "extensions": [],
+        "scanner": "switch2"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": false
+      },
+      "bios": [
+        {
+          "label": "Firmware and keys",
+          "any_one": false,
+          "files": [
+            {
+              "path": "@firmware",
+              "optional": false
+            },
+            {
+              "path": "@keys",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "nx2",
+      "type": "engine",
+      "name": "EmuDEN Switch 2 engine",
+      "delivery": {
+        "windows-x86_64": "builtin",
+        "linux-x86_64": "builtin",
+        "linux-aarch64": "builtin",
+        "macos-arm64": "builtin",
+        "android-arm64": "builtin"
+      }
+    }
+  ],
+  "capabilities": {
+    "addons": true
+  },
+  "settings": [
+    {
+      "key": "resolution",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "resolution_setup"
+      }
+    },
+    {
+      "key": "scaling_filter",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "scaling_filter"
+      }
+    },
+    {
+      "key": "anti_aliasing",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "anti_aliasing"
+      }
+    },
+    {
+      "key": "aspect_ratio",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "aspect_ratio"
+      }
+    },
+    {
+      "key": "frame_limit",
+      "section": "Graphics",
+      "type": "range",
+      "scope": "game",
+      "apply": {
+        "native_setting": "nx2_frame_rate_limit"
+      }
+    },
+    {
+      "key": "dlss",
+      "section": "Graphics",
+      "type": "toggle",
+      "scope": "game",
+      "apply": {
+        "native_setting": "nvidia_dlss"
+      },
+      "platforms": [
+        "windows-x86_64"
+      ]
+    },
+    {
+      "key": "docked",
+      "section": "System",
+      "type": "toggle",
+      "scope": "game",
+      "apply": {
+        "native_setting": "use_docked_mode"
+      }
+    },
+    {
+      "key": "language",
+      "section": "System",
+      "type": "choice",
+      "scope": "console",
+      "apply": {
+        "native_setting": "language_index"
+      }
+    },
+    {
+      "key": "region",
+      "section": "System",
+      "type": "choice",
+      "scope": "console",
+      "apply": {
+        "native_setting": "region_index"
+      }
+    }
+  ],
+  "sync": {
+    "saves": true,
+    "settings": true
+  }
+}

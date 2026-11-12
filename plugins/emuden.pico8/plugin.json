@@ -1,0 +1,81 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.pico8",
+  "name": "PICO-8",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "PICO-8 carts. Bring your own core: fake08 or retro8.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "pico8",
+      "name": "PICO-8",
+      "group": "other",
+      "order": 1900,
+      "content": {
+        "extensions": [
+          "p8"
+        ],
+        "compound_extensions": [
+          "p8.png"
+        ],
+        "cover_is_rom": true,
+        "folder_aliases": [
+          "pico-8",
+          "p8"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "cores": [
+        "fake08",
+        "retro8"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "fake08",
+      "type": "libretro-core",
+      "name": "FAKE-08",
+      "license": "MIT",
+      "gpu": "none"
+    },
+    {
+      "id": "retro8",
+      "type": "libretro-core",
+      "name": "Retro8",
+      "license": "GPL-3.0-only",
+      "gpu": "none"
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": false
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

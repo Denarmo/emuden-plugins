@@ -1,0 +1,109 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.ps2",
+  "name": "PlayStation 2",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "PlayStation 2 games with PCSX2.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "ps2",
+      "name": "PlayStation 2",
+      "group": "sony",
+      "order": 1700,
+      "content": {
+        "extensions": [
+          "iso",
+          "chd",
+          "cso"
+        ],
+        "folder_aliases": [
+          "playstation2"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": false,
+        "native_size": [
+          640,
+          448
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sony - PlayStation 2",
+        "rdb": "Sony - PlayStation 2"
+      },
+      "achievements": {
+        "rcheevos_console": 21
+      },
+      "cores": [
+        "pcsx2"
+      ],
+      "bios": [
+        {
+          "label": "PlayStation 2 BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "pcsx2/bios/",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "pcsx2",
+      "type": "libretro-core",
+      "name": "PCSX2",
+      "license": "GPL-3.0-or-later",
+      "gpu": "opengl",
+      "version": "2026-11-12",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx2-windows-x86_64-2026-11-12.zip",
+          "sha256": "bc30ca3aa147f239832ec2ad36096ffbfa0ed7fb022d3cbf7e84b12d1827b51d",
+          "size": 3218587,
+          "archive": "zip",
+          "entry": "pcsx2_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx2-linux-x86_64-2026-11-12.zip",
+          "sha256": "f9d6f7e4e74a4ceab62c01896fb228b2bca852bacb8a15ffe80422d6787d6cdc",
+          "size": 3490833,
+          "archive": "zip",
+          "entry": "pcsx2_libretro.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}
