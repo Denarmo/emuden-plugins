@@ -1,0 +1,45 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.romhacks",
+  "name": "ROM Hacks",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Install ROM hack patches, such as those listed on Hackdex, on your own games.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "open-url",
+      "files.import",
+      "downloads.watch",
+      "library.read",
+      "patch",
+      "library.write"
+    ],
+    "open_hosts": [
+      "www.hackdex.app"
+    ],
+    "file_types": [
+      "bps",
+      "xdelta",
+      "ups",
+      "ips"
+    ],
+    "systems": [
+      "gb",
+      "gbc",
+      "gba",
+      "nds"
+    ]
+  }
+}

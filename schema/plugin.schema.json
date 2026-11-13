@@ -8,7 +8,33 @@
     "id": { "$ref": "#/$defs/plugin_id" },
     "name": { "type": "string", "minLength": 1, "maxLength": 512 },
     "version": { "$ref": "#/$defs/version" },
-    "kind": { "enum": ["console", "player-pack", "tweak-tool"] },
+    "kind": { "enum": ["console", "player-pack", "tweak-tool", "feature"] },
+    "feature": {
+      "type": "object",
+      "required": ["entry", "permissions"],
+      "properties": {
+        "entry": { "type": "string", "minLength": 1 },
+        "icon": { "type": "string" },
+        "permissions": { "type": "array", "items": { "type": "string" } },
+        "http": {
+          "type": "object",
+          "properties": {
+            "hosts": { "type": "array", "items": { "type": "string" } },
+            "min_interval_ms": { "type": "integer", "minimum": 500 }
+          }
+        },
+        "open_hosts": { "type": "array", "items": { "type": "string" } },
+        "file_types": { "type": "array", "items": { "type": "string" } },
+        "systems": { "type": "array", "items": { "type": "string" } },
+        "limits": {
+          "type": "object",
+          "properties": {
+            "memory_mb": { "type": "integer", "minimum": 8, "maximum": 64 },
+            "storage_mb": { "type": "integer", "minimum": 1, "maximum": 4096 }
+          }
+        }
+      }
+    },
     "engine": { "enum": ["libretro", "external", "switch2", "pcstore"] },
     "publisher": { "type": "string", "minLength": 1 },
     "license": { "type": "string", "minLength": 1 },

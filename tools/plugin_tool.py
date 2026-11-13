@@ -32,7 +32,8 @@ import urllib.request
 import zipfile
 
 HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
-                     "settings.v1", "content.multi_file", "content.magic"]
+                     "settings.v1", "content.multi_file", "content.magic",
+                     "kind.feature", "feature.lua.1"]
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
 LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
                     "bios_dir", "platform"]
@@ -54,6 +55,15 @@ EXECUTABLE_MAGICS = (b"MZ", b"\x7fELF", b"#!", b"\xcf\xfa\xed\xfe", b"\xce\xfa\x
 MAX_PACKAGE_FILES = 256
 MAX_PACKAGE_BYTES = 16 * 1024 * 1024
 MAX_EXPIRY_DAYS = 120
+
+# Feature plugins (kind "feature"): Lua scripts the app runs in a sandbox.
+FEATURE_PERMISSIONS = ["http", "download", "open-url", "files.import", "downloads.watch",
+                       "library.read", "patch", "library.write"]
+FEATURE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
+                                   r"\.(json|lua|png|jpg|txt|md)$")
+MAX_FEATURE_FILES = 200
+MAX_FEATURE_BYTES = 8 * 1024 * 1024
+HOST_NAME = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$")
 
 # A field that changes what runs, what is written or what is synced needs a capability, so an
 # older EmuDEN refuses the manifest instead of reading half of it.
@@ -183,8 +193,68 @@ def url_host(url):
     return url.split("://", 1)[-1].split("/", 1)[0].lower()
 
 
-def validate_manifest(manifest, repo, trust="third-party", namespace=None):
-    """Returns a list of (json path, reason)."""
+def validate_feature(manifest, trust, folder, err):
+    """The rules of a feature plugin: a sandboxed Lua script with declared permissions."""
+    reserved = trust in ("bundled", "official")
+    for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
+        if manifest.get(field):
+            err(field, "a feature plugin has none")
+    for need in ("kind.feature", "feature.lua.1"):
+        if need not in manifest["needs"]:
+            err("needs", f"must list {need}")
+    feature = manifest.get("feature")
+    if not isinstance(feature, dict):
+        err("feature", "missing")
+        return
+    entry = feature["entry"]
+    if not safe_relative(entry) or not entry.endswith(".lua"):
+        err("feature.entry", "must be a script of the package (a relative path ending in .lua)")
+    elif folder is not None and not (folder / entry).is_file():
+        err("feature.entry", "there is no such file in the plugin folder")
+    icon = feature.get("icon")
+    if icon and (not safe_relative(icon) or not icon.endswith(".png")):
+        err("feature.icon", "must be a PNG of the package")
+    elif icon and folder is not None and not (folder / icon).is_file():
+        err("feature.icon", "there is no such file in the plugin folder")
+    permissions = feature["permissions"]
+    for permission in permissions:
+        if permission not in FEATURE_PERMISSIONS:
+            err("feature.permissions", f"{permission} is not a permission")
+    if len(set(permissions)) != len(permissions):
+        err("feature.permissions", "a permission is listed twice")
+    http_hosts = feature.get("http", {}).get("hosts", [])
+    open_hosts = feature.get("open_hosts", [])
+    for path, hosts in (("feature.http.hosts", http_hosts), ("feature.open_hosts", open_hosts)):
+        if len(hosts) > 8:
+            err(path, "at most 8 hosts")
+        for host in hosts:
+            if not HOST_NAME.match(host):
+                err(path, f"{host} is not an exact host name (no scheme, path or wildcard)")
+    if ("http" in permissions or "download" in permissions) != bool(http_hosts):
+        err("feature.http.hosts", "needed with http or download, and only with them")
+    if ("open-url" in permissions) != bool(open_hosts):
+        err("feature.open_hosts", "needed with open-url, and only with it")
+    systems = feature.get("systems", [])
+    for system in systems:
+        if system != "*" and not re.match(r"^[a-z0-9][a-z0-9_-]*$", system):
+            err("feature.systems", f"{system} is not a system id")
+    if "*" in systems and (not reserved or len(systems) != 1):
+        err("feature.systems", "only EmuDEN's own plugins see every console, as [\"*\"] alone")
+    if any(p in permissions for p in ("library.read", "patch", "library.write")) and not systems:
+        err("feature.systems", "needed with the library and patch permissions")
+    file_types = feature.get("file_types", [])
+    for extension in file_types:
+        if not re.match(r"^[a-z0-9]{1,10}$", extension):
+            err("feature.file_types", f"{extension} is not a file extension")
+    if "downloads.watch" in permissions:
+        if not file_types:
+            err("feature.file_types", "needed with downloads.watch")
+        if not reserved:
+            err("feature.permissions", "only EmuDEN's own plugins watch the Downloads folder")
+
+
+def validate_manifest(manifest, repo, trust="third-party", namespace=None, folder=None):
+    """Returns a list of (json path, reason). `folder`: the plugin's folder, to check its files."""
     errors = []
     schema = load_schema(repo, "plugin.schema.json")
     check_schema(manifest, schema, schema, "", errors)
@@ -199,6 +269,10 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None):
     if namespace and trust == "third-party" and plugin_id.split(".")[0] != namespace:
         err("id", f"must start with {namespace}. (the owner of the repository)")
     kind, engine = manifest["kind"], manifest.get("engine")
+    if kind == "feature":
+        validate_feature(manifest, trust, folder, err)
+    elif "feature" in manifest:
+        err("feature", "only for a plugin of kind feature")
     if kind == "console" and not engine:
         err("engine", "missing")
     if kind != "console" and engine:
@@ -483,20 +557,27 @@ def sample_argv(manifest):
 # --- packages, index, signatures ---------------------------------------------------------------
 
 def package_files(folder):
+    feature = load_json(folder / "plugin.json").get("kind") == "feature"
+    allowed = FEATURE_PACKAGE_FILES if feature else PACKAGE_FILES
     files = []
     for path in sorted(folder.rglob("*")):
         if path.is_dir():
             continue
         name = path.relative_to(folder).as_posix()
-        if path.is_symlink() or not PACKAGE_FILES.match(name):
-            raise SystemExit(f"{folder.name}: {name} does not belong in a plugin package "
-                             "(plugin.json, icon.png, assets/, LICENSE*, README*)")
+        if path.is_symlink() or not allowed.match(name):
+            raise SystemExit(f"{folder.name}: {name} does not belong in a plugin package (" +
+                             ("only .json, .lua, .png, .jpg, .txt and .md files" if feature else
+                              "plugin.json, icon.png, assets/, LICENSE*, README*") + ")")
         data = path.read_bytes()
         if name.lower().endswith(EXECUTABLE_EXTENSIONS) or data.startswith(EXECUTABLE_MAGICS):
             raise SystemExit(f"{folder.name}: {name} is a program; a plugin package holds none")
+        if feature and name.endswith(".lua") and data.startswith(b"\x1bLua"):
+            raise SystemExit(f"{folder.name}: {name} is compiled Lua; scripts are text")
         files.append((name, data))
-    if len(files) > MAX_PACKAGE_FILES or sum(len(d) for _, d in files) > MAX_PACKAGE_BYTES:
-        raise SystemExit(f"{folder.name}: more than 256 files or 16 MiB")
+    most, room = (MAX_FEATURE_FILES, MAX_FEATURE_BYTES) if feature else \
+        (MAX_PACKAGE_FILES, MAX_PACKAGE_BYTES)
+    if len(files) > most or sum(len(d) for _, d in files) > room:
+        raise SystemExit(f"{folder.name}: more than {most} files or {room >> 20} MiB")
     return files
 
 
@@ -675,7 +756,7 @@ def build_index(repo, args):
     plugins = []
     for folder in plugin_folders(repo):
         manifest = load_json(folder / "plugin.json")
-        errors = validate_manifest(manifest, repo, trust, namespace)
+        errors = validate_manifest(manifest, repo, trust, namespace, folder)
         if errors:
             for path, reason in errors:
                 print(f"{folder.name}: {path}: {reason}", file=sys.stderr)
@@ -707,6 +788,17 @@ def build_index(repo, args):
                         "size": package.stat().st_size},
             "download_size": sizes, "download_hosts": sorted(hosts),
         })
+        if manifest["kind"] == "feature":
+            # What the package will ask for, shown before any download. "systems" stays the
+            # list of console objects readers older than feature plugins expect (none here);
+            # they refuse the entry by its needs and keep the rest of the list.
+            feature = manifest["feature"]
+            plugins[-1].update({
+                "permissions": feature["permissions"],
+                "http_hosts": feature.get("http", {}).get("hosts", []),
+                "open_hosts": feature.get("open_hosts", []),
+                "feature_systems": feature.get("systems", []),
+            })
     index = {
         "index_version": 1,
         "source": {"name": args.name or previous.get("source", {}).get("name", ""),
@@ -872,7 +964,8 @@ def cmd_validate(repo, args):
         file = target / "plugin.json" if target.is_dir() else target
         try:
             manifest = load_json(file)
-            errors = validate_manifest(manifest, repo, args.trust, args.namespace)
+            errors = validate_manifest(manifest, repo, args.trust, args.namespace,
+                                       target if target.is_dir() else None)
         except (ValueError, OSError) as error:
             errors, manifest = [("", str(error))], None
         for path, reason in errors:

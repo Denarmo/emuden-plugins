@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 6,
-  "generated": "2026-11-12T22:16:13Z",
-  "expires": "2027-03-12T22:16:13Z",
+  "sequence": 7,
+  "generated": "2026-11-13T10:02:51Z",
+  "expires": "2027-03-13T10:02:51Z",
   "plugins": [
     {
       "id": "emuden.dreamcast",
@@ -604,6 +604,61 @@
       },
       "download_hosts": [
         "github.com"
+      ]
+    },
+    {
+      "id": "emuden.romhacks",
+      "name": "ROM Hacks",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Install ROM hack patches, such as those listed on Hackdex, on your own games.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.romhacks-1.0.0.emuplugin",
+        "sha256": "129260b477913a2863cce32a7df678400999d8327e35923869776ea3d93f30e2",
+        "size": 11989
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "open-url",
+        "files.import",
+        "downloads.watch",
+        "library.read",
+        "patch",
+        "library.write"
+      ],
+      "http_hosts": [],
+      "open_hosts": [
+        "www.hackdex.app"
+      ],
+      "feature_systems": [
+        "gb",
+        "gbc",
+        "gba",
+        "nds"
       ]
     },
     {
