@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.romhacks",
   "name": "ROM Hacks: hackdex.app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",

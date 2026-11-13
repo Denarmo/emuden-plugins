@@ -152,7 +152,6 @@ return function(site)
 
   -- known: the base game of the package's bases.json with that checksum, or nil.
   function pages.missing_base(info, known, crc, file)
-    local name = known and known.name or "a game with this checksum"
     local facts = { { label = "CRC32", value = crc }, { label = "Patch file", value = file } }
     if known then
       facts[#facts + 1] = { label = "Console", value = system_name(known.system) }
@@ -165,9 +164,10 @@ return function(site)
     return {
       title = "Base game missing",
       body = {
-        { type = "text", style = "warning", text = "Base game missing: " .. name .. " (" .. crc .. ")" },
-        { type = "detail", title = name, subtitle = "Not in your library", facts = facts,
-          buttons = {} },
+        { type = "text", style = "warning", text = "Base game missing: " ..
+            (known and (known.name .. ", ") or "") .. "checksum " .. crc },
+        { type = "detail", title = known and known.name or file, subtitle = "Its base game " ..
+            "is not in your library", facts = facts, buttons = {} },
         { type = "text", text =
             "Add your own copy of this game to your library, then download the patch again. " ..
             "The checksum must match exactly: another region or revision will not do. This " ..

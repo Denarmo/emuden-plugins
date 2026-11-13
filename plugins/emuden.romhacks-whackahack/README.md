@@ -16,7 +16,8 @@ Not affiliated with whackahack.com.
 ## What the site offers (read 2026-11-13)
 
 - A Spanish-language community for Pokemon fan games: news, a games catalogue (`/juegos/`),
-  tools (`/descargas/`), a wiki and a forum (`/foro/`, XenForo-style addresses).
+  tools (`/descargas/`), a wiki and a forum (`/foro/`, XenForo-style addresses). The forum's
+  front page rendered in EmuDEN's browser page on 2026-11-13.
 - ROM hacks are shown in the forum, section "Exposicion de ROM Hacking"
   (`/foro/forums/exposicion-de-rom-hacking.89/`). The catalogue also holds RPG Maker fan games,
   which are not patches.

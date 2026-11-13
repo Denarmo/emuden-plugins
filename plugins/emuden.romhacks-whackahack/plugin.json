@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.romhacks-whackahack",
   "name": "ROM Hacks: whackahack.com",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",

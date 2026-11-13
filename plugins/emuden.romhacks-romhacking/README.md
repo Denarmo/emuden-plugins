@@ -18,10 +18,11 @@ Not affiliated with romhacking.net.
 - The largest archive of ROM hacks and fan translations, for many consoles (NES, SNES, Genesis,
   Game Boy family, N64, PlayStation and more).
 - Status: on 2024-08-01 the site closed submissions and became read-only (news only); its
-  database and files were handed to the Internet Archive. The live site still answers:
-  `robots.txt` was served on 2026-11-13 and names `/download/` as its download path. The front
-  page answered 403 to a plain (non-browser) client, so how it looks today was only seen in the
-  app's browser page (see the app's `docs/status.md`).
+  database and files were handed to the Internet Archive. The live site still serves pages:
+  on 2026-11-13 its front page rendered in EmuDEN's browser page with a news entry dated the
+  day before and a "Newest Hacks" box, and `robots.txt` names `/download/` as its download
+  path. (The front page answers 403 to a plain, non-browser client.) Whether a download from
+  it completes was not tried by the plugin's author: that is the player's to do.
 - Downloads: `www.romhacking.net/download/...` on the site itself; the Internet Archive's copy
   is on `archive.org` (its files come from `*.archive.org` storage hosts through a redirect,
   which the browser page lets through for a download).
