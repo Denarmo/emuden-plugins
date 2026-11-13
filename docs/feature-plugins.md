@@ -60,8 +60,8 @@ page and presses its download button; the plugin is handed the patch file, finds
 game in the library (by the patch's checksum, or the player chooses), patches a copy and adds
 the hack to the library. The plugins have no `http` permission: they never read, search or
 fetch a site, and they take patch files only (`bps ips ups xdelta vcdiff aps ppf`, or a `zip`
-holding one; `7z` and `rar` cannot be opened by the app yet). A ROM image is always refused,
-also inside a zip and also when it is pre-patched. A link that leaves the site's hosts (a file
+or `7z` holding one; `rar` is not opened by the app). A ROM image is always refused, also
+inside an archive and also when it is pre-patched. A link that leaves the site's hosts (a file
 host, for instance) is opened only after the app asked the player. None of the plugins is
 affiliated with its site; "Hackdex" is a name its project reserves, so that plugin is named by
 the domain. `bases.json` of `emuden.romhacks` comes from the Hackdex website's source under the

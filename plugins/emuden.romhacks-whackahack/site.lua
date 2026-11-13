@@ -7,7 +7,7 @@ return {
   name = "whackahack.com",
   title = "ROM Hacks: whackahack.com",
   url = "https://whackahack.com/foro/",
-  formats = ".ips, .ups, .bps, .xdelta, .aps, also inside a .zip",
+  formats = ".ips, .ups, .bps, .xdelta, .aps, also inside a .zip or .7z",
   warning = "Many threads link to file hosts and some offer already patched games: EmuDEN installs patch files only.",
   about = {
     { "About whackahack.com",

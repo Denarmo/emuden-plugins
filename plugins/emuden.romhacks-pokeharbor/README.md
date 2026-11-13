@@ -8,7 +8,7 @@ a hack of a game the player owns.
 What it does **not** do: it never reads, searches, scrapes or fetches the site (it has no
 `http` permission and never sees a page, its address or its cookies), it downloads nothing the
 player did not press, it never touches a sign-in, and it takes patch files only (`bps`, `ips`,
-`ups`, `xdelta`, `vcdiff`, `aps`, `ppf`, or a `zip` holding one). A ROM image is always
+`ups`, `xdelta`, `vcdiff`, `aps`, `ppf`, or a `zip` or `7z` holding one). A ROM image is always
 refused, also inside an archive and also when it is pre-patched.
 
 Not affiliated with pokeharbor.com.

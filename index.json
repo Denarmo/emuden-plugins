@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 9,
-  "generated": "2026-11-13T11:40:42Z",
-  "expires": "2027-03-13T11:40:42Z",
+  "sequence": 10,
+  "generated": "2026-11-13T12:41:53Z",
+  "expires": "2027-03-13T12:41:53Z",
   "plugins": [
     {
       "id": "emuden.dreamcast",
@@ -609,7 +609,7 @@
     {
       "id": "emuden.romhacks",
       "name": "ROM Hacks: hackdex.app",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -631,9 +631,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.romhacks-2.0.1.emuplugin",
-        "sha256": "ea8cea2b6767d43d69ca9b3a9e13609e3f70adfe32732a998fc62ec85fac8755",
-        "size": 13467
+        "url": "packages/emuden.romhacks-2.0.2.emuplugin",
+        "sha256": "1b5d1719a5aacdde6c2417477d817ce4619ad7f781bcc2a28a5f6eed9e012df0",
+        "size": 13556
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -667,7 +667,7 @@
     {
       "id": "emuden.romhacks-pokeharbor",
       "name": "ROM Hacks: pokeharbor.com",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -689,9 +689,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.romhacks-pokeharbor-1.0.1.emuplugin",
-        "sha256": "74f91b2c842d3837f65688ea366bb2445519997f971fd1356004bd7d11c5c380",
-        "size": 10434
+        "url": "packages/emuden.romhacks-pokeharbor-1.0.2.emuplugin",
+        "sha256": "91b3f1596aff000c767c230ed93c357fd455ef5831352ccdb62051b2d3720cc3",
+        "size": 10531
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -724,7 +724,7 @@
     {
       "id": "emuden.romhacks-romhacking",
       "name": "ROM Hacks: romhacking.net",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -746,9 +746,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.romhacks-romhacking-1.0.1.emuplugin",
-        "sha256": "5f6daa48bf2f41f05b106d801b28e447a41969316db1ae80f3984047cfb2cef1",
-        "size": 10810
+        "url": "packages/emuden.romhacks-romhacking-1.0.2.emuplugin",
+        "sha256": "ded8e4e4c58e5adf07c3f8ab3d5a8da57eb92d3db6c4118ca3d1eded937bc350",
+        "size": 10930
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -794,7 +794,7 @@
     {
       "id": "emuden.romhacks-whackahack",
       "name": "ROM Hacks: whackahack.com",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -816,9 +816,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.romhacks-whackahack-1.0.1.emuplugin",
-        "sha256": "ad8718825527556eb65e90f79d85a32b446bd277c96b39719e91e05c30d3723a",
-        "size": 10495
+        "url": "packages/emuden.romhacks-whackahack-1.0.2.emuplugin",
+        "sha256": "1abee493a0046c8fdef7d67fa0da8627cc6bf81ef9d89dec81ab5a6c25c15f9f",
+        "size": 10588
       },
       "download_size": {
         "windows-x86_64": 0,

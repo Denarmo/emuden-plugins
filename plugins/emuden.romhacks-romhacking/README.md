@@ -8,7 +8,7 @@ a hack of a game the player owns.
 What it does **not** do: it never reads, searches, scrapes or fetches the site (it has no
 `http` permission and never sees a page, its address or its cookies), it downloads nothing the
 player did not press, it never touches a sign-in, and it takes patch files only (`bps`, `ips`,
-`ups`, `xdelta`, `vcdiff`, `aps`, `ppf`, or a `zip` holding one). A ROM image is always
+`ups`, `xdelta`, `vcdiff`, `aps`, `ppf`, or a `zip` or `7z` holding one). A ROM image is always
 refused, also inside an archive and also when it is pre-patched.
 
 Not affiliated with romhacking.net.
@@ -28,9 +28,10 @@ Not affiliated with romhacking.net.
   which the browser page lets through for a download).
 - Formats: mostly `ips` and `bps`, `xdelta` and `ppf` for large or disc games, nearly always
   inside a `zip`, `7z` or `rar` together with a readme.
-- **zip works** (the app unpacks the first patch file in it and refuses a zip holding a game).
-  **7z and rar are not supported**: the app has no reader for them, tells the player so and
-  takes nothing. Unpack such a file by hand and use "Choose a patch file".
+- **zip and 7z work** (the app unpacks the first patch file in the archive and refuses one
+  holding a game; 7z since the app has a 7z reader, LZMA, LZMA2 and BCJ, no password).
+  **rar is not supported**: the app has no reader for it, tells the player so and takes
+  nothing. Unpack such a file by hand and use "Choose a patch file".
 - `ips`, `xdelta` and `ppf` carry no checksum of their base game: the player chooses the game,
   and the choice is remembered for that file name.
 

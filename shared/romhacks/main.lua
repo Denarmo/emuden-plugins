@@ -13,7 +13,9 @@ local pages = den.include("pages.lua")(site)
 local plugin = { actions = {} }
 
 local PATCH_TYPES = { "bps", "ips", "ups", "xdelta", "vcdiff", "aps", "ppf" }
-local DOWNLOAD_TYPES = { "bps", "ips", "ups", "xdelta", "vcdiff", "aps", "ppf", "zip" }
+-- An archive is opened by the app, which hands over the patch in it (7z: EmuDEN builds
+-- with a 7z reader; older ones leave it out of the list by themselves).
+local DOWNLOAD_TYPES = { "bps", "ips", "ups", "xdelta", "vcdiff", "aps", "ppf", "zip", "7z" }
 -- Consoles a patch without a base checksum can be for, by its format.
 local DISC = { psx = true, ps2 = true, psp = true, saturn = true, dreamcast = true,
                gamecube = true, wii = true }
