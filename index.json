@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 7,
-  "generated": "2026-11-13T10:02:51Z",
-  "expires": "2027-03-13T10:02:51Z",
+  "sequence": 8,
+  "generated": "2026-11-13T11:35:13Z",
+  "expires": "2027-03-13T11:35:13Z",
   "plugins": [
     {
       "id": "emuden.dreamcast",
@@ -608,18 +608,19 @@
     },
     {
       "id": "emuden.romhacks",
-      "name": "ROM Hacks",
-      "version": "1.0.0",
+      "name": "ROM Hacks: hackdex.app",
+      "version": "2.0.0",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
-      "summary": "Install ROM hack patches, such as those listed on Hackdex, on your own games.",
+      "summary": "Browse hackdex.app inside EmuDEN and install the patches you download on your own games.",
       "group": "",
       "systems": [],
       "api": 1,
       "needs": [
         "kind.feature",
-        "feature.lua.1"
+        "feature.lua.1",
+        "feature.web.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -630,9 +631,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.romhacks-1.0.0.emuplugin",
-        "sha256": "129260b477913a2863cce32a7df678400999d8327e35923869776ea3d93f30e2",
-        "size": 11989
+        "url": "packages/emuden.romhacks-2.0.0.emuplugin",
+        "sha256": "e2d77103c463cc3e7a240c8c05bd1b48f43bee267bf25b6038c664981d2629a2",
+        "size": 13472
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -643,16 +644,202 @@
       },
       "download_hosts": [],
       "permissions": [
-        "open-url",
+        "browse",
         "files.import",
-        "downloads.watch",
         "library.read",
         "patch",
         "library.write"
       ],
       "http_hosts": [],
-      "open_hosts": [
-        "www.hackdex.app"
+      "open_hosts": [],
+      "browse_hosts": [
+        "www.hackdex.app",
+        "hackdex.app",
+        "patches.hackdex.app"
+      ],
+      "feature_systems": [
+        "gb",
+        "gbc",
+        "gba",
+        "nds"
+      ]
+    },
+    {
+      "id": "emuden.romhacks-pokeharbor",
+      "name": "ROM Hacks: pokeharbor.com",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Browse pokeharbor.com inside EmuDEN. The site mostly offers already patched games, which EmuDEN refuses: only patch files are installed.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.web.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.romhacks-pokeharbor-1.0.0.emuplugin",
+        "sha256": "1222000d926c0833a5dbf9a91b3f06a8e852deef5269851bf9bb9d1572ed87b9",
+        "size": 10438
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "browse",
+        "files.import",
+        "library.read",
+        "patch",
+        "library.write"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [
+        "www.pokeharbor.com",
+        "pokeharbor.com"
+      ],
+      "feature_systems": [
+        "gb",
+        "gbc",
+        "gba",
+        "nds"
+      ]
+    },
+    {
+      "id": "emuden.romhacks-romhacking",
+      "name": "ROM Hacks: romhacking.net",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Browse romhacking.net inside EmuDEN and install the patches you download on your own games.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.web.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.romhacks-romhacking-1.0.0.emuplugin",
+        "sha256": "bbfdd142b8cd38fd79b77ec55e7786a4c25782ef599e2ce7a7bc7e12fcd73982",
+        "size": 10768
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "browse",
+        "files.import",
+        "library.read",
+        "patch",
+        "library.write"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [
+        "www.romhacking.net",
+        "romhacking.net",
+        "archive.org",
+        "www.archive.org"
+      ],
+      "feature_systems": [
+        "nes",
+        "snes",
+        "n64",
+        "gb",
+        "gbc",
+        "gba",
+        "nds",
+        "genesis",
+        "sms",
+        "gg",
+        "psx",
+        "ps2",
+        "psp",
+        "saturn",
+        "dreamcast"
+      ]
+    },
+    {
+      "id": "emuden.romhacks-whackahack",
+      "name": "ROM Hacks: whackahack.com",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Browse the Whack a Hack! forum inside EmuDEN and install the patches you download on your own games.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.web.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.romhacks-whackahack-1.0.0.emuplugin",
+        "sha256": "f3660494609be6cd9f8b9f69077e55303470a60fa1747d5e1a0e43ba17e7dce3",
+        "size": 10473
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "browse",
+        "files.import",
+        "library.read",
+        "patch",
+        "library.write"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [
+        "whackahack.com",
+        "www.whackahack.com"
       ],
       "feature_systems": [
         "gb",

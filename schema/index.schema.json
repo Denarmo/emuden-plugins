@@ -26,6 +26,7 @@
           "permissions": { "type": "array", "items": { "type": "string" } },
           "http_hosts": { "type": "array", "items": { "type": "string" } },
           "open_hosts": { "type": "array", "items": { "type": "string" } },
+          "browse_hosts": { "type": "array", "items": { "type": "string" } },
           "feature_systems": { "type": "array", "items": { "type": "string" } },
           "engine": { "enum": ["libretro", "external", "switch2", "pcstore", "none"] },
           "publisher": { "type": "string" },

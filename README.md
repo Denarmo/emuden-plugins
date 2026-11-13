@@ -14,9 +14,10 @@ below works before any source is added.
 | `addons.json` | The add-on catalogue; `index` rewrites its entries |
 | `addons/<program id>/<id>/` | One folder per Switch 2 add-on |
 | `plugins/<id>/plugin.json` | One folder per plugin |
+| `shared/<name>/` | Lua shared by several feature plugins, copied into their packages (`docs/feature-plugins.md`) |
 | `packages/` | The packed plugins and add-ons the lists point at |
 | `schema/` | JSON Schemas for the manifest, the list and the add-on files |
-| `tools/plugin_tool.py` | `validate`, `pack`, `index`, `sign`, `verify`, `keygen`, `pin-cores` |
+| `tools/plugin_tool.py` | `validate`, `pack`, `assemble`, `index`, `sign`, `verify`, `keygen`, `pin-cores` |
 | `docs/` | The developer guide |
 
 Start with [docs/getting-started.md](docs/getting-started.md). To publish your own consoles read

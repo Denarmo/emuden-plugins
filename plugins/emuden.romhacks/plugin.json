@@ -1,16 +1,17 @@
 {
   "manifest_version": 1,
   "id": "emuden.romhacks",
-  "name": "ROM Hacks",
-  "version": "1.0.0",
+  "name": "ROM Hacks: hackdex.app",
+  "version": "2.0.0",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Install ROM hack patches, such as those listed on Hackdex, on your own games.",
+  "summary": "Browse hackdex.app inside EmuDEN and install the patches you download on your own games.",
   "api": 1,
   "needs": [
     "kind.feature",
-    "feature.lua.1"
+    "feature.lua.1",
+    "feature.web.1"
   ],
   "platforms": [
     "any"
@@ -19,21 +20,25 @@
     "entry": "main.lua",
     "icon": "icon.png",
     "permissions": [
-      "open-url",
+      "browse",
       "files.import",
-      "downloads.watch",
       "library.read",
       "patch",
       "library.write"
     ],
-    "open_hosts": [
-      "www.hackdex.app"
+    "browse_hosts": [
+      "www.hackdex.app",
+      "hackdex.app",
+      "patches.hackdex.app"
     ],
     "file_types": [
       "bps",
-      "xdelta",
+      "ips",
       "ups",
-      "ips"
+      "xdelta",
+      "vcdiff",
+      "aps",
+      "ppf"
     ],
     "systems": [
       "gb",

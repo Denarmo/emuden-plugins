@@ -1,0 +1,49 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.romhacks-whackahack",
+  "name": "ROM Hacks: whackahack.com",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Browse the Whack a Hack! forum inside EmuDEN and install the patches you download on your own games.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.web.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "browse",
+      "files.import",
+      "library.read",
+      "patch",
+      "library.write"
+    ],
+    "browse_hosts": [
+      "whackahack.com",
+      "www.whackahack.com"
+    ],
+    "file_types": [
+      "bps",
+      "ips",
+      "ups",
+      "xdelta",
+      "vcdiff",
+      "aps",
+      "ppf"
+    ],
+    "systems": [
+      "gb",
+      "gbc",
+      "gba",
+      "nds"
+    ]
+  }
+}

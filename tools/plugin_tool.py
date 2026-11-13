@@ -33,7 +33,7 @@ import zipfile
 
 HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
                      "settings.v1", "content.multi_file", "content.magic",
-                     "kind.feature", "feature.lua.1"]
+                     "kind.feature", "feature.lua.1", "feature.web.1"]
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
 LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
                     "bios_dir", "platform"]
@@ -57,8 +57,11 @@ MAX_PACKAGE_BYTES = 16 * 1024 * 1024
 MAX_EXPIRY_DAYS = 120
 
 # Feature plugins (kind "feature"): Lua scripts the app runs in a sandbox.
-FEATURE_PERMISSIONS = ["http", "download", "open-url", "files.import", "downloads.watch",
-                       "library.read", "patch", "library.write"]
+FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
+                       "downloads.watch", "library.read", "patch", "library.write"]
+# Lua kept once in shared/<name>/ and copied into the package of every plugin whose folder
+# names it in the file ".shared" (one name a line). A file of the plugin's own folder wins.
+SHARED_MARK = ".shared"
 FEATURE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
                                    r"\.(json|lua|png|jpg|txt|md)$")
 MAX_FEATURE_FILES = 200
@@ -193,6 +196,27 @@ def url_host(url):
     return url.split("://", 1)[-1].split("/", 1)[0].lower()
 
 
+def shared_files(folder):
+    """{package path: file} of the shared libraries a plugin folder names."""
+    mark = folder / SHARED_MARK
+    found = {}
+    if not mark.is_file():
+        return found
+    for name in mark.read_text(encoding="utf-8").split():
+        library = folder.resolve().parent.parent / "shared" / name
+        if not re.match(r"^[a-z0-9][a-z0-9_-]*$", name) or not library.is_dir():
+            raise SystemExit(f"{folder.name}: {SHARED_MARK} names {name}, which is not a folder "
+                             "of shared/")
+        for path in sorted(library.rglob("*")):
+            if path.is_file():
+                found.setdefault(path.relative_to(library).as_posix(), path)
+    return found
+
+
+def in_package(folder, name):
+    return (folder / name).is_file() or name in shared_files(folder)
+
+
 def validate_feature(manifest, trust, folder, err):
     """The rules of a feature plugin: a sandboxed Lua script with declared permissions."""
     reserved = trust in ("bundled", "official")
@@ -209,12 +233,12 @@ def validate_feature(manifest, trust, folder, err):
     entry = feature["entry"]
     if not safe_relative(entry) or not entry.endswith(".lua"):
         err("feature.entry", "must be a script of the package (a relative path ending in .lua)")
-    elif folder is not None and not (folder / entry).is_file():
+    elif folder is not None and not in_package(folder, entry):
         err("feature.entry", "there is no such file in the plugin folder")
     icon = feature.get("icon")
     if icon and (not safe_relative(icon) or not icon.endswith(".png")):
         err("feature.icon", "must be a PNG of the package")
-    elif icon and folder is not None and not (folder / icon).is_file():
+    elif icon and folder is not None and not in_package(folder, icon):
         err("feature.icon", "there is no such file in the plugin folder")
     permissions = feature["permissions"]
     for permission in permissions:
@@ -224,7 +248,9 @@ def validate_feature(manifest, trust, folder, err):
         err("feature.permissions", "a permission is listed twice")
     http_hosts = feature.get("http", {}).get("hosts", [])
     open_hosts = feature.get("open_hosts", [])
-    for path, hosts in (("feature.http.hosts", http_hosts), ("feature.open_hosts", open_hosts)):
+    browse_hosts = feature.get("browse_hosts", [])
+    for path, hosts in (("feature.http.hosts", http_hosts), ("feature.open_hosts", open_hosts),
+                        ("feature.browse_hosts", browse_hosts)):
         if len(hosts) > 8:
             err(path, "at most 8 hosts")
         for host in hosts:
@@ -234,6 +260,10 @@ def validate_feature(manifest, trust, folder, err):
         err("feature.http.hosts", "needed with http or download, and only with them")
     if ("open-url" in permissions) != bool(open_hosts):
         err("feature.open_hosts", "needed with open-url, and only with it")
+    if ("browse" in permissions) != bool(browse_hosts):
+        err("feature.browse_hosts", "needed with browse, and only with it")
+    if "browse" in permissions and "feature.web.1" not in manifest["needs"]:
+        err("needs", "must list feature.web.1 with browse")
     systems = feature.get("systems", [])
     for system in systems:
         if system != "*" and not re.match(r"^[a-z0-9][a-z0-9_-]*$", system):
@@ -560,10 +590,11 @@ def package_files(folder):
     feature = load_json(folder / "plugin.json").get("kind") == "feature"
     allowed = FEATURE_PACKAGE_FILES if feature else PACKAGE_FILES
     files = []
+    sources = dict(shared_files(folder)) if feature else {}
     for path in sorted(folder.rglob("*")):
-        if path.is_dir():
-            continue
-        name = path.relative_to(folder).as_posix()
+        if path.is_file() and path.relative_to(folder).as_posix() != SHARED_MARK:
+            sources[path.relative_to(folder).as_posix()] = path
+    for name, path in sorted(sources.items()):
         if path.is_symlink() or not allowed.match(name):
             raise SystemExit(f"{folder.name}: {name} does not belong in a plugin package (" +
                              ("only .json, .lua, .png, .jpg, .txt and .md files" if feature else
@@ -797,6 +828,7 @@ def build_index(repo, args):
                 "permissions": feature["permissions"],
                 "http_hosts": feature.get("http", {}).get("hosts", []),
                 "open_hosts": feature.get("open_hosts", []),
+                "browse_hosts": feature.get("browse_hosts", []),
                 "feature_systems": feature.get("systems", []),
             })
     index = {
@@ -1013,6 +1045,11 @@ def main():
     validate.add_argument("paths", nargs="*")
     validate.add_argument("--all", action="store_true")
     trust_options(validate, "third-party")
+    assemble = commands.add_parser(
+        "assemble", help="write a feature plugin's files, shared libraries included, to a "
+        "folder (EmuDEN's developer folder plugins-dev/<id>, to try it unsigned)")
+    assemble.add_argument("path")
+    assemble.add_argument("-o", "--out", required=True)
     packer = commands.add_parser("pack", help="write a .emuplugin or .emuaddon package")
     packer.add_argument("path")
     packer.add_argument("-o", "--out", default=None)
@@ -1034,6 +1071,13 @@ def main():
     repo = pathlib.Path(args.repo).resolve()
     if args.command == "validate":
         return cmd_validate(repo, args)
+    if args.command == "assemble":
+        out = pathlib.Path(args.out)
+        for name, data in package_files(pathlib.Path(args.path)):
+            (out / name).parent.mkdir(parents=True, exist_ok=True)
+            (out / name).write_bytes(data)
+        print(out)
+        return 0
     if args.command == "pack":
         folder = pathlib.Path(args.path)
         out = pathlib.Path(args.out) if args.out else repo / "packages"

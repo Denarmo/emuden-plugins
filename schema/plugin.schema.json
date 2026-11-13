@@ -24,6 +24,7 @@
           }
         },
         "open_hosts": { "type": "array", "items": { "type": "string" } },
+        "browse_hosts": { "type": "array", "items": { "type": "string" }, "maxItems": 8 },
         "file_types": { "type": "array", "items": { "type": "string" } },
         "systems": { "type": "array", "items": { "type": "string" } },
         "limits": {
