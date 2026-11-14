@@ -1,0 +1,101 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.ngp",
+  "name": "Neo Geo Pocket",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Neo Geo Pocket games with Beetle NeoPop.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "ngp",
+      "name": "Neo Geo Pocket",
+      "short_name": "NGP",
+      "group": "snk",
+      "order": 2510,
+      "content": {
+        "extensions": [
+          "ngp"
+        ],
+        "folder_aliases": [
+          "neogeopocket",
+          "neo geo pocket"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "SNK - Neo Geo Pocket",
+        "rdb": "SNK - Neo Geo Pocket"
+      },
+      "achievements": {
+        "rcheevos_console": 14
+      },
+      "cores": [
+        "mednafen_ngp"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "mednafen_ngp",
+      "type": "libretro-core",
+      "name": "Beetle NeoPop",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_ngp-windows-x86_64-2026-11-14.zip",
+          "sha256": "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
+          "size": 200647,
+          "archive": "zip",
+          "entry": "mednafen_ngp_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_ngp-linux-x86_64-2026-11-14.zip",
+          "sha256": "2d0df9d29d8f7302b9e9cca9ab49715df38cd8ef8149f396d6915f55acb736d9",
+          "size": 104482,
+          "archive": "zip",
+          "entry": "mednafen_ngp_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_ngp-android-arm64-2026-11-14.zip",
+          "sha256": "068d80d5165d251a647fcd56899b4a54b15d36cf56e3efcbadf5dee5fe3e1760",
+          "size": 152520,
+          "archive": "zip",
+          "entry": "mednafen_ngp_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

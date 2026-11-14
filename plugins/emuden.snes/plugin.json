@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.snes",
   "name": "Super Nintendo Entertainment System",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -64,6 +64,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/bsnes-windows-x86_64-2026-11-14.zip",
+          "sha256": "894ba10ad6a98bd43846ee3330b08bce6f34e8d4b78453943d35d256f47aa03f",
+          "size": 1121355,
+          "archive": "zip",
+          "entry": "bsnes_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/bsnes-linux-x86_64-2026-11-12.zip",
           "sha256": "d05131706497249882bb6695b57a3307caa4e8769fd1ee99501a716d63361ae3",

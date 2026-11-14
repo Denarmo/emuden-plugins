@@ -1,0 +1,150 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.msx",
+  "name": "MSX",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "MSX and MSX2 games with fMSX.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "msx",
+      "name": "MSX",
+      "short_name": "MSX",
+      "group": "other",
+      "order": 2950,
+      "content": {
+        "extensions": [
+          "mx1",
+          "mx2",
+          "rom",
+          "dsk",
+          "cas"
+        ],
+        "folder_only_extensions": [
+          "rom",
+          "dsk",
+          "cas"
+        ],
+        "folder_aliases": [
+          "msx1",
+          "msx2",
+          "microsoft msx"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Microsoft - MSX",
+        "rdb": "Microsoft - MSX"
+      },
+      "achievements": {
+        "rcheevos_console": 29
+      },
+      "cores": [
+        "fmsx"
+      ],
+      "bios": [
+        {
+          "label": "MSX BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "MSX.ROM",
+              "optional": false
+            },
+            {
+              "path": "MSX2.ROM",
+              "optional": false
+            },
+            {
+              "path": "MSX2EXT.ROM",
+              "optional": false
+            },
+            {
+              "path": "MSX2P.ROM",
+              "optional": true
+            },
+            {
+              "path": "MSX2PEXT.ROM",
+              "optional": true
+            },
+            {
+              "path": "DISK.ROM",
+              "optional": true
+            },
+            {
+              "path": "FMPAC.ROM",
+              "optional": true
+            },
+            {
+              "path": "KANJI.ROM",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "fmsx",
+      "type": "libretro-core",
+      "name": "fMSX",
+      "license": "LicenseRef-fMSX",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fmsx-windows-x86_64-2026-11-14.zip",
+          "sha256": "f96d116a74b98cbdc8d7a88c588856a523ec856cd19d3ac525a871c9eb083212",
+          "size": 153333,
+          "archive": "zip",
+          "entry": "fmsx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fmsx-linux-x86_64-2026-11-14.zip",
+          "sha256": "fd41a55beb17fb4b8c7455fce4da254968a677aa6f169aa4c8ae753b9b5c5a27",
+          "size": 114799,
+          "archive": "zip",
+          "entry": "fmsx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fmsx-android-arm64-2026-11-14.zip",
+          "sha256": "ceca4f8a5e7f5565d9990187046bf07078ac1d9b6064c58b11ce6df401b3c58f",
+          "size": 94145,
+          "archive": "zip",
+          "entry": "fmsx_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

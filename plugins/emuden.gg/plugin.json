@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gg",
   "name": "Sega Game Gear",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -103,6 +103,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/picodrive-windows-x86_64-2026-11-14.zip",
+          "sha256": "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
+          "size": 910644,
+          "archive": "zip",
+          "entry": "picodrive_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/picodrive-linux-x86_64-2026-11-12.zip",
           "sha256": "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",

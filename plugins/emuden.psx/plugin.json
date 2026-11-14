@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -183,6 +183,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_psx-windows-x86_64-2026-11-14.zip",
+          "sha256": "24db6634c3077bd18c14e533483bad7bd0e998b1848b4bba54667c0bd6966427",
+          "size": 1782056,
+          "archive": "zip",
+          "entry": "mednafen_psx_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_psx-linux-x86_64-2026-11-12.zip",
           "sha256": "5aff3e3ec0d154c1fce9bfc37ac3a3e131c9875c3817b0e90c1fd1d01c9e9003",
@@ -207,6 +214,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/swanstation-windows-x86_64-2026-11-14.zip",
+          "sha256": "11f883b499a6d07c612255ddd8cd5c726469702b599f3ac9bb0a9720d73223ee",
+          "size": 3113711,
+          "archive": "zip",
+          "entry": "swanstation_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/swanstation-linux-x86_64-2026-11-12.zip",
           "sha256": "886dd5d95a92115a420c63d633face03f88b13f4a6d0e684152840f83cf842a5",

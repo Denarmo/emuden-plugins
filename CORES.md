@@ -10,39 +10,61 @@ https://docs.libretro.com/.
 
 | Core | Licence | Builds |
 |---|---|---|
-| bsnes | GPL-3.0-only | Linux, Android |
-| desmume | GPL-2.0-only | Linux, Android |
+| a5200 | GPL-2.0-only | Windows, Linux, Android |
+| bsnes | GPL-3.0-only | Windows, Linux, Android |
+| desmume | GPL-2.0-only | Windows, Linux, Android |
 | dolphin | GPL-2.0-or-later | Windows, Linux, Android |
+| fbneo | LicenseRef-FBNeo-NonCommercial | Windows, Linux, Android |
 | fceumm | GPL-2.0-only | Windows, Linux, Android |
 | flycast | GPL-2.0-only | Windows, Linux, Android |
-| gambatte | GPL-2.0-only | Linux, Android |
+| fmsx | LicenseRef-fMSX | Windows, Linux, Android |
+| freeintv | GPL-3.0-only | Windows, Linux, Android |
+| gambatte | GPL-2.0-only | Windows, Linux, Android |
+| gearcoleco | GPL-3.0-only | Windows, Linux, Android |
 | genesis_plus_gx | LicenseRef-Genesis-Plus-GX | Windows, Linux, Android |
-| mednafen_psx | GPL-2.0-only | Linux, Android |
+| handy | Zlib | Windows, Linux, Android |
+| mame2003_plus | LicenseRef-MAME-NonCommercial | Windows, Linux, Android |
+| mednafen_lynx | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_ngp | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_pce | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_pce_fast | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_pcfx | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_psx | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_saturn | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_vb | GPL-2.0-only | Windows, Linux, Android |
+| mednafen_wswan | GPL-2.0-only | Windows, Linux, Android |
 | melonds | GPL-3.0-only | Windows, Linux, Android |
-| melondsds | GPL-3.0-only | Linux, Android |
-| mesen | GPL-3.0-only | Linux, Android |
+| melondsds | GPL-3.0-only | Windows, Linux, Android |
+| mesen | GPL-3.0-only | Windows, Linux, Android |
 | mgba | MPL-2.0 | Windows, Linux, Android |
 | mupen64plus_next | GPL-2.0-only | Windows, Linux, Android |
-| nestopia | GPL-2.0-or-later | Linux, Android |
-| parallel_n64 | GPL-2.0-only | Linux, Android |
+| nestopia | GPL-2.0-or-later | Windows, Linux, Android |
+| opera | LicenseRef-Opera-NonCommercial | Windows, Linux, Android |
+| parallel_n64 | GPL-2.0-only | Windows, Linux, Android |
 | pcsx2 | GPL-3.0-or-later | Windows, Linux, Android |
 | pcsx_rearmed | GPL-2.0-only | Windows, Linux, Android |
-| picodrive | LicenseRef-PicoDrive | Linux, Android |
+| picodrive | LicenseRef-PicoDrive | Windows, Linux, Android |
+| pokemini | GPL-3.0-only | Windows, Linux, Android |
 | ppsspp | GPL-2.0-or-later | Windows, Linux, Android |
-| retro8 | GPL-3.0-only | Linux, Android |
-| sameboy | MIT | Linux, Android |
+| prosystem | GPL-2.0-only | Windows, Linux, Android |
+| retro8 | GPL-3.0-only | Windows, Linux, Android |
+| sameboy | MIT | Windows, Linux, Android |
 | snes9x | LicenseRef-Snes9x | Windows, Linux, Android |
-| swanstation | GPL-3.0-only | Linux, Android |
-| vba_next | GPL-2.0-only | Linux, Android |
-| yabause | GPL-2.0-only | Linux, Android |
+| stella | GPL-2.0-only | Windows, Linux, Android |
+| swanstation | GPL-3.0-only | Windows, Linux, Android |
+| vba_next | GPL-2.0-only | Windows, Linux, Android |
+| vecx | GPL-3.0-only | Windows, Linux, Android |
+| virtualjaguar | GPL-3.0-only | Windows, Linux, Android |
+| yabause | GPL-2.0-only | Windows, Linux, Android |
 
 - Windows and the first Linux builds are in the release `cores-2026-11-12`; the Android (arm64-v8a) builds and
-  the Linux builds of the alternative cores are in `cores-android-2026-11-13`.
+  the Linux builds of the alternative cores are in `cores-android-2026-11-13`. The cores added for the Atari,
+  NEC, SNK, Bandai, Sega CD/32X/SG-1000, Virtual Boy, Pokémon mini, 3DO, ColecoVision, Intellivision, Vectrex,
+  MSX and arcade consoles, and the Windows builds of the alternative cores, are in `cores-2026-11-14`.
 - On Android `mupen64plus_next` is the buildbot's `mupen64plus_next_gles3` build.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
-- The alternative cores (gambatte, sameboy, vba_next, picodrive, parallel_n64, melondsds, desmume, nestopia,
-  mesen, retro8, mednafen_psx, swanstation, yabause, bsnes) have no Windows download yet.
+- `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored
+  unmodified and free of charge.
 
 ## PPSSPP assets
 

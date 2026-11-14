@@ -1,0 +1,142 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.arcade",
+  "name": "Arcade",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Arcade games with FinalBurn Neo and MAME 2003-Plus.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "arcade",
+      "name": "Arcade",
+      "short_name": "Arcade",
+      "group": "arcade",
+      "order": 3000,
+      "content": {
+        "extensions": [
+          "zip",
+          "7z"
+        ],
+        "folder_only_extensions": [
+          "zip",
+          "7z"
+        ],
+        "folder_aliases": [
+          "fbneo",
+          "mame",
+          "fba",
+          "cps1",
+          "cps2",
+          "cps3"
+        ],
+        "zip": "pass"
+      },
+      "presentation": {
+        "cover_aspect": 1.33,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "FBNeo - Arcade Games",
+        "rdb": "FBNeo - Arcade Games"
+      },
+      "achievements": {
+        "rcheevos_console": 27
+      },
+      "cores": [
+        "fbneo",
+        "mame2003_plus"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "fbneo",
+      "type": "libretro-core",
+      "name": "FinalBurn Neo",
+      "license": "LicenseRef-FBNeo-NonCommercial",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fbneo-windows-x86_64-2026-11-14.zip",
+          "sha256": "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
+          "size": 18397523,
+          "archive": "zip",
+          "entry": "fbneo_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fbneo-linux-x86_64-2026-11-14.zip",
+          "sha256": "ef1d32c6f97e33649d8ffd65d2f4dfc074546a962aa9006f8aef6593d8a66f1f",
+          "size": 21417127,
+          "archive": "zip",
+          "entry": "fbneo_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/fbneo-android-arm64-2026-11-14.zip",
+          "sha256": "27b9538c5a2fed29a204cc20ff3af7118fbc5cd2d1ae9a23d8481613939f2a1d",
+          "size": 16775975,
+          "archive": "zip",
+          "entry": "fbneo_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "mame2003_plus",
+      "type": "libretro-core",
+      "name": "MAME 2003-Plus",
+      "license": "LicenseRef-MAME-NonCommercial",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mame2003_plus-windows-x86_64-2026-11-14.zip",
+          "sha256": "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
+          "size": 9505882,
+          "archive": "zip",
+          "entry": "mame2003_plus_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mame2003_plus-linux-x86_64-2026-11-14.zip",
+          "sha256": "09095b5a15d6463a7d8e4bb56dcf25282290542fa8b5f209c1aca9b370f93363",
+          "size": 10968374,
+          "archive": "zip",
+          "entry": "mame2003_plus_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mame2003_plus-android-arm64-2026-11-14.zip",
+          "sha256": "44d32a74d9fcafc37c6f77a05217cfa885db7701baf62b228b0be0d84aed4c12",
+          "size": 9881626,
+          "archive": "zip",
+          "entry": "mame2003_plus_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

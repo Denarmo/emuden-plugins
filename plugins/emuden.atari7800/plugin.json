@@ -1,0 +1,120 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.atari7800",
+  "name": "Atari 7800",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Atari 7800 games with ProSystem.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "atari7800",
+      "name": "Atari 7800",
+      "short_name": "7800",
+      "group": "atari",
+      "order": 2100,
+      "content": {
+        "extensions": [
+          "a78",
+          "bin"
+        ],
+        "folder_only_extensions": [
+          "bin"
+        ],
+        "folder_aliases": [
+          "7800",
+          "atari 7800"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Atari - 7800",
+        "rdb": "Atari - 7800"
+      },
+      "achievements": {
+        "rcheevos_console": 51
+      },
+      "cores": [
+        "prosystem"
+      ],
+      "bios": [
+        {
+          "label": "Atari 7800 BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "7800 BIOS (U).rom",
+              "optional": true
+            },
+            {
+              "path": "7800 BIOS (E).rom",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "prosystem",
+      "type": "libretro-core",
+      "name": "ProSystem",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/prosystem-windows-x86_64-2026-11-14.zip",
+          "sha256": "99ce599a905d473325bfededd8f2e754d238d91f96884249f8f0071b2fea8fa0",
+          "size": 94185,
+          "archive": "zip",
+          "entry": "prosystem_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/prosystem-linux-x86_64-2026-11-14.zip",
+          "sha256": "b80eb0ff41f261efb7b0021fc348eb747def3989083a80ec2f8d700a2f7a77c5",
+          "size": 54586,
+          "archive": "zip",
+          "entry": "prosystem_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/prosystem-android-arm64-2026-11-14.zip",
+          "sha256": "783ab9147b332f2e2252375575f386b748850f13a7dbfe47e3571e0043b1b9f9",
+          "size": 47540,
+          "archive": "zip",
+          "entry": "prosystem_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

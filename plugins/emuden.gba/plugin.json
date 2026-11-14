@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -133,6 +133,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/vba_next-windows-x86_64-2026-11-14.zip",
+          "sha256": "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
+          "size": 266197,
+          "archive": "zip",
+          "entry": "vba_next_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/vba_next-linux-x86_64-2026-11-12.zip",
           "sha256": "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",

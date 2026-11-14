@@ -1,0 +1,101 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.wonderswan",
+  "name": "WonderSwan",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "WonderSwan games with Beetle Cygne.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "wonderswan",
+      "name": "WonderSwan",
+      "short_name": "WS",
+      "group": "bandai",
+      "order": 2600,
+      "content": {
+        "extensions": [
+          "ws"
+        ],
+        "folder_aliases": [
+          "ws",
+          "bandai wonderswan"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Bandai - WonderSwan",
+        "rdb": "Bandai - WonderSwan"
+      },
+      "achievements": {
+        "rcheevos_console": 53
+      },
+      "cores": [
+        "mednafen_wswan"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "mednafen_wswan",
+      "type": "libretro-core",
+      "name": "Beetle Cygne",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_wswan-windows-x86_64-2026-11-14.zip",
+          "sha256": "80001b75315b34f3eb5cdf3b6f7d99f300f47bc7c7a9418305e6565633ad8e67",
+          "size": 121646,
+          "archive": "zip",
+          "entry": "mednafen_wswan_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_wswan-linux-x86_64-2026-11-14.zip",
+          "sha256": "965426447171e6c72b59ba581ad30b3bddd6895871ebb47a1f1a97e779d3f34b",
+          "size": 130140,
+          "archive": "zip",
+          "entry": "mednafen_wswan_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_wswan-android-arm64-2026-11-14.zip",
+          "sha256": "03d2047b50b8c2af56a4e7f8c9fdf8b554baae7f1ed911007bbb371f147a6fbf",
+          "size": 97945,
+          "archive": "zip",
+          "entry": "mednafen_wswan_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

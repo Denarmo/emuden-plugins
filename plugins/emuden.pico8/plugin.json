@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pico8",
   "name": "PICO-8",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -63,6 +63,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/retro8-windows-x86_64-2026-11-14.zip",
+          "sha256": "6ed17b551c2664cb7ade8f5d5998c0407dd0bc5b76cb51904423ec35a5700974",
+          "size": 538354,
+          "archive": "zip",
+          "entry": "retro8_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/retro8-linux-x86_64-2026-11-12.zip",
           "sha256": "9edd17472aae26d81c71acd2a664a7ee0dd833a02645c70ac953adedc9f01ea2",

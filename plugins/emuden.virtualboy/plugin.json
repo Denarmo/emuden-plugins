@@ -1,0 +1,106 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.virtualboy",
+  "name": "Virtual Boy",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Virtual Boy games with Beetle VB.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "virtualboy",
+      "name": "Virtual Boy",
+      "short_name": "VB",
+      "group": "nintendo",
+      "order": 650,
+      "content": {
+        "extensions": [
+          "vb",
+          "vboy"
+        ],
+        "folder_aliases": [
+          "vb",
+          "virtual boy"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true,
+        "native_size": [
+          384,
+          224
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Virtual Boy",
+        "rdb": "Nintendo - Virtual Boy"
+      },
+      "achievements": {
+        "rcheevos_console": 28
+      },
+      "cores": [
+        "mednafen_vb"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "mednafen_vb",
+      "type": "libretro-core",
+      "name": "Beetle VB",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_vb-windows-x86_64-2026-11-14.zip",
+          "sha256": "af9a2b9db75cb183cea380823e96943559608a11c1966b959212eee4c93bade1",
+          "size": 172825,
+          "archive": "zip",
+          "entry": "mednafen_vb_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_vb-linux-x86_64-2026-11-14.zip",
+          "sha256": "3c7471a9d5f8e0bcb01dc54e93ead5d6ba3c4a50c083a07865d12fd7a1f31d3f",
+          "size": 93608,
+          "archive": "zip",
+          "entry": "mednafen_vb_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_vb-android-arm64-2026-11-14.zip",
+          "sha256": "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
+          "size": 129196,
+          "archive": "zip",
+          "entry": "mednafen_vb_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

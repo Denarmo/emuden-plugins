@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.saturn",
   "name": "Sega Saturn",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -108,6 +108,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/yabause-windows-x86_64-2026-11-14.zip",
+          "sha256": "289c769c92ae4e26884cb430e43e92926a18e54301949aee8bc98dc97dd9ddc8",
+          "size": 570093,
+          "archive": "zip",
+          "entry": "yabause_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/yabause-linux-x86_64-2026-11-12.zip",
           "sha256": "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",

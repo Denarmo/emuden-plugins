@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gb",
   "name": "Game Boy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -115,6 +115,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/gambatte-windows-x86_64-2026-11-14.zip",
+          "sha256": "7c67ca1a4b3b06569b94e2ee6cca9de7fe541de34a0f9ab791dd358691b4564e",
+          "size": 467935,
+          "archive": "zip",
+          "entry": "gambatte_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/gambatte-linux-x86_64-2026-11-12.zip",
           "sha256": "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",
@@ -139,6 +146,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/sameboy-windows-x86_64-2026-11-14.zip",
+          "sha256": "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
+          "size": 134139,
+          "archive": "zip",
+          "entry": "sameboy_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/sameboy-linux-x86_64-2026-11-12.zip",
           "sha256": "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",

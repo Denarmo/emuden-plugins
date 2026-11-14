@@ -1,0 +1,107 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.atari2600",
+  "name": "Atari 2600",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Atari 2600 games with Stella.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "atari2600",
+      "name": "Atari 2600",
+      "short_name": "2600",
+      "group": "atari",
+      "order": 2000,
+      "content": {
+        "extensions": [
+          "a26",
+          "bin"
+        ],
+        "folder_only_extensions": [
+          "bin"
+        ],
+        "folder_aliases": [
+          "2600",
+          "atari 2600",
+          "vcs",
+          "atari vcs"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Atari - 2600",
+        "rdb": "Atari - 2600"
+      },
+      "achievements": {
+        "rcheevos_console": 25
+      },
+      "cores": [
+        "stella"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "stella",
+      "type": "libretro-core",
+      "name": "Stella",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/stella-windows-x86_64-2026-11-14.zip",
+          "sha256": "7817778b931434445e12398e4175cb3e91788b6b8a3998a89f7bf66887cadad2",
+          "size": 1902142,
+          "archive": "zip",
+          "entry": "stella_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/stella-linux-x86_64-2026-11-14.zip",
+          "sha256": "55cbaa80c3e578c6c299b06a1629dc132325c5b2f451d61ba31a398ed8ac1c6c",
+          "size": 1970691,
+          "archive": "zip",
+          "entry": "stella_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/stella-android-arm64-2026-11-14.zip",
+          "sha256": "dc367dd9bd7cd639266f90a1a32b5b3d8b42e465ad537274b398e59eb354754e",
+          "size": 1479221,
+          "archive": "zip",
+          "entry": "stella_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

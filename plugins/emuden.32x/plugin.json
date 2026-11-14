@@ -1,0 +1,94 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.32x",
+  "name": "Sega 32X",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "32X games with PicoDrive.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "32x",
+      "name": "Sega 32X",
+      "short_name": "32X",
+      "group": "sega",
+      "order": 1320,
+      "content": {
+        "extensions": [
+          "32x"
+        ],
+        "folder_aliases": [
+          "sega32x",
+          "sega 32x"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Sega - 32X",
+        "rdb": "Sega - 32X"
+      },
+      "achievements": {
+        "rcheevos_console": 10
+      },
+      "cores": [
+        "picodrive"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "picodrive",
+      "type": "libretro-core",
+      "name": "PicoDrive",
+      "license": "LicenseRef-PicoDrive",
+      "gpu": "none",
+      "version": "2026-11-12",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/picodrive-linux-x86_64-2026-11-12.zip",
+          "sha256": "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
+          "size": 864823,
+          "archive": "zip",
+          "entry": "picodrive_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/picodrive-android-arm64-2026-11-12.zip",
+          "sha256": "8d93599820d6d483256dc9aa93c8841e4f3180c323c5100a583d9f0f96fd4dbe",
+          "size": 604891,
+          "archive": "zip",
+          "entry": "picodrive_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

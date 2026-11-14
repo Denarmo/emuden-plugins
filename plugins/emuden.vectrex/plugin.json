@@ -1,0 +1,106 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.vectrex",
+  "name": "Vectrex",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Vectrex games with vecx.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "vectrex",
+      "name": "Vectrex",
+      "short_name": "Vectrex",
+      "group": "other",
+      "order": 2900,
+      "content": {
+        "extensions": [
+          "vec",
+          "bin",
+          "gam"
+        ],
+        "folder_only_extensions": [
+          "bin",
+          "gam"
+        ],
+        "folder_aliases": [
+          "gce vectrex"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "GCE - Vectrex",
+        "rdb": "GCE - Vectrex"
+      },
+      "achievements": {
+        "rcheevos_console": 46
+      },
+      "cores": [
+        "vecx"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "vecx",
+      "type": "libretro-core",
+      "name": "vecx",
+      "license": "GPL-3.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/vecx-windows-x86_64-2026-11-14.zip",
+          "sha256": "970d55b90d11e3900b8ea2297ecbe1446b227fc23e358b83bc3f9a062e005e24",
+          "size": 68412,
+          "archive": "zip",
+          "entry": "vecx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/vecx-linux-x86_64-2026-11-14.zip",
+          "sha256": "985e60793f2650684d4f314c34ae73edd6fffba32a9b50cd51d2940cdc1ffbbc",
+          "size": 63103,
+          "archive": "zip",
+          "entry": "vecx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/vecx-android-arm64-2026-11-14.zip",
+          "sha256": "405b6ac5d760b280a7537ba0496007ad9807c86f7a6eb9f471bcbe15ac0fad85",
+          "size": 39653,
+          "archive": "zip",
+          "entry": "vecx_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

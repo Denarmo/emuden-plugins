@@ -1,0 +1,148 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.lynx",
+  "name": "Atari Lynx",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Atari Lynx games with Handy.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "lynx",
+      "name": "Atari Lynx",
+      "short_name": "Lynx",
+      "group": "atari",
+      "order": 2200,
+      "content": {
+        "extensions": [
+          "lnx",
+          "o"
+        ],
+        "folder_only_extensions": [
+          "o"
+        ],
+        "folder_aliases": [
+          "atarilynx",
+          "atari lynx"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Atari - Lynx",
+        "rdb": "Atari - Lynx"
+      },
+      "achievements": {
+        "rcheevos_console": 13
+      },
+      "cores": [
+        "handy",
+        "mednafen_lynx"
+      ],
+      "bios": [
+        {
+          "label": "Lynx boot ROM",
+          "any_one": false,
+          "files": [
+            {
+              "path": "lynxboot.img",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "handy",
+      "type": "libretro-core",
+      "name": "Handy",
+      "license": "Zlib",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/handy-windows-x86_64-2026-11-14.zip",
+          "sha256": "39f5a4aaa563c14fdb305fc458cdbab50bb7fd1f0df0ed64817c0b8a19a3da79",
+          "size": 173107,
+          "archive": "zip",
+          "entry": "handy_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/handy-linux-x86_64-2026-11-14.zip",
+          "sha256": "ea0cf4c18dfa3f6f35dc77e01bfb38b4d94e98f623ae5284f4d333fde784382c",
+          "size": 100912,
+          "archive": "zip",
+          "entry": "handy_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/handy-android-arm64-2026-11-14.zip",
+          "sha256": "be695d2db1b8d1080490e8a55f4eb1871c48bd516b880ac99905e84d8b726b21",
+          "size": 141020,
+          "archive": "zip",
+          "entry": "handy_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "mednafen_lynx",
+      "type": "libretro-core",
+      "name": "Beetle Lynx",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-windows-x86_64-2026-11-14.zip",
+          "sha256": "2f6ecd37cf8101167d3ed67036cc5363d32f235a8628f7133bccfcc8bbc2c0f8",
+          "size": 188563,
+          "archive": "zip",
+          "entry": "mednafen_lynx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-linux-x86_64-2026-11-14.zip",
+          "sha256": "22439e8706dbc4969b7da9b1d300b91d9f798bf9222f056e1e9b8282604c6438",
+          "size": 88126,
+          "archive": "zip",
+          "entry": "mednafen_lynx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-android-arm64-2026-11-14.zip",
+          "sha256": "d81f7657963de38b20f47cc8b1db47599d27e859d0bcb983a74336d92b8599dd",
+          "size": 120803,
+          "archive": "zip",
+          "entry": "mednafen_lynx_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

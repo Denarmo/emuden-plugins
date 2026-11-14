@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nes",
   "name": "Nintendo Entertainment System",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -76,7 +76,18 @@
         "nestopia",
         "mesen"
       ],
-      "bios": []
+      "bios": [
+        {
+          "label": "Famicom Disk System BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "disksys.rom",
+              "optional": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "components": [
@@ -119,6 +130,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/nestopia-windows-x86_64-2026-11-14.zip",
+          "sha256": "9ee95f5d9afcfab492057034073f70722f7a78d93029ed292f19a2a092d1860b",
+          "size": 1057594,
+          "archive": "zip",
+          "entry": "nestopia_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/nestopia-linux-x86_64-2026-11-12.zip",
           "sha256": "3ed615662cb5368cfd6a7567dc56202f836bb40198204cfd084007e509daef18",
@@ -143,6 +161,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mesen-windows-x86_64-2026-11-14.zip",
+          "sha256": "9405f33578a2fb14f4e3006cb6e0c0940165e5866c41cded00cf9cc5c71b128b",
+          "size": 1288505,
+          "archive": "zip",
+          "entry": "mesen_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mesen-linux-x86_64-2026-11-12.zip",
           "sha256": "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",

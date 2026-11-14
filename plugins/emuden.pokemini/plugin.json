@@ -1,0 +1,112 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.pokemini",
+  "name": "Pokémon mini",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Pokémon mini games with PokeMini.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "pokemini",
+      "name": "Pokémon mini",
+      "short_name": "Poké mini",
+      "group": "nintendo",
+      "order": 690,
+      "content": {
+        "extensions": [
+          "min"
+        ],
+        "folder_aliases": [
+          "pokemon mini",
+          "pokémon mini"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Pokemon Mini",
+        "rdb": "Nintendo - Pokemon Mini"
+      },
+      "achievements": {
+        "rcheevos_console": 24
+      },
+      "cores": [
+        "pokemini"
+      ],
+      "bios": [
+        {
+          "label": "Pokémon mini BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "bios.min",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "pokemini",
+      "type": "libretro-core",
+      "name": "PokeMini",
+      "license": "GPL-3.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/pokemini-windows-x86_64-2026-11-14.zip",
+          "sha256": "6af96421ebc98b70643ea88ddb20ca526323853c21135f05f9e21be89cc6a725",
+          "size": 128873,
+          "archive": "zip",
+          "entry": "pokemini_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/pokemini-linux-x86_64-2026-11-14.zip",
+          "sha256": "3c854dfdae74e2bf0b2b70bc022ecfc8a4a761895e10e4b2f6fc5b38d096cc4d",
+          "size": 109598,
+          "archive": "zip",
+          "entry": "pokemini_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/pokemini-android-arm64-2026-11-14.zip",
+          "sha256": "a2ca40394a721dfc7a7569678ec19d1db36a1a2631fda9f3749e86b8e35831e6",
+          "size": 85574,
+          "archive": "zip",
+          "entry": "pokemini_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

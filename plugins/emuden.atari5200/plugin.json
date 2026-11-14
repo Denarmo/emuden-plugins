@@ -1,0 +1,116 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.atari5200",
+  "name": "Atari 5200",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Atari 5200 games with a5200.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "atari5200",
+      "name": "Atari 5200",
+      "short_name": "5200",
+      "group": "atari",
+      "order": 2050,
+      "content": {
+        "extensions": [
+          "a52",
+          "bin"
+        ],
+        "folder_only_extensions": [
+          "bin"
+        ],
+        "folder_aliases": [
+          "5200",
+          "atari 5200"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Atari - 5200",
+        "rdb": "Atari - 5200"
+      },
+      "achievements": {
+        "rcheevos_console": 50
+      },
+      "cores": [
+        "a5200"
+      ],
+      "bios": [
+        {
+          "label": "Atari 5200 BIOS",
+          "any_one": false,
+          "files": [
+            {
+              "path": "5200.rom",
+              "optional": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "a5200",
+      "type": "libretro-core",
+      "name": "a5200",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/a5200-windows-x86_64-2026-11-14.zip",
+          "sha256": "b368509aa3a861ddf9b964f56b96f6ce65917226217d566991cde5a9de0436e8",
+          "size": 137251,
+          "archive": "zip",
+          "entry": "a5200_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/a5200-linux-x86_64-2026-11-14.zip",
+          "sha256": "a7720e2652c482847d5e040f29c1d495254f8ce24e3a8e49a88c2c8ab14786fb",
+          "size": 114316,
+          "archive": "zip",
+          "entry": "a5200_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/a5200-android-arm64-2026-11-14.zip",
+          "sha256": "8907ba28610703e9276703a9323ffc26fdde02ef33a287f512e5907bdb54daa0",
+          "size": 97164,
+          "archive": "zip",
+          "entry": "a5200_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}

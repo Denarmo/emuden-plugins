@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nds",
   "name": "Nintendo DS",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -121,6 +121,13 @@
       "gpu": "none",
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/melondsds-windows-x86_64-2026-11-14.zip",
+          "sha256": "e5f44ed4ba208768c0bcce443f3f1de58a0ef13a5fe5e76c55d9afcc51aa3246",
+          "size": 2160819,
+          "archive": "zip",
+          "entry": "melondsds_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/melondsds-linux-x86_64-2026-11-12.zip",
           "sha256": "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
@@ -148,6 +155,13 @@
       },
       "version": "2026-11-12",
       "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/desmume-windows-x86_64-2026-11-14.zip",
+          "sha256": "95635a5f72e12ce19b25a43acedaf79d231c3e0814591204ec8ca27bb72423dd",
+          "size": 1779973,
+          "archive": "zip",
+          "entry": "desmume_libretro.dll"
+        },
         "linux-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/desmume-linux-x86_64-2026-11-12.zip",
           "sha256": "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",

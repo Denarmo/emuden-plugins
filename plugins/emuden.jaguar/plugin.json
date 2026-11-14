@@ -1,0 +1,110 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.jaguar",
+  "name": "Atari Jaguar",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Atari Jaguar games with Virtual Jaguar.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "jaguar",
+      "name": "Atari Jaguar",
+      "short_name": "Jaguar",
+      "group": "atari",
+      "order": 2300,
+      "content": {
+        "extensions": [
+          "j64",
+          "jag",
+          "rom",
+          "abs",
+          "cof"
+        ],
+        "folder_only_extensions": [
+          "rom",
+          "abs",
+          "cof"
+        ],
+        "folder_aliases": [
+          "atarijaguar",
+          "atari jaguar"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": false
+      },
+      "artwork": {
+        "libretro_thumbnails": "Atari - Jaguar",
+        "rdb": "Atari - Jaguar"
+      },
+      "achievements": {
+        "rcheevos_console": 17
+      },
+      "cores": [
+        "virtualjaguar"
+      ],
+      "bios": []
+    }
+  ],
+  "components": [
+    {
+      "id": "virtualjaguar",
+      "type": "libretro-core",
+      "name": "Virtual Jaguar",
+      "license": "GPL-3.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/virtualjaguar-windows-x86_64-2026-11-14.zip",
+          "sha256": "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
+          "size": 982121,
+          "archive": "zip",
+          "entry": "virtualjaguar_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/virtualjaguar-linux-x86_64-2026-11-14.zip",
+          "sha256": "249eeea9e75e63461a631583ed55eca4b9e60ae4f2720bbf044a8e0ddffbb8be",
+          "size": 1043265,
+          "archive": "zip",
+          "entry": "virtualjaguar_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/virtualjaguar-android-arm64-2026-11-14.zip",
+          "sha256": "9207f7bb9c9462421e2d9cc8bf7e5a2269de39bce90f5784ddb1475bce625a50",
+          "size": 808067,
+          "archive": "zip",
+          "entry": "virtualjaguar_libretro_android.so"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}
