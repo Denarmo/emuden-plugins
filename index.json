@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 29,
-  "generated": "2026-11-14T20:21:38Z",
-  "expires": "2027-03-14T20:21:38Z",
+  "sequence": 30,
+  "generated": "2026-11-14T20:45:22Z",
+  "expires": "2027-03-14T20:45:22Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1467,7 +1467,7 @@
     {
       "id": "emuden.shelf",
       "name": "Shelf",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1488,9 +1488,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.shelf-1.2.0.emuplugin",
-        "sha256": "751dc7d42bddeaf23a2fa78740787a081911e6bc75796d2c7e937ca5f0b0663a",
-        "size": 6371
+        "url": "packages/emuden.shelf-1.3.0.emuplugin",
+        "sha256": "35a9594894368f5d46246cf5770869eeb93d187d1eec945e8351925940068382",
+        "size": 6624
       },
       "download_size": {
         "windows-x86_64": 0,

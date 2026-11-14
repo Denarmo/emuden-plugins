@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -134,7 +134,11 @@
         "object": {
           "shape": "cartridge",
           "style": "pocket",
-          "shell": "#a09fa8"
+          "shell": "#a09fa8",
+          "box": true,
+          "box_aspect": 0.88,
+          "player": "portrait",
+          "player_color": "#c3c1c8"
         }
       },
       "gbc": {
@@ -144,7 +148,11 @@
           "shape": "cartridge",
           "style": "pocket",
           "shell": "#3a3d44a8",
-          "label_edge": "paper"
+          "label_edge": "paper",
+          "box": true,
+          "box_aspect": 0.88,
+          "player": "portrait",
+          "player_color": "#7b3fa0"
         }
       },
       "gba": {
@@ -153,7 +161,11 @@
         "object": {
           "shape": "cartridge",
           "style": "pocket_wide",
-          "shell": "#38393f"
+          "shell": "#38393f",
+          "box": true,
+          "box_aspect": 0.95,
+          "player": "landscape",
+          "player_color": "#55479a"
         }
       },
       "nds": {
@@ -171,7 +183,11 @@
             0.74
           ],
           "notch": 0.09,
-          "radius": 0.05
+          "radius": 0.05,
+          "box": true,
+          "box_aspect": 0.88,
+          "player": "clamshell",
+          "player_color": "#d9d9de"
         }
       },
       "nes": {
@@ -189,7 +205,11 @@
             0.6
           ],
           "radius": 0.0,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.71,
+          "player": "home",
+          "player_color": "#c8c6c1"
         }
       },
       "snes": {
@@ -207,7 +227,11 @@
             0.56
           ],
           "radius": 0.16,
-          "grip": 3
+          "grip": 3,
+          "box": true,
+          "box_aspect": 1.38,
+          "player": "home",
+          "player_color": "#cdcbd2"
         }
       },
       "n64": {
@@ -225,7 +249,11 @@
             0.58
           ],
           "radius": 0.2,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 1.38,
+          "player": "home",
+          "player_color": "#2d2d33"
         }
       },
       "gamecube": {
@@ -272,7 +300,11 @@
             0.62
           ],
           "radius": 0.04,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#1e1e22"
         }
       },
       "sms": {
@@ -290,7 +322,11 @@
             0.62
           ],
           "radius": 0.03,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#1e1e22"
         }
       },
       "gg": {
@@ -308,7 +344,11 @@
             0.62
           ],
           "radius": 0.06,
-          "grip": 3
+          "grip": 3,
+          "box": true,
+          "box_aspect": 0.85,
+          "player": "landscape",
+          "player_color": "#232326"
         }
       },
       "saturn": {
@@ -366,7 +406,11 @@
             0.62
           ],
           "radius": 0.04,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#1e1e22"
         },
         "label": "32X",
         "color": "#3a3f8e"
@@ -384,7 +428,11 @@
             0.62
           ],
           "radius": 0.03,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#1e1e22"
         },
         "label": "SG-1000",
         "color": "#3b6fb0"
@@ -402,7 +450,11 @@
             0.55
           ],
           "radius": 0.03,
-          "grip": 6
+          "grip": 6,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#2b2521"
         },
         "label": "2600",
         "color": "#a8562a"
@@ -420,7 +472,11 @@
             0.55
           ],
           "radius": 0.04,
-          "grip": 4
+          "grip": 4,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#232325"
         },
         "label": "5200",
         "color": "#8a5a2a"
@@ -438,7 +494,11 @@
             0.55
           ],
           "radius": 0.03,
-          "grip": 6
+          "grip": 6,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#232325"
         },
         "label": "7800",
         "color": "#b06a34"
@@ -456,7 +516,11 @@
             0.55
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#1b1b1e"
         },
         "label": "Jaguar",
         "color": "#9b2b2b"
@@ -473,7 +537,11 @@
             0.84,
             0.76
           ],
-          "radius": 0.06
+          "radius": 0.06,
+          "box": true,
+          "box_aspect": 1.0,
+          "player": "landscape",
+          "player_color": "#323236"
         },
         "label": "Lynx",
         "color": "#c57a2a"
@@ -491,7 +559,9 @@
             0.58
           ],
           "radius": 0.04,
-          "grip": 4
+          "grip": 4,
+          "box": true,
+          "box_aspect": 0.72
         },
         "label": "Vectrex",
         "color": "#3b3b4a"
@@ -509,7 +579,11 @@
             0.6
           ],
           "radius": 0.04,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#2a2a2e"
         },
         "label": "MSX",
         "color": "#4a6a8a"
@@ -526,7 +600,11 @@
             0.84,
             0.62
           ],
-          "radius": 0.05
+          "radius": 0.05,
+          "box": true,
+          "box_aspect": 0.72,
+          "player": "home",
+          "player_color": "#e3e3e6"
         },
         "label": "PCE",
         "color": "#7a4bb0"
@@ -544,7 +622,11 @@
             0.68
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.85,
+          "player": "landscape",
+          "player_color": "#2a2a2e"
         },
         "label": "NGP",
         "color": "#b5892a"
@@ -562,7 +644,11 @@
             0.68
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.85,
+          "player": "landscape",
+          "player_color": "#3a5aa8"
         },
         "label": "NGPC",
         "color": "#c09a3a"
@@ -580,7 +666,11 @@
             0.7
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.9,
+          "player": "landscape",
+          "player_color": "#cfd0d6"
         },
         "label": "WS",
         "color": "#3f8c8a"
@@ -598,7 +688,11 @@
             0.7
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.9,
+          "player": "landscape",
+          "player_color": "#3c8f86"
         },
         "label": "WSC",
         "color": "#3f9c7a"
@@ -616,7 +710,9 @@
             0.62
           ],
           "radius": 0.04,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.72
         },
         "label": "VB",
         "color": "#b02828"
@@ -634,7 +730,11 @@
             0.62
           ],
           "radius": 0.08,
-          "grip": 0
+          "grip": 0,
+          "box": true,
+          "box_aspect": 0.85,
+          "player": "portrait",
+          "player_color": "#2f7d4a"
         },
         "label": "Mini",
         "color": "#4a8a5a"

@@ -94,7 +94,11 @@
                   "notch": { "type": "number", "minimum": 0, "maximum": 0.4 },
                   "grip": { "type": "integer", "minimum": 0, "maximum": 8 },
                   "style": { "enum": ["plain", "pocket", "pocket_wide"] },
-                  "label_edge": { "enum": ["none", "paper", "foil"] }
+                  "label_edge": { "enum": ["none", "paper", "foil"] },
+                  "box": { "type": "boolean" },
+                  "box_aspect": { "type": "number", "minimum": 0.4, "maximum": 2.0 },
+                  "player": { "enum": ["portrait", "landscape", "clamshell", "home"] },
+                  "player_color": { "$ref": "#/$defs/color" }
                 }
               }
             }
