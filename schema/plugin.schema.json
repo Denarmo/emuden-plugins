@@ -236,6 +236,7 @@
           "type": "object",
           "properties": {
             "libretro_thumbnails": { "type": ["string", "null"] },
+            "launchbox": { "type": ["string", "null"] },
             "cover_by_id": { "type": "array", "maxItems": 4, "items": { "type": "string", "pattern": "^https://" } },
             "rdb": { "type": ["string", "null"] }
           }

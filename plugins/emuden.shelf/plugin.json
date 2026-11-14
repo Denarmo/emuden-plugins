@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -179,14 +179,14 @@
         "label": "NES",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.86,
-          "depth": 0.14,
+          "aspect": 0.89,
           "shell": "#7c7d82",
+          "depth": 0.14,
           "label": [
             0.08,
-            0.08,
+            0.06,
             0.84,
-            0.62
+            0.6
           ],
           "radius": 0.0,
           "grip": 0
@@ -197,12 +197,12 @@
         "label": "SNES",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.3,
-          "depth": 0.2,
+          "aspect": 1.35,
           "shell": "#8e8f96",
+          "depth": 0.2,
           "label": [
             0.12,
-            0.12,
+            0.1,
             0.76,
             0.56
           ],
@@ -215,14 +215,14 @@
         "label": "N64",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.4,
-          "depth": 0.22,
+          "aspect": 1.5,
           "shell": "#4b4c52",
+          "depth": 0.22,
           "label": [
-            0.12,
+            0.13,
             0.08,
-            0.76,
-            0.56
+            0.74,
+            0.58
           ],
           "radius": 0.2,
           "grip": 0
@@ -234,6 +234,7 @@
         "object": {
           "shape": "case",
           "aspect": 0.72,
+          "depth": 0.08,
           "disc": true
         }
       },
@@ -258,19 +259,54 @@
       },
       "genesis": {
         "color": "#30343e",
-        "label": "Genesis"
+        "label": "Genesis",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.84,
+          "shell": "#222226",
+          "depth": 0.16,
+          "label": [
+            0.08,
+            0.06,
+            0.84,
+            0.62
+          ],
+          "radius": 0.04,
+          "grip": 0
+        }
       },
       "sms": {
         "color": "#2d5fae",
-        "label": "SMS"
+        "label": "SMS",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.74,
+          "shell": "#1d1d22",
+          "depth": 0.15,
+          "label": [
+            0.1,
+            0.06,
+            0.8,
+            0.62
+          ],
+          "radius": 0.03,
+          "grip": 0
+        }
       },
       "gg": {
         "color": "#3a3f8e",
         "label": "GG",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.15,
+          "aspect": 1.25,
           "shell": "#26272c",
+          "depth": 0.14,
+          "label": [
+            0.1,
+            0.08,
+            0.8,
+            0.62
+          ],
           "radius": 0.06,
           "grip": 3
         }
@@ -316,6 +352,300 @@
           "aspect": 0.58,
           "depth": 0.08
         }
+      },
+      "32x": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.84,
+          "shell": "#222226",
+          "depth": 0.16,
+          "label": [
+            0.08,
+            0.06,
+            0.84,
+            0.62
+          ],
+          "radius": 0.04,
+          "grip": 0
+        },
+        "label": "32X",
+        "color": "#3a3f8e"
+      },
+      "sg1000": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.74,
+          "shell": "#1d1d22",
+          "depth": 0.15,
+          "label": [
+            0.1,
+            0.06,
+            0.8,
+            0.62
+          ],
+          "radius": 0.03,
+          "grip": 0
+        },
+        "label": "SG-1000",
+        "color": "#3b6fb0"
+      },
+      "atari2600": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.8,
+          "shell": "#232325",
+          "depth": 0.24,
+          "label": [
+            0.1,
+            0.07,
+            0.8,
+            0.55
+          ],
+          "radius": 0.03,
+          "grip": 6
+        },
+        "label": "2600",
+        "color": "#a8562a"
+      },
+      "atari5200": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.05,
+          "shell": "#232325",
+          "depth": 0.2,
+          "label": [
+            0.1,
+            0.07,
+            0.8,
+            0.55
+          ],
+          "radius": 0.04,
+          "grip": 4
+        },
+        "label": "5200",
+        "color": "#8a5a2a"
+      },
+      "atari7800": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.8,
+          "shell": "#232325",
+          "depth": 0.24,
+          "label": [
+            0.1,
+            0.07,
+            0.8,
+            0.55
+          ],
+          "radius": 0.03,
+          "grip": 6
+        },
+        "label": "7800",
+        "color": "#b06a34"
+      },
+      "jaguar": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.15,
+          "shell": "#1b1b1e",
+          "depth": 0.2,
+          "label": [
+            0.1,
+            0.1,
+            0.8,
+            0.55
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "Jaguar",
+        "color": "#9b2b2b"
+      },
+      "lynx": {
+        "object": {
+          "shape": "card",
+          "aspect": 1.4,
+          "shell": "#2b2b2e",
+          "depth": 0.1,
+          "label": [
+            0.08,
+            0.12,
+            0.84,
+            0.76
+          ],
+          "radius": 0.06
+        },
+        "label": "Lynx",
+        "color": "#c57a2a"
+      },
+      "vectrex": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.92,
+          "shell": "#1e1e22",
+          "depth": 0.18,
+          "label": [
+            0.1,
+            0.08,
+            0.8,
+            0.58
+          ],
+          "radius": 0.04,
+          "grip": 4
+        },
+        "label": "Vectrex",
+        "color": "#3b3b4a"
+      },
+      "msx": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.4,
+          "shell": "#2a2a2e",
+          "depth": 0.16,
+          "label": [
+            0.1,
+            0.08,
+            0.8,
+            0.6
+          ],
+          "radius": 0.04,
+          "grip": 0
+        },
+        "label": "MSX",
+        "color": "#4a6a8a"
+      },
+      "pce": {
+        "object": {
+          "shape": "card",
+          "aspect": 0.64,
+          "shell": "#d8d8dc",
+          "depth": 0.05,
+          "label": [
+            0.08,
+            0.14,
+            0.84,
+            0.62
+          ],
+          "radius": 0.05
+        },
+        "label": "PCE",
+        "color": "#7a4bb0"
+      },
+      "ngp": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.95,
+          "shell": "#1c1c20",
+          "depth": 0.14,
+          "label": [
+            0.08,
+            0.12,
+            0.84,
+            0.68
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "NGP",
+        "color": "#b5892a"
+      },
+      "ngpc": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.95,
+          "shell": "#1c1c20",
+          "depth": 0.14,
+          "label": [
+            0.08,
+            0.12,
+            0.84,
+            0.68
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "NGPC",
+        "color": "#c09a3a"
+      },
+      "wonderswan": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.35,
+          "shell": "#2a2b30",
+          "depth": 0.14,
+          "label": [
+            0.1,
+            0.1,
+            0.8,
+            0.7
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "WS",
+        "color": "#3f8c8a"
+      },
+      "wsc": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.35,
+          "shell": "#2a2b30",
+          "depth": 0.14,
+          "label": [
+            0.1,
+            0.1,
+            0.8,
+            0.7
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "WSC",
+        "color": "#3f9c7a"
+      },
+      "virtualboy": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.86,
+          "shell": "#1e1e22",
+          "depth": 0.16,
+          "label": [
+            0.08,
+            0.08,
+            0.84,
+            0.62
+          ],
+          "radius": 0.04,
+          "grip": 0
+        },
+        "label": "VB",
+        "color": "#b02828"
+      },
+      "pokemini": {
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.15,
+          "shell": "#3a3b40",
+          "depth": 0.2,
+          "label": [
+            0.1,
+            0.12,
+            0.8,
+            0.62
+          ],
+          "radius": 0.08,
+          "grip": 0
+        },
+        "label": "Mini",
+        "color": "#4a8a5a"
+      },
+      "pico8": {
+        "object": {
+          "shape": "case",
+          "aspect": 0.72
+        },
+        "label": "PICO-8",
+        "color": "#ff6c8a"
       }
     }
   }
