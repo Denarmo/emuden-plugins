@@ -4,6 +4,11 @@ The emulator cores this source installs are unmodified nightly builds from the l
 (https://buildbot.libretro.com/nightly/), copied into this repository's releases so each download has a fixed
 checksum. `cores.lock.json` records where each file came from, when, and its checksum.
 
+Only cores that need no console BIOS are offered: each either needs none or carries its own
+replacement (mGBA, melonDS, PokeMini, PCSX ReARMed, Yabause, Flycast, a5200, Play!). Consoles whose every core
+needs a BIOS (Sega CD, PC Engine CD, PC-FX, Neo Geo, 3DO, ColecoVision, Intellivision, MSX) are not offered until
+there is one. Files of cores no longer offered stay in the releases.
+
 Each core is the work of its own authors and is distributed under its own licence. Source code for every core
 is linked from https://github.com/libretro (repository names follow the core names below) and from
 https://docs.libretro.com/.
@@ -17,20 +22,13 @@ https://docs.libretro.com/.
 | fbneo | LicenseRef-FBNeo-NonCommercial | Windows, Linux, Android |
 | fceumm | GPL-2.0-only | Windows, Linux, Android |
 | flycast | GPL-2.0-only | Windows, Linux, Android |
-| fmsx | LicenseRef-fMSX | Windows, Linux, Android |
-| freeintv | GPL-3.0-only | Windows, Linux, Android |
 | gambatte | GPL-2.0-only | Windows, Linux, Android |
-| gearcoleco | GPL-3.0-only | Windows, Linux, Android |
 | genesis_plus_gx | LicenseRef-Genesis-Plus-GX | Windows, Linux, Android |
 | handy | Zlib | Windows, Linux, Android |
 | mame2003_plus | LicenseRef-MAME-NonCommercial | Windows, Linux, Android |
-| mednafen_lynx | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_ngp | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_pce | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_pce_fast | GPL-2.0-only | Windows, Linux, Android |
-| mednafen_pcfx | GPL-2.0-only | Windows, Linux, Android |
-| mednafen_psx | GPL-2.0-only | Windows, Linux, Android |
-| mednafen_saturn | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_vb | GPL-2.0-only | Windows, Linux, Android |
 | mednafen_wswan | GPL-2.0-only | Windows, Linux, Android |
 | melonds | GPL-3.0-only | Windows, Linux, Android |
@@ -39,12 +37,10 @@ https://docs.libretro.com/.
 | mgba | MPL-2.0 | Windows, Linux, Android |
 | mupen64plus_next | GPL-2.0-only | Windows, Linux, Android |
 | nestopia | GPL-2.0-or-later | Windows, Linux, Android |
-| opera | LicenseRef-Opera-NonCommercial | Windows, Linux, Android |
 | parallel_n64 | GPL-2.0-only | Windows, Linux, Android |
-| pcsx2 | GPL-3.0-or-later | Windows, Linux, Android |
-| play | BSD-2-Clause | Windows, Linux |
 | pcsx_rearmed | GPL-2.0-only | Windows, Linux, Android |
 | picodrive | LicenseRef-PicoDrive | Windows, Linux, Android |
+| play | BSD-2-Clause | Windows, Linux |
 | pokemini | GPL-3.0-only | Windows, Linux, Android |
 | ppsspp | GPL-2.0-or-later | Windows, Linux, Android |
 | prosystem | GPL-2.0-only | Windows, Linux, Android |
@@ -52,7 +48,6 @@ https://docs.libretro.com/.
 | sameboy | MIT | Windows, Linux, Android |
 | snes9x | LicenseRef-Snes9x | Windows, Linux, Android |
 | stella | GPL-2.0-only | Windows, Linux, Android |
-| swanstation | GPL-3.0-only | Windows, Linux, Android |
 | vba_next | GPL-2.0-only | Windows, Linux, Android |
 | vecx | GPL-3.0-only | Windows, Linux, Android |
 | virtualjaguar | GPL-3.0-only | Windows, Linux, Android |
@@ -76,12 +71,3 @@ https://docs.libretro.com/.
 https://github.com/hrydgard/ppsspp at the tag `v1.20.4`, zipped under `PPSSPP/`. EmuDEN unpacks it into the
 BIOS folder when the PPSSPP core is installed; the core reads its fonts and `ppge_atlas.zim` from there.
 PPSSPP and its assets are GPL-2.0-or-later.
-
-## PS2 widescreen patches
-
-`pcsx2-widescreen-2026-11-09.zip` (release `cores-2026-11-14`) holds `pcsx2/cheats/<CRC>-widescreen.pnach`, made
-from `patches.zip` of https://github.com/PCSX2/pcsx2_patches (release `latest`, 2026-11-09): for each game the
-lines of its `[Widescreen 16:9]` section, in the older format the PCSX2 libretro core reads (4,100 games). The
-core loads them as cheats, so EmuDEN's Widescreen switch turns on the core's cheats and its widescreen option
-together. The patches are their authors' work (each file names them) and are distributed as PCSX2 distributes
-them; that repository carries no licence file.

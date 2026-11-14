@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.lynx",
   "name": "Atari Lynx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -49,20 +49,7 @@
         "rcheevos_console": 13
       },
       "cores": [
-        "handy",
-        "mednafen_lynx"
-      ],
-      "bios": [
-        {
-          "label": "Lynx boot ROM",
-          "any_one": false,
-          "files": [
-            {
-              "path": "lynxboot.img",
-              "optional": true
-            }
-          ]
-        }
+        "handy"
       ]
     }
   ],
@@ -95,37 +82,6 @@
           "size": 141020,
           "archive": "zip",
           "entry": "handy_libretro_android.so"
-        }
-      }
-    },
-    {
-      "id": "mednafen_lynx",
-      "type": "libretro-core",
-      "name": "Beetle Lynx",
-      "license": "GPL-2.0-only",
-      "gpu": "none",
-      "version": "2026-11-14",
-      "downloads": {
-        "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-windows-x86_64-2026-11-14.zip",
-          "sha256": "2f6ecd37cf8101167d3ed67036cc5363d32f235a8628f7133bccfcc8bbc2c0f8",
-          "size": 188563,
-          "archive": "zip",
-          "entry": "mednafen_lynx_libretro.dll"
-        },
-        "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-linux-x86_64-2026-11-14.zip",
-          "sha256": "22439e8706dbc4969b7da9b1d300b91d9f798bf9222f056e1e9b8282604c6438",
-          "size": 88126,
-          "archive": "zip",
-          "entry": "mednafen_lynx_libretro.so"
-        },
-        "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_lynx-android-arm64-2026-11-14.zip",
-          "sha256": "d81f7657963de38b20f47cc8b1db47599d27e859d0bcb983a74336d92b8599dd",
-          "size": 120803,
-          "archive": "zip",
-          "entry": "mednafen_lynx_libretro_android.so"
         }
       }
     }

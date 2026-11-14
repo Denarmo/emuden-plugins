@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.dreamcast",
   "name": "Sega Dreamcast",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -52,22 +52,6 @@
       },
       "cores": [
         "flycast"
-      ],
-      "bios": [
-        {
-          "label": "Dreamcast BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "dc/dc_boot.bin",
-              "optional": true
-            },
-            {
-              "path": "dc/dc_flash.bin",
-              "optional": true
-            }
-          ]
-        }
       ]
     }
   ],

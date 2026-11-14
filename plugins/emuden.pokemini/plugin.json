@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pokemini",
   "name": "Pokémon mini",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -46,18 +46,6 @@
       },
       "cores": [
         "pokemini"
-      ],
-      "bios": [
-        {
-          "label": "Pokémon mini BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "bios.min",
-              "optional": true
-            }
-          ]
-        }
       ]
     }
   ],

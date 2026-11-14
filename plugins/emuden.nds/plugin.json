@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nds",
   "name": "Nintendo DS",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -55,26 +55,6 @@
         "melonds",
         "melondsds",
         "desmume"
-      ],
-      "bios": [
-        {
-          "label": "Nintendo DS BIOS and firmware",
-          "any_one": false,
-          "files": [
-            {
-              "path": "bios7.bin",
-              "optional": true
-            },
-            {
-              "path": "bios9.bin",
-              "optional": true
-            },
-            {
-              "path": "firmware.bin",
-              "optional": true
-            }
-          ]
-        }
       ]
     }
   ],

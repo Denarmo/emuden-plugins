@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -49,65 +49,11 @@
         "rcheevos_console": 21
       },
       "cores": [
-        "pcsx2",
         "play"
-      ],
-      "bios": [
-        {
-          "label": "PlayStation 2 BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "pcsx2/bios/",
-              "optional": false
-            }
-          ],
-          "cores": [
-            "pcsx2"
-          ]
-        }
       ]
     }
   ],
   "components": [
-    {
-      "id": "pcsx2",
-      "type": "libretro-core",
-      "name": "PCSX2",
-      "license": "GPL-3.0-or-later",
-      "gpu": "opengl",
-      "version": "2026-11-12",
-      "widescreen": {
-        "options": {
-          "pcsx2_widescreen_hint": "enabled (16:9)",
-          "pcsx2_enable_cheats": "enabled"
-        },
-        "restart": true
-      },
-      "downloads": {
-        "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx2-windows-x86_64-2026-11-12.zip",
-          "sha256": "bc30ca3aa147f239832ec2ad36096ffbfa0ed7fb022d3cbf7e84b12d1827b51d",
-          "size": 3218587,
-          "archive": "zip",
-          "entry": "pcsx2_libretro.dll"
-        },
-        "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx2-linux-x86_64-2026-11-12.zip",
-          "sha256": "f9d6f7e4e74a4ceab62c01896fb228b2bca852bacb8a15ffe80422d6787d6cdc",
-          "size": 3490833,
-          "archive": "zip",
-          "entry": "pcsx2_libretro.so"
-        },
-        "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/pcsx2-android-arm64-2026-11-12.zip",
-          "sha256": "c1492b8bb629fd36f4b46a29813a5b8275c6c32009a5181bef6f926561abf3b2",
-          "size": 2832106,
-          "archive": "zip",
-          "entry": "pcsx2_libretro_android.so"
-        }
-      }
-    },
     {
       "id": "play",
       "type": "libretro-core",
@@ -130,26 +76,6 @@
           "size": 2432947,
           "archive": "zip",
           "entry": "play_libretro.so"
-        }
-      }
-    },
-    {
-      "id": "pcsx2-widescreen",
-      "type": "system-files",
-      "name": "PS2 widescreen patches",
-      "license": "LicenseRef-PCSX2-Patches",
-      "homepage": "https://github.com/PCSX2/pcsx2_patches",
-      "version": "2026-11-09",
-      "cores": [
-        "pcsx2"
-      ],
-      "downloads": {
-        "any": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/pcsx2-widescreen-2026-11-09.zip",
-          "sha256": "1674832f5ec2cc04c09b62c631009687300d3bc47616c21bfe8f04b76daacde5",
-          "size": 1673774,
-          "archive": "zip",
-          "entry": "pcsx2/cheats/"
         }
       }
     }

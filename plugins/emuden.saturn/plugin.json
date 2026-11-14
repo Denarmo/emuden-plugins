@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.saturn",
   "name": "Sega Saturn",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -47,59 +47,11 @@
         "rcheevos_console": 39
       },
       "cores": [
-        "mednafen_saturn",
         "yabause"
-      ],
-      "bios": [
-        {
-          "label": "Saturn BIOS",
-          "any_one": true,
-          "files": [
-            {
-              "path": "sega_101.bin",
-              "optional": false
-            },
-            {
-              "path": "mpr-17933.bin",
-              "optional": false
-            }
-          ]
-        }
       ]
     }
   ],
   "components": [
-    {
-      "id": "mednafen_saturn",
-      "type": "libretro-core",
-      "name": "Beetle Saturn",
-      "license": "GPL-2.0-only",
-      "gpu": "none",
-      "version": "2026-11-12",
-      "downloads": {
-        "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mednafen_saturn-windows-x86_64-2026-11-12.zip",
-          "sha256": "9a91dcd9c483d4d45dc5cf38773d24f2cf3aba681c8537afe01d94d7eadb7b02",
-          "size": 1787221,
-          "archive": "zip",
-          "entry": "mednafen_saturn_libretro.dll"
-        },
-        "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mednafen_saturn-linux-x86_64-2026-11-12.zip",
-          "sha256": "5acc273818695920a9e117b71cdd78b793c42cd73619849588ab2c32de19a74a",
-          "size": 2274133,
-          "archive": "zip",
-          "entry": "mednafen_saturn_libretro.so"
-        },
-        "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_saturn-android-arm64-2026-11-12.zip",
-          "sha256": "f1f79971c41b58237dbb786f85158d3dfa07a5c1ed73cc017c26fefa500f4c17",
-          "size": 1707942,
-          "archive": "zip",
-          "entry": "mednafen_saturn_libretro_android.so"
-        }
-      }
-    },
     {
       "id": "yabause",
       "type": "libretro-core",

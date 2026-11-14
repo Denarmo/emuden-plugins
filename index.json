@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 13,
-  "generated": "2026-11-14T10:34:20Z",
-  "expires": "2027-03-14T10:34:20Z",
+  "sequence": 14,
+  "generated": "2026-11-14T10:55:39Z",
+  "expires": "2027-03-14T10:55:39Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -44,50 +44,6 @@
       "download_size": {
         "linux-x86_64": 864823,
         "android-arm64": 604891
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
-      "id": "emuden.3do",
-      "name": "3DO",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "3DO games with Opera.",
-      "group": "other",
-      "systems": [
-        {
-          "id": "3do",
-          "name": "3DO",
-          "folder_aliases": [
-            "panasonic 3do",
-            "3do interactive multiplayer"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro",
-        "content.multi_file"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.3do-1.0.0.emuplugin",
-        "sha256": "a0f42a8d560906eb70c567d14fc5aa0f399a6a770c2c0df1fb3feb22379fb9ab",
-        "size": 1245
-      },
-      "download_size": {
-        "windows-x86_64": 345542,
-        "linux-x86_64": 309123,
-        "android-arm64": 206053
       },
       "download_hosts": [
         "github.com"
@@ -188,7 +144,7 @@
     {
       "id": "emuden.atari5200",
       "name": "Atari 5200",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -215,9 +171,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.atari5200-1.0.0.emuplugin",
-        "sha256": "3bc23eb32951f87fbf6998aad1e8a53dacac940901e83079cd13500a484d3496",
-        "size": 1088
+        "url": "packages/emuden.atari5200-1.0.1.emuplugin",
+        "sha256": "79e27c637b6decf7f92be816c612543a36c461fcea93b8d1ac27864e63235067",
+        "size": 1022
       },
       "download_size": {
         "windows-x86_64": 137251,
@@ -231,7 +187,7 @@
     {
       "id": "emuden.atari7800",
       "name": "Atari 7800",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -258,9 +214,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.atari7800-1.0.0.emuplugin",
-        "sha256": "0e36f112d25afbce0f2004a40c9a3ad1adfbc604059d5c12a648caffda655672",
-        "size": 1122
+        "url": "packages/emuden.atari7800-1.0.1.emuplugin",
+        "sha256": "d011c6cb0b8bbe450ddbf885753d2ea5e7e7c499d1d886f8f00b5c57e363691f",
+        "size": 1038
       },
       "download_size": {
         "windows-x86_64": 94185,
@@ -272,51 +228,9 @@
       ]
     },
     {
-      "id": "emuden.colecovision",
-      "name": "ColecoVision",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "ColecoVision games with Gearcoleco.",
-      "group": "other",
-      "systems": [
-        {
-          "id": "colecovision",
-          "name": "ColecoVision",
-          "folder_aliases": [
-            "coleco"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.colecovision-1.0.0.emuplugin",
-        "sha256": "d0d5fd291b50ae67a075dd9d5130f75184b91824a27b7c79908bc9012352f602",
-        "size": 1105
-      },
-      "download_size": {
-        "windows-x86_64": 503690,
-        "linux-x86_64": 145272,
-        "android-arm64": 279466
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
       "id": "emuden.dreamcast",
       "name": "Sega Dreamcast",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -342,9 +256,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.dreamcast-1.0.2.emuplugin",
-        "sha256": "915af6e5498ec03ac8a4d74d72d19f1b9c12b56eaaebd7a41857926eab0a1a3e",
-        "size": 1190
+        "url": "packages/emuden.dreamcast-1.0.3.emuplugin",
+        "sha256": "3aed41f4af855543bc633c4e109d16aa6f4fb8ed0dcf9cb678fe05e172e9800c",
+        "size": 1105
       },
       "download_size": {
         "windows-x86_64": 6479426,
@@ -443,7 +357,7 @@
     {
       "id": "emuden.gba",
       "name": "Game Boy Advance",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -469,9 +383,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gba-1.0.2.emuplugin",
-        "sha256": "8914520a602307fd036be9ebe23399c6cd31b6968213436521d4e67931711ba5",
-        "size": 1451
+        "url": "packages/emuden.gba-1.0.3.emuplugin",
+        "sha256": "4137b5c459211a8c509c3c04be1605b62577e950693466e1280d20c6f1f600c5",
+        "size": 1380
       },
       "download_size": {
         "windows-x86_64": 836163,
@@ -611,49 +525,6 @@
       ]
     },
     {
-      "id": "emuden.intellivision",
-      "name": "Intellivision",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "Intellivision games with FreeIntv.",
-      "group": "other",
-      "systems": [
-        {
-          "id": "intellivision",
-          "name": "Intellivision",
-          "folder_aliases": [
-            "intv",
-            "mattel intellivision"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.intellivision-1.0.0.emuplugin",
-        "sha256": "7b12d7561e97c5ecd959aa5bacc21433e9873ff287dbb84584d47b2fadd858f1",
-        "size": 1130
-      },
-      "download_size": {
-        "windows-x86_64": 536276,
-        "linux-x86_64": 500543,
-        "android-arm64": 499832
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
       "id": "emuden.jaguar",
       "name": "Atari Jaguar",
       "version": "1.0.0",
@@ -699,7 +570,7 @@
     {
       "id": "emuden.lynx",
       "name": "Atari Lynx",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -726,58 +597,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.lynx-1.0.0.emuplugin",
-        "sha256": "bc0ffb26ae245e6d32a805cdcd9f71af8d45fe0dfd87cdb7159af03a4d79889a",
-        "size": 1326
+        "url": "packages/emuden.lynx-1.0.1.emuplugin",
+        "sha256": "6716e43b6c2abccbf94ba3646b714efd082840254e85a85cf872b7652a06219b",
+        "size": 1023
       },
       "download_size": {
-        "windows-x86_64": 361670,
-        "linux-x86_64": 189038,
-        "android-arm64": 261823
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
-      "id": "emuden.msx",
-      "name": "MSX",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "MSX and MSX2 games with fMSX.",
-      "group": "other",
-      "systems": [
-        {
-          "id": "msx",
-          "name": "MSX",
-          "folder_aliases": [
-            "msx1",
-            "msx2",
-            "microsoft msx"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.msx-1.0.0.emuplugin",
-        "sha256": "380d0d7ef20fb43cafa75a9e5e170761d75b3993307236868cb1a3b3c2f676cc",
-        "size": 1182
-      },
-      "download_size": {
-        "windows-x86_64": 153333,
-        "linux-x86_64": 114799,
-        "android-arm64": 94145
+        "windows-x86_64": 173107,
+        "linux-x86_64": 100912,
+        "android-arm64": 141020
       },
       "download_hosts": [
         "github.com"
@@ -828,7 +655,7 @@
     {
       "id": "emuden.nds",
       "name": "Nintendo DS",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -856,9 +683,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.nds-1.0.2.emuplugin",
-        "sha256": "4dbcf6df434bdc9d92281d9a5d806fd2cd589a32dd4f082dd8829bde9f778039",
-        "size": 1760
+        "url": "packages/emuden.nds-1.0.3.emuplugin",
+        "sha256": "820dbd9dfaf3a967ea5fe0994d9e71caf6e8ed27c65049b295299172b53c0a37",
+        "size": 1667
       },
       "download_size": {
         "windows-x86_64": 5195771,
@@ -870,54 +697,9 @@
       ]
     },
     {
-      "id": "emuden.neogeo",
-      "name": "Neo Geo",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "Neo Geo games with FinalBurn Neo.",
-      "group": "snk",
-      "systems": [
-        {
-          "id": "neogeo",
-          "name": "Neo Geo",
-          "folder_aliases": [
-            "neo geo",
-            "neo-geo",
-            "mvs",
-            "aes"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.neogeo-1.0.0.emuplugin",
-        "sha256": "2b45e4cfd0fa6f53b409387f98449f319ee3aa559e93f4efc608a721ea35e778",
-        "size": 1134
-      },
-      "download_size": {
-        "windows-x86_64": 18397523,
-        "linux-x86_64": 21417127,
-        "android-arm64": 16775975
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
       "id": "emuden.nes",
       "name": "Nintendo Entertainment System",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -945,9 +727,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.nes-1.0.2.emuplugin",
-        "sha256": "09fd26bd96941b6f8b3b5466b713660d090d9fbe246c0e30a3e8f8662b1f825f",
-        "size": 1672
+        "url": "packages/emuden.nes-1.0.3.emuplugin",
+        "sha256": "32ece74d3f44cc6a67cba61471f5942751a025a0deb74690a1029eb69a066b02",
+        "size": 1589
       },
       "download_size": {
         "windows-x86_64": 3001580,
@@ -1094,98 +876,6 @@
       ]
     },
     {
-      "id": "emuden.pcecd",
-      "name": "PC Engine CD / TurboGrafx-CD",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "PC Engine CD games with Beetle PCE FAST.",
-      "group": "nec",
-      "systems": [
-        {
-          "id": "pcecd",
-          "name": "PC Engine CD / TurboGrafx-CD",
-          "folder_aliases": [
-            "pce-cd",
-            "pc engine cd",
-            "pcenginecd",
-            "tgcd",
-            "turbografxcd",
-            "turbografx-cd"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro",
-        "content.multi_file"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.pcecd-1.0.0.emuplugin",
-        "sha256": "fc2b6cd8f60b0034bf22f733728e26ad190549a0bf05e54f5f782599eb92d896",
-        "size": 1449
-      },
-      "download_size": {
-        "windows-x86_64": 1253331,
-        "linux-x86_64": 1262180,
-        "android-arm64": 859667
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
-      "id": "emuden.pcfx",
-      "name": "PC-FX",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "PC-FX games with Beetle PC-FX.",
-      "group": "nec",
-      "systems": [
-        {
-          "id": "pcfx",
-          "name": "PC-FX",
-          "folder_aliases": [
-            "pc-fx",
-            "nec pc-fx"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro",
-        "content.multi_file"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.pcfx-1.0.0.emuplugin",
-        "sha256": "7130875405b1d7b0453897cb2a5ca0a0d69f95ccb5f434a0bfe060add134ce70",
-        "size": 1193
-      },
-      "download_size": {
-        "windows-x86_64": 485588,
-        "linux-x86_64": 400312,
-        "android-arm64": 404208
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
       "id": "emuden.pico8",
       "name": "PICO-8",
       "version": "1.0.2",
@@ -1231,7 +921,7 @@
     {
       "id": "emuden.pokemini",
       "name": "Pokémon mini",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1258,9 +948,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.pokemini-1.0.0.emuplugin",
-        "sha256": "b3b69da633d8ce846c3933787668f6d57ca2d397e9017ed7a404909252ee8386",
-        "size": 1101
+        "url": "packages/emuden.pokemini-1.0.1.emuplugin",
+        "sha256": "9e0ebe7ac47dd8190c392bc834f19433e296dd2141d781c8759e8afd96b26062",
+        "size": 1029
       },
       "download_size": {
         "windows-x86_64": 128873,
@@ -1274,7 +964,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1295,19 +985,17 @@
       ],
       "platforms": [
         "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
+        "linux-x86_64"
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.0.3.emuplugin",
-        "sha256": "21df1ebc7c32c37aaaa8561a614478a609405615d095899441a87f2dd307089d",
-        "size": 1530
+        "url": "packages/emuden.ps2-1.0.4.emuplugin",
+        "sha256": "1d42fd0a242e2aca4b0f494cdc315097782a91bdfb8a18d57cb604fdafffaf78",
+        "size": 993
       },
       "download_size": {
-        "windows-x86_64": 5843089,
-        "linux-x86_64": 7597554,
-        "android-arm64": 4505880
+        "windows-x86_64": 950728,
+        "linux-x86_64": 2432947
       },
       "download_hosts": [
         "github.com"
@@ -1358,7 +1046,7 @@
     {
       "id": "emuden.psx",
       "name": "PlayStation",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1388,14 +1076,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.psx-1.0.3.emuplugin",
-        "sha256": "66e678df7b09ac98776f793500d5aad820e8c770eb242a4b7fb1cca030dbe984",
-        "size": 1897
+        "url": "packages/emuden.psx-1.0.4.emuplugin",
+        "sha256": "abcd4645cb0f307176841e43d2ac257b5c6b5296f461d8b42a82d7827367827d",
+        "size": 1286
       },
       "download_size": {
-        "windows-x86_64": 5742841,
-        "linux-x86_64": 4092617,
-        "android-arm64": 3470178
+        "windows-x86_64": 847074,
+        "linux-x86_64": 749426,
+        "android-arm64": 532374
       },
       "download_hosts": [
         "github.com"
@@ -1646,7 +1334,7 @@
     {
       "id": "emuden.saturn",
       "name": "Sega Saturn",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1673,61 +1361,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.saturn-1.0.2.emuplugin",
-        "sha256": "9032649d48791a67338aa0c962eff037fa5e7337fb74767f7313f2286b23bd47",
-        "size": 1352
+        "url": "packages/emuden.saturn-1.0.3.emuplugin",
+        "sha256": "f0ac34bb4941c0778b28df5d8b96756f0f61ea9cad3ada052181aeba132a817a",
+        "size": 1043
       },
       "download_size": {
-        "windows-x86_64": 2357314,
-        "linux-x86_64": 2799260,
-        "android-arm64": 2056461
-      },
-      "download_hosts": [
-        "github.com"
-      ]
-    },
-    {
-      "id": "emuden.segacd",
-      "name": "Sega CD / Mega-CD",
-      "version": "1.0.0",
-      "kind": "console",
-      "engine": "libretro",
-      "publisher": "EmuDEN",
-      "summary": "Sega CD and Mega-CD games with Genesis Plus GX.",
-      "group": "sega",
-      "systems": [
-        {
-          "id": "segacd",
-          "name": "Sega CD / Mega-CD",
-          "folder_aliases": [
-            "sega cd",
-            "megacd",
-            "mega cd",
-            "mega-cd",
-            "scd"
-          ]
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.libretro",
-        "content.multi_file"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "android-arm64"
-      ],
-      "code": "cores",
-      "package": {
-        "url": "packages/emuden.segacd-1.0.0.emuplugin",
-        "sha256": "5aac89536a8cdfd648adbfb3572ad7f8d7f5253b344823d936f83d960de43773",
-        "size": 1422
-      },
-      "download_size": {
-        "windows-x86_64": 944681,
-        "linux-x86_64": 2174193,
-        "android-arm64": 1738834
+        "windows-x86_64": 570093,
+        "linux-x86_64": 525127,
+        "android-arm64": 348519
       },
       "download_hosts": [
         "github.com"
@@ -2127,33 +1768,23 @@
   "trusted_component_sha256": [
     "01af854bec51fe890823c0f54bd71c63eee86d2452477764426c4d483f2ae97f",
     "03d2047b50b8c2af56a4e7f8c9fdf8b554baae7f1ed911007bbb371f147a6fbf",
-    "040b6115fc354fc4e823b7b55c87ee7a1bfa3171b7834376f59cbcdda99b8641",
     "054ee0e0bbcb29499010823cc89efc6ee314450794b33a4690ee95f601a7047a",
     "068d80d5165d251a647fcd56899b4a54b15d36cf56e3efcbadf5dee5fe3e1760",
     "09095b5a15d6463a7d8e4bb56dcf25282290542fa8b5f209c1aca9b370f93363",
     "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
     "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
-    "1149823cf2da42cd6f8d183b2ff3415338805205491606bfc1335300bec90fa5",
-    "115058972681f6583cf00e518b72a33dbc80c1df9398ec7650310fcbee7a1a02",
-    "11f883b499a6d07c612255ddd8cd5c726469702b599f3ac9bb0a9720d73223ee",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
-    "1674832f5ec2cc04c09b62c631009687300d3bc47616c21bfe8f04b76daacde5",
     "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
     "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
     "1e7fac8159320066c11fa778c14aea1576c865dd2bf9736c1accd1a44b09735f",
     "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
     "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
     "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
-    "218cb94712af8443d5f166e327f854009dfd12b4a27beed880d47ac55b73c3d8",
-    "22439e8706dbc4969b7da9b1d300b91d9f798bf9222f056e1e9b8282604c6438",
     "249eeea9e75e63461a631583ed55eca4b9e60ae4f2720bbf044a8e0ddffbb8be",
-    "24db6634c3077bd18c14e533483bad7bd0e998b1848b4bba54667c0bd6966427",
     "27b9538c5a2fed29a204cc20ff3af7118fbc5cd2d1ae9a23d8481613939f2a1d",
     "289c769c92ae4e26884cb430e43e92926a18e54301949aee8bc98dc97dd9ddc8",
-    "2cf14d105a6a56d726ddcb58bc20dac464d09279d3cb9728efc44d98334200d2",
     "2d0df9d29d8f7302b9e9cca9ab49715df38cd8ef8149f396d6915f55acb736d9",
-    "2f6ecd37cf8101167d3ed67036cc5363d32f235a8628f7133bccfcc8bbc2c0f8",
     "32c0d3a19ce2f2cac5b10eb8a71b6e36d9ab243a68b3ebf288443862614bbc8a",
     "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
     "39f5a4aaa563c14fdb305fc458cdbab50bb7fd1f0df0ed64817c0b8a19a3da79",
@@ -2167,18 +1798,14 @@
     "44d32a74d9fcafc37c6f77a05217cfa885db7701baf62b228b0be0d84aed4c12",
     "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
     "457aa28912e2449a3346d1c122d1ffcd9e1f6f4f2a841c21a871f266274f239a",
-    "4f2e903e1186105fa5eaf0b49b107feaa7cbe3d1c7f1cd8a11c9a75d2f1a1f4b",
     "55cbaa80c3e578c6c299b06a1629dc132325c5b2f451d61ba31a398ed8ac1c6c",
     "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
     "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
     "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
-    "5acc273818695920a9e117b71cdd78b793c42cd73619849588ab2c32de19a74a",
-    "5aff3e3ec0d154c1fce9bfc37ac3a3e131c9875c3817b0e90c1fd1d01c9e9003",
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
-    "651c05e67852bddfc3d9e89478121e43ca18d604804cbe3ab3a698639269bb15",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
     "6af96421ebc98b70643ea88ddb20ca526323853c21135f05f9e21be89cc6a725",
@@ -2191,15 +1818,11 @@
     "80001b75315b34f3eb5cdf3b6f7d99f300f47bc7c7a9418305e6565633ad8e67",
     "82b930cbe64e5ae057ccc9891cca2d395e4360f36394369f316a94d9c653c232",
     "847a246dc5e093a5c062a36e2dafbf5e7adda05ce0f65b644a7d40ae26975cc4",
-    "886dd5d95a92115a420c63d633face03f88b13f4a6d0e684152840f83cf842a5",
     "88c732afc53072b299978bd2d1b1f2f3dbe499b642b9d48eaa51ca205d3029ce",
-    "88fb4318961fa3d51b2e0c7c75c017926e7f465558dde33c3b433d6d5f6e4b88",
     "8907ba28610703e9276703a9323ffc26fdde02ef33a287f512e5907bdb54daa0",
     "894ba10ad6a98bd43846ee3330b08bce6f34e8d4b78453943d35d256f47aa03f",
     "89821a79f422fcc87062511db141228ba91e18f4bc06bb8ccb40490f8386b370",
     "8d93599820d6d483256dc9aa93c8841e4f3180c323c5100a583d9f0f96fd4dbe",
-    "8e7d41d5cc24fdb1a9634a6a1b2a9138bcd67e2694cc7447943c7500366214bb",
-    "8ecc62c099b5221eef48961874bec198b35da20dc865aed6b26150d6d9ab3eb6",
     "917d92b74b3d002854267320bfdff88c744f90197302fac5bf11a4300a3b64a2",
     "9207f7bb9c9462421e2d9cc8bf7e5a2269de39bce90f5784ddb1475bce625a50",
     "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
@@ -2211,12 +1834,10 @@
     "985e60793f2650684d4f314c34ae73edd6fffba32a9b50cd51d2940cdc1ffbbc",
     "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",
     "99ce599a905d473325bfededd8f2e754d238d91f96884249f8f0071b2fea8fa0",
-    "9a91dcd9c483d4d45dc5cf38773d24f2cf3aba681c8537afe01d94d7eadb7b02",
     "9edd17472aae26d81c71acd2a664a7ee0dd833a02645c70ac953adedc9f01ea2",
     "9ee95f5d9afcfab492057034073f70722f7a78d93029ed292f19a2a092d1860b",
     "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",
     "a2ca40394a721dfc7a7569678ec19d1db36a1a2631fda9f3749e86b8e35831e6",
-    "a3c48a2e37fe9accfc3739412bf015426d0fcfc02055660881a411a5e4afe333",
     "a7720e2652c482847d5e040f29c1d495254f8ce24e3a8e49a88c2c8ab14786fb",
     "aabdd1309913bd3e86dc497fd451b0cf681a9d1264767876a6fa038f7a862c0d",
     "ac7d3e391f0962b54c0978c40c2ba4430ae585c1046ce51bc76acd9f702a6c4a",
@@ -2229,16 +1850,11 @@
     "b80eb0ff41f261efb7b0021fc348eb747def3989083a80ec2f8d700a2f7a77c5",
     "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
     "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
-    "bc30ca3aa147f239832ec2ad36096ffbfa0ed7fb022d3cbf7e84b12d1827b51d",
     "be695d2db1b8d1080490e8a55f4eb1871c48bd516b880ac99905e84d8b726b21",
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
-    "c1492b8bb629fd36f4b46a29813a5b8275c6c32009a5181bef6f926561abf3b2",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
-    "c5ce7212f4113e6dd789a7ee89f759a0516e072eca8d2464c86bffd5e5512a75",
-    "c7a76e72ec926d722c65c53dd2d484f271b1f67ae9d97ba270b2a3f9f6ab814d",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
     "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
-    "ceca4f8a5e7f5565d9990187046bf07078ac1d9b6064c58b11ce6df401b3c58f",
     "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
     "cfbedaf01d73e2816dd9216a274fbf5d7e37b30ecbe3771f82d61e196ac33593",
     "d05131706497249882bb6695b57a3307caa4e8769fd1ee99501a716d63361ae3",
@@ -2247,7 +1863,6 @@
     "d2096cac92e7c3bd0c768eb800ad588c85c0765c94284dc6da705af081a4db44",
     "d6620e03da13317513f62e09d04489d2f48e1216402eaed805ccce68d63c05de",
     "d762da9f1bdc4d246ee322dec5776d10c9ddf2380180189b1df011c8968b3de4",
-    "d81f7657963de38b20f47cc8b1db47599d27e859d0bcb983a74336d92b8599dd",
     "dc367dd9bd7cd639266f90a1a32b5b3d8b42e465ad537274b398e59eb354754e",
     "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
     "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
@@ -2255,17 +1870,12 @@
     "e58f11e98164dbf99b801d93303092f8d524421f00bdafba881faf1e358c2beb",
     "e5f44ed4ba208768c0bcce443f3f1de58a0ef13a5fe5e76c55d9afcc51aa3246",
     "e73af293fd8e23c36e410f13a07a83550d04a16121e2b20c988cb58e77e96d53",
-    "e9fdeb0e5186f5fbdd7fde9dab22fb91e69ceaf130ce3162205c6603d41eb28b",
     "ea0cf4c18dfa3f6f35dc77e01bfb38b4d94e98f623ae5284f4d333fde784382c",
     "ef1d32c6f97e33649d8ffd65d2f4dfc074546a962aa9006f8aef6593d8a66f1f",
     "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
-    "f1f79971c41b58237dbb786f85158d3dfa07a5c1ed73cc017c26fefa500f4c17",
     "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
-    "f96d116a74b98cbdc8d7a88c588856a523ec856cd19d3ac525a871c9eb083212",
-    "f9d6f7e4e74a4ceab62c01896fb228b2bca852bacb8a15ffe80422d6787d6cdc",
     "fafcb129a3f63b24b2c984ef753dd8c9b1e0ebb0d35305bddaee26df52024b81",
     "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
-    "fd41a55beb17fb4b8c7455fce4da254968a677aa6f169aa4c8ae753b9b5c5a27",
     "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5"
   ],
   "revoked": [],

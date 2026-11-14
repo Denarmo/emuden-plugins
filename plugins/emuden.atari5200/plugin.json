@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari5200",
   "name": "Atari 5200",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -50,18 +50,6 @@
       },
       "cores": [
         "a5200"
-      ],
-      "bios": [
-        {
-          "label": "Atari 5200 BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "5200.rom",
-              "optional": false
-            }
-          ]
-        }
       ]
     }
   ],

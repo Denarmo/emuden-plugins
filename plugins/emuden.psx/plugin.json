@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -117,29 +117,7 @@
         "rcheevos_console": 12
       },
       "cores": [
-        "pcsx_rearmed",
-        "mednafen_psx",
-        "swanstation"
-      ],
-      "bios": [
-        {
-          "label": "PlayStation BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "scph5500.bin",
-              "optional": true
-            },
-            {
-              "path": "scph5501.bin",
-              "optional": true
-            },
-            {
-              "path": "scph5502.bin",
-              "optional": true
-            }
-          ]
-        }
+        "pcsx_rearmed"
       ]
     }
   ],
@@ -172,79 +150,6 @@
           "size": 532374,
           "archive": "zip",
           "entry": "pcsx_rearmed_libretro_android.so"
-        }
-      }
-    },
-    {
-      "id": "mednafen_psx",
-      "type": "libretro-core",
-      "name": "Beetle PSX",
-      "license": "GPL-2.0-only",
-      "gpu": "none",
-      "version": "2026-11-12",
-      "widescreen": {
-        "options": {
-          "beetle_psx_widescreen_hack": "enabled"
-        }
-      },
-      "downloads": {
-        "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_psx-windows-x86_64-2026-11-14.zip",
-          "sha256": "24db6634c3077bd18c14e533483bad7bd0e998b1848b4bba54667c0bd6966427",
-          "size": 1782056,
-          "archive": "zip",
-          "entry": "mednafen_psx_libretro.dll"
-        },
-        "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_psx-linux-x86_64-2026-11-12.zip",
-          "sha256": "5aff3e3ec0d154c1fce9bfc37ac3a3e131c9875c3817b0e90c1fd1d01c9e9003",
-          "size": 1779230,
-          "archive": "zip",
-          "entry": "mednafen_psx_libretro.so"
-        },
-        "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/mednafen_psx-android-arm64-2026-11-12.zip",
-          "sha256": "8e7d41d5cc24fdb1a9634a6a1b2a9138bcd67e2694cc7447943c7500366214bb",
-          "size": 1197222,
-          "archive": "zip",
-          "entry": "mednafen_psx_libretro_android.so"
-        }
-      }
-    },
-    {
-      "id": "swanstation",
-      "type": "libretro-core",
-      "name": "SwanStation",
-      "license": "GPL-3.0-only",
-      "gpu": "none",
-      "version": "2026-11-12",
-      "widescreen": {
-        "options": {
-          "swanstation_GPU_WidescreenHack": "true",
-          "swanstation_Display_AspectRatio": "16:9"
-        }
-      },
-      "downloads": {
-        "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/swanstation-windows-x86_64-2026-11-14.zip",
-          "sha256": "11f883b499a6d07c612255ddd8cd5c726469702b599f3ac9bb0a9720d73223ee",
-          "size": 3113711,
-          "archive": "zip",
-          "entry": "swanstation_libretro.dll"
-        },
-        "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/swanstation-linux-x86_64-2026-11-12.zip",
-          "sha256": "886dd5d95a92115a420c63d633face03f88b13f4a6d0e684152840f83cf842a5",
-          "size": 1563961,
-          "archive": "zip",
-          "entry": "swanstation_libretro.so"
-        },
-        "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/swanstation-android-arm64-2026-11-12.zip",
-          "sha256": "e9fdeb0e5186f5fbdd7fde9dab22fb91e69ceaf130ce3162205c6603d41eb28b",
-          "size": 1740582,
-          "archive": "zip",
-          "entry": "swanstation_libretro_android.so"
         }
       }
     }

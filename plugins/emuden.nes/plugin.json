@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nes",
   "name": "Nintendo Entertainment System",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -24,7 +24,6 @@
       "content": {
         "extensions": [
           "nes",
-          "fds",
           "unf",
           "unif"
         ],
@@ -75,18 +74,6 @@
         "fceumm",
         "nestopia",
         "mesen"
-      ],
-      "bios": [
-        {
-          "label": "Famicom Disk System BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "disksys.rom",
-              "optional": true
-            }
-          ]
-        }
       ]
     }
   ],

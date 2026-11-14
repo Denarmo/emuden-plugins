@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -78,18 +78,6 @@
       "cores": [
         "mgba",
         "vba_next"
-      ],
-      "bios": [
-        {
-          "label": "Game Boy Advance BIOS",
-          "any_one": false,
-          "files": [
-            {
-              "path": "gba_bios.bin",
-              "optional": true
-            }
-          ]
-        }
       ]
     }
   ],
