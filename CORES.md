@@ -5,8 +5,8 @@ The emulator cores this source installs are unmodified nightly builds from the l
 checksum. `cores.lock.json` records where each file came from, when, and its checksum.
 
 Only cores that need no console BIOS are offered: each either needs none or carries its own
-replacement (mGBA, melonDS, PokeMini, PCSX ReARMed, Yabause, Flycast, a5200, Play!). Consoles whose every core
-needs a BIOS (Sega CD, PC Engine CD, PC-FX, Neo Geo, 3DO, ColecoVision, Intellivision, MSX) are not offered until
+replacement (mGBA, melonDS, PokeMini, PCSX ReARMed, Yabause, Flycast, a5200, Play!, and blueMSX with the free C-BIOS). Consoles whose every core
+needs a BIOS (Sega CD, PC Engine CD, PC-FX, Neo Geo, 3DO, ColecoVision, Intellivision) are not offered until
 there is one. Files of cores no longer offered stay in the releases.
 
 Each core is the work of its own authors and is distributed under its own licence. Source code for every core
@@ -16,6 +16,7 @@ https://docs.libretro.com/.
 | Core | Licence | Builds |
 |---|---|---|
 | a5200 | GPL-2.0-only | Windows, Linux, Android |
+| bluemsx | GPL-2.0-only | Windows, Linux, Android |
 | bsnes | GPL-3.0-only | Windows, Linux, Android |
 | desmume | GPL-2.0-only | Windows, Linux, Android |
 | dolphin | GPL-2.0-or-later | Windows, Linux, Android |
@@ -73,3 +74,7 @@ https://docs.libretro.com/.
 https://github.com/hrydgard/ppsspp at the tag `v1.20.4`, zipped under `PPSSPP/`. EmuDEN unpacks it into the
 BIOS folder when the PPSSPP core is installed; the core reads its fonts and `ppge_atlas.zim` from there.
 PPSSPP and its assets are GPL-2.0-or-later.
+
+blueMSX runs MSX cartridges on C-BIOS 0.23 (BSD-2-Clause, https://cbios.sourceforge.net/). Its system files
+(release cores-msx-2026-11-14) hold the blueMSX Databases folder and only the three C-BIOS machines from
+libretro/blueMSX-libretro e3086eb; no proprietary MSX BIOS is included. Disk and tape games need a real BIOS and are not offered.

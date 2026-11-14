@@ -1276,5 +1276,32 @@
     "fetched": "2026-11-14",
     "sha256": "9824f521aaaf8e8bd91c685c021881401f5664f7525dfc2a5ed7ffa8c5708409",
     "size": 1642769
+  },
+  "bluemsx:windows-x86_64": {
+    "core": "bluemsx",
+    "platform": "windows-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bluemsx_libretro.dll.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "e711f9f071c4553de61d0cc3669b26c25ba6508dde097e2089c21ecabda83e14",
+    "size": 797253
+  },
+  "bluemsx:linux-x86_64": {
+    "core": "bluemsx",
+    "platform": "linux-x86_64",
+    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/bluemsx_libretro.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "e5aac8cf7b7bd3ed06cf3bbfaf16ebd713f2008b25ee3f5e147fd9ee8c27ae8e",
+    "size": 731663
+  },
+  "bluemsx:android-arm64": {
+    "core": "bluemsx",
+    "platform": "android-arm64",
+    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/bluemsx_libretro_android.so.zip",
+    "license": "GPL-2.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "9294d6361f9d8680c16cdcd8c00a8056369845327b39b7da0d7b26481715279a",
+    "size": 739816
   }
 }

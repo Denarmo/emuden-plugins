@@ -1,0 +1,146 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.msx",
+  "name": "MSX",
+  "version": "1.1.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "MSX, MSX2 and MSX2+ cartridge games with blueMSX and the free C-BIOS.",
+  "api": 1,
+  "needs": [
+    "engine.libretro"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "msx",
+      "name": "MSX",
+      "short_name": "MSX",
+      "group": "other",
+      "order": 2950,
+      "content": {
+        "extensions": [
+          "mx1",
+          "mx2",
+          "rom"
+        ],
+        "folder_only_extensions": [
+          "rom"
+        ],
+        "folder_aliases": [
+          "msx1",
+          "msx2",
+          "microsoft msx"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": true
+      },
+      "artwork": {
+        "libretro_thumbnails": "Microsoft - MSX",
+        "rdb": "Microsoft - MSX"
+      },
+      "achievements": {
+        "rcheevos_console": 29
+      },
+      "cores": [
+        "bluemsx"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "bluemsx",
+      "type": "libretro-core",
+      "name": "blueMSX",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-14",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-msx-2026-11-14/bluemsx-windows-x86_64-2026-11-14.zip",
+          "sha256": "e711f9f071c4553de61d0cc3669b26c25ba6508dde097e2089c21ecabda83e14",
+          "size": 797253,
+          "archive": "zip",
+          "entry": "bluemsx_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-msx-2026-11-14/bluemsx-linux-x86_64-2026-11-14.zip",
+          "sha256": "e5aac8cf7b7bd3ed06cf3bbfaf16ebd713f2008b25ee3f5e147fd9ee8c27ae8e",
+          "size": 731663,
+          "archive": "zip",
+          "entry": "bluemsx_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-msx-2026-11-14/bluemsx-android-arm64-2026-11-14.zip",
+          "sha256": "9294d6361f9d8680c16cdcd8c00a8056369845327b39b7da0d7b26481715279a",
+          "size": 739816,
+          "archive": "zip",
+          "entry": "bluemsx_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "bluemsx-machines",
+      "type": "system-files",
+      "name": "C-BIOS machines",
+      "license": "BSD-2-Clause",
+      "homepage": "https://cbios.sourceforge.net/",
+      "version": "2026-08-23",
+      "cores": [
+        "bluemsx"
+      ],
+      "downloads": {
+        "any": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-msx-2026-11-14/bluemsx-machines-2026-08-23.zip",
+          "sha256": "bf2075fa46a526e889999acc438ac85123ab62731d4aaeb787b0446d2fcfbd0d",
+          "size": 45233,
+          "archive": "zip",
+          "entry": "Machines/"
+        }
+      }
+    },
+    {
+      "id": "bluemsx-databases",
+      "type": "system-files",
+      "name": "blueMSX databases",
+      "license": "GPL-2.0-only",
+      "homepage": "https://github.com/libretro/blueMSX-libretro",
+      "version": "2026-08-23",
+      "cores": [
+        "bluemsx"
+      ],
+      "downloads": {
+        "any": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-msx-2026-11-14/bluemsx-databases-2026-08-23.zip",
+          "sha256": "04009a0e6d8b0513cbda69d44f3a50ca7fb339ab5b961511bd27d1cbbcbf72ca",
+          "size": 369861,
+          "archive": "zip",
+          "entry": "Databases/"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": true,
+    "fast_forward": true,
+    "run_ahead": true,
+    "cheats": true,
+    "netplay": true,
+    "achievements": true
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": true
+  }
+}
