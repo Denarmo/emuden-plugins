@@ -1303,5 +1303,32 @@
     "fetched": "2026-11-14",
     "sha256": "9294d6361f9d8680c16cdcd8c00a8056369845327b39b7da0d7b26481715279a",
     "size": 739816
+  },
+  "gbads:windows-x86_64": {
+    "core": "gbads",
+    "platform": "windows-x86_64",
+    "upstream": "https://github.com/Denarmo/gba-ds/tree/9a7dce1",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "7510a867a7faa4fb2a333fc030bde89cf528381b85874284edecc4bd96f45bd4",
+    "size": 617691
+  },
+  "gbads:linux-x86_64": {
+    "core": "gbads",
+    "platform": "linux-x86_64",
+    "upstream": "https://github.com/Denarmo/gba-ds/tree/9a7dce1",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "2ed7c0f040fba91199318d39555785c651764607884591c5b299f4323d7ca41b",
+    "size": 640220
+  },
+  "gbads:android-arm64": {
+    "core": "gbads",
+    "platform": "android-arm64",
+    "upstream": "https://github.com/Denarmo/gba-ds/tree/9a7dce1",
+    "license": "GPL-3.0-only",
+    "fetched": "2026-11-14",
+    "sha256": "8c40f0e1e1e024968e449e8597587e73f8336d4f222027e61d142aa4ce3762c1",
+    "size": 698792
   }
 }

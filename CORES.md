@@ -23,6 +23,7 @@ https://docs.libretro.com/.
 | fbneo | LicenseRef-FBNeo-NonCommercial | Windows, Linux, Android |
 | fceumm | GPL-2.0-only | Windows, Linux, Android |
 | flycast | GPL-2.0-only | Windows, Linux, Android |
+| gbads | GPL-3.0-only | Windows, Linux, Android |
 | gambatte | GPL-2.0-only | Windows, Linux, Android |
 | genesis_plus_gx | LicenseRef-Genesis-Plus-GX | Windows, Linux, Android |
 | handy | Zlib | Windows, Linux, Android |
@@ -78,3 +79,7 @@ PPSSPP and its assets are GPL-2.0-or-later.
 blueMSX runs MSX cartridges on C-BIOS 0.23 (BSD-2-Clause, https://cbios.sourceforge.net/). Its system files
 (release cores-msx-2026-11-14) hold the blueMSX Databases folder and only the three C-BIOS machines from
 libretro/blueMSX-libretro e3086eb; no proprietary MSX BIOS is included. Disk and tape games need a real BIOS and are not offered.
+
+GBA DS (`gbads`) is built from Denarmo/gba-ds (a fork of kyannon/gba-ds, GPL-3.0, on libmgba, MPL-2.0), not
+from the buildbot. It is the GBA core EmuDEN picks for the games it has a second-screen profile for (the `games`
+list in the GBA plugin, by ROM header code); every other GBA game keeps mGBA.

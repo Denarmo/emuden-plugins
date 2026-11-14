@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 16,
-  "generated": "2026-11-14T11:58:29Z",
-  "expires": "2027-03-14T11:58:29Z",
+  "sequence": 17,
+  "generated": "2026-11-14T13:08:44Z",
+  "expires": "2027-03-14T13:08:44Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -357,7 +357,7 @@
     {
       "id": "emuden.gba",
       "name": "Game Boy Advance",
-      "version": "1.0.3",
+      "version": "1.1.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -383,14 +383,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gba-1.0.3.emuplugin",
-        "sha256": "4137b5c459211a8c509c3c04be1605b62577e950693466e1280d20c6f1f600c5",
-        "size": 1380
+        "url": "packages/emuden.gba-1.1.0.emuplugin",
+        "sha256": "744e95209dae639f22c06ac93029ba587622a9aefe509b0f9c58c7587897f37c",
+        "size": 2122
       },
       "download_size": {
-        "windows-x86_64": 836163,
-        "linux-x86_64": 770878,
-        "android-arm64": 570141
+        "windows-x86_64": 1453854,
+        "linux-x86_64": 1411098,
+        "android-arm64": 1268933
       },
       "download_hosts": [
         "github.com"
@@ -1831,6 +1831,7 @@
     "27b9538c5a2fed29a204cc20ff3af7118fbc5cd2d1ae9a23d8481613939f2a1d",
     "289c769c92ae4e26884cb430e43e92926a18e54301949aee8bc98dc97dd9ddc8",
     "2d0df9d29d8f7302b9e9cca9ab49715df38cd8ef8149f396d6915f55acb736d9",
+    "2ed7c0f040fba91199318d39555785c651764607884591c5b299f4323d7ca41b",
     "32c0d3a19ce2f2cac5b10eb8a71b6e36d9ab243a68b3ebf288443862614bbc8a",
     "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
     "39f5a4aaa563c14fdb305fc458cdbab50bb7fd1f0df0ed64817c0b8a19a3da79",
@@ -1857,6 +1858,7 @@
     "6af96421ebc98b70643ea88ddb20ca526323853c21135f05f9e21be89cc6a725",
     "6ebb1c0544799c09f76b7db667dbc1a0cdc8a23118c04f5d5742b6a04ad89e60",
     "6ed17b551c2664cb7ade8f5d5998c0407dd0bc5b76cb51904423ec35a5700974",
+    "7510a867a7faa4fb2a333fc030bde89cf528381b85874284edecc4bd96f45bd4",
     "7817778b931434445e12398e4175cb3e91788b6b8a3998a89f7bf66887cadad2",
     "783ab9147b332f2e2252375575f386b748850f13a7dbfe47e3571e0043b1b9f9",
     "7a51f0c2f983ae08f653242ea187278a647c1078fa3f97dba6310afe6bd48f84",
@@ -1869,6 +1871,7 @@
     "8907ba28610703e9276703a9323ffc26fdde02ef33a287f512e5907bdb54daa0",
     "894ba10ad6a98bd43846ee3330b08bce6f34e8d4b78453943d35d256f47aa03f",
     "89821a79f422fcc87062511db141228ba91e18f4bc06bb8ccb40490f8386b370",
+    "8c40f0e1e1e024968e449e8597587e73f8336d4f222027e61d142aa4ce3762c1",
     "8d93599820d6d483256dc9aa93c8841e4f3180c323c5100a583d9f0f96fd4dbe",
     "917d92b74b3d002854267320bfdff88c744f90197302fac5bf11a4300a3b64a2",
     "9207f7bb9c9462421e2d9cc8bf7e5a2269de39bce90f5784ddb1475bce625a50",
