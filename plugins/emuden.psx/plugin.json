@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -182,6 +182,11 @@
       "license": "GPL-2.0-only",
       "gpu": "none",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "beetle_psx_widescreen_hack": "enabled"
+        }
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/mednafen_psx-windows-x86_64-2026-11-14.zip",
@@ -213,6 +218,12 @@
       "license": "GPL-3.0-only",
       "gpu": "none",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "swanstation_GPU_WidescreenHack": "true",
+          "swanstation_Display_AspectRatio": "16:9"
+        }
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/swanstation-windows-x86_64-2026-11-14.zip",

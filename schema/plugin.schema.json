@@ -233,6 +233,15 @@
         "homepage": { "type": "string" },
         "gpu": { "enum": ["none", "opengl"] },
         "forced_core_options": { "type": "object", "additionalProperties": { "type": "string" } },
+        "widescreen": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["options"],
+          "properties": {
+            "options": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string" } },
+            "restart": { "type": "boolean" }
+          }
+        },
         "delivery": { "type": "object", "additionalProperties": { "enum": ["builtin", "bundled-library", "download"] } },
         "downloads": { "type": "object", "additionalProperties": { "$ref": "#/$defs/download" } },
         "launch": { "$ref": "#/$defs/launch" }

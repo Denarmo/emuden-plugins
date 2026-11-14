@@ -72,3 +72,12 @@ https://docs.libretro.com/.
 https://github.com/hrydgard/ppsspp at the tag `v1.20.4`, zipped under `PPSSPP/`. EmuDEN unpacks it into the
 BIOS folder when the PPSSPP core is installed; the core reads its fonts and `ppge_atlas.zim` from there.
 PPSSPP and its assets are GPL-2.0-or-later.
+
+## PS2 widescreen patches
+
+`pcsx2-widescreen-2026-11-09.zip` (release `cores-2026-11-14`) holds `pcsx2/cheats/<CRC>-widescreen.pnach`, made
+from `patches.zip` of https://github.com/PCSX2/pcsx2_patches (release `latest`, 2026-11-09): for each game the
+lines of its `[Widescreen 16:9]` section, in the older format the PCSX2 libretro core reads (4,100 games). The
+core loads them as cheats, so EmuDEN's Widescreen switch turns on the core's cheats and its widescreen option
+together. The patches are their authors' work (each file names them) and are distributed as PCSX2 distributes
+them; that repository carries no licence file.

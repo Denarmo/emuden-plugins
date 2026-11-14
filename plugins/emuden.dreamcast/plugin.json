@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.dreamcast",
   "name": "Sega Dreamcast",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -79,6 +79,13 @@
       "license": "GPL-2.0-only",
       "gpu": "opengl",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "reicast_widescreen_hack": "enabled",
+          "reicast_widescreen_cheats": "enabled"
+        },
+        "restart": true
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/flycast-windows-x86_64-2026-11-12.zip",

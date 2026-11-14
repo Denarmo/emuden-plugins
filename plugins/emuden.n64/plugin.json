@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.n64",
   "name": "Nintendo 64",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -89,6 +89,12 @@
       "license": "GPL-2.0-only",
       "gpu": "opengl",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "mupen64plus-aspect": "16:9 adjusted"
+        },
+        "restart": true
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/mupen64plus_next-windows-x86_64-2026-11-12.zip",
@@ -120,6 +126,12 @@
       "license": "GPL-2.0-only",
       "gpu": "opengl",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "parallel-n64-aspectratiohint": "widescreen"
+        },
+        "restart": true
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/parallel_n64-windows-x86_64-2026-11-14.zip",

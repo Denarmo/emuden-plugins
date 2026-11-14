@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 11,
-  "generated": "2026-11-14T00:54:51Z",
-  "expires": "2027-03-14T00:54:51Z",
+  "sequence": 12,
+  "generated": "2026-11-14T10:09:34Z",
+  "expires": "2027-03-14T10:09:34Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -316,7 +316,7 @@
     {
       "id": "emuden.dreamcast",
       "name": "Sega Dreamcast",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -342,9 +342,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.dreamcast-1.0.1.emuplugin",
-        "sha256": "8d2cb1a968333937e54ba8024d65bda45a520dc259a75bca47ef7e06d7cefc4d",
-        "size": 1140
+        "url": "packages/emuden.dreamcast-1.0.2.emuplugin",
+        "sha256": "915af6e5498ec03ac8a4d74d72d19f1b9c12b56eaaebd7a41857926eab0a1a3e",
+        "size": 1190
       },
       "download_size": {
         "windows-x86_64": 6479426,
@@ -358,7 +358,7 @@
     {
       "id": "emuden.gamecube",
       "name": "Nintendo GameCube",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -385,9 +385,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gamecube-1.0.1.emuplugin",
-        "sha256": "b1d5a8199c8f5ae591d103974b021156c65fe0b4e4ee1879c95bd6839f43b2b2",
-        "size": 1138
+        "url": "packages/emuden.gamecube-1.0.2.emuplugin",
+        "sha256": "bd9925a4122266c1edcc9c6b2bab84bbbba5d34a5f28ef98c57a7c583a576eed",
+        "size": 1175
       },
       "download_size": {
         "windows-x86_64": 7593543,
@@ -786,7 +786,7 @@
     {
       "id": "emuden.n64",
       "name": "Nintendo 64",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -812,9 +812,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.n64-1.0.2.emuplugin",
-        "sha256": "3c2d9a969007f27e8c718b09eaf8e67769e20680e9a432477f833fd79c49bf7f",
-        "size": 1379
+        "url": "packages/emuden.n64-1.0.3.emuplugin",
+        "sha256": "c1d7288ce56ffc68cf2dbea35e2469c6548f29d03f4d01e9a5fd5776070c1fb5",
+        "size": 1441
       },
       "download_size": {
         "windows-x86_64": 7002217,
@@ -1274,7 +1274,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1300,14 +1300,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.0.1.emuplugin",
-        "sha256": "d570ef4f8fd3cb07bf8f9fa0cc196034f4e88b162ba017887f68597d104d3e58",
-        "size": 1126
+        "url": "packages/emuden.ps2-1.0.2.emuplugin",
+        "sha256": "7426c3bf125f068a654d436d8af4ca22fa8877248699d9b0956b3c8c6a9efbb0",
+        "size": 1333
       },
       "download_size": {
-        "windows-x86_64": 3218587,
-        "linux-x86_64": 3490833,
-        "android-arm64": 2832106
+        "windows-x86_64": 4892361,
+        "linux-x86_64": 5164607,
+        "android-arm64": 4505880
       },
       "download_hosts": [
         "github.com"
@@ -1358,7 +1358,7 @@
     {
       "id": "emuden.psx",
       "name": "PlayStation",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1388,9 +1388,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.psx-1.0.2.emuplugin",
-        "sha256": "70987a65d15d9ed3a5c17292ee6212013ca7e7d1c4c1505eb747ab8915d7af02",
-        "size": 1810
+        "url": "packages/emuden.psx-1.0.3.emuplugin",
+        "sha256": "66e678df7b09ac98776f793500d5aad820e8c770eb242a4b7fb1cca030dbe984",
+        "size": 1897
       },
       "download_size": {
         "windows-x86_64": 5742841,
@@ -2138,6 +2138,7 @@
     "11f883b499a6d07c612255ddd8cd5c726469702b599f3ac9bb0a9720d73223ee",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
+    "1674832f5ec2cc04c09b62c631009687300d3bc47616c21bfe8f04b76daacde5",
     "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
     "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
     "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gamecube",
   "name": "Nintendo GameCube",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -75,6 +75,12 @@
       "license": "GPL-2.0-or-later",
       "gpu": "opengl",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "dolphin_widescreen_hack": "enabled"
+        },
+        "restart": true
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/dolphin-windows-x86_64-2026-11-12.zip",

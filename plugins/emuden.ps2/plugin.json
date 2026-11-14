@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -73,6 +73,13 @@
       "license": "GPL-3.0-or-later",
       "gpu": "opengl",
       "version": "2026-11-12",
+      "widescreen": {
+        "options": {
+          "pcsx2_widescreen_hint": "enabled (16:9)",
+          "pcsx2_enable_cheats": "enabled"
+        },
+        "restart": true
+      },
       "downloads": {
         "windows-x86_64": {
           "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/pcsx2-windows-x86_64-2026-11-12.zip",
@@ -94,6 +101,26 @@
           "size": 2832106,
           "archive": "zip",
           "entry": "pcsx2_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "pcsx2-widescreen",
+      "type": "system-files",
+      "name": "PS2 widescreen patches",
+      "license": "LicenseRef-PCSX2-Patches",
+      "homepage": "https://github.com/PCSX2/pcsx2_patches",
+      "version": "2026-11-09",
+      "cores": [
+        "pcsx2"
+      ],
+      "downloads": {
+        "any": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-14/pcsx2-widescreen-2026-11-09.zip",
+          "sha256": "1674832f5ec2cc04c09b62c631009687300d3bc47616c21bfe8f04b76daacde5",
+          "size": 1673774,
+          "archive": "zip",
+          "entry": "pcsx2/cheats/"
         }
       }
     }
