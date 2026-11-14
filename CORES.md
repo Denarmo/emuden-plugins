@@ -61,9 +61,10 @@ https://docs.libretro.com/.
   MSX and arcade consoles, and the Windows builds of the alternative cores, are in `cores-2026-11-14`.
 - `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   the one core not taken from the buildbot: it is built from the fork https://github.com/Denarmo/Play- (tag
-  `emuden-0.77-22-g1d08c995`), which makes the libretro core run on Android, makes its save states load and
-  reports 50 Hz for PAL games. Its builds are in the release `cores-play-2026-11-14`, with the unstripped
-  Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
+  `emuden-0.77-25-gcc25732d`), which makes the libretro core run on Android, makes its save states load,
+  reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
+  makes its OpenGL renderer several times faster on Android. Its builds are in the release
+  `cores-play-2026-11-14`, with the unstripped Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
 - On Android `mupen64plus_next` is the buildbot's `mupen64plus_next_gles3` build.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
 - `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored
