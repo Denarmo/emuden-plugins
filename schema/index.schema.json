@@ -68,6 +68,14 @@
         }
       }
     },
+    "revoked_keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fingerprint"],
+        "properties": { "fingerprint": { "type": "string", "pattern": "^[0-9a-f]{16}$" }, "reason": { "type": "string" } }
+      }
+    },
     "blocked_sha256": {
       "type": "array",
       "items": {

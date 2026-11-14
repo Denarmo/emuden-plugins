@@ -53,10 +53,17 @@ fingerprint, the first 16 hex digits of the SHA-256 of the public key, for examp
 `owner/repo#3fa912c477e0b5d1`, which only adds the source when the key matches. In EmuDEN your
 source is called by its address (`owner/repo`), not by the name your list gives itself.
 
+A source can also be an https address serving the same layout at its base (`index.json`,
+`index.json.sig`, `keys/source.pub`). Its namespace is then its host name.
+
 ## The namespace rule
 
 A source publishes plugins whose id starts with its owner's GitHub name in lower case:
 `jdoe/consoles` publishes `jdoe.*`. `emuden.*` belongs to EmuDEN.
+
+An added source may not use the `switch2` or `pcstore` engines. A console that an official plugin
+already offers stays the official one. When two sources publish the same id, the source the player
+added first is used.
 
 ## Taking a plugin back
 
@@ -73,3 +80,6 @@ download by its checksum.
 
 Players pinned your key when they added the source. A list signed with another key is refused, so
 a new key means asking them to remove and add the source again.
+
+If a source's key leaks, EmuDEN can withdraw it through `revoked_keys` (fingerprints) in its own
+index: nothing signed with that key loads any more, and it cannot be added again.

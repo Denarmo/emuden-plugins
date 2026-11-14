@@ -861,6 +861,7 @@ def build_index(repo, args):
     }) if trust in ("bundled", "official") else []
     index["revoked"] = previous.get("revoked", [])
     index["blocked_sha256"] = previous.get("blocked_sha256", [])
+    index["revoked_keys"] = previous.get("revoked_keys", [])
     schema = load_schema(repo, "index.schema.json")
     problems = []
     check_schema(index, schema, schema, "", problems)
