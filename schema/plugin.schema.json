@@ -226,7 +226,7 @@
       "required": ["id", "type", "name"],
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]{0,63}$" },
-        "type": { "enum": ["libretro-core", "external-emulator", "engine", "tool", "system-files"] },
+        "type": { "enum": ["libretro-core", "external-emulator", "engine", "tool", "system-files", "engine-app"] },
         "cores": { "type": "array", "items": { "type": "string" } },
         "name": { "type": "string", "minLength": 1 },
         "version": { "type": "string" },
@@ -241,6 +241,28 @@
           "properties": {
             "options": { "type": "object", "minProperties": 1, "additionalProperties": { "type": "string" } },
             "restart": { "type": "boolean" }
+          }
+        },
+        "ecp": {
+          "type": "object",
+          "required": ["id", "level"],
+          "properties": {
+            "id": { "type": "string", "minLength": 1, "maxLength": 255 },
+            "level": { "type": "integer", "minimum": 0, "maximum": 2 },
+            "capabilities": { "type": "array", "items": { "type": "string" } },
+            "needs": { "type": "array", "items": { "enum": ["bios", "keys", "firmware"] } }
+          }
+        },
+        "executable": { "type": "object", "additionalProperties": { "$ref": "#/$defs/relative_path" } },
+        "android": {
+          "type": "object",
+          "required": ["package", "cert_sha256"],
+          "properties": {
+            "package": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*(\.[A-Za-z][A-Za-z0-9_]*)+$" },
+            "cert_sha256": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}:?){31}[0-9A-Fa-f]{2}$" },
+            "min_version_code": { "type": "integer", "minimum": 0 },
+            "apk": { "$ref": "#/$defs/download" },
+            "store": { "type": "string", "pattern": "^(https|market)://" }
           }
         },
         "games": {
