@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 27,
-  "generated": "2026-11-14T18:37:04Z",
-  "expires": "2027-03-14T18:37:04Z",
+  "sequence": 28,
+  "generated": "2026-11-14T18:38:54Z",
+  "expires": "2027-03-14T18:38:54Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1623,6 +1623,42 @@
       "download_hosts": [
         "github.com"
       ]
+    },
+    {
+      "id": "emuden.steam",
+      "name": "Steam (DroidDeck)",
+      "version": "1.0.0",
+      "kind": "console",
+      "engine": "libretro",
+      "publisher": "EmuDEN",
+      "summary": "Your Steam games on Android, started in DroidDeck. Turn on DroidDeck's game files sync and add its folder to EmuDEN.",
+      "group": "pc",
+      "systems": [
+        {
+          "id": "steam",
+          "name": "Steam",
+          "folder_aliases": [
+            "droiddeck"
+          ]
+        }
+      ],
+      "api": 1,
+      "needs": [
+        "engine.libretro"
+      ],
+      "platforms": [
+        "android-arm64"
+      ],
+      "code": "cores",
+      "package": {
+        "url": "packages/emuden.steam-1.0.0.emuplugin",
+        "sha256": "73c4401c93ed0dc5b37b9f94f880c709f53a5bfeb8510a922fb03ea1f8c38337",
+        "size": 989
+      },
+      "download_size": {
+        "android-arm64": 0
+      },
+      "download_hosts": []
     },
     {
       "id": "emuden.switch2",

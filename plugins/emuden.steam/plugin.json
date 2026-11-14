@@ -1,0 +1,74 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.steam",
+  "name": "Steam (DroidDeck)",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Your Steam games on Android, started in DroidDeck. Turn on DroidDeck's game files sync and add its folder to EmuDEN.",
+  "api": 1,
+  "needs": ["engine.libretro"],
+  "platforms": ["android-arm64"],
+  "systems": [
+    {
+      "id": "steam",
+      "name": "Steam",
+      "group": "pc",
+      "order": 9000,
+      "platforms": ["android-arm64"],
+      "content": {
+        "extensions": ["steam"],
+        "folder_aliases": ["droiddeck"],
+        "zip": "no"
+      },
+      "presentation": {
+        "cover_aspect": 0.667,
+        "handheld": false,
+        "right_stick_holds": false
+      },
+      "artwork": {
+        "cover_by_id": [
+          "https://shared.steamstatic.com/store_item_assets/steam/apps/{id}/library_600x900.jpg",
+          "https://shared.steamstatic.com/store_item_assets/steam/apps/{id}/header.jpg"
+        ]
+      },
+      "cores": ["droiddeck"]
+    }
+  ],
+  "components": [
+    {
+      "id": "droiddeck",
+      "type": "engine-app",
+      "name": "DroidDeck",
+      "license": "GPL-3.0-only",
+      "homepage": "https://github.com/Droid-Deck/DroidDeck",
+      "version": "0.7.1",
+      "ecp": {
+        "id": "com.droiddeck.launcher",
+        "level": 0
+      },
+      "android": {
+        "package": "com.droiddeck.launcher",
+        "cert_sha256": "b241ea7d77822d39b89d3227e06f3ecf62adec6cbfd38ad06196787991b5d3f0",
+        "min_version_code": 19,
+        "apk": {
+          "url": "https://github.com/Droid-Deck/DroidDeck/releases/download/0.7.1/DroidDeck-0.7.1.apk",
+          "sha256": "179ab8b4dc8f9223b70a1e4287c55a090b36ee376242186a60211100158462f1",
+          "size": 96604504,
+          "archive": "none"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": false,
+    "rewind": false,
+    "fast_forward": false,
+    "run_ahead": false,
+    "cheats": false,
+    "netplay": false,
+    "achievements": false
+  }
+}

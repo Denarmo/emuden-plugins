@@ -92,3 +92,8 @@ PSX2 ECP (`psx2-ecp`) is an optional PS2 core on Android only: a standalone app,
 izzy2lost/PSX2, GPL-3.0, from PCSX2), driven over the Emulator Control Protocol. It is the one core here that needs
 the player's own BIOS (imported in the PSX2 ECP app); Play! stays the PS2 default and needs none. It is the worked
 example for emulator developers (https://github.com/Denarmo/emulator-control-protocol).
+
+DroidDeck (`droiddeck`, plugin `emuden.steam`) runs Steam games on Android: the unmodified app from
+Droid-Deck/DroidDeck (GPL-3.0), pinned by its signing certificate and APK hash. It speaks no ECP, so it is driven at
+level 0: EmuDEN hands it a game's `.steam` file (the Steam app id DroidDeck's game files sync writes) and the session
+ends when EmuDEN is back in front. Covers come from Steam's public image server by that app id.
