@@ -42,6 +42,7 @@ https://docs.libretro.com/.
 | opera | LicenseRef-Opera-NonCommercial | Windows, Linux, Android |
 | parallel_n64 | GPL-2.0-only | Windows, Linux, Android |
 | pcsx2 | GPL-3.0-or-later | Windows, Linux, Android |
+| play | BSD-2-Clause | Windows, Linux |
 | pcsx_rearmed | GPL-2.0-only | Windows, Linux, Android |
 | picodrive | LicenseRef-PicoDrive | Windows, Linux, Android |
 | pokemini | GPL-3.0-only | Windows, Linux, Android |
@@ -61,6 +62,9 @@ https://docs.libretro.com/.
   the Linux builds of the alternative cores are in `cores-android-2026-11-13`. The cores added for the Atari,
   NEC, SNK, Bandai, Sega CD/32X/SG-1000, Virtual Boy, Pokémon mini, 3DO, ColecoVision, Intellivision, Vectrex,
   MSX and arcade consoles, and the Windows builds of the alternative cores, are in `cores-2026-11-14`.
+- `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. Its
+  Android build crashes in its I/O processor recompiler (also reported upstream, jpd002/Play- issues 1278 and 1467),
+  so it has no Android download; the mirrored file stays in `cores-2026-11-14`.
 - On Android `mupen64plus_next` is the buildbot's `mupen64plus_next_gles3` build.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
 - `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored
