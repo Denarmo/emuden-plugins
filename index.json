@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 14,
-  "generated": "2026-11-14T10:55:39Z",
-  "expires": "2027-03-14T10:55:39Z",
+  "sequence": 15,
+  "generated": "2026-11-14T11:14:36Z",
+  "expires": "2027-03-14T11:14:36Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -964,11 +964,11 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
-      "summary": "PlayStation 2 games with PCSX2.",
+      "summary": "PlayStation 2 games with Play!, which needs no BIOS.",
       "group": "sony",
       "systems": [
         {
@@ -985,17 +985,19 @@
       ],
       "platforms": [
         "windows-x86_64",
-        "linux-x86_64"
+        "linux-x86_64",
+        "android-arm64"
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.0.4.emuplugin",
-        "sha256": "1d42fd0a242e2aca4b0f494cdc315097782a91bdfb8a18d57cb604fdafffaf78",
-        "size": 993
+        "url": "packages/emuden.ps2-1.0.5.emuplugin",
+        "sha256": "19728a6aec259da05ce8668e0251c0b2c9f0702741a93a9179010369dc335771",
+        "size": 1093
       },
       "download_size": {
-        "windows-x86_64": 950728,
-        "linux-x86_64": 2432947
+        "windows-x86_64": 1157768,
+        "linux-x86_64": 2483478,
+        "android-arm64": 1642769
       },
       "download_hosts": [
         "github.com"
@@ -1777,7 +1779,6 @@
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
     "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
     "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
-    "1e7fac8159320066c11fa778c14aea1576c865dd2bf9736c1accd1a44b09735f",
     "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
     "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
     "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
@@ -1813,6 +1814,7 @@
     "6ed17b551c2664cb7ade8f5d5998c0407dd0bc5b76cb51904423ec35a5700974",
     "7817778b931434445e12398e4175cb3e91788b6b8a3998a89f7bf66887cadad2",
     "783ab9147b332f2e2252375575f386b748850f13a7dbfe47e3571e0043b1b9f9",
+    "7a51f0c2f983ae08f653242ea187278a647c1078fa3f97dba6310afe6bd48f84",
     "7b3e779d05fcff3959c997488f7e50f956f05d0d591cfb9cc67b9e62fadec86e",
     "7c67ca1a4b3b06569b94e2ee6cca9de7fe541de34a0f9ab791dd358691b4564e",
     "80001b75315b34f3eb5cdf3b6f7d99f300f47bc7c7a9418305e6565633ad8e67",
@@ -1831,6 +1833,7 @@
     "95635a5f72e12ce19b25a43acedaf79d231c3e0814591204ec8ca27bb72423dd",
     "965426447171e6c72b59ba581ad30b3bddd6895871ebb47a1f1a97e779d3f34b",
     "970d55b90d11e3900b8ea2297ecbe1446b227fc23e358b83bc3f9a062e005e24",
+    "9824f521aaaf8e8bd91c685c021881401f5664f7525dfc2a5ed7ffa8c5708409",
     "985e60793f2650684d4f314c34ae73edd6fffba32a9b50cd51d2940cdc1ffbbc",
     "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",
     "99ce599a905d473325bfededd8f2e754d238d91f96884249f8f0071b2fea8fa0",
@@ -1851,6 +1854,7 @@
     "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
     "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
     "be695d2db1b8d1080490e8a55f4eb1871c48bd516b880ac99905e84d8b726b21",
+    "bf375e89172b339540f6e755528a9a11aa51d29e4cf0c125d9e7d1ee4c3035c9",
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
@@ -1874,7 +1878,6 @@
     "ef1d32c6f97e33649d8ffd65d2f4dfc074546a962aa9006f8aef6593d8a66f1f",
     "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
     "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
-    "fafcb129a3f63b24b2c984ef753dd8c9b1e0ebb0d35305bddaee26df52024b81",
     "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
     "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5"
   ],

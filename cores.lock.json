@@ -1253,28 +1253,28 @@
   "play:windows-x86_64": {
     "core": "play",
     "platform": "windows-x86_64",
-    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/play_libretro.dll.zip",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-22-g1d08c995",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-14",
-    "sha256": "fafcb129a3f63b24b2c984ef753dd8c9b1e0ebb0d35305bddaee26df52024b81",
-    "size": 950728
+    "sha256": "7a51f0c2f983ae08f653242ea187278a647c1078fa3f97dba6310afe6bd48f84",
+    "size": 1157768
   },
   "play:linux-x86_64": {
     "core": "play",
     "platform": "linux-x86_64",
-    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/play_libretro.so.zip",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-22-g1d08c995",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-14",
-    "sha256": "1e7fac8159320066c11fa778c14aea1576c865dd2bf9736c1accd1a44b09735f",
-    "size": 2432947
+    "sha256": "bf375e89172b339540f6e755528a9a11aa51d29e4cf0c125d9e7d1ee4c3035c9",
+    "size": 2483478
   },
   "play:android-arm64": {
     "core": "play",
     "platform": "android-arm64",
-    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/play_libretro_android.so.zip",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-22-g1d08c995",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-14",
-    "sha256": "36640d50b3475c48faff1dd9070cb5574bddd4fefb2ad362ceecbdacd62ca29d",
-    "size": 1750259
+    "sha256": "9824f521aaaf8e8bd91c685c021881401f5664f7525dfc2a5ed7ffa8c5708409",
+    "size": 1642769
   }
 }
