@@ -85,3 +85,8 @@ libretro/blueMSX-libretro e3086eb; no proprietary MSX BIOS is included. Disk and
 GBA DS (`gbads`) is built from Denarmo/gba-ds (a fork of kyannon/gba-ds, GPL-3.0, on libmgba, MPL-2.0), not
 from the buildbot. It is the GBA core EmuDEN picks for the games it has a second-screen profile for (the `games`
 list in the GBA plugin, by ROM header code); every other GBA game keeps mGBA.
+
+PSX2 ECP (`psx2-ecp`) is an optional PS2 core on Android only: a standalone app, Denarmo/PSX2 (a fork of
+izzy2lost/PSX2, GPL-3.0, from PCSX2), driven over the Emulator Control Protocol. It is the one core here that needs
+the player's own BIOS (imported in the PSX2 ECP app); Play! stays the PS2 default and needs none. It is the worked
+example for emulator developers (https://github.com/Denarmo/emulator-control-protocol).

@@ -330,7 +330,8 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
     if len(set(setting_keys)) != len(setting_keys):
         err("settings", "a setting key is used twice")
 
-    fitting = {"libretro-core": "libretro", "external-emulator": "external", "engine": "switch2"}
+    fitting = {"libretro-core": "libretro", "engine-app": "libretro", "external-emulator": "external",
+               "engine": "switch2"}
     for i, component in enumerate(manifest.get("components", [])):
         path = f"components[{i}]"
         kind_of = component["type"]
@@ -373,6 +374,21 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
             if kind_of == "system-files" and not (
                     download["archive"] == "zip" and download.get("entry", "").endswith("/")):
                 err(f"{where}.entry", "system files are a zip and a folder inside it, as \"Name/\"")
+        if kind_of == "engine-app":
+            if not isinstance(component.get("ecp"), dict):
+                err(f"{path}.ecp", "missing: the engine's ECP descriptor")
+            android = component.get("android")
+            if android is None and not component.get("executable"):
+                err(path, "an engine app needs android or executable")
+            if android is not None:
+                apk = android.get("apk")
+                if apk is None and not android.get("store"):
+                    err(f"{path}.android", "needs apk or store")
+                if apk is not None and (not apk.get("sha256") or apk.get("size", 0) < 1
+                                        or not str(apk.get("url", "")).startswith("https://")):
+                    err(f"{path}.android.apk", "must be a pinned https download (url, sha256, size)")
+        elif "ecp" in component or "android" in component or "executable" in component:
+            err(path, "ecp, android and executable are only for an engine app")
         launch = component.get("launch")
         if kind_of == "external-emulator" and launch is None:
             err(f"{path}.launch", "missing")
@@ -425,7 +441,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         if engine != "libretro" and cores:
             err(f"{path}.cores", "only for the libretro engine")
         for core in cores:
-            if components.get(core, {}).get("type") != "libretro-core":
+            if components.get(core, {}).get("type") not in ("libretro-core", "engine-app"):
                 err(f"{path}.cores", f"{core} is not a core of the plugin")
         emulator = system.get("emulator")
         if engine == "external" and not emulator:
@@ -518,6 +534,8 @@ def code_class(manifest, trusted=()):
     for component in manifest.get("components", []):
         if component["type"] == "external-emulator":
             return "external"
+        if component["type"] == "engine-app":
+            result = "cores"
         if component["type"] == "libretro-core":
             for download in component.get("downloads", {}).values():
                 if download.get("sha256") not in trusted:
