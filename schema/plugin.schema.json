@@ -8,7 +8,74 @@
     "id": { "$ref": "#/$defs/plugin_id" },
     "name": { "type": "string", "minLength": 1, "maxLength": 512 },
     "version": { "$ref": "#/$defs/version" },
-    "kind": { "enum": ["console", "player-pack", "tweak-tool", "feature"] },
+    "kind": { "enum": ["console", "player-pack", "tweak-tool", "feature", "interface"] },
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "layout": { "enum": ["carousel"] },
+        "icon": { "type": "string" },
+        "colors": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "background": { "$ref": "#/$defs/color" },
+            "text": { "$ref": "#/$defs/color" },
+            "dim": { "$ref": "#/$defs/color" },
+            "accent": { "$ref": "#/$defs/color" },
+            "panel": { "$ref": "#/$defs/color" }
+          }
+        },
+        "backdrop": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "art": { "enum": ["cover", "console", "plain"] },
+            "tint": { "type": "number", "minimum": 0, "maximum": 1 },
+            "wallpaper": { "type": "string" }
+          }
+        },
+        "covers": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "height": { "type": "number", "minimum": 0.3, "maximum": 0.9 },
+            "side_scale": { "type": "number", "minimum": 0.4, "maximum": 1 },
+            "side_dim": { "type": "number", "minimum": 0, "maximum": 0.9 },
+            "spacing": { "type": "number", "minimum": 0, "maximum": 120 },
+            "reflection": { "type": "number", "minimum": 0, "maximum": 0.6 },
+            "bob": { "type": "number", "minimum": 0, "maximum": 16 },
+            "speed": { "type": "number", "minimum": 4, "maximum": 40 }
+          }
+        },
+        "tabs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": { "recent": { "type": "boolean" }, "all": { "type": "boolean" } }
+        },
+        "launch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "animation": { "enum": ["zoom", "none"] },
+            "seconds": { "type": "number", "minimum": 0.1, "maximum": 1 }
+          }
+        },
+        "consoles": {
+          "type": "object",
+          "maxProperties": 128,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "color": { "$ref": "#/$defs/color" },
+              "wallpaper": { "type": "string" },
+              "label": { "type": "string", "maxLength": 16 }
+            }
+          }
+        }
+      }
+    },
     "feature": {
       "type": "object",
       "required": ["entry", "permissions"],
@@ -68,6 +135,7 @@
     "plugin_id": { "type": "string", "minLength": 3, "maxLength": 64, "pattern": "^[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+$" },
     "system_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,31}$" },
     "version": { "type": "string", "pattern": "^[0-9]{1,9}\\.[0-9]{1,9}\\.[0-9]{1,9}$" },
+    "color": { "type": "string", "pattern": "^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$" },
     "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
     "platform": { "enum": ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64", "any"] },
     "platforms": { "type": "array", "items": { "$ref": "#/$defs/platform" } },

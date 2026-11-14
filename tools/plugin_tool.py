@@ -33,7 +33,8 @@ import zipfile
 
 HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
                      "settings.v1", "content.multi_file", "content.magic",
-                     "kind.feature", "feature.lua.1", "feature.web.1"]
+                     "kind.feature", "feature.lua.1", "feature.web.1",
+                     "kind.interface", "interface.1"]
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
 LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
                     "bios_dir", "platform"]
@@ -64,6 +65,9 @@ FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
 SHARED_MARK = ".shared"
 FEATURE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
                                    r"\.(json|lua|png|jpg|txt|md)$")
+# Interface plugins (kind "interface"): data only, a look for EmuDEN's Home screen.
+INTERFACE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
+                                     r"\.(json|png|jpg|txt|md)$")
 MAX_FEATURE_FILES = 200
 MAX_FEATURE_BYTES = 8 * 1024 * 1024
 HOST_NAME = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$")
@@ -217,6 +221,31 @@ def in_package(folder, name):
     return (folder / name).is_file() or name in shared_files(folder)
 
 
+def validate_interface(manifest, folder, err):
+    """The rules of an interface plugin: data the app's layouts draw, and its pictures."""
+    for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
+        if manifest.get(field):
+            err(field, "an interface plugin has none")
+    for need in ("kind.interface", "interface.1"):
+        if need not in manifest["needs"]:
+            err("needs", f"must list {need}")
+    look = manifest.get("interface")
+    if not isinstance(look, dict):
+        err("interface", "missing")
+        return
+    pictures = [("interface.icon", look.get("icon")),
+                ("interface.backdrop.wallpaper", look.get("backdrop", {}).get("wallpaper"))]
+    for key, console in look.get("consoles", {}).items():
+        pictures.append((f"interface.consoles.{key}.wallpaper", console.get("wallpaper")))
+    for path, name in pictures:
+        if not name:
+            continue
+        if not safe_relative(name) or not name.lower().endswith((".png", ".jpg", ".jpeg")):
+            err(path, "must be a PNG or JPEG of the package")
+        elif folder is not None and not (folder / name).is_file():
+            err(path, "there is no such file in the plugin folder")
+
+
 def validate_feature(manifest, trust, folder, err):
     """The rules of a feature plugin: a sandboxed Lua script with declared permissions."""
     reserved = trust in ("bundled", "official")
@@ -303,6 +332,10 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         validate_feature(manifest, trust, folder, err)
     elif "feature" in manifest:
         err("feature", "only for a plugin of kind feature")
+    if kind == "interface":
+        validate_interface(manifest, folder, err)
+    elif "interface" in manifest:
+        err("interface", "only for a plugin of kind interface")
     if kind == "console" and not engine:
         err("engine", "missing")
     if kind != "console" and engine:
@@ -605,8 +638,10 @@ def sample_argv(manifest):
 # --- packages, index, signatures ---------------------------------------------------------------
 
 def package_files(folder):
-    feature = load_json(folder / "plugin.json").get("kind") == "feature"
-    allowed = FEATURE_PACKAGE_FILES if feature else PACKAGE_FILES
+    kind = load_json(folder / "plugin.json").get("kind")
+    feature = kind == "feature"
+    allowed = (FEATURE_PACKAGE_FILES if feature else
+               INTERFACE_PACKAGE_FILES if kind == "interface" else PACKAGE_FILES)
     files = []
     sources = dict(shared_files(folder)) if feature else {}
     for path in sorted(folder.rglob("*")):
@@ -616,6 +651,7 @@ def package_files(folder):
         if path.is_symlink() or not allowed.match(name):
             raise SystemExit(f"{folder.name}: {name} does not belong in a plugin package (" +
                              ("only .json, .lua, .png, .jpg, .txt and .md files" if feature else
+                              "only .json, .png, .jpg, .txt and .md files" if kind == "interface" else
                               "plugin.json, icon.png, assets/, LICENSE*, README*") + ")")
         data = path.read_bytes()
         if name.lower().endswith(EXECUTABLE_EXTENSIONS) or data.startswith(EXECUTABLE_MAGICS):
@@ -623,7 +659,7 @@ def package_files(folder):
         if feature and name.endswith(".lua") and data.startswith(b"\x1bLua"):
             raise SystemExit(f"{folder.name}: {name} is compiled Lua; scripts are text")
         files.append((name, data))
-    most, room = (MAX_FEATURE_FILES, MAX_FEATURE_BYTES) if feature else \
+    most, room = (MAX_FEATURE_FILES, MAX_FEATURE_BYTES) if kind in ("feature", "interface") else \
         (MAX_PACKAGE_FILES, MAX_PACKAGE_BYTES)
     if len(files) > most or sum(len(d) for _, d in files) > room:
         raise SystemExit(f"{folder.name}: more than {most} files or {room >> 20} MiB")

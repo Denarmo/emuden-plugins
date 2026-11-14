@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 24,
-  "generated": "2026-11-14T17:51:03Z",
-  "expires": "2027-03-14T17:51:03Z",
+  "sequence": 25,
+  "generated": "2026-11-14T17:56:28Z",
+  "expires": "2027-03-14T17:56:28Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1463,6 +1463,43 @@
       "download_hosts": [
         "github.com"
       ]
+    },
+    {
+      "id": "emuden.showcase",
+      "name": "Showcase",
+      "version": "1.0.0",
+      "kind": "interface",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "A Home made for a controller: consoles as coloured tabs you flip through with the shoulder buttons, and one gliding row of large covers.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.interface",
+        "interface.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.showcase-1.0.0.emuplugin",
+        "sha256": "19853d47f972e1cfc7464fa70304a07c46f8a7fd7406e6a6c24de822de6ccad5",
+        "size": 4029
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": []
     },
     {
       "id": "emuden.sms",
