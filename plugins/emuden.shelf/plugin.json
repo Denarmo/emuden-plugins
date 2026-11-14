@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -138,7 +138,10 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "portrait",
-          "player_color": "#c3c1c8"
+          "player_color": "#c3c1c8",
+          "player_photo": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Game-Boy-Original.jpg",
+          "player_screen": [0.21, 0.155, 0.49, 0.305],
+          "player_colors": ["#d23b3b", "#f5c71a", "#3f9a4a", "#2c2c2e", "#ededea", "#2f5fb8"]
         }
       },
       "gbc": {
@@ -152,7 +155,10 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "portrait",
-          "player_color": "#7b3fa0"
+          "player_color": "#7b3fa0",
+          "player_photo": "launchbox",
+          "player_screen": [0.205, 0.1, 0.585, 0.3],
+          "player_colors": ["#5a2d82", "#a3c93a", "#f7c81b", "#1597a4", "#7d63a8"]
         }
       },
       "gba": {
@@ -165,7 +171,10 @@
           "box": true,
           "box_aspect": 0.95,
           "player": "landscape",
-          "player_color": "#55479a"
+          "player_color": "#55479a",
+          "player_photo": "launchbox",
+          "player_screen": [0.288, 0.2, 0.416, 0.53],
+          "player_colors": ["#3f3a95", "#ecebef", "#2a2a2c", "#d7579c", "#f08a2b"]
         }
       },
       "nds": {
@@ -187,7 +196,8 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "clamshell",
-          "player_color": "#d9d9de"
+          "player_color": "#d9d9de",
+          "player_colors": ["#2a2a2e", "#3d6fc4", "#e7a3c0", "#c8282e", "#f2f2f2"]
         }
       },
       "nes": {

@@ -98,7 +98,17 @@
                   "box": { "type": "boolean" },
                   "box_aspect": { "type": "number", "minimum": 0.4, "maximum": 2.0 },
                   "player": { "enum": ["portrait", "landscape", "clamshell", "home"] },
-                  "player_color": { "$ref": "#/$defs/color" }
+                  "player_color": { "$ref": "#/$defs/color" },
+                  "player_colors": { "type": "array", "maxItems": 16, "items": { "$ref": "#/$defs/color" } },
+                  "player_photo": {
+                    "anyOf": [{ "const": "launchbox" }, { "type": "string", "pattern": "^https://", "maxLength": 511 }]
+                  },
+                  "player_screen": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": { "type": "number", "minimum": 0, "maximum": 1 }
+                  }
                 }
               }
             }
