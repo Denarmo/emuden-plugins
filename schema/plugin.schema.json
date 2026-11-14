@@ -92,7 +92,9 @@
                   "disc": { "type": "boolean" },
                   "radius": { "type": "number", "minimum": 0, "maximum": 0.45 },
                   "notch": { "type": "number", "minimum": 0, "maximum": 0.4 },
-                  "grip": { "type": "integer", "minimum": 0, "maximum": 8 }
+                  "grip": { "type": "integer", "minimum": 0, "maximum": 8 },
+                  "style": { "enum": ["plain", "pocket", "pocket_wide"] },
+                  "label_edge": { "enum": ["none", "paper", "foil"] }
                 }
               }
             }

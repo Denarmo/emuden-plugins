@@ -55,7 +55,7 @@ Every field of `interface` is optional; anything missing or out of range takes t
 | `objects` | `shelf3d` only: `side_angle` (0 to 80 degrees: how far side objects turn), `sway` (0 to 30 degrees: the selected object's slow turn). The `covers` sizes, dimming, spacing, reflection, float and speed apply too. |
 | `tabs` | `recent`: a Recent tab first when something was played. `all`: an All tab with every game. |
 | `launch` | `animation`: `zoom` (the cover grows into the console's colour before the game starts) or `none`; `seconds` 0.1 to 1. |
-| `consoles` | By system id (`gba`), by group (`group:nintendo`), or `*`. `color`, `label` (up to 16 characters on the tab; else the console's short name) and `wallpaper` (a PNG or JPEG of the package). The tabs Recent and All are looked up as `recent` and `all`; in them each game takes its own console's look. `object` (`shelf3d`): `shape` (`cartridge`, `card`, `case`, `jewel`, `disc`), `aspect` (front width over height), `depth` (thickness over height), `shell` (its colour), `label` (`[x, y, w, h]`, 0 to 1: where the cover goes on the front; carts and cards default to a label, cases to the whole front) `disc` (a case or jewel case whose disc slides out), `radius` (0 to 0.45: how round the top corners are), `notch` (0 to 0.4: the top-right corner cut off at 45 degrees) and `grip` (0 to 8 ridges under a cartridge's label). Missing fields take the shape's own. |
+| `consoles` | By system id (`gba`), by group (`group:nintendo`), or `*`. `color`, `label` (up to 16 characters on the tab; else the console's short name) and `wallpaper` (a PNG or JPEG of the package). The tabs Recent and All are looked up as `recent` and `all`; in them each game takes its own console's look. `object` (`shelf3d`): `shape` (`cartridge`, `card`, `case`, `jewel`, `disc`), `aspect` (front width over height), `depth` (thickness over height), `shell` (its colour; a cartridge or card whose colour has an alpha below `ff` is see-through, its board showing inside), `label` (`[x, y, w, h]`, 0 to 1: where the cover goes on the front; carts and cards default to a label, cases to the whole front) `disc` (a case or jewel case whose disc slides out), `radius` (0 to 0.45: how round the top corners are), `notch` (0 to 0.4: the top-right corner cut off at 45 degrees) `grip` (0 to 8 ridges under a cartridge's label, or on a pocket cartridge's top corners), `style` (a cartridge's mould: `plain`; `pocket`, a handheld's with stepped top corners, a sunk panel along the top, a label well and an arrow; `pocket_wide`, a wide handheld's with deep shoulders) and `label_edge` (`none`, `paper` or `foil`: a border round the cover on the sticker; `pocket` has foil). Missing fields take the shape's own. |
 
 Pictures are paths inside the package: no `..`, no leading slash. A package holds `.json`,
 `.png`, `.jpg`, `.txt` and `.md` files only, at most 200 files and 8 MiB.
@@ -85,7 +85,7 @@ cartridge's label in a recess with a groove around it, grip ridges, a screw and 
 the back, a keep case's cover under a glossy sleeve with a printed spine, a jewel case's
 inlay under a clear lid beside its hinge, a disc with a clear hub and a rainbow data side. A
 plugin cannot bring 3D models; you shape them per console with `aspect`, `depth`, `label`,
-`radius`, `notch` and `grip`.
+`radius`, `notch`, `grip`, `style` and `label_edge`.
 
 ## New layouts
 

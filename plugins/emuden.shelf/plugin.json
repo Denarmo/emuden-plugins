@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -133,18 +133,8 @@
         "label": "GB",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.88,
-          "depth": 0.15,
-          "shell": "#9a9aa2",
-          "label": [
-            0.1,
-            0.1,
-            0.8,
-            0.6
-          ],
-          "notch": 0.1,
-          "radius": 0,
-          "grip": 4
+          "style": "pocket",
+          "shell": "#a09fa8"
         }
       },
       "gbc": {
@@ -152,18 +142,9 @@
         "label": "GBC",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.88,
-          "depth": 0.15,
-          "shell": "#4a4f58",
-          "label": [
-            0.1,
-            0.1,
-            0.8,
-            0.6
-          ],
-          "notch": 0.1,
-          "radius": 0,
-          "grip": 4
+          "style": "pocket",
+          "shell": "#3a3d44a8",
+          "label_edge": "paper"
         }
       },
       "gba": {
@@ -171,17 +152,8 @@
         "label": "GBA",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.55,
-          "depth": 0.17,
-          "shell": "#53535c",
-          "label": [
-            0.12,
-            0.1,
-            0.76,
-            0.66
-          ],
-          "radius": 0.22,
-          "grip": 0
+          "style": "pocket_wide",
+          "shell": "#38393f"
         }
       },
       "nds": {
