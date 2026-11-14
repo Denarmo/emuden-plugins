@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 23,
-  "generated": "2026-11-14T16:06:11Z",
-  "expires": "2027-03-14T16:06:11Z",
+  "sequence": 24,
+  "generated": "2026-11-14T17:51:03Z",
+  "expires": "2027-03-14T17:51:03Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1008,7 +1008,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.1.3",
+      "version": "1.1.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1034,14 +1034,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.1.3.emuplugin",
-        "sha256": "9241a23fc51e8e9c4b3c05b1ee81914350f10ddbd5a4047dad91244a14df231b",
-        "size": 1446
+        "url": "packages/emuden.ps2-1.1.4.emuplugin",
+        "sha256": "e1340cdaf85c6d3d8d67b345f62c12a7da523d016553f1c7b5bb26780e203828",
+        "size": 1448
       },
       "download_size": {
-        "windows-x86_64": 1164711,
-        "linux-x86_64": 2500879,
-        "android-arm64": 1652503
+        "windows-x86_64": 1163279,
+        "linux-x86_64": 2489296,
+        "android-arm64": 1649978
       },
       "download_hosts": [
         "github.com"
@@ -1842,7 +1842,6 @@
     "405b6ac5d760b280a7537ba0496007ad9807c86f7a6eb9f471bcbe15ac0fad85",
     "405e33556dcf4300a30cd6ad8b0ff49e87eae0a1ea1b4f372ada7a89212f2302",
     "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
-    "44cf59479016adc4347b4513c3ffc9524814f8ffffaa6472c2cc5788434dd8df",
     "44d32a74d9fcafc37c6f77a05217cfa885db7701baf62b228b0be0d84aed4c12",
     "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
     "457aa28912e2449a3346d1c122d1ffcd9e1f6f4f2a841c21a871f266274f239a",
@@ -1850,11 +1849,11 @@
     "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
     "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
     "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
+    "5cfee3c5190266555be3c956c19224433fe51a5abe2c3fe61d22700c5cbb0316",
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
-    "68a10ec2860be86ab0fd1ed7254b759dc7c5022e8cead99dc398f914ff920c1d",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
     "6af96421ebc98b70643ea88ddb20ca526323853c21135f05f9e21be89cc6a725",
@@ -1891,6 +1890,7 @@
     "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",
     "a2ca40394a721dfc7a7569678ec19d1db36a1a2631fda9f3749e86b8e35831e6",
     "a7720e2652c482847d5e040f29c1d495254f8ce24e3a8e49a88c2c8ab14786fb",
+    "a83a370e97dfff74f928ce2062a6bf1c33545a57cb19f92ab2f0935ce85d7049",
     "aabdd1309913bd3e86dc497fd451b0cf681a9d1264767876a6fa038f7a862c0d",
     "ac7d3e391f0962b54c0978c40c2ba4430ae585c1046ce51bc76acd9f702a6c4a",
     "ae3e6eda123d2989bb729f834da6db4d05a96008e656478c482337c7842856c6",
@@ -1898,6 +1898,7 @@
     "af9a2b9db75cb183cea380823e96943559608a11c1966b959212eee4c93bade1",
     "b06f13abd1cbd97d00cbf321011cb6a9c1bd7b41676112703466fd3ad3ed81b2",
     "b368509aa3a861ddf9b964f56b96f6ce65917226217d566991cde5a9de0436e8",
+    "b46f7c0b9990c9c447c2cabc89a74a73b3aec0fa3653ba98c39c6c13b38c9fac",
     "b47dbf5bdf03a34e6b016ef19dbcafa37071de9339a04db070a5d63ebcd9ec33",
     "b80eb0ff41f261efb7b0021fc348eb747def3989083a80ec2f8d700a2f7a77c5",
     "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
@@ -1919,7 +1920,6 @@
     "dc367dd9bd7cd639266f90a1a32b5b3d8b42e465ad537274b398e59eb354754e",
     "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
     "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
-    "e1be349befd0c4edff89423c0e54b82a70ba5819fd6fffe2b330ff3afbe6ae12",
     "e2a220b62dd9a7b412143db713ebe726c1ee23ad3533b0a00f94e89d75a9ee42",
     "e58f11e98164dbf99b801d93303092f8d524421f00bdafba881faf1e358c2beb",
     "e5aac8cf7b7bd3ed06cf3bbfaf16ebd713f2008b25ee3f5e147fd9ee8c27ae8e",
