@@ -46,15 +46,16 @@ Every field of `interface` is optional; anything missing or out of range takes t
 
 | Field | Meaning |
 |---|---|
-| `layout` | The layout that draws it. `carousel`: consoles as tabs along the top (L and R step through them), one row of covers that glides, the selected one large in the middle, and its name and records under it. An EmuDEN without the layout refuses the plugin and keeps its own Home. |
+| `layout` | The layout that draws it. `carousel`: consoles as tabs along the top (L and R step through them), one row of covers that glides, the selected one large in the middle, and its name and records under it. `shelf3d`: the same page, with each game as a lit 3D object (see `object` below) on a floor; side objects turn towards the selected one, which sways slowly, and a case with a disc slides it out, spinning. An EmuDEN without the layout refuses the plugin and keeps its own Home. |
 | `icon` | A PNG of the package, shown in the plugin list. |
 | `colors` | `#rrggbb` or `#rrggbbaa`. `background` behind everything, `text`, `dim` (secondary text), `accent` (used when a console has no colour), `panel` (tabs and buttons). |
 | `backdrop.art` | `cover`: the selected game's cover, blurred. `console`: the console's wallpaper, else the package's `wallpaper`. `plain`: the background colour only. |
 | `backdrop.tint` | 0 to 1: how much of the console's colour washes over the backdrop. |
 | `covers` | `height` (0.3 to 0.9 of the row), `side_scale` (0.4 to 1), `side_dim` (0 to 0.9), `spacing` (0 to 120), `reflection` (0 to 0.6, 0 = none), `bob` (0 to 16: how far the selected cover floats), `speed` (4 to 40: how fast the row glides). |
+| `objects` | `shelf3d` only: `side_angle` (0 to 80 degrees: how far side objects turn), `sway` (0 to 30 degrees: the selected object's slow turn). The `covers` sizes, dimming, spacing, reflection, float and speed apply too. |
 | `tabs` | `recent`: a Recent tab first when something was played. `all`: an All tab with every game. |
 | `launch` | `animation`: `zoom` (the cover grows into the console's colour before the game starts) or `none`; `seconds` 0.1 to 1. |
-| `consoles` | By system id (`gba`), by group (`group:nintendo`), or `*`. `color`, `label` (up to 16 characters on the tab; else the console's short name) and `wallpaper` (a PNG or JPEG of the package). The tabs Recent and All are looked up as `recent` and `all`. |
+| `consoles` | By system id (`gba`), by group (`group:nintendo`), or `*`. `color`, `label` (up to 16 characters on the tab; else the console's short name) and `wallpaper` (a PNG or JPEG of the package). The tabs Recent and All are looked up as `recent` and `all`; in them each game takes its own console's look. `object` (`shelf3d`): `shape` (`cartridge`, `card`, `case`, `jewel`, `disc`), `aspect` (front width over height), `depth` (thickness over height), `shell` (its colour), `label` (`[x, y, w, h]`, 0 to 1: where the cover goes on the front; carts and cards default to a label, cases to the whole front) `disc` (a case or jewel case whose disc slides out), `radius` (0 to 0.45: how round the top corners are), `notch` (0 to 0.4: the top-right corner cut off at 45 degrees) and `grip` (0 to 8 ridges under a cartridge's label). Missing fields take the shape's own. |
 
 Pictures are paths inside the package: no `..`, no leading slash. A package holds `.json`,
 `.png`, `.jpg`, `.txt` and `.md` files only, at most 200 files and 8 MiB.
@@ -75,6 +76,16 @@ Interface plugins are published like any other: `validate`, `index`, `sign`, `ve
 (`publishing.md`). A third-party source's interfaces use its namespace (`jdoe.*`); `emuden.*`
 is EmuDEN's. Don't use other launchers' or console makers' logos, names or artwork unless you
 have the right to.
+
+In `shelf3d`, starting a game drops a cartridge or card into its slot, or brings a case or
+disc towards you, before the zoom into the console's colour.
+
+The shapes are moulded solids EmuDEN builds itself: bevelled edges that catch the light, a
+cartridge's label in a recess with a groove around it, grip ridges, a screw and contacts on
+the back, a keep case's cover under a glossy sleeve with a printed spine, a jewel case's
+inlay under a clear lid beside its hinge, a disc with a clear hub and a rainbow data side. A
+plugin cannot bring 3D models; you shape them per console with `aspect`, `depth`, `label`,
+`radius`, `notch` and `grip`.
 
 ## New layouts
 

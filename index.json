@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 25,
-  "generated": "2026-11-14T17:56:28Z",
-  "expires": "2027-03-14T17:56:28Z",
+  "sequence": 26,
+  "generated": "2026-11-14T18:23:35Z",
+  "expires": "2027-03-14T18:23:35Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1463,6 +1463,43 @@
       "download_hosts": [
         "github.com"
       ]
+    },
+    {
+      "id": "emuden.shelf",
+      "name": "Shelf",
+      "version": "1.0.0",
+      "kind": "interface",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Your games as 3D cartridges, cards, cases and discs on a lit shelf. The chosen one turns to face you, and a disc slides out of its case.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.interface",
+        "interface.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.shelf-1.0.0.emuplugin",
+        "sha256": "0261a2fac82e4334cac36c6e37d1d334af1a6afc1df81b55a8f73471792ce30f",
+        "size": 5769
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": []
     },
     {
       "id": "emuden.showcase",

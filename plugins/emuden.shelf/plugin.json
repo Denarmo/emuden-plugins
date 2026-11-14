@@ -1,0 +1,350 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.shelf",
+  "name": "Shelf",
+  "version": "1.0.0",
+  "kind": "interface",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Your games as 3D cartridges, cards, cases and discs on a lit shelf. The chosen one turns to face you, and a disc slides out of its case.",
+  "api": 1,
+  "needs": [
+    "kind.interface",
+    "interface.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "interface": {
+    "layout": "shelf3d",
+    "icon": "icon.png",
+    "colors": {
+      "background": "#101118",
+      "text": "#f4f2ee",
+      "dim": "#aeadbd",
+      "accent": "#6fb7ff",
+      "panel": "#ffffff1c"
+    },
+    "backdrop": {
+      "art": "cover",
+      "tint": 0.34
+    },
+    "covers": {
+      "height": 0.66,
+      "side_scale": 0.78,
+      "side_dim": 0.42,
+      "spacing": 26,
+      "reflection": 0.16,
+      "bob": 4,
+      "speed": 11
+    },
+    "objects": {
+      "side_angle": 55,
+      "sway": 8
+    },
+    "tabs": {
+      "recent": true,
+      "all": true
+    },
+    "launch": {
+      "animation": "zoom",
+      "seconds": 0.45
+    },
+    "consoles": {
+      "*": {
+        "color": "#5b6178",
+        "object": {
+          "shape": "case"
+        }
+      },
+      "recent": {
+        "color": "#d8892b"
+      },
+      "all": {
+        "color": "#4d6a8f"
+      },
+      "group:nintendo": {
+        "color": "#c8323c"
+      },
+      "group:sony": {
+        "color": "#3557a6",
+        "object": {
+          "shape": "jewel",
+          "disc": true
+        }
+      },
+      "group:sega": {
+        "color": "#2a6fc0",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.8,
+          "shell": "#26272c",
+          "radius": 0.05,
+          "grip": 0
+        }
+      },
+      "group:atari": {
+        "color": "#a8562a",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.2,
+          "depth": 0.22,
+          "shell": "#2b2b2e",
+          "radius": 0.04,
+          "grip": 5
+        }
+      },
+      "group:snk": {
+        "color": "#b5892a",
+        "object": {
+          "shape": "card",
+          "aspect": 0.9,
+          "shell": "#2e3a55"
+        }
+      },
+      "group:nec": {
+        "color": "#7a4bb0",
+        "object": {
+          "shape": "card",
+          "aspect": 0.8,
+          "shell": "#d8d8dc"
+        }
+      },
+      "group:bandai": {
+        "color": "#3f8c8a",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.1,
+          "shell": "#9da0a8"
+        }
+      },
+      "group:arcade": {
+        "color": "#b03a7a",
+        "object": {
+          "shape": "case",
+          "aspect": 0.72
+        }
+      },
+      "group:other": {
+        "color": "#5f7f4a"
+      },
+      "gb": {
+        "color": "#6e8a3c",
+        "label": "GB",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.88,
+          "depth": 0.15,
+          "shell": "#9a9aa2",
+          "label": [
+            0.1,
+            0.1,
+            0.8,
+            0.6
+          ],
+          "notch": 0.1,
+          "radius": 0,
+          "grip": 4
+        }
+      },
+      "gbc": {
+        "color": "#8a46a8",
+        "label": "GBC",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.88,
+          "depth": 0.15,
+          "shell": "#4a4f58",
+          "label": [
+            0.1,
+            0.1,
+            0.8,
+            0.6
+          ],
+          "notch": 0.1,
+          "radius": 0,
+          "grip": 4
+        }
+      },
+      "gba": {
+        "color": "#5440a6",
+        "label": "GBA",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.55,
+          "depth": 0.17,
+          "shell": "#53535c",
+          "label": [
+            0.12,
+            0.1,
+            0.76,
+            0.66
+          ],
+          "radius": 0.22,
+          "grip": 0
+        }
+      },
+      "nds": {
+        "color": "#7d8492",
+        "label": "DS",
+        "object": {
+          "shape": "card",
+          "aspect": 1.05,
+          "depth": 0.1,
+          "shell": "#3b3c44",
+          "label": [
+            0.08,
+            0.16,
+            0.84,
+            0.74
+          ],
+          "notch": 0.09,
+          "radius": 0.05
+        }
+      },
+      "nes": {
+        "color": "#b23a3a",
+        "label": "NES",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 0.86,
+          "depth": 0.14,
+          "shell": "#7c7d82",
+          "label": [
+            0.08,
+            0.08,
+            0.84,
+            0.62
+          ],
+          "radius": 0.0,
+          "grip": 0
+        }
+      },
+      "snes": {
+        "color": "#6c5aa8",
+        "label": "SNES",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.3,
+          "depth": 0.2,
+          "shell": "#8e8f96",
+          "label": [
+            0.12,
+            0.12,
+            0.76,
+            0.56
+          ],
+          "radius": 0.16,
+          "grip": 3
+        }
+      },
+      "n64": {
+        "color": "#2f8a4e",
+        "label": "N64",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.4,
+          "depth": 0.22,
+          "shell": "#4b4c52",
+          "label": [
+            0.12,
+            0.08,
+            0.76,
+            0.56
+          ],
+          "radius": 0.2,
+          "grip": 0
+        }
+      },
+      "gamecube": {
+        "color": "#5a4aa0",
+        "label": "GC",
+        "object": {
+          "shape": "case",
+          "aspect": 0.72,
+          "disc": true
+        }
+      },
+      "wii": {
+        "color": "#4f9fc4",
+        "label": "Wii",
+        "object": {
+          "shape": "case",
+          "aspect": 0.7,
+          "shell": "#ececf0",
+          "disc": true
+        }
+      },
+      "switch2": {
+        "color": "#d43a3a",
+        "object": {
+          "shape": "case",
+          "aspect": 0.62,
+          "depth": 0.06,
+          "shell": "#c63434"
+        }
+      },
+      "genesis": {
+        "color": "#30343e",
+        "label": "Genesis"
+      },
+      "sms": {
+        "color": "#2d5fae",
+        "label": "SMS"
+      },
+      "gg": {
+        "color": "#3a3f8e",
+        "label": "GG",
+        "object": {
+          "shape": "cartridge",
+          "aspect": 1.15,
+          "shell": "#26272c",
+          "radius": 0.06,
+          "grip": 3
+        }
+      },
+      "saturn": {
+        "color": "#4b5363",
+        "label": "Saturn",
+        "object": {
+          "shape": "jewel",
+          "disc": true
+        }
+      },
+      "dreamcast": {
+        "color": "#d06a2a",
+        "label": "DC",
+        "object": {
+          "shape": "jewel",
+          "disc": true
+        }
+      },
+      "psx": {
+        "color": "#6b7280",
+        "label": "PS1",
+        "object": {
+          "shape": "jewel",
+          "disc": true
+        }
+      },
+      "ps2": {
+        "color": "#24366e",
+        "label": "PS2",
+        "object": {
+          "shape": "case",
+          "aspect": 0.7,
+          "disc": true
+        }
+      },
+      "psp": {
+        "color": "#3a3a48",
+        "label": "PSP",
+        "object": {
+          "shape": "case",
+          "aspect": 0.58,
+          "depth": 0.08
+        }
+      }
+    }
+  }
+}
