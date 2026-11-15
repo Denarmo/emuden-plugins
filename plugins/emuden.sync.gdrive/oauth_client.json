@@ -1,5 +1,5 @@
 {
-  "_comment": "OWNER: fill in the OAuth client of type 'TVs and Limited Input devices' from EmuDEN's Google Cloud project (APIs & Services > Credentials). Until client_id ends in .apps.googleusercontent.com the plugin says sync is not set up. A copy of this file in the plugin's data folder (<data>/plugin-data/emuden.sync.gdrive/oauth_client.json) wins over this one.",
-  "client_id": "",
-  "client_secret": ""
+  "_comment": "EmuDEN's OAuth client, type 'TVs and Limited Input devices', Google Cloud project emuden-sync (scope drive.file only). Google treats the secret of an installed-app client as not confidential. A copy of this file in the plugin's data folder (<data>/plugin-data/emuden.sync.gdrive/oauth_client.json) wins over this one.",
+  "client_id": "649502846787-t5fdnu7s5uaoh5bchsjja0qvn73dm4bc.apps.googleusercontent.com",
+  "client_secret": "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"
 }
