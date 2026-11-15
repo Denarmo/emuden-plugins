@@ -165,7 +165,15 @@ do
         check(input.systemId == "sys-ps2", "the search names the console")
         return answer({ games = { { id = "er-gt4s2", title = "Gran Turismo 4: Spec II", _count = { listings = 5 } } } })
       end
-      if procedure == "listings.get" then return answer({ listings = LISTINGS }) end
+      if procedure == "listings.get" then
+        -- As EmuReady sends them: a listing without a chip, rating or notes has JSON nulls.
+        local odd = listing("f", "Odin", "2", "x", "x", "NethersX2", 1, "Perfect")
+        odd.device.soc, odd.performance, odd.notes = den.json.null, den.json.null, den.json.null
+        local all = {}
+        for i, l in ipairs(LISTINGS) do all[i] = l end
+        all[#all + 1] = odd
+        return answer({ listings = all })
+      end
       if procedure == "listings.byId" then return answer(DETAILS) end
       return { status = 404, body = "" }
     end },

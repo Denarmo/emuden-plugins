@@ -30,6 +30,19 @@ local function escape(text)
   return (text:gsub("[^%w%-_%.~]", function(c) return string.format("%%%02X", string.byte(c)) end))
 end
 
+-- JSON null becomes nil, so a missing chip or rating reads like an absent field.
+local function strip_nulls(value, depth)
+  if type(value) ~= "table" or (depth or 0) > 20 then return value end
+  for key, item in pairs(value) do
+    if item == den.json.null then
+      value[key] = nil
+    else
+      strip_nulls(item, (depth or 0) + 1)
+    end
+  end
+  return value
+end
+
 local function call(procedure, input, cache_seconds)
   local url = API .. procedure
   if input then url = url .. "?input=" .. escape(den.json.encode({ json = input })) end
@@ -40,7 +53,7 @@ local function call(procedure, input, cache_seconds)
   local body = den.json.decode(answer.body)
   local data = body and body.result and body.result.data
   if not data then return nil, "EmuReady's answer could not be read" end
-  return data.json
+  return strip_nulls(data.json)
 end
 
 local function when(t)

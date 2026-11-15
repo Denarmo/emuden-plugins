@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 47,
-  "generated": "2026-11-15T12:16:08Z",
-  "expires": "2027-03-15T12:16:08Z",
+  "sequence": 48,
+  "generated": "2026-11-15T12:22:54Z",
+  "expires": "2027-03-15T12:22:54Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1844,7 +1844,7 @@
     {
       "id": "emuden.tune.emuready",
       "name": "Tune: EmuReady",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1866,9 +1866,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.emuready-1.0.0.emuplugin",
-        "sha256": "6645acab8ace196f08552db28708c7ec5aaab6d2b2ce76f6816546b909ee92aa",
-        "size": 13052
+        "url": "packages/emuden.tune.emuready-1.0.1.emuplugin",
+        "sha256": "f209ac8cd809db83af4062dc454818c3b13fa11487b37ef3ae311b0d7aff9b0e",
+        "size": 13208
       },
       "download_size": {
         "windows-x86_64": 0,
