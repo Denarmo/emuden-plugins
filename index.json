@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 41,
-  "generated": "2026-11-15T09:42:15Z",
-  "expires": "2027-03-15T09:42:15Z",
+  "sequence": 42,
+  "generated": "2026-11-15T11:58:59Z",
+  "expires": "2027-03-15T11:58:59Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1837,6 +1837,110 @@
         "http.local"
       ],
       "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": []
+    },
+    {
+      "id": "emuden.tune.emuready",
+      "name": "Tune: EmuReady",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Sets a game up from EmuReady listings of devices like yours (the same device, the same chip, then similar graphics): resolution, renderer and frame skip for the core EmuDEN uses, for that game only, after you agree. Undo puts them back.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.tune.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.tune.emuready-1.0.0.emuplugin",
+        "sha256": "6645acab8ace196f08552db28708c7ec5aaab6d2b2ce76f6816546b909ee92aa",
+        "size": 13052
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "http",
+        "device.info",
+        "library.read",
+        "game.settings"
+      ],
+      "http_hosts": [
+        "www.emuready.com"
+      ],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": [
+        "ps2",
+        "psp",
+        "psx",
+        "nds",
+        "n64",
+        "gamecube",
+        "wii",
+        "dreamcast",
+        "saturn"
+      ]
+    },
+    {
+      "id": "emuden.tune.protondb",
+      "name": "Tune: ProtonDB",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Sets your Steam games up from ProtonDB reports of machines like yours: the Proton version and launch options that worked, applied on SteamOS after you agree. On Windows it shows what the reports say.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.tune.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.tune.protondb-1.0.0.emuplugin",
+        "sha256": "9f9e359c830f336327802948eadfd0dbd60cab3dc8c6f09342e20bb8a60d756f",
+        "size": 11842
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "http",
+        "device.info",
+        "steam"
+      ],
+      "http_hosts": [
+        "raw.githubusercontent.com",
+        "www.protondb.com"
+      ],
       "open_hosts": [],
       "browse_hosts": [],
       "feature_systems": []

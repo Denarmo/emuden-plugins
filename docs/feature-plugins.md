@@ -8,14 +8,15 @@ trust rules) is `docs/feature-plugins.md` in the EmuDEN repository.
 ## Manifest
 
 The common fields are those of every plugin. `needs` must list `kind.feature` and
-`feature.lua.1` (and `feature.web.1` with the `browse` permission), so an EmuDEN without feature plugins refuses the plugin and keeps the rest of
+`feature.lua.1` (and `feature.web.1` with the `browse` permission, `feature.tune.1` with
+`device.info`, `game.settings` or `steam`), so an EmuDEN without feature plugins refuses the plugin and keeps the rest of
 the list. A feature plugin has no `engine`, `systems`, `components` or `settings`.
 
 | `feature` field | Meaning |
 |---|---|
 | `entry` | The script to run, a relative path ending in `.lua` |
 | `icon` | A square PNG of the package |
-| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters) |
+| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam` |
 | `http.hosts` | Exact https hosts, with `http` or `download`; at most 8 |
 | `open_hosts` | Hosts `den.open_url` may show, with `open-url` |
 | `browse_hosts` | Sites `den.web.open` may show in the app's browser page, with `browse`: exact names, at most 8 |
@@ -67,3 +68,16 @@ host, for instance) is opened only after the app asked the player. None of the p
 affiliated with its site; "Hackdex" is a name its project reserves, so that plugin is named by
 the domain. `bases.json` of `emuden.romhacks` comes from the Hackdex website's source under the
 MIT licence (`NOTICE.txt`).
+
+## Tuning plugins
+
+`emuden.tune.protondb` and `emuden.tune.emuready` set games up from community reports of
+machines like this one. They use `den.device.info`, `den.game` (a game's own core options)
+and `den.steam` (launch options and Proton version), EmuDEN's `docs/feature-plugins.md`
+section 4.2. A change is made only after the user pressed Apply and accepted EmuDEN's own
+question listing every change; both plugins keep the old values for Undo.
+
+| Plugin | Data | Applies to |
+|---|---|---|
+| `emuden.tune.protondb` | [Denarmo/protondb-reports](https://github.com/Denarmo/protondb-reports) (ProtonDB's ODbL dump, one file a game) and ProtonDB's public summary | Steam games: Proton and launch options on SteamOS; shown only on Windows |
+| `emuden.tune.emuready` | EmuReady's public mobile API (100 requests in 3 minutes, cached) | Library games: resolution, renderer, frame skip and similar core options, for that game |

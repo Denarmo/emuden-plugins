@@ -34,7 +34,7 @@ import zipfile
 HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
                      "settings.v1", "content.multi_file", "content.magic",
                      "kind.feature", "feature.lua.1", "feature.web.1",
-                     "kind.interface", "interface.1"]
+                     "kind.interface", "interface.1", "feature.tune.1"]
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
 LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
                     "bios_dir", "platform"]
@@ -60,7 +60,10 @@ MAX_EXPIRY_DAYS = 120
 # Feature plugins (kind "feature"): Lua scripts the app runs in a sandbox.
 FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
                        "downloads.watch", "library.read", "patch", "library.write",
-                       "sync", "http.local", "http.user_host"]
+                       "sync", "http.local", "http.user_host",
+                       "device.info", "game.settings", "steam"]
+# Need feature.tune.1 (EmuDEN docs/feature-plugins.md, section 4.2).
+TUNE_PERMISSIONS = ["device.info", "game.settings", "steam"]
 # What a sync provider (permission "sync") may carry between devices (EmuDEN docs/sync.md).
 SYNC_CATEGORIES = ["saves", "states", "config", "games", "bios"]
 # Lua kept once in shared/<name>/ and copied into the package of every plugin whose folder
@@ -296,6 +299,8 @@ def validate_feature(manifest, trust, folder, err):
         err("feature.browse_hosts", "needed with browse, and only with it")
     if "browse" in permissions and "feature.web.1" not in manifest["needs"]:
         err("needs", "must list feature.web.1 with browse")
+    if any(p in TUNE_PERMISSIONS for p in permissions) and "feature.tune.1" not in manifest["needs"]:
+        err("needs", "must list feature.tune.1 with device.info, game.settings or steam")
     sync = feature.get("sync")
     if ("sync" in permissions) != (sync is not None):
         err("feature.sync", "needed with sync, and only with it")
@@ -314,7 +319,7 @@ def validate_feature(manifest, trust, folder, err):
             err("feature.systems", f"{system} is not a system id")
     if "*" in systems and (not reserved or len(systems) != 1):
         err("feature.systems", "only EmuDEN's own plugins see every console, as [\"*\"] alone")
-    if any(p in permissions for p in ("library.read", "patch", "library.write")) and not systems:
+    if any(p in permissions for p in ("library.read", "patch", "library.write", "game.settings")) and not systems:
         err("feature.systems", "needed with the library and patch permissions")
     file_types = feature.get("file_types", [])
     for extension in file_types:

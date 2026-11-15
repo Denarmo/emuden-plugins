@@ -1,0 +1,38 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.tune.protondb",
+  "name": "Tune: ProtonDB",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Sets your Steam games up from ProtonDB reports of machines like yours: the Proton version and launch options that worked, applied on SteamOS after you agree. On Windows it shows what the reports say.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.tune.1"
+  ],
+  "platforms": [
+    "linux-x86_64",
+    "windows-x86_64"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "http",
+      "device.info",
+      "steam"
+    ],
+    "http": {
+      "hosts": [
+        "raw.githubusercontent.com",
+        "www.protondb.com"
+      ]
+    },
+    "limits": {
+      "memory_mb": 32
+    }
+  }
+}
