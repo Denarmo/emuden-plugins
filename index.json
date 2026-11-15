@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 43,
-  "generated": "2026-11-15T12:02:43Z",
-  "expires": "2027-03-15T12:02:43Z",
+  "sequence": 44,
+  "generated": "2026-11-15T12:03:33Z",
+  "expires": "2027-03-15T12:03:33Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1904,7 +1904,7 @@
     {
       "id": "emuden.tune.protondb",
       "name": "Tune: ProtonDB",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1923,9 +1923,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.protondb-1.0.1.emuplugin",
-        "sha256": "c262a7ff684a9092728dbaf2493f219174c372de5a3e743a9b605ae5d7040d6c",
-        "size": 12310
+        "url": "packages/emuden.tune.protondb-1.0.2.emuplugin",
+        "sha256": "042990127490ddf15a7fab5e2f98c9ebc2f588bcd1f19714dbfcf549008244f2",
+        "size": 12363
       },
       "download_size": {
         "windows-x86_64": 0,

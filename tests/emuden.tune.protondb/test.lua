@@ -66,6 +66,17 @@ do
   check(chosen.launch == nil, "the Deck report has no launch options")
 end
 
+-- The real Legion Go S: its GPU name carries Valve's "neptune" kernel.
+do
+  local real = { name = "Legion Go S", soc = "AMD Ryzen Z2 Go", os = "linux", steamos = true, ram_mb = 15263,
+                 gpu = "AMD Ryzen Z2 Go (radeonsi, rembrandt, ACO, DRM 3.65, 7.2.7-valve2-2-neptune-72-g31504582a073)" }
+  check(rank.me(real).class == "z2 go", "the Legion Go S is not a Steam Deck")
+  check(rank.machine({ cpu = "AMD Ryzen Z2 Go", gpu = "AMD Radeon Graphics", kernel = "6.11.11-valve12-1-neptune" }).class == "z2 go",
+        "a Legion report on Valve's kernel")
+  check(rank.machine({ cpu = "Unknown", gpu = "Unknown", kernel = "5.13.0-valve36-1-neptune" }).class == "steam deck",
+        "the kernel alone still names a Deck")
+end
+
 -- NVIDIA-only variables are not suggested to an AMD device; shell syntax never.
 do
   local me = rank.me(LEGION)

@@ -59,8 +59,9 @@ end
 -- The handheld a processor or graphics name belongs to, when it is one.
 local function handheld_class(cpu, gpu, kernel)
   local all = lower(cpu) .. " " .. lower(gpu) .. " " .. lower(kernel)
+  -- The processor first: SteamOS on other handhelds also runs Valve's "neptune" kernel.
   if all:find("apu 0405") or all:find("apu 0932") or all:find("gpu 0405") or all:find("gpu 0932")
-      or all:find("vangogh") or all:find("sephiroth") or all:find("neptune") or all:find("galileo") then
+      or all:find("vangogh") or all:find("sephiroth") then
     return "steam deck"
   elseif all:find("z2 go") then
     return "z2 go"
@@ -72,6 +73,8 @@ local function handheld_class(cpu, gpu, kernel)
     return "z1"
   elseif all:find("z2") then
     return "z2"
+  elseif lower(kernel):find("neptune") or lower(kernel):find("galileo") then
+    return "steam deck"
   end
   return nil
 end
