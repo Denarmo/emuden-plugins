@@ -119,6 +119,13 @@ function fake.google()
   local function matches(f, q)
     if f.trashed then return false end
     if q == "trashed = false" then return true end
+    local folder_of = q:match("^'(.-)' in parents and trashed = false and mimeType != '.-'$")
+    if folder_of then
+      for _, p in ipairs(f.parents or {}) do
+        if p == folder_of and f.mimeType ~= FOLDER then return true end
+      end
+      return false
+    end
     local name, parent, op, mime = q:match("^name = '(.-[^\\])' and '(.-)' in parents and "
       .. "trashed = false and mimeType (!?=) '(.-)'$")
     assert(name, "unexpected q: " .. q)

@@ -5,7 +5,8 @@
 -- My Drive, one subfolder per category, then the folders of the portable name
 -- ("saves/gba/Game.srm" is EmuDEN/saves/gba/Game.srm). rev is the file's Drive `version`.
 -- With the drive.file scope Drive shows this app only the files it created, so one listing
--- of every visible file is the whole remote side.
+-- of every visible file is the whole remote side; one system folder ("saves/gba/") is listed
+-- by itself for a game's own sync.
 
 local util = den.include("util.lua")
 
@@ -220,7 +221,43 @@ return function(auth)
     return files[path]
   end
 
+  -- One folder ("saves/gba/"), for a game's own sync: a single search instead of the whole
+  -- listing. Its folder id comes from this script's last listing or the one kept from it.
+  local function list_folder(dir)
+    local id, err = ensure_root()
+    if not id then return nil, err end
+    local parent = folders[dir]
+    if not parent then
+      local kept = den.storage.get("folders")
+      parent = type(kept) == "table" and kept.root == id and kept[dir] or nil
+    end
+    if not parent then
+      local found, why = folder_of(dir, false)
+      if why then return nil, why end
+      parent = found
+    end
+    if not parent then return {} end
+    local best = {}
+    local ok, why = search(util.quote(parent) .. " in parents and trashed = false and mimeType != '"
+                           .. FOLDER .. "'", FILE_FIELDS, function(file)
+      local path = dir .. "/" .. file.name
+      if util.refused(path) then return end
+      local entry = entry_of(file)
+      if not best[path] or (entry.modified or 0) > (best[path].modified or 0) then best[path] = entry end
+    end)
+    if not ok then return nil, why end
+    local out = {}
+    for path, entry in pairs(best) do
+      files[path] = entry
+      out[#out + 1] = { path = path, size = entry.size, modified = entry.modified, rev = entry.version }
+    end
+    table.sort(out, function(a, b) return a.path < b.path end)
+    return out
+  end
+
   function drive.list(prefix)
+    local dir = type(prefix) == "string" and prefix:match("^([^/]+/[^/]+)/$")
+    if dir then return list_folder(dir) end
     local id, err = ensure_root()
     if not id then return nil, err end
     local by_id = {}
@@ -261,6 +298,12 @@ return function(auth)
       end
     end
     table.sort(out, function(a, b) return a.path < b.path end)
+    -- Kept for list_folder in a later script: the system folders' ids.
+    local kept = { root = id }
+    for path, folder in pairs(folders) do
+      if path:match("^[^/]+/[^/]+$") then kept[path] = folder end
+    end
+    den.storage.set("folders", kept)
     return out
   end
 
@@ -472,6 +515,7 @@ return function(auth)
   function drive.forget()
     root, folders, files = nil, {}, {}
     den.storage.remove("root_id")
+    den.storage.remove("folders")
   end
 
   return drive

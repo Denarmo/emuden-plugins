@@ -133,6 +133,9 @@ check(by["saves/gba/It's a game.srm"] and by["saves/gba/It's a game.srm"].modifi
       "modified time passed to put is kept")
 local saves = plugin.provider.list("saves/")
 check(#saves == 2, "prefix filters")
+local folder = assert(plugin.provider.list("saves/gba/"))
+check(#folder == 2 and folder[1].path:match("^saves/gba/") and folder[1].rev, "one system folder is listed alone")
+check(#assert(plugin.provider.list("states/nes/")) == 0, "a folder that is not there lists nothing")
 
 -- conflict and update
 d.fs["sync:1"] = "SAVE-2"

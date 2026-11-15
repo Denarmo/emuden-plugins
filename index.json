@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 51,
-  "generated": "2026-11-15T16:13:59Z",
-  "expires": "2027-03-15T16:13:59Z",
+  "sequence": 52,
+  "generated": "2026-11-15T19:13:01Z",
+  "expires": "2027-03-15T19:13:01Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1706,7 +1706,7 @@
     {
       "id": "emuden.sync.gdrive",
       "name": "Sync: Google Drive",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1727,9 +1727,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.sync.gdrive-1.0.3.emuplugin",
-        "sha256": "5b67a760717b1c23ad602a73307eb26668b1c467abf2630983d4f681b3cbd745",
-        "size": 17149
+        "url": "packages/emuden.sync.gdrive-1.0.4.emuplugin",
+        "sha256": "6030399eac9b8b8977baa453a93925141448eb16068549e26bc59591b03f3eb0",
+        "size": 17530
       },
       "download_size": {
         "windows-x86_64": 0,
