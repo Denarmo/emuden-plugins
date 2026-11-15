@@ -59,7 +59,10 @@ MAX_EXPIRY_DAYS = 120
 
 # Feature plugins (kind "feature"): Lua scripts the app runs in a sandbox.
 FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
-                       "downloads.watch", "library.read", "patch", "library.write"]
+                       "downloads.watch", "library.read", "patch", "library.write",
+                       "sync", "http.local", "http.user_host"]
+# What a sync provider (permission "sync") may carry between devices (EmuDEN docs/sync.md).
+SYNC_CATEGORIES = ["saves", "states", "config", "games", "bios"]
 # Lua kept once in shared/<name>/ and copied into the package of every plugin whose folder
 # names it in the file ".shared" (one name a line). A file of the plugin's own folder wins.
 SHARED_MARK = ".shared"
@@ -293,6 +296,18 @@ def validate_feature(manifest, trust, folder, err):
         err("feature.browse_hosts", "needed with browse, and only with it")
     if "browse" in permissions and "feature.web.1" not in manifest["needs"]:
         err("needs", "must list feature.web.1 with browse")
+    sync = feature.get("sync")
+    if ("sync" in permissions) != (sync is not None):
+        err("feature.sync", "needed with sync, and only with it")
+    if sync is not None:
+        categories = sync.get("categories", [])
+        if not categories:
+            err("feature.sync.categories", "a provider carries at least one category")
+        for category in categories:
+            if category not in SYNC_CATEGORIES:
+                err("feature.sync.categories", f"{category} is not a sync category")
+        if len(set(categories)) != len(categories):
+            err("feature.sync.categories", "a category is listed twice")
     systems = feature.get("systems", [])
     for system in systems:
         if system != "*" and not re.match(r"^[a-z0-9][a-z0-9_-]*$", system):

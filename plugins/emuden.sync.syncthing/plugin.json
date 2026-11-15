@@ -1,0 +1,35 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.sync.syncthing",
+  "name": "Sync: Syncthing",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Sync saves, states, settings and games between your devices through a folder Syncthing keeps in step.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "sync",
+      "http.local"
+    ],
+    "sync": {
+      "categories": [
+        "saves",
+        "states",
+        "config",
+        "games",
+        "bios"
+      ]
+    }
+  }
+}

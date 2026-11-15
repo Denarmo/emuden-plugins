@@ -1,0 +1,44 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.sync.gdrive",
+  "name": "Sync: Google Drive",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Sync your saves, save states, settings and games between your devices through a folder named EmuDEN in your Google Drive. EmuDEN only sees the files it created there.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "http",
+      "sync"
+    ],
+    "http": {
+      "hosts": [
+        "oauth2.googleapis.com",
+        "www.googleapis.com"
+      ]
+    },
+    "sync": {
+      "categories": [
+        "saves",
+        "states",
+        "config",
+        "games",
+        "bios"
+      ]
+    },
+    "limits": {
+      "memory_mb": 48
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.sync.romm",
+  "name": "Sync: RomM",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Sync your saves and save states with your RomM server, and download its games into your library.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "sync",
+      "http.user_host"
+    ],
+    "sync": {
+      "categories": [
+        "saves",
+        "states",
+        "games"
+      ]
+    },
+    "limits": {
+      "memory_mb": 64
+    }
+  }
+}

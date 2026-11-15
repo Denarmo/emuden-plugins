@@ -15,12 +15,13 @@ the list. A feature plugin has no `engine`, `systems`, `components` or `settings
 |---|---|
 | `entry` | The script to run, a relative path ending in `.lua` |
 | `icon` | A square PNG of the package |
-| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write` |
+| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters) |
 | `http.hosts` | Exact https hosts, with `http` or `download`; at most 8 |
 | `open_hosts` | Hosts `den.open_url` may show, with `open-url` |
 | `browse_hosts` | Sites `den.web.open` may show in the app's browser page, with `browse`: exact names, at most 8 |
 | `file_types` | Extensions the plugin takes from the picker and the Downloads folder |
 | `systems` | Console ids the plugin may see; `["*"]` only for EmuDEN's own plugins |
+| `sync` | With `sync`: `{"categories": [...]}` of `saves`, `states`, `config`, `games`, `bios`; the plugin is a sync provider (EmuDEN `docs/sync.md`) |
 | `limits` | `memory_mb` (8 to 64), `storage_mb` (up to 4096) |
 
 A third-party plugin may not use `downloads.watch` or `["*"]`.

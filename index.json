@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 31,
-  "generated": "2026-11-14T21:08:18Z",
-  "expires": "2027-03-14T21:08:18Z",
+  "sequence": 32,
+  "generated": "2026-11-15T01:11:06Z",
+  "expires": "2027-03-15T01:11:06Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1702,6 +1702,144 @@
         "android-arm64": 0
       },
       "download_hosts": []
+    },
+    {
+      "id": "emuden.sync.gdrive",
+      "name": "Sync: Google Drive",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Sync your saves, save states, settings and games between your devices through a folder named EmuDEN in your Google Drive. EmuDEN only sees the files it created there.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.sync.gdrive-1.0.0.emuplugin",
+        "sha256": "644d632c8c00cd8894d60ce8a0e15a73001bf3938f2f95336a196521e65aead5",
+        "size": 16328
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "http",
+        "sync"
+      ],
+      "http_hosts": [
+        "oauth2.googleapis.com",
+        "www.googleapis.com"
+      ],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": []
+    },
+    {
+      "id": "emuden.sync.romm",
+      "name": "Sync: RomM",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Sync your saves and save states with your RomM server, and download its games into your library.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.sync.romm-1.0.0.emuplugin",
+        "sha256": "0cfbd7885b37924522a22eeedb824578b501341cdf813ac7191844be154cf7ce",
+        "size": 15530
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "sync",
+        "http.user_host"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": []
+    },
+    {
+      "id": "emuden.sync.syncthing",
+      "name": "Sync: Syncthing",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Sync saves, states, settings and games between your devices through a folder Syncthing keeps in step.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.sync.syncthing-1.0.0.emuplugin",
+        "sha256": "dc44eb0f08b7974393d8c9dabb17c4e8b115220fd76d66bf2428ed1928342295",
+        "size": 11434
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "sync",
+        "http.local"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": []
     },
     {
       "id": "emuden.vectrex",
