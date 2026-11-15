@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 38,
-  "generated": "2026-11-15T07:32:13Z",
-  "expires": "2027-03-15T07:32:13Z",
+  "sequence": 39,
+  "generated": "2026-11-15T08:32:39Z",
+  "expires": "2027-03-15T08:32:39Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1008,7 +1008,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.1.10",
+      "version": "1.1.11",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1034,14 +1034,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.1.10.emuplugin",
-        "sha256": "7644eefeb26d8c3666d7cd4468361c3e29a9d691e0fc742b1b4cf2cbb6675e9c",
-        "size": 1479
+        "url": "packages/emuden.ps2-1.1.11.emuplugin",
+        "sha256": "e51da69ad2ac3d57be3039cdefb2f7e08178d600ad89a5e9bbe9cbc885092667",
+        "size": 1478
       },
       "download_size": {
-        "windows-x86_64": 1189619,
-        "linux-x86_64": 2534059,
-        "android-arm64": 1673378
+        "windows-x86_64": 1193192,
+        "linux-x86_64": 2541742,
+        "android-arm64": 1677230
       },
       "download_hosts": [
         "github.com"
@@ -2096,8 +2096,8 @@
     "55cbaa80c3e578c6c299b06a1629dc132325c5b2f451d61ba31a398ed8ac1c6c",
     "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
     "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
+    "59a63e02eb7f0b2361f80de173ec0abaec6bc6493e861ba1212c619f6747dcc3",
     "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
-    "5d4178c5097a5f6e756a433cbaea199dee408bb140172d220666003e29d56cc1",
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
@@ -2125,7 +2125,6 @@
     "9207f7bb9c9462421e2d9cc8bf7e5a2269de39bce90f5784ddb1475bce625a50",
     "9294d6361f9d8680c16cdcd8c00a8056369845327b39b7da0d7b26481715279a",
     "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
-    "940076999fa4ffc964e907a8a088d51bfd5002149669b18652a636c36e553445",
     "9405f33578a2fb14f4e3006cb6e0c0940165e5866c41cded00cf9cc5c71b128b",
     "944acd1dd05c28971c780a4cfe7d1c3df31c13d45a1a88f5ded8b925cff558fb",
     "95635a5f72e12ce19b25a43acedaf79d231c3e0814591204ec8ca27bb72423dd",
@@ -2155,7 +2154,6 @@
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
-    "cd82734df19430c9ef926e2d9cee272a594d5e772d620bf4e6a82d6773e5b6d3",
     "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
     "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
     "cfbedaf01d73e2816dd9216a274fbf5d7e37b30ecbe3771f82d61e196ac33593",
@@ -2169,6 +2167,7 @@
     "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
     "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
     "e2a220b62dd9a7b412143db713ebe726c1ee23ad3533b0a00f94e89d75a9ee42",
+    "e442ffbc23f1d486bde64d9889cd602e637f508a97a5146e33964d5d23da28b6",
     "e58f11e98164dbf99b801d93303092f8d524421f00bdafba881faf1e358c2beb",
     "e5aac8cf7b7bd3ed06cf3bbfaf16ebd713f2008b25ee3f5e147fd9ee8c27ae8e",
     "e5f44ed4ba208768c0bcce443f3f1de58a0ef13a5fe5e76c55d9afcc51aa3246",
@@ -2179,6 +2178,7 @@
     "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
     "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
     "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
+    "fe45b2c69be245f05197e8154cd8f8e3f5b53ee01ad14fee5b896399c4ec82c5",
     "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5"
   ],
   "revoked": [],

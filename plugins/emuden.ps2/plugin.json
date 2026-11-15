@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -62,7 +62,7 @@
       "license": "BSD-2-Clause",
       "homepage": "https://github.com/Denarmo/Play-",
       "gpu": "opengl",
-      "version": "0.77-38-g6fa69574",
+      "version": "0.77-39-g8540c2ac",
       "widescreen": {
         "options": {
           "play_widescreen": "enabled"
@@ -70,23 +70,23 @@
       },
       "downloads": {
         "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-windows-x86_64-0.77-38-g6fa69574.zip",
-          "sha256": "5d4178c5097a5f6e756a433cbaea199dee408bb140172d220666003e29d56cc1",
-          "size": 1189619,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-windows-x86_64-0.77-39-g8540c2ac.zip",
+          "sha256": "e442ffbc23f1d486bde64d9889cd602e637f508a97a5146e33964d5d23da28b6",
+          "size": 1193192,
           "archive": "zip",
           "entry": "play_libretro.dll"
         },
         "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-linux-x86_64-0.77-38-g6fa69574.zip",
-          "sha256": "cd82734df19430c9ef926e2d9cee272a594d5e772d620bf4e6a82d6773e5b6d3",
-          "size": 2534059,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-linux-x86_64-0.77-39-g8540c2ac.zip",
+          "sha256": "fe45b2c69be245f05197e8154cd8f8e3f5b53ee01ad14fee5b896399c4ec82c5",
+          "size": 2541742,
           "archive": "zip",
           "entry": "play_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-android-arm64-0.77-38-g6fa69574.zip",
-          "sha256": "940076999fa4ffc964e907a8a088d51bfd5002149669b18652a636c36e553445",
-          "size": 1673378,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-android-arm64-0.77-39-g8540c2ac.zip",
+          "sha256": "59a63e02eb7f0b2361f80de173ec0abaec6bc6493e861ba1212c619f6747dcc3",
+          "size": 1677230,
           "archive": "zip",
           "entry": "play_libretro_android.so"
         }
