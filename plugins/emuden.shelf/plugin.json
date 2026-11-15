@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -138,7 +138,8 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "portrait",
-          "player_color": "#c3c1c8",
+          "player_model": "dmg",
+          "player_color": "#c6c4cb",
           "player_photo": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Game-Boy-Original.jpg",
           "player_screen": [0.21, 0.155, 0.49, 0.305],
           "player_colors": ["#d23b3b", "#f5c71a", "#3f9a4a", "#2c2c2e", "#ededea", "#2f5fb8"]
@@ -155,10 +156,11 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "portrait",
-          "player_color": "#7b3fa0",
+          "player_model": "cgb",
+          "player_color": "#5b3d96",
           "player_photo": "launchbox",
           "player_screen": [0.205, 0.1, 0.585, 0.3],
-          "player_colors": ["#5a2d82", "#a3c93a", "#f7c81b", "#1597a4", "#7d63a8"]
+          "player_colors": ["#c22a5e", "#9cc53c", "#f5c51a", "#169fa6", "#77689a"]
         }
       },
       "gba": {
@@ -171,7 +173,8 @@
           "box": true,
           "box_aspect": 0.95,
           "player": "landscape",
-          "player_color": "#55479a",
+          "player_model": "agb",
+          "player_color": "#4f449e",
           "player_photo": "launchbox",
           "player_screen": [0.288, 0.2, 0.416, 0.53],
           "player_colors": ["#3f3a95", "#ecebef", "#2a2a2c", "#d7579c", "#f08a2b"]
@@ -196,8 +199,9 @@
           "box": true,
           "box_aspect": 0.88,
           "player": "clamshell",
-          "player_color": "#d9d9de",
-          "player_colors": ["#2a2a2e", "#3d6fc4", "#e7a3c0", "#c8282e", "#f2f2f2"]
+          "player_model": "ds_lite",
+          "player_color": "#f1f1f3",
+          "player_colors": ["#1f1f23", "#a9cdea", "#f0a8bf", "#2c3a66", "#b8232c"]
         }
       },
       "nes": {
@@ -289,10 +293,17 @@
       "switch2": {
         "color": "#d43a3a",
         "object": {
-          "shape": "case",
-          "aspect": 0.62,
-          "depth": 0.06,
-          "shell": "#c63434"
+          "shape": "card",
+          "aspect": 0.68,
+          "depth": 0.1,
+          "shell": "#c8323c",
+          "label": [0.08, 0.06, 0.84, 0.72],
+          "notch": 0.12,
+          "radius": 0.06,
+          "box": true,
+          "box_aspect": 0.62,
+          "player_model": "switch2",
+          "player_color": "#3a3c42"
         }
       },
       "genesis": {

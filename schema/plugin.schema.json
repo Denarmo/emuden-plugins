@@ -98,6 +98,7 @@
                   "box": { "type": "boolean" },
                   "box_aspect": { "type": "number", "minimum": 0.4, "maximum": 2.0 },
                   "player": { "enum": ["portrait", "landscape", "clamshell", "home"] },
+                  "player_model": { "enum": ["dmg", "cgb", "agb", "ds_lite", "switch2"] },
                   "player_color": { "$ref": "#/$defs/color" },
                   "player_colors": { "type": "array", "maxItems": 16, "items": { "$ref": "#/$defs/color" } },
                   "player_photo": {
