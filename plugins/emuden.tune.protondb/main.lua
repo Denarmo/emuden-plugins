@@ -258,7 +258,9 @@ function plugin.actions.apply()
   if not game then return end
   local change = changes()
   if next(change) == nil then return end
-  local before = { launch_options = game.config.launch_options or "", compat_tool = game.config.compat_tool or "" }
+  -- A tool Steam picked by itself is given back to Steam on Undo, not pinned.
+  local before = { launch_options = game.config.launch_options or "",
+                   compat_tool = game.config.compat_tool_chosen and game.config.compat_tool or "" }
   local ok, why = den.steam.set{ appid = game.appid, name = game.name,
                                  launch_options = change.launch_options, compat_tool = change.compat_tool }
   if not ok then

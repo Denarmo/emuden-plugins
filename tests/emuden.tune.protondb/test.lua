@@ -112,7 +112,8 @@ end
 do
   local json_store = {}
   local storage, toasts, sets, page = {}, {}, {}, nil
-  local steam_config = { launch_options = "", compat_tool = "proton_11", compat_tool_display = "Proton 11.0-2" }
+  local steam_config = { launch_options = "", compat_tool = "proton_11", compat_tool_display = "Proton 11.0-2",
+                         compat_tool_chosen = false }
   local data = { appid = "1145350", total = 227, reports = REPORTS }
   den = {
     now = function() return NOW end,
@@ -131,11 +132,16 @@ do
                           { appid = "4105511571", name = "EmuDEN", shortcut = true } } }
       end,
       config = function() return { launch_options = steam_config.launch_options, compat_tool = steam_config.compat_tool,
-                                   compat_tool_display = steam_config.compat_tool_display } end,
+                                   compat_tool_display = steam_config.compat_tool_display,
+                                   compat_tool_chosen = steam_config.compat_tool_chosen } end,
       set = function(t)
         sets[#sets + 1] = t
         if t.launch_options then steam_config.launch_options = t.launch_options end
-        if t.compat_tool then steam_config.compat_tool = t.compat_tool; steam_config.compat_tool_display = t.compat_tool end
+        if t.compat_tool then
+          steam_config.compat_tool = t.compat_tool ~= "" and t.compat_tool or "proton_11"
+          steam_config.compat_tool_display = steam_config.compat_tool
+          steam_config.compat_tool_chosen = t.compat_tool ~= ""
+        end
         return true
       end,
     },
@@ -178,12 +184,14 @@ do
   plugin.actions.apply()
   check(#sets == 1 and sets[1].compat_tool == "proton_experimental" and sets[1].launch_options == "gamemoderun %command% -dx11",
         "Apply sets both")
-  check(storage["undo:1145350"].compat_tool == "proton_11" and storage["undo:1145350"].launch_options == "", "the old values are kept")
+  check(storage["undo:1145350"].compat_tool == "" and storage["undo:1145350"].launch_options == "",
+        "the old values are kept; Steam's own choice as \"\"")
   local labels = {}
   for _, button in ipairs(page.body[1].buttons) do labels[#labels + 1] = button.label end
   check(table.concat(labels, ",") == "Undo", "after Apply only Undo: " .. table.concat(labels, ","))
   plugin.actions.undo()
-  check(#sets == 2 and sets[2].compat_tool == "proton_11" and sets[2].launch_options == "", "Undo puts them back")
+  check(#sets == 2 and sets[2].compat_tool == "" and sets[2].launch_options == "", "Undo gives the choice back to Steam")
+  check(steam_config.compat_tool_chosen == false, "not pinned")
   check(storage["undo:1145350"] == nil, "and forgets them")
   -- Beyond the closest eight, the closest reports that give settings are listed too.
   local many = {}
