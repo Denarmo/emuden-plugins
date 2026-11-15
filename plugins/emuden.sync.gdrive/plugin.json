@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sync.gdrive",
   "name": "Sync: Google Drive",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -26,7 +26,8 @@
       "hosts": [
         "oauth2.googleapis.com",
         "www.googleapis.com"
-      ]
+      ],
+      "min_interval_ms": 100
     },
     "sync": {
       "categories": [

@@ -19,7 +19,8 @@ engine decides what moves; this plugin stores and fetches the files in a folder 
   folder ids and the access token (in `den.secrets`, until it expires) are kept so a script
   that just started asks Google once.
 - Steam and PC data never goes to Google Drive: the plugin refuses it as well as the host.
-- Hosts: `oauth2.googleapis.com`, `www.googleapis.com`.
+- Hosts: `oauth2.googleapis.com`, `www.googleapis.com`, with a 100 ms pause between requests
+  (EmuDEN allows that to sync providers; older versions keep 500 ms).
 
 ## Setting up the OAuth client (owner, once)
 

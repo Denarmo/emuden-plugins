@@ -128,7 +128,7 @@
           "type": "object",
           "properties": {
             "hosts": { "type": "array", "items": { "type": "string" } },
-            "min_interval_ms": { "type": "integer", "minimum": 500 }
+            "min_interval_ms": { "type": "integer", "minimum": 100 }
           }
         },
         "open_hosts": { "type": "array", "items": { "type": "string" } },
