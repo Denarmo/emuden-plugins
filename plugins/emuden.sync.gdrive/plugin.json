@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sync.gdrive",
   "name": "Sync: Google Drive",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",

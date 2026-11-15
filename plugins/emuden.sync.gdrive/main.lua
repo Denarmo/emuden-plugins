@@ -129,8 +129,13 @@ end
 local function signing_page()
   local url = signing.verification_url:gsub("^https?://", ""):gsub("^www%.", "")
   local minutes = math.max(1, (signing.expires_at - den.now()) // 60)
+  -- Google's page fills the code in from the link, so the QR code is all a phone needs.
+  local link = signing.verification_url_complete
+    or (signing.verification_url .. "?user_code=" .. signing.user_code)
   return { title = "Sign in with Google", body = {
-    { type = "text", text = "On your phone or computer, go to" },
+    { type = "text", text = "Scan this with your phone:" },
+    { type = "qr", id = "qr", text = link },
+    { type = "text", text = "Or on your phone or computer, go to" },
     { type = "text", style = "heading", text = url },
     { type = "text", text = "and enter this code:" },
     { type = "text", id = "code", style = "heading", text = signing.user_code },
