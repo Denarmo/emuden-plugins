@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
