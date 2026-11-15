@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -43,6 +43,7 @@
       "sway": 8
     },
     "tabs": {
+      "continue": true,
       "recent": true,
       "all": true
     },
@@ -56,6 +57,9 @@
         "object": {
           "shape": "case"
         }
+      },
+      "continue": {
+        "color": "#2f9e72"
       },
       "recent": {
         "color": "#d8892b"

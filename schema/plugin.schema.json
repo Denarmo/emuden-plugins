@@ -59,7 +59,7 @@
         "tabs": {
           "type": "object",
           "additionalProperties": false,
-          "properties": { "recent": { "type": "boolean" }, "all": { "type": "boolean" } }
+          "properties": { "continue": { "type": "boolean" }, "recent": { "type": "boolean" }, "all": { "type": "boolean" } }
         },
         "launch": {
           "type": "object",
