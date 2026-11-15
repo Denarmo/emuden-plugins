@@ -312,46 +312,98 @@ return function(auth)
     return last and last + 1 or 0
   end
 
-  -- Resumable: a session from the metadata, then the file in one PUT. After a cut the session
-  -- says how much arrived and the rest is sent from there; a lost session starts a new one.
-  local function resumable(url, method, meta, mime, local_path, size)
-    local response, err
+  -- Resumable, in chunks: a session from the metadata, then the file CHUNK bytes at a time,
+  -- each answered with how much Google has. The session is kept in the plugin's storage
+  -- (Google keeps one a week), so an upload cut by the app closing, a game starting or the
+  -- network goes on from there in a later run instead of from the start. progress(done, total)
+  -- moves after every chunk; den.sync.status().stopping ends the call between two chunks.
+  drive.CHUNK = 16 * 1024 * 1024 -- a multiple of 256 KiB, as Drive asks
+
+  local function stopping()
+    local status = den.sync.status()
+    return type(status) == "table" and status.stopping == true
+  end
+
+  local function next_offset(response)
+    local last = tonumber((util.header(response, "range") or ""):match("^bytes=0%-(%d+)$"))
+    return last and last + 1 or 0
+  end
+
+  local function resumable(url, method, meta, mime, local_path, size, key, modified, progress)
+    local stamp = tostring(modified or 0)
     for _ = 1, 2 do
-      response, err = call{ url = url .. "uploadType=resumable&fields=" .. FILE_FIELDS,
-                            method = method, body = den.json.encode(meta),
-                            headers = { ["Content-Type"] = "application/json; charset=UTF-8",
-                                        ["X-Upload-Content-Type"] = mime,
-                                        ["X-Upload-Content-Length"] = tostring(size) } }
-      if not response then return nil, err end
-      local session = util.header(response, "location")
-      if response.status ~= 200 or not session then return response end
-      local offset = 0
-      for attempt = 1, 4 do
-        local headers = { ["Content-Type"] = mime }
-        if offset > 0 then
-          headers["Content-Range"] = string.format("bytes %d-%d/%d", offset, size - 1, size)
+      local session, offset = nil, 0
+      local kept = den.storage.get(key)
+      if type(kept) == "table" and kept.size == size and kept.modified == stamp
+          and type(kept.session) == "string" then
+        local at, finished, lost = uploaded(kept.session, size)
+        if finished then
+          den.storage.remove(key)
+          return finished
         end
-        response, err = call({ url = session, method = "PUT", body_file = local_path,
-                               body_offset = offset, headers = headers }, true)
-        if done(response) or gone(response) then break end
-        local status = response and response.status or 0
-        if status >= 400 and status < 500 and status ~= 403 and status ~= 408 and status ~= 429 then
-          return response
+        if at then
+          session, offset = kept.session, at
+        elseif not gone(lost) then
+          return nil, "no connection" -- kept for the next run
         end
-        backoff(attempt, response)
-        local next_offset, finished, lost = uploaded(session, size)
-        if finished then return finished end
-        if gone(lost) then response = lost; break end
-        offset = next_offset or offset
       end
-      if done(response) or not gone(response) then return response, err end
+      if not session then
+        den.storage.remove(key)
+        local response, err = call{ url = url .. "uploadType=resumable&fields=" .. FILE_FIELDS,
+                                    method = method, body = den.json.encode(meta),
+                                    headers = { ["Content-Type"] = "application/json; charset=UTF-8",
+                                                ["X-Upload-Content-Type"] = mime,
+                                                ["X-Upload-Content-Length"] = tostring(size) } }
+        if not response then return nil, err end
+        session = util.header(response, "location")
+        if response.status ~= 200 or not session then return response end
+        den.storage.set(key, { session = session, size = size, modified = stamp })
+      end
+      local failures = 0
+      local lost = false
+      while not lost do
+        if progress then progress(offset, size) end
+        if stopping() then return nil, "cancelled" end
+        local length = math.min(drive.CHUNK, size - offset)
+        local response = call({ url = session, method = "PUT", body_file = local_path,
+                                body_offset = offset, body_length = length,
+                                headers = { ["Content-Type"] = mime,
+                                            ["Content-Range"] = string.format("bytes %d-%d/%d", offset,
+                                                                              offset + length - 1, size) } },
+                              true)
+        local status = response and response.status or 0
+        if done(response) then
+          den.storage.remove(key)
+          if progress then progress(size, size) end
+          return response
+        elseif gone(response) then
+          lost = true
+        elseif status == 308 then
+          offset, failures = next_offset(response), 0
+        elseif status >= 400 and status < 500 and status ~= 403 and status ~= 408 and status ~= 429 then
+          den.storage.remove(key)
+          return response
+        else
+          failures = failures + 1
+          if failures > 4 then return response or nil, "no connection" end
+          backoff(failures, response)
+          local at, finished, gone_now = uploaded(session, size)
+          if finished then
+            den.storage.remove(key)
+            return finished
+          end
+          if gone(gone_now) then lost = true end
+          offset = at or offset
+        end
+      end
+      den.storage.remove(key) -- the session ran out: once more with a new one
     end
-    return response, err
+    return nil, "Upload failed: Google Drive dropped the upload twice"
   end
 
   -- modified (Unix seconds) is optional; the host may pass the local file's time so the
   -- remote copy carries it.
-  function drive.put(path, local_path, rev, modified)
+  function drive.put(path, local_path, rev, modified, progress)
     local refused = util.refused(path)
     if refused then return nil, refused end
     local current, err = lookup(path)
@@ -378,7 +430,8 @@ return function(auth)
     if size < drive.MULTIPART_LIMIT then
       response, why = multipart(url, method, meta, mime, local_path)
     else
-      response, why = resumable(url, method, meta, mime, local_path, size)
+      response, why = resumable(url, method, meta, mime, local_path, size, "upload:" .. path, modified,
+                                progress)
     end
     if not response then return nil, why end
     if response.status ~= 200 and response.status ~= 201 then

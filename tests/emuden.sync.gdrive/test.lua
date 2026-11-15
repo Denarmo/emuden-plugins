@@ -173,6 +173,27 @@ check(google.resumed == 3 * 1024 * 1024 and google.status_queries == 1,
 check(plugin.provider.get("games/gba/Huge.gba", "sync:hugeout") and d.fs["sync:hugeout"] == huge,
       "resumed file comes back intact")
 
+-- a game goes up in 16 MiB chunks with progress; stopped between two, it goes on later
+-- from the kept session, also after a restart, and never from the start
+local game = string.rep("g", 33 * 1024 * 1024) .. "end"
+d.fs["sync:game"] = game
+local sent = {}
+google.chunks = 0
+d.stopping = function() return google.chunks >= 1 end
+r, why = plugin.provider.put("games/ps2/GT4.iso", "sync:game", nil, 1763100000,
+                             function(done, total) sent[#sent + 1] = done end)
+check(r == nil and why == "cancelled" and google.chunks == 1, "a stopped upload gives up between chunks")
+check(type(d.storage_table["upload:games/ps2/GT4.iso"]) == "table", "its session is kept")
+d.stopping = nil
+r, why = plugin.provider.put("games/ps2/GT4.iso", "sync:game", nil, 1763100000,
+                             function(done, total) sent[#sent + 1] = done end)
+check(r ~= nil and google.chunks == 3 and google.resumed == 32 * 1024 * 1024,
+      "it went on from the kept session: " .. tostring(r) .. " " .. tostring(why))
+check(d.storage_table["upload:games/ps2/GT4.iso"] == nil, "the session is forgotten once done")
+check(sent[1] == 0 and sent[#sent] == #game, "progress from 0 to the whole file")
+check(plugin.provider.get("games/ps2/GT4.iso", "sync:gameout") and d.fs["sync:gameout"] == game,
+      "the chunked file comes back intact")
+
 -- expired access token: refreshed once
 google.valid = {}
 local before = #google.log

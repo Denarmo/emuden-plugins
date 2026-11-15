@@ -191,18 +191,23 @@ function fake.google()
       local offset = req.body_offset or 0
       assert(#content == s.total, "X-Upload-Content-Length is the file's size")
       assert(offset == #s.received, "resumed at " .. offset .. ", Google has " .. #s.received)
-      if offset > 0 then
-        assert(range == string.format("bytes %d-%d/%d", offset, s.total - 1, s.total),
-               "Content-Range of the rest: " .. tostring(range))
-        g.resumed = offset
+      local length = (req.body_length or 0) > 0 and req.body_length or s.total - offset
+      if offset > 0 or length < s.total then
+        assert(range == string.format("bytes %d-%d/%d", offset, offset + length - 1, s.total),
+               "Content-Range of the chunk: " .. tostring(range))
       end
-      local chunk = content:sub(offset + 1)
+      if offset > 0 then g.resumed = offset end
+      local chunk = content:sub(offset + 1, offset + length)
       if g.cut then
         s.received = s.received .. chunk:sub(1, g.cut)
         g.cut = nil
         return nil, "the connection was reset"
       end
       s.received = s.received .. chunk
+      g.chunks = (g.chunks or 0) + 1
+      if #s.received < s.total then
+        return reply(308, nil, { range = "bytes=0-" .. (#s.received - 1) })
+      end
       g.uploads[#g.uploads + 1] = "resumable"
       local f = s.id and g.files[s.id] or { id = new_id() }
       g.files[f.id] = f
@@ -329,7 +334,7 @@ function fake.den(plugin_dir, google, opts)
   }
   d.sync = {
     status = function()
-      return { active = true, running = false, last_sync = clock - 120, done = 4, total = 4,
+      return { active = true, running = false, stopping = d.stopping and d.stopping() or false, last_sync = clock - 120, done = 4, total = 4,
                uploaded = 3, downloaded = 1, conflicts = 2, waiting = 0,
                errors = { "saves/gba/A.srm: no connection", "saves/gba/B.srm: no connection" },
                error = "saves/gba/A.srm: no connection" }

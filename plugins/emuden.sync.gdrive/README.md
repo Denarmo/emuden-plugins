@@ -9,8 +9,10 @@ engine decides what moves; this plugin stores and fetches the files in a folder 
   user enters it on a phone or computer. Scope `https://www.googleapis.com/auth/drive.file`
   only: EmuDEN sees just the files it created. The refresh token is kept in `den.secrets`.
 - Files: Drive API v3. Uploads under 5 MiB are one `multipart/related` request the host
-  builds from the metadata and the file; larger ones are resumable, and a cut upload goes on
-  from the offset Google reports (`body_offset`, `den.files.size` for the total). `rev` is the
+  builds from the metadata and the file; larger ones are resumable, sent in 16 MiB chunks
+  (`body_offset`, `body_length`) with progress after each. The session is kept in
+  `den.storage`, so an upload cut by the network, a game starting (`den.sync.status().stopping`)
+  or the app closing goes on from the offset Google reports, also in a later run. `rev` is the
   file's Drive `version`, and an upload over a newer remote version answers `conflict`.
   Deleting moves the file to the Drive trash.
 - Steam and PC data never goes to Google Drive: the plugin refuses it as well as the host.
