@@ -3,7 +3,8 @@
 
 -- Google sign-in with the OAuth 2.0 device flow ("TVs and Limited Input devices"):
 -- https://developers.google.com/identity/protocols/oauth2/limited-input-device
--- The refresh token is kept in den.secrets; the access token only in memory.
+-- The refresh token is kept in den.secrets, and the access token too until it expires, so a
+-- script that just started (a game's check before it starts) need not ask Google for one.
 
 local util = den.include("util.lua")
 
@@ -61,8 +62,16 @@ local function post(url, fields)
   return response, type(body) == "table" and body or {}
 end
 
+local SECRET_ACCESS = "google.access_token"
+
 local function keep(body)
   access = { token = body.access_token, expires = den.now() + (tonumber(body.expires_in) or 3600) - 60 }
+  den.secrets.set(SECRET_ACCESS, access)
+end
+
+local function drop_access()
+  access = nil
+  den.secrets.remove(SECRET_ACCESS)
 end
 
 -- Step 1: a code for the user. { device_code, user_code, verification_url, expires_in, interval }
@@ -141,7 +150,7 @@ function auth.refresh()
   end
   if body.error == "invalid_grant" then
     den.secrets.remove(SECRET_REFRESH)
-    access = nil
+    drop_access()
     return nil, "The Google sign-in has ended. Sign in again."
   end
   return nil, "Google refused the token: " .. tostring(body.error_description or body.error
@@ -149,12 +158,18 @@ function auth.refresh()
 end
 
 function auth.token()
+  if not access then
+    local kept = den.secrets.get(SECRET_ACCESS)
+    if type(kept) == "table" and type(kept.token) == "string" and tonumber(kept.expires) then
+      access = { token = kept.token, expires = tonumber(kept.expires) }
+    end
+  end
   if access and den.now() < access.expires then return access.token end
   return auth.refresh()
 end
 
 function auth.forget_access()
-  access = nil
+  drop_access()
 end
 
 -- Signs out here and revokes the grant at Google (best effort).
@@ -162,7 +177,7 @@ function auth.sign_out()
   local refresh = den.secrets.get(SECRET_REFRESH)
   if refresh then post(REVOKE_URL, { token = refresh }) end
   den.secrets.remove(SECRET_REFRESH)
-  access = nil
+  drop_access()
 end
 
 return auth

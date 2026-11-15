@@ -88,6 +88,8 @@ check(coroutine_page and find(coroutine_page, "google.com/device"), "code page s
 check(google.polls == 3, "polled through pending and slow_down (" .. google.polls .. ")")
 check(d.slept >= 5000 + 5000 + 10000, "slow_down added 5 s to the interval")
 check(d.secrets_table["google.refresh_token"] == "R1", "refresh token kept in den.secrets")
+check(type(d.secrets_table["google.access_token"]) == "table", "access token kept in den.secrets until it expires")
+check(d.storage_table["google.access_token"] == nil, "access token not in den.storage")
 check(d.storage_table["google.refresh_token"] == nil, "refresh token not in den.storage")
 check(d.sync_now_calls == 1, "sync started after sign-in")
 local page = d.pages[#d.pages]
@@ -270,6 +272,7 @@ google.refresh_tokens = { R1 = true }
 plugin.actions.sign_out()
 check(google.revoked, "sign out revokes the token")
 check(d.secrets_table["google.refresh_token"] == nil, "sign out forgets the token")
+check(d.secrets_table["google.access_token"] == nil, "sign out forgets the access token")
 check(find(d.pages[#d.pages], "Sign in with Google"), "signed-out page after sign out")
 
 -- sign-in refused by the user

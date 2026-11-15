@@ -15,6 +15,9 @@ engine decides what moves; this plugin stores and fetches the files in a folder 
   or the app closing goes on from the offset Google reports, also in a later run. `rev` is the
   file's Drive `version`, and an upload over a newer remote version answers `conflict`.
   Deleting moves the file to the Drive trash.
+- `list("saves/gba/")` searches that one folder (for a game's check before it starts); the
+  folder ids and the access token (in `den.secrets`, until it expires) are kept so a script
+  that just started asks Google once.
 - Steam and PC data never goes to Google Drive: the plugin refuses it as well as the host.
 - Hosts: `oauth2.googleapis.com`, `www.googleapis.com`.
 

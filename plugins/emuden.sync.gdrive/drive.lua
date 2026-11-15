@@ -223,20 +223,10 @@ return function(auth)
 
   -- One folder ("saves/gba/"), for a game's own sync: a single search instead of the whole
   -- listing. Its folder id comes from this script's last listing or the one kept from it.
-  local function list_folder(dir)
-    local id, err = ensure_root()
-    if not id then return nil, err end
-    local parent = folders[dir]
-    if not parent then
-      local kept = den.storage.get("folders")
-      parent = type(kept) == "table" and kept.root == id and kept[dir] or nil
-    end
-    if not parent then
-      local found, why = folder_of(dir, false)
-      if why then return nil, why end
-      parent = found
-    end
-    if not parent then return {} end
+  -- One folder ("saves/gba/"), for a game's own sync: a single search instead of the whole
+  -- listing. Its folder id is kept (den.storage "folders", with the root it belongs to), so a
+  -- script that just started asks Google once.
+  local function search_folder(dir, parent)
     local best = {}
     local ok, why = search(util.quote(parent) .. " in parents and trashed = false and mimeType != '"
                            .. FOLDER .. "'", FILE_FIELDS, function(file)
@@ -253,6 +243,27 @@ return function(auth)
     end
     table.sort(out, function(a, b) return a.path < b.path end)
     return out
+  end
+
+  local function list_folder(dir)
+    local kept = den.storage.get("folders")
+    if type(kept) ~= "table" then kept = {} end
+    local known_root = root or den.storage.get("root_id")
+    local parent = folders[dir] or (kept.root == known_root and kept[dir]) or nil
+    if parent then
+      local out = search_folder(dir, parent)
+      if out then return out end
+    end
+    -- Not known yet, or gone: found the long way, and kept.
+    local id, err = ensure_root()
+    if not id then return nil, err end
+    local found, why = folder_of(dir, false)
+    if why then return nil, why end
+    if not found then return {} end
+    if kept.root ~= id then kept = { root = id } end
+    kept[dir] = found
+    den.storage.set("folders", kept)
+    return search_folder(dir, found)
   end
 
   function drive.list(prefix)
