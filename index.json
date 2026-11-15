@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 59,
-  "generated": "2026-11-15T21:40:29Z",
-  "expires": "2027-03-15T21:40:29Z",
+  "sequence": 60,
+  "generated": "2026-11-15T22:10:15Z",
+  "expires": "2027-03-15T22:10:15Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -226,6 +226,53 @@
       "download_hosts": [
         "github.com"
       ]
+    },
+    {
+      "id": "emuden.browser",
+      "name": "Browser",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Browse any website inside EmuDEN. Games and ROM hack patches you download there are added to your library for you.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.web.1",
+        "feature.browser.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.browser-1.0.0.emuplugin",
+        "sha256": "84cd007d913fa1d3965d04af45e29653180e8c0b6410fa5fc9d2ae63893a06c7",
+        "size": 15013
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "browse.any",
+        "downloads.setup"
+      ],
+      "http_hosts": [],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": []
     },
     {
       "id": "emuden.dreamcast",
