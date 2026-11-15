@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gbc",
   "name": "Game Boy Color",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -70,7 +70,8 @@
       "cores": [
         "mgba",
         "gambatte",
-        "sameboy"
+        "sameboy",
+        "tgbdual"
       ],
       "bios": []
     }
@@ -166,6 +167,37 @@
           "size": 102640,
           "archive": "zip",
           "entry": "sameboy_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "tgbdual",
+      "type": "libretro-core",
+      "name": "TGB Dual",
+      "license": "GPL-2.0-only",
+      "gpu": "none",
+      "version": "2026-11-15",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/tgbdual-windows-x86_64-2026-11-15.zip",
+          "sha256": "35e442eea45753255870a63d9f7c4a10afd3a50910244247b104f597ada2c24d",
+          "size": 94821,
+          "archive": "zip",
+          "entry": "tgbdual_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/tgbdual-linux-x86_64-2026-11-15.zip",
+          "sha256": "4533c718ecf90f0d4c74bada4378e27d596b2ee839182b23f02643433a686e2c",
+          "size": 47569,
+          "archive": "zip",
+          "entry": "tgbdual_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/tgbdual-android-arm64-2026-11-15.zip",
+          "sha256": "92e8cdb6f394ce269b3944ea84521ec7ccddd0e63520514c063090215036e8d1",
+          "size": 106053,
+          "archive": "zip",
+          "entry": "tgbdual_libretro_android.so"
         }
       }
     }

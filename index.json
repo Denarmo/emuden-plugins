@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 56,
-  "generated": "2026-11-15T20:57:44Z",
-  "expires": "2027-03-15T20:57:44Z",
+  "sequence": 57,
+  "generated": "2026-11-15T21:24:41Z",
+  "expires": "2027-03-15T21:24:41Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -315,7 +315,7 @@
     {
       "id": "emuden.gb",
       "name": "Game Boy",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -341,14 +341,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gb-1.0.2.emuplugin",
-        "sha256": "07819080997731bc589766d12ffa0e1ec4cbbe5d7f6b99bc9223465aff22e89b",
-        "size": 1557
+        "url": "packages/emuden.gb-1.1.0.emuplugin",
+        "sha256": "8f8134d7b44d43d739152311de7a5a256588495c4bec1f9c06765d9366f38f75",
+        "size": 1784
       },
       "download_size": {
-        "windows-x86_64": 1172040,
-        "linux-x86_64": 1172764,
-        "android-arm64": 956151
+        "windows-x86_64": 1266861,
+        "linux-x86_64": 1220333,
+        "android-arm64": 1062204
       },
       "download_hosts": [
         "github.com"
@@ -357,7 +357,7 @@
     {
       "id": "emuden.gba",
       "name": "Game Boy Advance",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -383,14 +383,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gba-1.1.0.emuplugin",
-        "sha256": "744e95209dae639f22c06ac93029ba587622a9aefe509b0f9c58c7587897f37c",
-        "size": 2122
+        "url": "packages/emuden.gba-1.2.0.emuplugin",
+        "sha256": "3c31f9fe7570421716d4fdb632dcc539fa92fac02e1e50a003fd6f91821adc38",
+        "size": 2358
       },
       "download_size": {
-        "windows-x86_64": 1453854,
-        "linux-x86_64": 1411098,
-        "android-arm64": 1268933
+        "windows-x86_64": 1783085,
+        "linux-x86_64": 1707382,
+        "android-arm64": 1506143
       },
       "download_hosts": [
         "github.com"
@@ -399,7 +399,7 @@
     {
       "id": "emuden.gbc",
       "name": "Game Boy Color",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -425,14 +425,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gbc-1.0.2.emuplugin",
-        "sha256": "f803253e216470d172b0b62686dbb21c0587a66ce9b8165866d5e7f8df528e92",
-        "size": 1569
+        "url": "packages/emuden.gbc-1.1.0.emuplugin",
+        "sha256": "adbf1928ee643258c2524ca938cd02c7abbccf08de41e0f33026ceccd1ac333d",
+        "size": 1792
       },
       "download_size": {
-        "windows-x86_64": 1172040,
-        "linux-x86_64": 1172764,
-        "android-arm64": 956151
+        "windows-x86_64": 1266861,
+        "linux-x86_64": 1220333,
+        "android-arm64": 1062204
       },
       "download_hosts": [
         "github.com"
@@ -2187,6 +2187,7 @@
     "2ed7c0f040fba91199318d39555785c651764607884591c5b299f4323d7ca41b",
     "32c0d3a19ce2f2cac5b10eb8a71b6e36d9ab243a68b3ebf288443862614bbc8a",
     "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
+    "35e442eea45753255870a63d9f7c4a10afd3a50910244247b104f597ada2c24d",
     "39f5a4aaa563c14fdb305fc458cdbab50bb7fd1f0df0ed64817c0b8a19a3da79",
     "3bf73a3ced9c9b0aeea232407aaeffed37c482022690be0c312b2b248d3c95d1",
     "3c7471a9d5f8e0bcb01dc54e93ead5d6ba3c4a50c083a07865d12fd7a1f31d3f",
@@ -2197,7 +2198,9 @@
     "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
     "44d32a74d9fcafc37c6f77a05217cfa885db7701baf62b228b0be0d84aed4c12",
     "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
+    "4533c718ecf90f0d4c74bada4378e27d596b2ee839182b23f02643433a686e2c",
     "457aa28912e2449a3346d1c122d1ffcd9e1f6f4f2a841c21a871f266274f239a",
+    "4e9a525813ba9dbd8c29bb38ddff70369cd7a184c559af51417f16cdcbd9fa2a",
     "55cbaa80c3e578c6c299b06a1629dc132325c5b2f451d61ba31a398ed8ac1c6c",
     "570fe2197f0053a3c8648d441c66190e855d4fc16827df7723ded6aff4939fd4",
     "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
@@ -2208,6 +2211,7 @@
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
+    "6af0529ff50fdd2314d49332d19f96fae571d9ae18e813daf40047442a4e659b",
     "6af96421ebc98b70643ea88ddb20ca526323853c21135f05f9e21be89cc6a725",
     "6ebb1c0544799c09f76b7db667dbc1a0cdc8a23118c04f5d5742b6a04ad89e60",
     "6ed17b551c2664cb7ade8f5d5998c0407dd0bc5b76cb51904423ec35a5700974",
@@ -2230,6 +2234,7 @@
     "917d92b74b3d002854267320bfdff88c744f90197302fac5bf11a4300a3b64a2",
     "9207f7bb9c9462421e2d9cc8bf7e5a2269de39bce90f5784ddb1475bce625a50",
     "9294d6361f9d8680c16cdcd8c00a8056369845327b39b7da0d7b26481715279a",
+    "92e8cdb6f394ce269b3944ea84521ec7ccddd0e63520514c063090215036e8d1",
     "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
     "9405f33578a2fb14f4e3006cb6e0c0940165e5866c41cded00cf9cc5c71b128b",
     "944acd1dd05c28971c780a4cfe7d1c3df31c13d45a1a88f5ded8b925cff558fb",
@@ -2239,6 +2244,7 @@
     "985e60793f2650684d4f314c34ae73edd6fffba32a9b50cd51d2940cdc1ffbbc",
     "998e611dd1481daeae794503fc843d8089e44d24014fc442042a765c4660e1f6",
     "99ce599a905d473325bfededd8f2e754d238d91f96884249f8f0071b2fea8fa0",
+    "9b96a38fd5bbc40526829ce6b7ffa3b36533f9b64df2550c19ba8681339cf744",
     "9edd17472aae26d81c71acd2a664a7ee0dd833a02645c70ac953adedc9f01ea2",
     "9ee95f5d9afcfab492057034073f70722f7a78d93029ed292f19a2a092d1860b",
     "a2c902154433e5740075167152fecf69f632e8128bc4a754993d7703dde80a15",

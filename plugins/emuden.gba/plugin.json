@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -78,7 +78,8 @@
       "cores": [
         "mgba",
         "vba_next",
-        "gbads"
+        "gbads",
+        "gpsp"
       ]
     }
   ],
@@ -325,6 +326,37 @@
           "size": 698792,
           "archive": "zip",
           "entry": "gbads_libretro_android.so"
+        }
+      }
+    },
+    {
+      "id": "gpsp",
+      "type": "libretro-core",
+      "name": "gpSP",
+      "license": "GPL-2.0-or-later",
+      "gpu": "none",
+      "version": "2026-11-15",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/gpsp-windows-x86_64-2026-11-15.zip",
+          "sha256": "9b96a38fd5bbc40526829ce6b7ffa3b36533f9b64df2550c19ba8681339cf744",
+          "size": 329231,
+          "archive": "zip",
+          "entry": "gpsp_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/gpsp-linux-x86_64-2026-11-15.zip",
+          "sha256": "4e9a525813ba9dbd8c29bb38ddff70369cd7a184c559af51417f16cdcbd9fa2a",
+          "size": 296284,
+          "archive": "zip",
+          "entry": "gpsp_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-together-2026-11-15/gpsp-android-arm64-2026-11-15.zip",
+          "sha256": "6af0529ff50fdd2314d49332d19f96fae571d9ae18e813daf40047442a4e659b",
+          "size": 237210,
+          "archive": "zip",
+          "entry": "gpsp_libretro_android.so"
         }
       }
     }

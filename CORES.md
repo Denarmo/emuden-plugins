@@ -24,6 +24,7 @@ https://docs.libretro.com/.
 | fceumm | GPL-2.0-only | Windows, Linux, Android |
 | flycast | GPL-2.0-only | Windows, Linux, Android |
 | gbads | GPL-3.0-only | Windows, Linux, Android |
+| gpsp | GPL-2.0-or-later | Windows, Linux, Android |
 | gambatte | GPL-2.0-only | Windows, Linux, Android |
 | genesis_plus_gx | LicenseRef-Genesis-Plus-GX | Windows, Linux, Android |
 | handy | Zlib | Windows, Linux, Android |
@@ -50,6 +51,7 @@ https://docs.libretro.com/.
 | sameboy | MIT | Windows, Linux, Android |
 | snes9x | LicenseRef-Snes9x | Windows, Linux, Android |
 | stella | GPL-2.0-only | Windows, Linux, Android |
+| tgbdual | GPL-2.0-only | Windows, Linux, Android |
 | vba_next | GPL-2.0-only | Windows, Linux, Android |
 | vecx | GPL-3.0-only | Windows, Linux, Android |
 | virtualjaguar | GPL-3.0-only | Windows, Linux, Android |
@@ -59,6 +61,9 @@ https://docs.libretro.com/.
   the Linux builds of the alternative cores are in `cores-android-2026-11-13`. The cores added for the Atari,
   NEC, SNK, Bandai, Sega CD/32X/SG-1000, Virtual Boy, Pokémon mini, 3DO, ColecoVision, Intellivision, Vectrex,
   MSX and arcade consoles, and the Windows builds of the alternative cores, are in `cores-2026-11-14`.
+- gpSP and TGB Dual (release `cores-together-2026-11-15`) are the cores EmuDEN plays together with between two
+  devices: gpSP emulates the GBA link cable and wireless adapter over the network, TGB Dual two linked Game Boys.
+  gpSP carries its own GBA BIOS replacement. Neither is any console's default core.
 - `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   the one core not taken from the buildbot: it is built from the fork https://github.com/Denarmo/Play- (tag
   `emuden-0.77-53-g03545daf`), which makes the libretro core run on Android, makes its save states load,
