@@ -16,7 +16,7 @@ the list. A feature plugin has no `engine`, `systems`, `components` or `settings
 |---|---|
 | `entry` | The script to run, a relative path ending in `.lua` |
 | `icon` | A square PNG of the package |
-| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam`, `achievements` (`den.achievements`: RetroAchievements sign-in and progress) |
+| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam`, `achievements` (`den.achievements`: RetroAchievements sign-in and progress), `browse.any` and `downloads.setup` (with `feature.browser.1`: the browser for any site and the setup of its downloads; EmuDEN's own plugins only) |
 | `http.hosts` | Exact https hosts, with `http` or `download`; at most 8 |
 | `open_hosts` | Hosts `den.open_url` may show, with `open-url` |
 | `browse_hosts` | Sites `den.web.open` may show in the app's browser page, with `browse`: exact names, at most 8 |
@@ -25,7 +25,7 @@ the list. A feature plugin has no `engine`, `systems`, `components` or `settings
 | `sync` | With `sync`: `{"categories": [...]}` of `saves`, `states`, `config`, `games`, `bios`; the plugin is a sync provider (EmuDEN `docs/sync.md`) |
 | `limits` | `memory_mb` (8 to 64), `storage_mb` (up to 4096) |
 
-A third-party plugin may not use `downloads.watch` or `["*"]`.
+A third-party plugin may not use `downloads.watch`, `browse.any`, `downloads.setup` or `["*"]`.
 
 ## Package
 

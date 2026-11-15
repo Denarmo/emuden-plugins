@@ -1,0 +1,28 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.browser",
+  "name": "Browser",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Browse any website inside EmuDEN. Games and ROM hack patches you download there are added to your library for you.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.web.1",
+    "feature.browser.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "browse.any",
+      "downloads.setup"
+    ]
+  }
+}

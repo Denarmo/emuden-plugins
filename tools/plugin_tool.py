@@ -34,7 +34,8 @@ import zipfile
 HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
                      "settings.v1", "content.multi_file", "content.magic",
                      "kind.feature", "feature.lua.1", "feature.web.1",
-                     "kind.interface", "interface.1", "feature.tune.1", "feature.achievements.1"]
+                     "kind.interface", "interface.1", "feature.tune.1", "feature.achievements.1",
+                     "feature.browser.1"]
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
 LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
                     "bios_dir", "platform"]
@@ -61,7 +62,11 @@ MAX_EXPIRY_DAYS = 120
 FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
                        "downloads.watch", "library.read", "patch", "library.write",
                        "sync", "http.local", "http.user_host",
-                       "device.info", "game.settings", "steam", "achievements"]
+                       "device.info", "game.settings", "steam", "achievements",
+                       "browse.any", "downloads.setup"]
+# The browser for any site and the setup of what is downloaded there: EmuDEN's own plugins
+# only, with feature.browser.1.
+BROWSER_PERMISSIONS = ["browse.any", "downloads.setup"]
 # Need feature.tune.1 (EmuDEN docs/feature-plugins.md, section 4.2).
 TUNE_PERMISSIONS = ["device.info", "game.settings", "steam"]
 # What a sync provider (permission "sync") may carry between devices (EmuDEN docs/sync.md).
@@ -301,6 +306,11 @@ def validate_feature(manifest, trust, folder, err):
         err("needs", "must list feature.web.1 with browse")
     if any(p in TUNE_PERMISSIONS for p in permissions) and "feature.tune.1" not in manifest["needs"]:
         err("needs", "must list feature.tune.1 with device.info, game.settings or steam")
+    if any(p in BROWSER_PERMISSIONS for p in permissions):
+        if "feature.browser.1" not in manifest["needs"]:
+            err("needs", "must list feature.browser.1 with browse.any or downloads.setup")
+        if not reserved:
+            err("feature.permissions", "only EmuDEN's own plugins show any site or set up downloads")
     if "achievements" in permissions and "feature.achievements.1" not in manifest["needs"]:
         err("needs", "must list feature.achievements.1 with achievements")
     sync = feature.get("sync")
