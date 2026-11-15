@@ -62,6 +62,10 @@ do
   check(match.plain("Pokémon Mystery Dungeon: Explorers of Sky (USA)") == "pokemon mystery dungeon explorers of sky", "plain titles")
   local games = { { id = 1, title = "Gran Turismo 4: Spec II" }, { id = 2, title = "Gran Turismo 2" } }
   check(match.same_game("Gran Turismo 2", games).id == 2, "an equal title")
+  local searches = match.searches("Pokemon Mystery Dungeon - Explorers of Skies")
+  check(searches[1] == "pokemon mystery dungeon explorers of skies" and searches[2] == "pokemon mystery dungeon explorers of"
+        and #searches == 4, "searches drop the last words")
+  check(#match.searches("Ico") == 1, "a one-word title is searched once")
   check(match.same_game("Gran Turismo 4", games) == nil, "a mod of the game is not the game")
 end
 

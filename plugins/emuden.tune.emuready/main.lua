@@ -137,13 +137,22 @@ local function system_id(system)
   return nil
 end
 
+-- The games of the first search that finds any.
+local function search_games(name, system)
+  for _, search in ipairs(match.searches(name)) do
+    local found, why = call("games.get", { search = search, systemId = system_id(system), limit = 10 }, 7 * DAY)
+    if not found then return nil, why end
+    if #(found.games or {}) > 0 then return found.games end
+  end
+  return {}
+end
+
 local function find_game(game)
   local saved = den.storage.get("match:" .. game.id)
   if saved then return saved end
-  local search = game.name:gsub("%b()", ""):gsub("%b[]", ""):gsub("%s+$", "")
-  local found, why = call("games.get", { search = search, systemId = system_id(game.system), limit = 10 }, 7 * DAY)
+  local found, why = search_games(game.name, game.system)
   if not found then return nil, why end
-  candidates = found.games or {}
+  candidates = found
   local same = match.same_game(game.name, candidates)
   if same then
     local chosen = { id = same.id, title = same.title }
@@ -305,8 +314,7 @@ end
 
 function plugin.actions.research(_, value)
   if not current or not value or value == "" then return end
-  local found = call("games.get", { search = value, systemId = system_id(current.game.system), limit = 10 }, 7 * DAY)
-  candidates = found and found.games or {}
+  candidates = search_games(value, current.game.system) or {}
   den.ui.set(choice_page(current.game))
 end
 

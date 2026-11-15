@@ -41,6 +41,19 @@ function M.plain(title)
   return text
 end
 
+-- What to search EmuReady for: the plain title, then with its last words dropped, since the
+-- search wants every word ("explorers of skies" finds nothing, "... explorers of" finds "Sky").
+function M.searches(name)
+  local words = {}
+  for word in M.plain(name):gmatch("%S+") do words[#words + 1] = word end
+  local out = {}
+  for n = #words, math.max(1, #words - 3), -1 do
+    if n == 1 and #words[1] < 4 and #words > 1 then break end
+    out[#out + 1] = table.concat(words, " ", 1, n)
+  end
+  return out
+end
+
 -- The EmuReady game that is this one: an equal title, else nothing (the page asks).
 function M.same_game(name, games)
   local wanted = M.plain(name)
