@@ -254,6 +254,17 @@ function plugin.actions.choose(index)
   den.ui.set(game_page())
 end
 
+-- The game's Steam settings after a set: what changed, the rest as it was.
+local function set_config(launch, tool, display)
+  local config = {}
+  for k, v in pairs(game.config or {}) do config[k] = v end
+  if launch then config.launch_options = launch end
+  if tool then
+    config.compat_tool, config.compat_tool_display, config.compat_tool_chosen = tool, display or "", tool ~= ""
+  end
+  return config
+end
+
 function plugin.actions.apply()
   if not game then return end
   local change = changes()
@@ -270,7 +281,8 @@ function plugin.actions.apply()
   if not den.storage.get("undo:" .. game.appid) then
     den.storage.set("undo:" .. game.appid, before)
   end
-  game.config = den.steam.config(game.appid) or game.config
+  -- Steam reports a change a moment later, so the page shows what was set.
+  game.config = set_config(change.launch_options, change.compat_tool, change.compat_tool and game.suggestion.tool.display)
   den.ui.toast("Set in Steam. Start the game from Steam to use it.")
   den.ui.set(game_page())
 end
@@ -286,7 +298,7 @@ function plugin.actions.undo()
     return
   end
   den.storage.remove("undo:" .. game.appid)
-  game.config = den.steam.config(game.appid) or game.config
+  game.config = set_config(before.launch_options, before.compat_tool, "")
   den.ui.toast("Steam has the game's earlier settings again.")
   den.ui.set(game_page())
 end
