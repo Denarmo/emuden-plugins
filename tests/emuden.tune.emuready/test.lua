@@ -66,6 +66,9 @@ do
   check(searches[1] == "pokemon mystery dungeon explorers of skies" and searches[2] == "pokemon mystery dungeon explorers of"
         and #searches == 4, "searches drop the last words")
   check(#match.searches("Ico") == 1, "a one-word title is searched once")
+  local rearmed = { key = "pcsx_rearmed_neon_enhancement_enable", value = "enabled", values = { "disabled", "enabled" } }
+  check(match.value_for(rearmed, "resolution", "1") == "disabled" and match.value_for(rearmed, "resolution", "2") == "enabled",
+        "an on/off high-resolution mode")
   check(match.same_game("Gran Turismo 4", games) == nil, "a mod of the game is not the game")
 end
 
@@ -208,7 +211,7 @@ do
   local detail = page.body[1]
   check(detail.type == "detail", "the game's page")
   check(detail.text:find("Resolution: 1x %-> 2x") and detail.text:find("Renderer: Auto %-> Vulkan"), "the changes: " .. detail.text)
-  check(detail.text:find("Retroid Pocket Duo"), "from the same device's listing")
+  check(page.body[2].type == "text" and page.body[2].text:find("Retroid Pocket Duo"), "from the same device's listing, below the page")
   check(detail.buttons[1].label == "Apply", "Apply")
   plugin.actions.apply()
   check(#sets == 1 and sets[1].play_res_multi == "2x" and sets[1].emuden_renderer == "Vulkan", "applied")

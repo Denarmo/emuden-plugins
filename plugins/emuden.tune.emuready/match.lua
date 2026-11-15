@@ -199,7 +199,7 @@ M.LABELS = { resolution = "Resolution", renderer = "Renderer", frameskip = "Fram
 -- The core option a meaning goes to: the first option whose key matches.
 local TARGETS = {
   resolution = { "res_multi", "upscale_multiplier", "internal_resolution", "opengl_resolution", "render_scale",
-                 "efb_scale", "resolution" },
+                 "efb_scale", "resolution", "neon_enhancement_enable" },
   renderer = { "emuden_renderer", "_renderer$", "_backend$" },
   frameskip = { "frameskip$", "frameskip_interval" },
   ee_cycle_rate = { "ee_cycle_rate" },
@@ -268,6 +268,10 @@ function M.value_for(option, meaning, given)
   if meaning == "resolution" then
     local wanted = tonumber(lower(given):match("(%d+%.?%d*)"))
     if not wanted or wanted <= 0 or wanted > 16 then return nil end
+    -- An on/off high-resolution mode (PCSX ReARMed's enhancement doubles it).
+    if bool_of(option.values[1] or "") ~= nil and #option.values == 2 then
+      return choose_word(option, { wanted >= 2 and "enabled" or "disabled" })
+    end
     return choose_scale(option, wanted)
   elseif meaning == "renderer" then
     local g = lower(given)

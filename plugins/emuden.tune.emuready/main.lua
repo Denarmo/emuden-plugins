@@ -198,11 +198,12 @@ local function game_page()
   for _, change in ipairs(current.changes or {}) do
     lines[#lines + 1] = string.format("%s: %s -> %s", change.label, change.from ~= "" and change.from or "default", change.to)
   end
+  local source -- its own block below, so the page's outcome is never cut off
   if current.source then
     local d = current.source.details
     local said = d and match.settings_text(d.customFieldValues) or ""
-    lines[#lines + 1] = string.format("From %s (match %d%%)%s", listing_line(current.source), current.source.score,
-                                      said ~= "" and ("\nIt used " .. said) or "")
+    source = string.format("From %s (match %d%%)%s", listing_line(current.source), current.source.score,
+                           said ~= "" and ("\nIt used " .. said) or "")
   end
   if #(current.ranked or {}) == 0 then
     lines[#lines + 1] = "EmuReady has no listings for this game yet."
@@ -223,6 +224,7 @@ local function game_page()
                 { label = "Listings", value = tostring(#(current.ranked or {})) } },
       text = table.concat(lines, "\n"), buttons = buttons },
   }
+  if source then body[#body + 1] = { type = "text", text = source } end
   if core_unknown() then
     body[#body + 1] = { type = "text", style = "warning", text = string.format(
         "Start %s once, so EmuDEN learns the options of %s; then come back to apply these.", g.name, s.core_name or "its core") }
