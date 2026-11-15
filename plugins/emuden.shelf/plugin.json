@@ -2,19 +2,14 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
   "summary": "Your games as 3D cartridges, cards, cases and discs on a lit shelf. The chosen one turns to face you, and a disc slides out of its case.",
   "api": 1,
-  "needs": [
-    "kind.interface",
-    "interface.1"
-  ],
-  "platforms": [
-    "any"
-  ],
+  "needs": ["kind.interface", "interface.1"],
+  "platforms": ["any"],
   "interface": {
     "layout": "shelf3d",
     "icon": "icon.png",
@@ -192,12 +187,7 @@
           "aspect": 1.05,
           "depth": 0.1,
           "shell": "#3b3c44",
-          "label": [
-            0.08,
-            0.16,
-            0.84,
-            0.74
-          ],
+          "label": [0.08, 0.16, 0.84, 0.74],
           "notch": 0.09,
           "radius": 0.05,
           "box": true,
@@ -213,17 +203,7 @@
         "label": "NES",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.89,
-          "shell": "#7c7d82",
-          "depth": 0.14,
-          "label": [
-            0.08,
-            0.06,
-            0.84,
-            0.6
-          ],
-          "radius": 0.0,
-          "grip": 0,
+          "style": "nes",
           "box": true,
           "box_aspect": 0.71,
           "player": "home",
@@ -235,17 +215,7 @@
         "label": "SNES",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.35,
-          "shell": "#8e8f96",
-          "depth": 0.2,
-          "label": [
-            0.12,
-            0.1,
-            0.76,
-            0.56
-          ],
-          "radius": 0.16,
-          "grip": 3,
+          "style": "snes",
           "box": true,
           "box_aspect": 1.38,
           "player": "home",
@@ -257,17 +227,7 @@
         "label": "N64",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.5,
-          "shell": "#4b4c52",
-          "depth": 0.22,
-          "label": [
-            0.13,
-            0.08,
-            0.74,
-            0.58
-          ],
-          "radius": 0.2,
-          "grip": 0,
+          "style": "n64",
           "box": true,
           "box_aspect": 1.38,
           "player": "home",
@@ -315,17 +275,7 @@
         "label": "Genesis",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.84,
-          "shell": "#222226",
-          "depth": 0.16,
-          "label": [
-            0.08,
-            0.06,
-            0.84,
-            0.62
-          ],
-          "radius": 0.04,
-          "grip": 0,
+          "style": "megadrive",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -337,17 +287,7 @@
         "label": "SMS",
         "object": {
           "shape": "cartridge",
-          "aspect": 0.74,
-          "shell": "#1d1d22",
-          "depth": 0.15,
-          "label": [
-            0.1,
-            0.06,
-            0.8,
-            0.62
-          ],
-          "radius": 0.03,
-          "grip": 0,
+          "style": "mastersystem",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -359,17 +299,7 @@
         "label": "GG",
         "object": {
           "shape": "cartridge",
-          "aspect": 1.25,
-          "shell": "#26272c",
-          "depth": 0.14,
-          "label": [
-            0.1,
-            0.08,
-            0.8,
-            0.62
-          ],
-          "radius": 0.06,
-          "grip": 3,
+          "style": "gamegear",
           "box": true,
           "box_aspect": 0.85,
           "player": "landscape",
@@ -415,23 +345,15 @@
         "object": {
           "shape": "case",
           "aspect": 0.58,
-          "depth": 0.08
+          "depth": 0.08,
+          "disc": true,
+          "umd": true
         }
       },
       "32x": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.84,
-          "shell": "#222226",
-          "depth": 0.16,
-          "label": [
-            0.08,
-            0.06,
-            0.84,
-            0.62
-          ],
-          "radius": 0.04,
-          "grip": 0,
+          "style": "32x",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -442,18 +364,8 @@
       },
       "sg1000": {
         "object": {
-          "shape": "cartridge",
-          "aspect": 0.74,
-          "shell": "#1d1d22",
-          "depth": 0.15,
-          "label": [
-            0.1,
-            0.06,
-            0.8,
-            0.62
-          ],
-          "radius": 0.03,
-          "grip": 0,
+          "shape": "card",
+          "style": "mycard",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -465,17 +377,7 @@
       "atari2600": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.8,
-          "shell": "#232325",
-          "depth": 0.24,
-          "label": [
-            0.1,
-            0.07,
-            0.8,
-            0.55
-          ],
-          "radius": 0.03,
-          "grip": 6,
+          "style": "atari",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -487,17 +389,7 @@
       "atari5200": {
         "object": {
           "shape": "cartridge",
-          "aspect": 1.05,
-          "shell": "#232325",
-          "depth": 0.2,
-          "label": [
-            0.1,
-            0.07,
-            0.8,
-            0.55
-          ],
-          "radius": 0.04,
-          "grip": 4,
+          "style": "atari5200",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -509,17 +401,7 @@
       "atari7800": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.8,
-          "shell": "#232325",
-          "depth": 0.24,
-          "label": [
-            0.1,
-            0.07,
-            0.8,
-            0.55
-          ],
-          "radius": 0.03,
-          "grip": 6,
+          "style": "atari",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -531,17 +413,7 @@
       "jaguar": {
         "object": {
           "shape": "cartridge",
-          "aspect": 1.15,
-          "shell": "#1b1b1e",
-          "depth": 0.2,
-          "label": [
-            0.1,
-            0.1,
-            0.8,
-            0.55
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "jaguar",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -553,16 +425,7 @@
       "lynx": {
         "object": {
           "shape": "card",
-          "aspect": 1.4,
-          "shell": "#2b2b2e",
-          "depth": 0.1,
-          "label": [
-            0.08,
-            0.12,
-            0.84,
-            0.76
-          ],
-          "radius": 0.06,
+          "style": "lynx",
           "box": true,
           "box_aspect": 1.0,
           "player": "landscape",
@@ -574,17 +437,7 @@
       "vectrex": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.92,
-          "shell": "#1e1e22",
-          "depth": 0.18,
-          "label": [
-            0.1,
-            0.08,
-            0.8,
-            0.58
-          ],
-          "radius": 0.04,
-          "grip": 4,
+          "style": "vectrex",
           "box": true,
           "box_aspect": 0.72
         },
@@ -597,12 +450,7 @@
           "aspect": 1.4,
           "shell": "#2a2a2e",
           "depth": 0.16,
-          "label": [
-            0.1,
-            0.08,
-            0.8,
-            0.6
-          ],
+          "label": [0.1, 0.08, 0.8, 0.6],
           "radius": 0.04,
           "grip": 0,
           "box": true,
@@ -616,16 +464,7 @@
       "pce": {
         "object": {
           "shape": "card",
-          "aspect": 0.64,
-          "shell": "#d8d8dc",
-          "depth": 0.05,
-          "label": [
-            0.08,
-            0.14,
-            0.84,
-            0.62
-          ],
-          "radius": 0.05,
+          "style": "hucard",
           "box": true,
           "box_aspect": 0.72,
           "player": "home",
@@ -637,17 +476,7 @@
       "ngp": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.95,
-          "shell": "#1c1c20",
-          "depth": 0.14,
-          "label": [
-            0.08,
-            0.12,
-            0.84,
-            0.68
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "neogeopocket",
           "box": true,
           "box_aspect": 0.85,
           "player": "landscape",
@@ -659,17 +488,7 @@
       "ngpc": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.95,
-          "shell": "#1c1c20",
-          "depth": 0.14,
-          "label": [
-            0.08,
-            0.12,
-            0.84,
-            0.68
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "neogeopocket",
           "box": true,
           "box_aspect": 0.85,
           "player": "landscape",
@@ -681,17 +500,7 @@
       "wonderswan": {
         "object": {
           "shape": "cartridge",
-          "aspect": 1.35,
-          "shell": "#2a2b30",
-          "depth": 0.14,
-          "label": [
-            0.1,
-            0.1,
-            0.8,
-            0.7
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "wonderswan",
           "box": true,
           "box_aspect": 0.9,
           "player": "landscape",
@@ -703,21 +512,12 @@
       "wsc": {
         "object": {
           "shape": "cartridge",
-          "aspect": 1.35,
-          "shell": "#2a2b30",
-          "depth": 0.14,
-          "label": [
-            0.1,
-            0.1,
-            0.8,
-            0.7
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "wonderswan",
           "box": true,
           "box_aspect": 0.9,
           "player": "landscape",
-          "player_color": "#3c8f86"
+          "player_color": "#3c8f86",
+          "shell": "#d6dde0b4"
         },
         "label": "WSC",
         "color": "#3f9c7a"
@@ -725,17 +525,7 @@
       "virtualboy": {
         "object": {
           "shape": "cartridge",
-          "aspect": 0.86,
-          "shell": "#1e1e22",
-          "depth": 0.16,
-          "label": [
-            0.08,
-            0.08,
-            0.84,
-            0.62
-          ],
-          "radius": 0.04,
-          "grip": 0,
+          "style": "virtualboy",
           "box": true,
           "box_aspect": 0.72
         },
@@ -745,17 +535,7 @@
       "pokemini": {
         "object": {
           "shape": "cartridge",
-          "aspect": 1.15,
-          "shell": "#3a3b40",
-          "depth": 0.2,
-          "label": [
-            0.1,
-            0.12,
-            0.8,
-            0.62
-          ],
-          "radius": 0.08,
-          "grip": 0,
+          "style": "pokemini",
           "box": true,
           "box_aspect": 0.85,
           "player": "portrait",

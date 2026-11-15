@@ -3,7 +3,7 @@
 An interface plugin for EmuDEN's Home screen. Pick it under Settings, Interface.
 
 Every game is a 3D object on a lit shelf, in the shape of what that console's games came in:
-cartridges, cards, cases and jewel cases. The selected one stands forward and turns gently,
+cartridges, cards, cases and jewel cases, each console's cartridge in its own mould (NES, SNES, N64, Mega Drive, Game Gear, Atari, Neo Geo Pocket, WonderSwan, HuCard and more) and the PSP's games on UMDs. A ROM hack's cartridge or disc is the original game's with a small HACK sticker; only its box shows the hack's art. The selected one stands forward and turns gently,
 and a case with a disc slides it out, spinning. The side objects turn towards it, with a
 faint reflection on the floor. Starting a game lifts its cartridge, card or disc off the
 shelf and drops it into a slot that closes, before EmuDEN's start-up screen. Consoles are
