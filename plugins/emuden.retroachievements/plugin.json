@@ -1,0 +1,42 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.retroachievements",
+  "name": "RetroAchievements",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Earn RetroAchievements while you play Game Boy, GBA, DS, PlayStation and more: pop-ups for unlocks, progress and leaderboard attempts, each game's progress and your profile. Sign in with your own RetroAchievements account; hardcore mode is an option.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.achievements.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "achievements",
+      "library.read",
+      "http"
+    ],
+    "http": {
+      "hosts": [
+        "media.retroachievements.org"
+      ]
+    },
+    "systems": [
+      "gb", "gbc", "gba", "nds", "nes", "snes", "n64", "gamecube", "wii", "virtualboy", "pokemini",
+      "psx", "ps2", "psp", "genesis", "sms", "gg", "32x", "sg1000", "saturn", "dreamcast",
+      "pce", "atari2600", "atari5200", "atari7800", "jaguar", "lynx", "ngp", "ngpc", "msx",
+      "vectrex", "wonderswan", "wsc", "arcade"
+    ],
+    "limits": {
+      "memory_mb": 32
+    }
+  }
+}

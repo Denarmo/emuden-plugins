@@ -9,14 +9,14 @@ trust rules) is `docs/feature-plugins.md` in the EmuDEN repository.
 
 The common fields are those of every plugin. `needs` must list `kind.feature` and
 `feature.lua.1` (and `feature.web.1` with the `browse` permission, `feature.tune.1` with
-`device.info`, `game.settings` or `steam`), so an EmuDEN without feature plugins refuses the plugin and keeps the rest of
+`device.info`, `game.settings` or `steam`, `feature.achievements.1` with `achievements`), so an EmuDEN without feature plugins refuses the plugin and keeps the rest of
 the list. A feature plugin has no `engine`, `systems`, `components` or `settings`.
 
 | `feature` field | Meaning |
 |---|---|
 | `entry` | The script to run, a relative path ending in `.lua` |
 | `icon` | A square PNG of the package |
-| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam` |
+| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam`, `achievements` (`den.achievements`: RetroAchievements sign-in and progress) |
 | `http.hosts` | Exact https hosts, with `http` or `download`; at most 8 |
 | `open_hosts` | Hosts `den.open_url` may show, with `open-url` |
 | `browse_hosts` | Sites `den.web.open` may show in the app's browser page, with `browse`: exact names, at most 8 |
@@ -68,6 +68,16 @@ host, for instance) is opened only after the app asked the player. None of the p
 affiliated with its site; "Hackdex" is a name its project reserves, so that plugin is named by
 the domain. `bases.json` of `emuden.romhacks` comes from the Hackdex website's source under the
 MIT licence (`NOTICE.txt`).
+
+## RetroAchievements
+
+`emuden.retroachievements` is the switch, sign-in, settings and pages of RetroAchievements;
+EmuDEN's player runs the achievements (rcheevos) while a game plays. It uses
+`den.achievements` (EmuDEN's `docs/feature-plugins.md` section 4.3): `status()`,
+`sign_in{user, password}` (the token that comes back goes to the plugin's `den.secrets`, the
+password is not kept), `sign_out()`, `set{hardcore, sound, screenshot}` and `game(id)`. Sign-in,
+sign-out and settings work only inside `plugin.actions.*`. The runtime only signs in while the
+plugin is installed; removing it with its data deletes the token.
 
 ## Tuning plugins
 

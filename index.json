@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 58,
-  "generated": "2026-11-15T21:29:04Z",
-  "expires": "2027-03-15T21:29:04Z",
+  "sequence": 59,
+  "generated": "2026-11-15T21:40:29Z",
+  "expires": "2027-03-15T21:40:29Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1133,6 +1133,90 @@
       },
       "download_hosts": [
         "github.com"
+      ]
+    },
+    {
+      "id": "emuden.retroachievements",
+      "name": "RetroAchievements",
+      "version": "1.0.0",
+      "kind": "feature",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Earn RetroAchievements while you play Game Boy, GBA, DS, PlayStation and more: pop-ups for unlocks, progress and leaderboard attempts, each game's progress and your profile. Sign in with your own RetroAchievements account; hardcore mode is an option.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.feature",
+        "feature.lua.1",
+        "feature.achievements.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.retroachievements-1.0.0.emuplugin",
+        "sha256": "320ec616ec085ff98b3fd93433743a0fe189306defd980a20a8cdd5a1794f2d0",
+        "size": 8638
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "permissions": [
+        "achievements",
+        "library.read",
+        "http"
+      ],
+      "http_hosts": [
+        "media.retroachievements.org"
+      ],
+      "open_hosts": [],
+      "browse_hosts": [],
+      "feature_systems": [
+        "gb",
+        "gbc",
+        "gba",
+        "nds",
+        "nes",
+        "snes",
+        "n64",
+        "gamecube",
+        "wii",
+        "virtualboy",
+        "pokemini",
+        "psx",
+        "ps2",
+        "psp",
+        "genesis",
+        "sms",
+        "gg",
+        "32x",
+        "sg1000",
+        "saturn",
+        "dreamcast",
+        "pce",
+        "atari2600",
+        "atari5200",
+        "atari7800",
+        "jaguar",
+        "lynx",
+        "ngp",
+        "ngpc",
+        "msx",
+        "vectrex",
+        "wonderswan",
+        "wsc",
+        "arcade"
       ]
     },
     {
