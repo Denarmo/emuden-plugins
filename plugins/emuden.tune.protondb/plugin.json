@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.protondb",
   "name": "Tune: ProtonDB",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",

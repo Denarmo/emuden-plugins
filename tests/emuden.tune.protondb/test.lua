@@ -185,6 +185,23 @@ do
   plugin.actions.undo()
   check(#sets == 2 and sets[2].compat_tool == "proton_11" and sets[2].launch_options == "", "Undo puts them back")
   check(storage["undo:1145350"] == nil, "and forgets them")
+  -- Beyond the closest eight, the closest reports that give settings are listed too.
+  local many = {}
+  for i = 1, 10 do
+    many[i] = { t = NOW - i * 86400, verdict = "yes", device = "steamDeck", os = "SteamOS Holo",
+                cpu = "AMD Custom APU 0405", gpu = "AMD Custom GPU 0405 (vangogh)" }
+  end
+  many[11] = { t = NOW - 400 * 86400, verdict = "yes", device = "pc", os = "Arch", cpu = "Intel Core i5",
+               gpu = "NVIDIA GeForce GTX 1060", proton = "9.0-4" }
+  data = { appid = "1145350", total = 11, reports = many }
+  plugin.actions.game("1145350")
+  local headings = {}
+  for _, e in ipairs(page.body) do if e.type == "text" and e.style == "heading" then headings[#headings + 1] = e.text end end
+  check(table.concat(headings, ",") == "Closest reports,Reports with settings", "a second list: " .. table.concat(headings, ","))
+  plugin.actions.choose(11)
+  check(page.body[1].text:find("Proton 9", 1, true) and page.body[1].buttons[1].label == "Apply", "a far report with settings can be applied")
+  data = { appid = "1145350", total = 227, reports = REPORTS }
+  plugin.actions.game("1145350")
   plugin.actions.choose(2) -- the Steam Deck report
   check(page.body[1].text:find("Proton 9", 1, true), "a chosen report's Proton")
 end

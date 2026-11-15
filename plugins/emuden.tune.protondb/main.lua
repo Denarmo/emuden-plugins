@@ -184,7 +184,7 @@ local function game_page()
   if #game.ranked > 0 then
     body[#body + 1] = { type = "text", style = "heading", text = "Closest reports" }
   end
-  for i = 1, math.min(SHOWN, #game.ranked) do
+  local function add(i)
     local entry = game.ranked[i]
     local r = entry.report
     body[#body + 1] = { type = "row", id = "report-" .. i,
@@ -192,6 +192,21 @@ local function game_page()
                         value = string.format("%d%%", entry.score), action = "choose", arg = i }
     local why = #entry.why > 0 and ("Close by: " .. table.concat(entry.why, ", ") .. "\n") or ""
     body[#body + 1] = { type = "text", style = "caption", text = why .. report_text(entry) }
+  end
+  for i = 1, math.min(SHOWN, #game.ranked) do
+    add(i)
+  end
+  -- Most reports name no Proton version and no launch options: the closest ones that do.
+  local more = 0
+  for i = SHOWN + 1, #game.ranked do
+    local r = game.ranked[i].report
+    if more < SHOWN and r.verdict == "yes" and (r.proton or r.custom_proton or rank.launch_for(me, r)) then
+      if more == 0 then
+        body[#body + 1] = { type = "text", style = "heading", text = "Reports with settings" }
+      end
+      add(i)
+      more = more + 1
+    end
   end
   body[#body + 1] = { type = "text", style = "caption", text =
       "Choose a report to use its settings. Data: ProtonDB contributors, Open Database License." }
