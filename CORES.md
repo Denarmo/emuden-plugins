@@ -61,7 +61,7 @@ https://docs.libretro.com/.
   MSX and arcade consoles, and the Windows builds of the alternative cores, are in `cores-2026-11-14`.
 - `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   the one core not taken from the buildbot: it is built from the fork https://github.com/Denarmo/Play- (tag
-  `emuden-0.77-39-g8540c2ac`), which makes the libretro core run on Android, makes its save states load,
+  `emuden-0.77-41-g07650210`), which makes the libretro core run on Android, makes its save states load,
   reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
   makes its OpenGL renderer several times faster on Android, and fills the frame it reports (the
   frontend applies the aspect ratio). It also carries Play!'s game configs (patches and idle loops),
