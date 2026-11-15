@@ -66,7 +66,7 @@ https://docs.libretro.com/.
   gpSP carries its own GBA BIOS replacement. Neither is any console's default core.
 - `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   the one core not taken from the buildbot: it is built from the fork https://github.com/Denarmo/Play- (tag
-  `emuden-0.77-53-g03545daf`), which makes the libretro core run on Android, makes its save states load,
+  `emuden-0.77-56-g91c0ea67`), which makes the libretro core run on Android, makes its save states load,
   reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
   makes its OpenGL renderer several times faster on Android, and fills the frame it reports (the
   frontend applies the aspect ratio). It also carries Play!'s game configs (patches and idle loops),
