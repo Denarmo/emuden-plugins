@@ -72,6 +72,10 @@ do
   check(rank.launch_for(me, REPORTS[1]) == nil, "PROTON_ENABLE_NVAPI is for NVIDIA only")
   check(rank.launch_for(me, REPORTS[4]) == nil, "shell syntax is dropped")
   check(rank.launch_for(rank.me(WINDOWS_PC), REPORTS[1]) == "PROTON_ENABLE_NVAPI=1 %command%", "NVIDIA keeps it")
+  check(rank.launch_for(me, { launch = "Ubisoft Connect" }) == nil, "a note is not launch options")
+  check(rank.launch_for(me, { launch = "gamescope -w 1280 -h 800 -f -- %command% -windowed" }) ==
+        "gamescope -w 1280 -h 800 -f -- %command% -windowed", "a wrapper with its flags")
+  check(rank.launch_for(me, { launch = "-dx11 -nointro" }) == "-dx11 -nointro", "game flags")
 end
 
 -- Tool names.

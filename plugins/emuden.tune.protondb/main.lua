@@ -13,6 +13,7 @@ local plugin = { actions = {} }
 
 local DATA = "https://raw.githubusercontent.com/Denarmo/protondb-reports/main/data/apps/"
 local SUMMARY = "https://www.protondb.com/api/v1/reports/summaries/"
+local COVER = "https://shared.steamstatic.com/store_item_assets/steam/apps/%s/library_600x900.jpg"
 local SHOWN = 8
 
 local me, info = nil, nil
@@ -28,12 +29,20 @@ local function when(t)
   return string.format("%.1f years ago", days / 365)
 end
 
+local OS_NAMES = { windows = "Windows", linux = "Linux", macos = "macOS", android = "Android" }
+
+local function trim(text)
+  return (tostring(text or ""):gsub("^%s+", ""):gsub("%s+$", ""):gsub("%s%s+", " "))
+end
+
 local function device_line()
-  local parts = { info.name ~= "" and info.name or "This device" }
-  if info.gpu and info.gpu ~= "" then parts[#parts + 1] = info.gpu end
-  if info.soc and info.soc ~= "" then parts[#parts + 1] = info.soc end
+  local parts = { trim(info.name) ~= "" and trim(info.name) or "This device" }
+  for _, part in ipairs({ trim(info.gpu), trim(info.soc) }) do
+    if part ~= "" then parts[#parts + 1] = part end
+  end
   if info.ram_mb and info.ram_mb > 0 then parts[#parts + 1] = string.format("%d GB", (info.ram_mb + 512) // 1024) end
-  parts[#parts + 1] = info.steamos and "SteamOS" or (info.os_name ~= "" and info.os_name or info.os)
+  parts[#parts + 1] = info.steamos and "SteamOS"
+      or (trim(info.os_name) ~= "" and trim(info.os_name) or OS_NAMES[info.os] or info.os or "")
   return table.concat(parts, " · ")
 end
 
@@ -131,9 +140,11 @@ local function game_page()
   local change = changes()
   local buttons = {}
   local lines = {}
-  if s.tool then
-    local tool = s.tool.display .. (s.tool.installed and "" or (s.tool.official and " (Steam downloads it)" or " (not installed)"))
-    lines[#lines + 1] = (me.windows and "Reports used " or "Proton: ") .. tool
+  if s.tool and me.windows then
+    lines[#lines + 1] = "Reports used " .. s.tool.display
+  elseif s.tool then
+    lines[#lines + 1] = "Proton: " .. s.tool.display
+        .. (s.tool.installed and "" or (s.tool.official and " (Steam downloads it)" or " (not installed)"))
   end
   local launch = me.windows and rank.windows_args(s.launch) or s.launch
   if launch then lines[#lines + 1] = "Launch options: " .. launch end
@@ -156,6 +167,7 @@ local function game_page()
     buttons[#buttons + 1] = { label = "Best match", action = "choose", arg = 0 }
   end
   body[#body + 1] = { type = "detail", id = "game", title = game.name, subtitle = "Suggested for " .. me.name,
+                      image = string.format(COVER, game.appid), aspect = 0.667,
                       facts = facts, text = table.concat(lines, "\n"), buttons = buttons }
   if next(change) == nil and #game.ranked > 0 and (s.tool or s.launch) then
     body[#body + 1] = { type = "text", style = "caption", text = "Steam already has these settings." }
@@ -165,7 +177,7 @@ local function game_page()
   elseif not steam.can_change and next(change) ~= nil then
     body[#body + 1] = { type = "text", style = "warning", text = steam.note }
   end
-  if s.tool and not s.tool.installed and not s.tool.official then
+  if s.tool and not s.tool.installed and not s.tool.official and not me.windows then
     body[#body + 1] = { type = "text", style = "warning", text =
         s.tool.display .. " is not installed. Install it (ProtonUp-Qt, or Decky's Wine Cellar), then open this game again." }
   end

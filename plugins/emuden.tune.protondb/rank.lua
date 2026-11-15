@@ -222,6 +222,9 @@ function R.tool_for(text, tools)
   return { name = text, display = text, installed = false, official = false }
 end
 
+local WRAPPERS = { gamemoderun = true, mangohud = true, gamescope = true, ["obs-gamecapture"] = true,
+                   ["prime-run"] = true }
+
 local NVIDIA_ONLY = { "PROTON_ENABLE_NVAPI", "DXVK_ENABLE_NVAPI", "__GL_", "PROTON_HIDE_NVIDIA_GPU",
                       "VKD3D_CONFIG=dxr", "PROTON_ENABLE_NGX" }
 
@@ -230,6 +233,17 @@ function R.launch_for(me, report)
   local text = (report.launch or ""):gsub("^%s+", ""):gsub("%s+$", "")
   if text == "" or text == "%command%" then return nil end
   if text:find("[;|&$`<>\\'\"(){}%[%]*?!~#\n]") then return nil end
+  -- Every word must look like an option: a variable, a flag (and its value), a known wrapper,
+  -- %command%, or a game argument after it. "Ubisoft Connect" is a note, not options.
+  local after, flag = false, false
+  for word in text:gmatch("%S+") do
+    if word == "%command%" then
+      after = true
+    elseif not after and not (word:find("=") or word:find("^[%-%+]") or WRAPPERS[word] or flag) then
+      return nil
+    end
+    flag = word:find("^%-") ~= nil
+  end
   local m = R.machine(report)
   if me.gpu_vendor and m.gpu_vendor and m.gpu_vendor ~= me.gpu_vendor then
     for _, marker in ipairs(NVIDIA_ONLY) do
