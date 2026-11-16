@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 67,
-  "generated": "2026-11-16T01:09:57Z",
-  "expires": "2027-03-16T01:09:57Z",
+  "sequence": 68,
+  "generated": "2026-11-16T01:14:17Z",
+  "expires": "2027-03-16T01:14:17Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -230,7 +230,7 @@
     {
       "id": "emuden.browser",
       "name": "Browser",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -253,9 +253,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.browser-1.0.0.emuplugin",
-        "sha256": "84cd007d913fa1d3965d04af45e29653180e8c0b6410fa5fc9d2ae63893a06c7",
-        "size": 15013
+        "url": "packages/emuden.browser-1.0.1.emuplugin",
+        "sha256": "49c5417dd2186e1cdb6f463d5b2ae0fd893ec6c04d939a83d3fe0cc6f1a2141f",
+        "size": 15409
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1885,7 +1885,7 @@
     {
       "id": "emuden.sync.romm",
       "name": "Sync: RomM",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1906,9 +1906,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.sync.romm-1.0.0.emuplugin",
-        "sha256": "0cfbd7885b37924522a22eeedb824578b501341cdf813ac7191844be154cf7ce",
-        "size": 15530
+        "url": "packages/emuden.sync.romm-1.0.1.emuplugin",
+        "sha256": "2134a5d08aa90866d295b24dc1ea2d99aaddd72a9917bea5f98e81a358f20880",
+        "size": 15913
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1975,7 +1975,7 @@
     {
       "id": "emuden.tune.emuready",
       "name": "Tune: EmuReady",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1997,9 +1997,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.emuready-1.0.4.emuplugin",
-        "sha256": "264ba38b5c733fce49f7f1f8bd17b8e15cff55e29456ccd491769b60d2913c38",
-        "size": 13609
+        "url": "packages/emuden.tune.emuready-1.0.5.emuplugin",
+        "sha256": "b5291584292d77c94e058d1bbc41d73aee7af060f672f1efb191ff07ee568632",
+        "size": 13989
       },
       "download_size": {
         "windows-x86_64": 0,
