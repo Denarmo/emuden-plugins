@@ -99,7 +99,7 @@ GBA DS (`gbads`) is built from Denarmo/gba-ds (a fork of kyannon/gba-ds, GPL-3.0
 from the buildbot. It is the GBA core EmuDEN picks for the games it has a second-screen profile for (the `games`
 list in the GBA plugin, by ROM header code); every other GBA game keeps mGBA.
 
-PSX2 ECP (`psx2-ecp`) is an optional PS2 core on Android only: a standalone app, Denarmo/PSX2 (a fork of
+PSX2 ECP (`psx2-ecp`, 1.3.2-ecp6) is an optional PS2 core on Android only: a standalone app, Denarmo/PSX2 (a fork of
 izzy2lost/PSX2, GPL-3.0, from PCSX2), driven over the Emulator Control Protocol. It is the one core here that needs
 the player's own BIOS (imported in the PSX2 ECP app); DenSX2 needs none. It is the worked
 example for emulator developers (https://github.com/Denarmo/emulator-control-protocol).

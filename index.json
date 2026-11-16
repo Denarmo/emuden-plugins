@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 71,
-  "generated": "2026-11-16T03:19:31Z",
-  "expires": "2027-03-16T03:19:31Z",
+  "sequence": 72,
+  "generated": "2026-11-16T15:40:17Z",
+  "expires": "2027-03-16T15:40:17Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1067,7 +1067,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.2.5",
+      "version": "1.2.6",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1093,9 +1093,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.2.5.emuplugin",
-        "sha256": "bf9d0b722e9ff66600e94fe5d9ada5d311815ae16a20373f7d1f445a60d1b1ff",
-        "size": 1657
+        "url": "packages/emuden.ps2-1.2.6.emuplugin",
+        "sha256": "c47328d2e819c0b848da8f29c9ad54689533fc691712959d470c7a876c15c770",
+        "size": 1655
       },
       "download_size": {
         "windows-x86_64": 1336233,
