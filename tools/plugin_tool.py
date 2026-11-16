@@ -39,6 +39,7 @@ from plugin_addons import (EXECUTABLE_EXTENSIONS, EXECUTABLE_MAGICS, addon_folde
 from plugin_kinds import (HOST_CAPABILITIES, SHARED_MARK, ignored_fields, safe_relative,  # noqa: E402
                           shared_files, validate_feature, validate_interface)
 from plugin_schema import check_schema, load_json, load_schema  # noqa: E402
+import plugin_manual  # noqa: E402
 import plugin_sign  # noqa: E402
 import plugin_test  # noqa: E402
 
@@ -460,6 +461,8 @@ def build_index(repo, args):
     if signature.exists():
         signature.unlink()
     print(f"index.json: sequence {sequence}, {len(plugins)} plugins, expires {index['expires']}")
+    for name in plugin_manual.pack_all(repo, package_files):
+        print(f"manual/{name}.emuplugin: packed, in no list")
     print("Not signed yet: run `plugin_tool.py sign --key <private key>`.")
 
 
@@ -489,7 +492,8 @@ def pin_cores(repo, args):
 
 
 def cmd_validate(repo, args):
-    targets = plugin_folders(repo) if args.all else [pathlib.Path(p) for p in args.paths]
+    targets = plugin_folders(repo) + plugin_manual.manual_folders(repo) if args.all else \
+        [pathlib.Path(p) for p in args.paths]
     if not targets:
         raise SystemExit("nothing to validate: name a plugin folder or pass --all")
     failed = False

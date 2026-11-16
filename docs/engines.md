@@ -13,6 +13,25 @@ may have its own. `"engine": "switch2"` is EmuDEN's own engine and only for its 
 There is no engine for other programs: an emulator that does not speak ECP cannot be a core, and
 no plugin starts anything else.
 
+## Switch 2: installed by hand
+
+The Switch 2 console (`emuden.switch2`) is neither built into EmuDEN nor in any list, and no
+engine is downloaded for it. It is in `manual/emuden.switch2/` and packed, signed, as
+`manual/emuden.switch2.emuplugin`. A player who has the engine program installs the console:
+
+1. Download `manual/emuden.switch2.emuplugin` from this repository.
+2. In EmuDEN choose **Settings > Plugins > Install a console from a file** (also on Settings >
+   Consoles) and pick the file. EmuDEN shows what it is and that EmuDEN signed it; install it.
+3. If EmuDEN does not find the engine program, it asks for it at once (later: Settings >
+   Consoles > Nintendo Switch 2 > Engine program). The path is kept on this device only
+   (`engine.switch2.path`, never synced) and is the first place EmuDEN looks.
+
+Until then Switch 2 shows nowhere: no console, no Home tab, and a `SWITCH 2` folder is no
+console's folder. Its engine component says `"delivery": {"<platform>": "manual"}`: the player
+brings it. A device that had Switch 2 before EmuDEN stopped building it in keeps it when its
+library has Switch 2 games (the app fetches the signed `manual/` package once); a new install
+never gets it. Removing the console on its page removes the plugin; games and the engine stay.
+
 ## `libretro-core`
 
 ```json

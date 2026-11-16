@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: Copyright 2026 EmuDEN contributors
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""The source key and the signature of index.json (Ed25519). Uses the Python package
+"""The source key and the signatures of index.json and of the manual packages (Ed25519). Uses the Python package
 `cryptography` when it is installed, else the `openssl` program (3.0 or newer)."""
 
 import base64
@@ -10,6 +10,7 @@ import subprocess
 import tempfile
 
 from plugin_addons import sha256_file
+import plugin_manual
 from plugin_schema import load_json
 
 try:
@@ -78,13 +79,13 @@ def sign_bytes(private_key, path):
         return out.read_bytes()
 
 
-def verify_bytes(public_raw, signature, path):
+def verify_bytes(public_raw, signature, path, what="index.json.sig"):
     """Stops when the signature of the file at `path` is not good."""
     if ed25519 is not None:
         try:
             ed25519.Ed25519PublicKey.from_public_bytes(public_raw).verify(signature, pathlib.Path(path).read_bytes())
         except InvalidSignature:
-            raise SystemExit("index.json.sig is not a good signature of index.json")
+            raise SystemExit(f"{what} is not a good signature")
         return
     with tempfile.TemporaryDirectory() as temp:
         temp = pathlib.Path(temp)
@@ -121,6 +122,8 @@ def sign(repo, args):
         raise SystemExit("unexpected signature size")
     (repo / "index.json.sig").write_text(base64.b64encode(signature).decode() + "\n",
                                          encoding="ascii", newline="\n")
+    from plugin_tool import package_files
+    plugin_manual.sign_all(repo, package_files, sign_bytes, key)
     verify(repo, args)
 
 
@@ -137,3 +140,5 @@ def verify(repo, args):
                 raise SystemExit(f"{url} is not the package the index lists; run `index` again")
     print(f"index.json.sig is good (key {fingerprint(base64.b64encode(public).decode())}, "
           f"sequence {index['sequence']}, expires {index['expires']})")
+    for name in plugin_manual.verify_all(repo, verify_bytes, public):
+        print(f"manual/{name}.emuplugin is signed (installed by hand, in no list)")

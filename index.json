@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 72,
-  "generated": "2026-11-16T15:40:17Z",
-  "expires": "2027-03-16T15:40:17Z",
+  "sequence": 73,
+  "generated": "2026-11-16T18:22:00Z",
+  "expires": "2027-03-16T18:22:00Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1800,49 +1800,6 @@
         "size": 1053
       },
       "download_size": {
-        "android-arm64": 0
-      },
-      "download_hosts": []
-    },
-    {
-      "id": "emuden.switch2",
-      "name": "Nintendo Switch 2",
-      "version": "1.0.1",
-      "kind": "console",
-      "engine": "switch2",
-      "publisher": "EmuDEN",
-      "summary": "The built-in Switch 2 emulator.",
-      "group": "nintendo",
-      "systems": [
-        {
-          "id": "switch2",
-          "name": "Nintendo Switch 2",
-          "folder_aliases": []
-        }
-      ],
-      "api": 1,
-      "needs": [
-        "engine.switch2",
-        "settings.v1"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "linux-aarch64",
-        "macos-arm64",
-        "android-arm64"
-      ],
-      "code": "none",
-      "package": {
-        "url": "packages/emuden.switch2-1.0.1.emuplugin",
-        "sha256": "15533811b4eae248c01c826c2b249e45016a10e9b511bf41fc7bf6b1873b14fe",
-        "size": 970
-      },
-      "download_size": {
-        "windows-x86_64": 0,
-        "linux-x86_64": 0,
-        "linux-aarch64": 0,
-        "macos-arm64": 0,
         "android-arm64": 0
       },
       "download_hosts": []

@@ -417,7 +417,7 @@
             "codes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 64 } }
           }
         },
-        "delivery": { "type": "object", "additionalProperties": { "enum": ["builtin", "bundled-library", "download"] } },
+        "delivery": { "type": "object", "additionalProperties": { "enum": ["builtin", "bundled-library", "download", "manual"] } },
         "downloads": { "type": "object", "additionalProperties": { "$ref": "#/$defs/download" } }
       }
     },

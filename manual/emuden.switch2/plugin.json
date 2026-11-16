@@ -2,12 +2,12 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "The built-in Switch 2 emulator.",
+  "summary": "The Switch 2 console, installed by hand; you bring its engine program.",
   "api": 1,
   "needs": [
     "engine.switch2",
@@ -28,8 +28,23 @@
       "group": "nintendo",
       "order": 0,
       "content": {
-        "extensions": [],
-        "scanner": "switch2"
+        "extensions": [
+          "nup",
+          "nsp",
+          "xci"
+        ],
+        "scanner": "switch2",
+        "folder_aliases": [
+          "switch 2",
+          "ns2",
+          "nx2",
+          "nintendo switch 2",
+          "nintendoswitch2"
+        ],
+        "zip": "no"
+      },
+      "artwork": {
+        "launchbox": "Nintendo Switch 2"
       },
       "presentation": {
         "cover_aspect": 1.0,
@@ -64,13 +79,13 @@
     {
       "id": "nx2",
       "type": "engine",
-      "name": "EmuDEN Switch 2 engine",
+      "name": "Switch 2 engine",
       "delivery": {
-        "windows-x86_64": "builtin",
-        "linux-x86_64": "builtin",
-        "linux-aarch64": "builtin",
-        "macos-arm64": "builtin",
-        "android-arm64": "builtin"
+        "windows-x86_64": "manual",
+        "linux-x86_64": "manual",
+        "linux-aarch64": "manual",
+        "macos-arm64": "manual",
+        "android-arm64": "manual"
       }
     }
   ],

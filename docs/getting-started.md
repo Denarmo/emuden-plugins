@@ -97,6 +97,16 @@ A plugin of the developer folder is not signed and replaces an installed plugin 
 while developer mode is on. It follows the rules of an added source except the namespace: no
 Switch 2 engine, no scanner, no `@` BIOS entries, and none of the official-only permissions.
 
+### Or install it from a file
+
+**Settings > Plugins > Install a console from a file** takes a console plugin without a source or
+developer mode: an `.emuplugin` package (`plugin_tool.py pack`), or the `plugin.json` of a plugin
+folder. EmuDEN shows its name, version, publisher and consoles first. A file signed with EmuDEN's
+key (`plugin.json.sig` beside `plugin.json`) is installed as one of EmuDEN's own; any other is
+unsigned, EmuDEN says that nobody checked it, and it keeps the rules above (no `emuden.` id). It
+goes to `<data>/plugins-local/<id>/` and stays until the console is removed. This is how players
+add the Switch 2 console ([engines.md](engines.md#switch-2-installed-by-hand)).
+
 ## A feature plugin
 
 `examples/jdoe.hello-feature` is a page with a counter and one web request;
