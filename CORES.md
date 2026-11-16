@@ -67,7 +67,7 @@ https://docs.libretro.com/.
 - `densx2` (DenSX2, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   EmuDEN's fork of Play! (by Jean-Philip Desjardins and contributors, BSD-2-Clause; each zip carries Play!'s
   License.txt and a NOTICE.txt), renamed from `play` in PS2 plugin 1.2.0. It is the one core not taken from
-  the buildbot: it is built from https://github.com/Denarmo/Play- (tag `emuden-0.77-58-g1b1efeb6`, code generator
+  the buildbot: it is built from https://github.com/Denarmo/Play- (tag `emuden-0.77-59-ge4a96dd5`, code generator
   fork https://github.com/Denarmo/Play--CodeGen), which makes the libretro core run on Android, makes its save states load,
   reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
   makes its OpenGL renderer several times faster on Android, and fills the frame it reports (the
