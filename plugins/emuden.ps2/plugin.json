@@ -2,12 +2,12 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.1.14",
+  "version": "1.2.0",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "PlayStation 2 games with Play!, which needs no BIOS.",
+  "summary": "PlayStation 2 games with DenSX2, which needs no BIOS. DenSX2 is based on Play! (BSD-2-Clause).",
   "api": 1,
   "needs": [
     "engine.libretro"
@@ -49,46 +49,46 @@
         "rcheevos_console": 21
       },
       "cores": [
-        "play",
+        "densx2",
         "psx2-ecp"
       ]
     }
   ],
   "components": [
     {
-      "id": "play",
+      "id": "densx2",
       "type": "libretro-core",
-      "name": "Play!",
+      "name": "DenSX2",
       "license": "BSD-2-Clause",
       "homepage": "https://github.com/Denarmo/Play-",
       "gpu": "opengl",
-      "version": "0.77-56-g91c0ea67",
+      "version": "1.0 (based on Play! 0.77-58-g1b1efeb6)",
       "widescreen": {
         "options": {
-          "play_widescreen": "enabled"
+          "densx2_widescreen": "enabled"
         }
       },
       "downloads": {
         "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-windows-x86_64-0.77-56-g91c0ea67.zip",
-          "sha256": "78aadcc0b890903c0c89fced59c59174213fc3e9aea290354c6d5e0ae5bb4447",
-          "size": 1335112,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-windows-x86_64-1.0-0.77-58-g1b1efeb6.zip",
+          "sha256": "5f4676815ae638876ac915864d6705af3c4b1a10443a2bc183dd9a653d66aa80",
+          "size": 1335372,
           "archive": "zip",
-          "entry": "play_libretro.dll"
+          "entry": "densx2_libretro.dll"
         },
         "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-linux-x86_64-0.77-56-g91c0ea67.zip",
-          "sha256": "1db9e15be4608ed35230a06365a58008c80687ab0b7099b82efab54a2ba18b15",
-          "size": 2347789,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-linux-x86_64-1.0-0.77-58-g1b1efeb6.zip",
+          "sha256": "942019cc8e75cd142510b4797cc68d4029ad1f92bc0a2bceb5d70412840d12c3",
+          "size": 2348096,
           "archive": "zip",
-          "entry": "play_libretro.so"
+          "entry": "densx2_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-play-2026-11-14/play-android-arm64-0.77-56-g91c0ea67.zip",
-          "sha256": "164d122b890190417a5612d847844ec5723117f29f59dfa3d3a1baa535d458ec",
-          "size": 1885697,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-android-arm64-1.0-0.77-58-g1b1efeb6.zip",
+          "sha256": "f5f907ee370a52dfb38dab4697401d8f5830b3cf84700b3d67f2b1d1c805addb",
+          "size": 1886141,
           "archive": "zip",
-          "entry": "play_libretro_android.so"
+          "entry": "densx2_libretro_android.so"
         }
       }
     },

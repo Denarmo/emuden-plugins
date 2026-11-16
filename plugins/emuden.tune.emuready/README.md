@@ -35,7 +35,7 @@ once).
 
 | EmuReady field | Core option (first that exists) |
 |---|---|
-| resolution, resolution scale, upscale, internal / rendering resolution | `play_res_multi`, `pcsx2_upscale_multiplier`, `ppsspp_internal_resolution`, `*_opengl_resolution`, `*_efb_scale`, ... (nearest scale) |
+| resolution, resolution scale, upscale, internal / rendering resolution | `densx2_res_multi`, `pcsx2_upscale_multiplier`, `ppsspp_internal_resolution`, `*_opengl_resolution`, `*_efb_scale`, ... (nearest scale) |
 | renderer, backend, graphics backend | `emuden_renderer`, `*_renderer`, `*_backend` (Vulkan, OpenGL, Software, Auto) |
 | frame skipping | `*_frameskip` |
 | EE cycle rate, EE cycle skip | `pcsx2_ee_cycle_rate`, `pcsx2_ee_cycle_skip` |

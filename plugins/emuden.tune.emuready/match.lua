@@ -16,7 +16,7 @@ M.SYSTEMS = {
 
 -- EmuDEN core -> the EmuReady emulators whose settings mean the same.
 local FAMILIES = {
-  play = { "Play!" },
+  densx2 = { "Play!" }, -- DenSX2 is based on Play!
   pcsx2 = { "NethersX2", "AetherSX2", "ARMSX2", "PCSX2", "XBSX2" },
   ["psx2-ecp"] = { "NethersX2", "AetherSX2", "ARMSX2", "PCSX2", "XBSX2" },
   ppsspp = { "PPSSPP" },

@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 63,
-  "generated": "2026-11-15T23:36:29Z",
-  "expires": "2027-03-15T23:36:29Z",
+  "sequence": 64,
+  "generated": "2026-11-16T00:11:33Z",
+  "expires": "2027-03-16T00:11:33Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1055,11 +1055,11 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.1.14",
+      "version": "1.2.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
-      "summary": "PlayStation 2 games with Play!, which needs no BIOS.",
+      "summary": "PlayStation 2 games with DenSX2, which needs no BIOS. DenSX2 is based on Play! (BSD-2-Clause).",
       "group": "sony",
       "systems": [
         {
@@ -1081,14 +1081,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.1.14.emuplugin",
-        "sha256": "6c3cf02a75350943310da6c282d0f3494a1eb51ffc5059a676157dda40d1c9ed",
-        "size": 1480
+        "url": "packages/emuden.ps2-1.2.0.emuplugin",
+        "sha256": "032c9a06425c84ff2fbc76e0e5afd2e23f6c0d451774c170745c6afc312e286b",
+        "size": 1515
       },
       "download_size": {
-        "windows-x86_64": 1335112,
-        "linux-x86_64": 2347789,
-        "android-arm64": 1885697
+        "windows-x86_64": 1335372,
+        "linux-x86_64": 2348096,
+        "android-arm64": 1886141
       },
       "download_hosts": [
         "github.com"
@@ -1975,7 +1975,7 @@
     {
       "id": "emuden.tune.emuready",
       "name": "Tune: EmuReady",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1997,9 +1997,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.emuready-1.0.3.emuplugin",
-        "sha256": "e4c7d8385adb8f64563702da948091ccefa0401d7e560f7e1cd528c496a13462",
-        "size": 13588
+        "url": "packages/emuden.tune.emuready-1.0.4.emuplugin",
+        "sha256": "264ba38b5c733fce49f7f1f8bd17b8e15cff55e29456ccd491769b60d2913c38",
+        "size": 13609
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -2306,10 +2306,8 @@
     "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
-    "164d122b890190417a5612d847844ec5723117f29f59dfa3d3a1baa535d458ec",
     "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
     "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
-    "1db9e15be4608ed35230a06365a58008c80687ab0b7099b82efab54a2ba18b15",
     "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
     "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
     "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
@@ -2339,6 +2337,7 @@
     "5873fc2d75bc4e98109c98ae190dc1a763ecfea32e0459658406f7bf3e3fb260",
     "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
+    "5f4676815ae638876ac915864d6705af3c4b1a10443a2bc183dd9a653d66aa80",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
@@ -2351,7 +2350,6 @@
     "7510a867a7faa4fb2a333fc030bde89cf528381b85874284edecc4bd96f45bd4",
     "7817778b931434445e12398e4175cb3e91788b6b8a3998a89f7bf66887cadad2",
     "783ab9147b332f2e2252375575f386b748850f13a7dbfe47e3571e0043b1b9f9",
-    "78aadcc0b890903c0c89fced59c59174213fc3e9aea290354c6d5e0ae5bb4447",
     "7b3e779d05fcff3959c997488f7e50f956f05d0d591cfb9cc67b9e62fadec86e",
     "7c67ca1a4b3b06569b94e2ee6cca9de7fe541de34a0f9ab791dd358691b4564e",
     "80001b75315b34f3eb5cdf3b6f7d99f300f47bc7c7a9418305e6565633ad8e67",
@@ -2369,6 +2367,7 @@
     "92e8cdb6f394ce269b3944ea84521ec7ccddd0e63520514c063090215036e8d1",
     "93ad695d3cb194c706bffe664038d0fe60d18e0aed0d47b405572118c4a469b7",
     "9405f33578a2fb14f4e3006cb6e0c0940165e5866c41cded00cf9cc5c71b128b",
+    "942019cc8e75cd142510b4797cc68d4029ad1f92bc0a2bceb5d70412840d12c3",
     "944acd1dd05c28971c780a4cfe7d1c3df31c13d45a1a88f5ded8b925cff558fb",
     "95635a5f72e12ce19b25a43acedaf79d231c3e0814591204ec8ca27bb72423dd",
     "965426447171e6c72b59ba581ad30b3bddd6895871ebb47a1f1a97e779d3f34b",
@@ -2420,6 +2419,7 @@
     "ef1d32c6f97e33649d8ffd65d2f4dfc074546a962aa9006f8aef6593d8a66f1f",
     "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
     "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
+    "f5f907ee370a52dfb38dab4697401d8f5830b3cf84700b3d67f2b1d1c805addb",
     "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
     "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5"
   ],

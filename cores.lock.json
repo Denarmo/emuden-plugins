@@ -1250,32 +1250,32 @@
     "sha256": "6ed17b551c2664cb7ade8f5d5998c0407dd0bc5b76cb51904423ec35a5700974",
     "size": 538354
   },
-  "play:windows-x86_64": {
-    "core": "play",
+  "densx2:windows-x86_64": {
+    "core": "densx2",
     "platform": "windows-x86_64",
-    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-56-g91c0ea67",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-58-g1b1efeb6",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-16",
-    "sha256": "78aadcc0b890903c0c89fced59c59174213fc3e9aea290354c6d5e0ae5bb4447",
-    "size": 1335112
+    "sha256": "5f4676815ae638876ac915864d6705af3c4b1a10443a2bc183dd9a653d66aa80",
+    "size": 1335372
   },
-  "play:linux-x86_64": {
-    "core": "play",
+  "densx2:linux-x86_64": {
+    "core": "densx2",
     "platform": "linux-x86_64",
-    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-56-g91c0ea67",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-58-g1b1efeb6",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-16",
-    "sha256": "1db9e15be4608ed35230a06365a58008c80687ab0b7099b82efab54a2ba18b15",
-    "size": 2347789
+    "sha256": "942019cc8e75cd142510b4797cc68d4029ad1f92bc0a2bceb5d70412840d12c3",
+    "size": 2348096
   },
-  "play:android-arm64": {
-    "core": "play",
+  "densx2:android-arm64": {
+    "core": "densx2",
     "platform": "android-arm64",
-    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-56-g91c0ea67",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-58-g1b1efeb6",
     "license": "BSD-2-Clause",
     "fetched": "2026-11-16",
-    "sha256": "164d122b890190417a5612d847844ec5723117f29f59dfa3d3a1baa535d458ec",
-    "size": 1885697
+    "sha256": "f5f907ee370a52dfb38dab4697401d8f5830b3cf84700b3d67f2b1d1c805addb",
+    "size": 1886141
   },
   "bluemsx:windows-x86_64": {
     "core": "bluemsx",

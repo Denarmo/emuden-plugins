@@ -1,11 +1,11 @@
 # Mirrored cores
 
 The emulator cores this source installs are unmodified nightly builds from the libretro buildbot
-(https://buildbot.libretro.com/nightly/), except Play! (see below), copied into this repository's releases so each download has a fixed
+(https://buildbot.libretro.com/nightly/), except DenSX2 (see below), copied into this repository's releases so each download has a fixed
 checksum. `cores.lock.json` records where each file came from, when, and its checksum.
 
 Only cores that need no console BIOS are offered: each either needs none or carries its own
-replacement (mGBA, melonDS, PokeMini, PCSX ReARMed, Yabause, Flycast, a5200, Play!, and blueMSX with the free C-BIOS). Consoles whose every core
+replacement (mGBA, melonDS, PokeMini, PCSX ReARMed, Yabause, Flycast, a5200, DenSX2, and blueMSX with the free C-BIOS). Consoles whose every core
 needs a BIOS (Sega CD, PC Engine CD, PC-FX, Neo Geo, 3DO, ColecoVision, Intellivision) are not offered until
 there is one. Files of cores no longer offered stay in the releases.
 
@@ -64,9 +64,11 @@ https://docs.libretro.com/.
 - gpSP and TGB Dual (release `cores-together-2026-11-15`) are the cores EmuDEN plays together with between two
   devices: gpSP emulates the GBA link cable and wireless adapter over the network, TGB Dual two linked Game Boys.
   gpSP carries its own GBA BIOS replacement. Neither is any console's default core.
-- `play` (Play!, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
-  the one core not taken from the buildbot: it is built from the fork https://github.com/Denarmo/Play- (tag
-  `emuden-0.77-56-g91c0ea67`), which makes the libretro core run on Android, makes its save states load,
+- `densx2` (DenSX2, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
+  EmuDEN's fork of Play! (by Jean-Philip Desjardins and contributors, BSD-2-Clause; each zip carries Play!'s
+  License.txt and a NOTICE.txt), renamed from `play` in PS2 plugin 1.2.0. It is the one core not taken from
+  the buildbot: it is built from https://github.com/Denarmo/Play- (tag `emuden-0.77-58-g1b1efeb6`, code generator
+  fork https://github.com/Denarmo/Play--CodeGen), which makes the libretro core run on Android, makes its save states load,
   reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
   makes its OpenGL renderer several times faster on Android, and fills the frame it reports (the
   frontend applies the aspect ratio). It also carries Play!'s game configs (patches and idle loops),
@@ -74,9 +76,9 @@ https://docs.libretro.com/.
   OpenGL context shared with the frontend's, and shows interlaced fields where they belong. It samples where the
   GS samples (no lines of wrong texels in 1:1 copies) and has a widescreen option with per-game patches (Colin McRae
   Rally 3 and Gran Turismo 4, PAL). Where the frontend gives a Vulkan device and the GPU can run it, it renders
-  with Play!'s Vulkan GS (a frontend that wants OpenGL keeps the OpenGL renderer). Since GitHub Actions is off for
+  with its Vulkan GS (a frontend that wants OpenGL keeps the OpenGL renderer). Since GitHub Actions is off for
   the fork, its Linux core is built on Debian 13 (glibc 2.38 or later, as EmuDEN's own Linux build). Its builds are in the release
-  `cores-play-2026-11-14`, with the unstripped Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
+  `cores-densx2-2026-11-16` (builds from before the rename: `cores-play-2026-11-14`), with the unstripped Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
 - On Android `mupen64plus_next` is the buildbot's `mupen64plus_next_gles3` build.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
 - `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored
@@ -99,7 +101,7 @@ list in the GBA plugin, by ROM header code); every other GBA game keeps mGBA.
 
 PSX2 ECP (`psx2-ecp`) is an optional PS2 core on Android only: a standalone app, Denarmo/PSX2 (a fork of
 izzy2lost/PSX2, GPL-3.0, from PCSX2), driven over the Emulator Control Protocol. It is the one core here that needs
-the player's own BIOS (imported in the PSX2 ECP app); Play! stays the PS2 default and needs none. It is the worked
+the player's own BIOS (imported in the PSX2 ECP app); DenSX2 needs none. It is the worked
 example for emulator developers (https://github.com/Denarmo/emulator-control-protocol).
 
 DroidDeck (`droiddeck`, plugin `emuden.steam`) runs Steam games on Android: the unmodified app from

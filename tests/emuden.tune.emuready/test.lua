@@ -52,7 +52,7 @@ do
   check(why:find("same device") and why:find("same chip") and why:find("same emulator"), "reasons: " .. why)
   -- A device EmuReady does not know: only graphics count.
   local unknown = match.me({ name = "Some Handheld", gpu = "Adreno (TM) 722" }, nil, nil)
-  local r2 = match.rank(unknown, LISTINGS, "play", NOW)
+  local r2 = match.rank(unknown, LISTINGS, "densx2", NOW)
   check(r2[1].listing.id == "b" or r2[1].listing.id == "d", "similar graphics first without a device entry")
   check(match.time("2026-09-21T05:08:23.242Z") == 1789967303, "listing dates")
 end
@@ -73,9 +73,9 @@ do
 end
 
 -- Mapping onto core options.
-local PLAY = { core = "play", core_name = "Play!", known = true, options = {
-  { key = "play_res_multi", label = "Resolution", value = "1x", values = { "1x", "2x", "4x", "8x" } },
-  { key = "play_presentation_mode", value = "Fill Screen", values = { "Fill Screen", "Fit Screen" } },
+local PLAY = { core = "densx2", core_name = "DenSX2", known = true, options = {
+  { key = "densx2_res_multi", label = "Resolution", value = "1x", values = { "1x", "2x", "4x", "8x" } },
+  { key = "densx2_presentation_mode", value = "Fill Screen", values = { "Fill Screen", "Fit Screen" } },
   { key = "emuden_renderer", value = "Auto", values = { "Auto", "OpenGL", "Vulkan" } },
 } }
 local PCSX2 = { core = "pcsx2", known = true, options = {
@@ -97,8 +97,8 @@ do
                    field("ee_cycle_rate", "130% (1)"), field("ee_cycle_skip", "Mild Underclock (1)"),
                    field("average_fps", "60"), field("youtube", "") }
   local play = match.changes(PLAY, nether)
-  check(#play == 2, "Play! takes resolution and renderer: " .. #play)
-  check(play[1].key == "play_res_multi" and play[1].to == "2x", "2 -> 2x")
+  check(#play == 2, "DenSX2 takes resolution and renderer: " .. #play)
+  check(play[1].key == "densx2_res_multi" and play[1].to == "2x", "2 -> 2x")
   check(play[2].key == "emuden_renderer" and play[2].to == "Vulkan", "Vulkan")
   local pcsx2 = match.changes(PCSX2, nether)
   local by = {}
@@ -113,7 +113,7 @@ do
   check(by.ppsspp_frameskip == "1" and by.ppsspp_backend == "opengl", "PSP frame skip and backend")
   check(#match.changes(MELON, { field("threaded_rendering", "true") }) == 0, "an equal value changes nothing")
   check(match.changes(MELON, { field("threaded_rendering", "false") })[1].to == "disabled", "melonDS threads off")
-  check(#match.changes(PLAY, { field("resolution_scale", "1") }) == 0, "1x is what Play! has")
+  check(#match.changes(PLAY, { field("resolution_scale", "1") }) == 0, "1x is what DenSX2 has")
   check(#match.changes(PLAY, { field("resolution_scale", "720p") }) == 0, "a pixel height is not a scale")
 end
 
@@ -143,7 +143,7 @@ do
     } end },
     game = {
       settings = function(id)
-        local s = { id = id, core = "play", core_name = "Play!", known = true, options = {} }
+        local s = { id = id, core = "densx2", core_name = "DenSX2", known = true, options = {} }
         for _, o in ipairs(PLAY.options) do
           s.options[#s.options + 1] = { key = o.key, value = own[o.key] or o.value, values = o.values, own = own[o.key] ~= nil }
         end
