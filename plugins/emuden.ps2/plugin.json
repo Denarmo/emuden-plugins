@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -85,7 +85,7 @@
       "license": "BSD-2-Clause",
       "homepage": "https://github.com/Denarmo/Play-",
       "gpu": "opengl",
-      "version": "1.0 (based on Play! 0.77-59-ge4a96dd5)",
+      "version": "1.0 (based on Play! 0.77-60-gff1779c8)",
       "widescreen": {
         "options": {
           "densx2_widescreen": "enabled"
@@ -93,23 +93,23 @@
       },
       "downloads": {
         "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-windows-x86_64-1.0-0.77-59-ge4a96dd5.zip",
-          "sha256": "45ce2e5936844dbc13ebf47c6b4935178f936179ccef9b70da7c48de53200ac6",
-          "size": 1335689,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-windows-x86_64-1.0-0.77-60-gff1779c8.zip",
+          "sha256": "246853dd2deddb673b9fdee84fa4e7fa2d8e6aa71fb5be62af6df569485a81c1",
+          "size": 1336233,
           "archive": "zip",
           "entry": "densx2_libretro.dll"
         },
         "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-linux-x86_64-1.0-0.77-59-ge4a96dd5.zip",
-          "sha256": "ad8c995e741dec085ad403d3a4f5e2ae7e2bfeb08a807bef2c5e6ccad36eb2d8",
-          "size": 2348265,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-linux-x86_64-1.0-0.77-60-gff1779c8.zip",
+          "sha256": "399bf2a4164c4658f7cb257fdec49f14baa7d8bd0e3e9e787c70e61994877743",
+          "size": 2348275,
           "archive": "zip",
           "entry": "densx2_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-android-arm64-1.0-0.77-59-ge4a96dd5.zip",
-          "sha256": "02a42753791e52ded26d135113004065bacfbd7a6fb56ec7d5383ab267415cef",
-          "size": 1885951,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-android-arm64-1.0-0.77-60-gff1779c8.zip",
+          "sha256": "e123b998e31dfbf1b96327007996c133565923e80a14070c77996bf6ee748485",
+          "size": 1886185,
           "archive": "zip",
           "entry": "densx2_libretro_android.so"
         }
