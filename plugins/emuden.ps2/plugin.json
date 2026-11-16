@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -113,7 +113,7 @@
       "name": "PSX2 (needs your PS2 BIOS)",
       "license": "GPL-3.0-only",
       "homepage": "https://github.com/Denarmo/PSX2/tree/ecp",
-      "version": "1.3.2-ecp4",
+      "version": "1.3.2-ecp5",
       "ecp": {
         "id": "com.izzy2lost.psx2.ecp",
         "level": 2,
@@ -140,11 +140,11 @@
       "android": {
         "package": "com.izzy2lost.psx2.ecp",
         "cert_sha256": "9ab0e5b99cc0ab76a7d9b2dad0c0d0d0f00de710e91947ac0acf60f6495bc074",
-        "min_version_code": 37,
+        "min_version_code": 38,
         "apk": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-psx2-ecp-2026-11-14/psx2-ecp-1.3.2-ecp4.apk",
-          "sha256": "522e1f416fabcfdf45cc233eb2d3f2a292df6f73899a8dc86b15d1079f93a6f0",
-          "size": 20046772,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-psx2-ecp-2026-11-14/psx2-ecp-1.3.2-ecp5.apk",
+          "sha256": "f9fe18a995423eb3b133783336819769bb0524239f311b3d095c5f002d86ced7",
+          "size": 20046760,
           "archive": "none"
         }
       }
