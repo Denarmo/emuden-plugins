@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.dreamcast",
   "name": "Sega Dreamcast",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -41,7 +41,13 @@
         "native_size": [
           640,
           480
-        ]
+        ],
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "jewel",
+          "disc": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - Dreamcast",
@@ -52,7 +58,8 @@
       },
       "cores": [
         "flycast"
-      ]
+      ],
+      "default_core": "flycast"
     }
   ],
   "components": [
@@ -92,6 +99,44 @@
           "archive": "zip",
           "entry": "flycast_libretro_android.so"
         }
+      },
+      "tuning": {
+        "flycast_internal_resolution": [
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1440,
+            "value": "1920x1440",
+            "describe": "Dreamcast 1920x1440"
+          },
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1200,
+            "value": "1600x1200",
+            "describe": "Dreamcast 1600x1200"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 1080,
+            "value": "1440x1080",
+            "describe": "Dreamcast 1440x1080"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 960,
+            "value": "1280x960",
+            "describe": "Dreamcast 1280x960"
+          },
+          {
+            "min_tier": "mid",
+            "min_screen_height": 720,
+            "value": "960x720",
+            "describe": "Dreamcast 960x720"
+          },
+          {
+            "value": "640x480",
+            "describe": "Dreamcast 640x480"
+          }
+        ]
       }
     }
   ],

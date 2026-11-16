@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -39,7 +39,14 @@
         "native_size": [
           640,
           448
-        ]
+        ],
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "case",
+          "aspect": 0.7,
+          "disc": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sony - PlayStation 2",
@@ -66,7 +73,8 @@
             "psx2-ecp"
           ]
         }
-      ]
+      ],
+      "default_core": "densx2"
     }
   ],
   "components": [

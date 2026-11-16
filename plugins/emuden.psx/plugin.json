@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -107,7 +107,13 @@
             "pad": "select",
             "label": "Select"
           }
-        ]
+        ],
+        "layout": "other",
+        "digital_only": true,
+        "media": {
+          "shape": "jewel",
+          "disc": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sony - PlayStation",
@@ -118,7 +124,8 @@
       },
       "cores": [
         "pcsx_rearmed"
-      ]
+      ],
+      "default_core": "pcsx_rearmed"
     }
   ],
   "components": [
@@ -151,6 +158,19 @@
           "archive": "zip",
           "entry": "pcsx_rearmed_libretro_android.so"
         }
+      },
+      "tuning": {
+        "pcsx_rearmed_neon_enhancement_enable": [
+          {
+            "min_tier": "mid",
+            "value": "enabled",
+            "describe": "PlayStation sharper"
+          },
+          {
+            "value": "disabled",
+            "describe": "PlayStation original"
+          }
+        ]
       }
     }
   ],

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.saturn",
   "name": "Sega Saturn",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -37,7 +37,13 @@
       "presentation": {
         "cover_aspect": 0.6,
         "handheld": false,
-        "right_stick_holds": false
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "jewel",
+          "disc": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - Saturn",
@@ -48,7 +54,8 @@
       },
       "cores": [
         "yabause"
-      ]
+      ],
+      "default_core": "yabause"
     }
   ],
   "components": [

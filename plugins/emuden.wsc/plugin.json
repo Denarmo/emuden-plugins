@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.wsc",
   "name": "WonderSwan Color",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -36,7 +36,13 @@
       "presentation": {
         "cover_aspect": 1.0,
         "handheld": true,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "wonderswan"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Bandai - WonderSwan Color",
@@ -48,7 +54,8 @@
       "cores": [
         "mednafen_wswan"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mednafen_wswan"
     }
   ],
   "components": [

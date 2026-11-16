@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psp",
   "name": "PlayStation Portable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -39,7 +39,15 @@
         "native_size": [
           480,
           272
-        ]
+        ],
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "case",
+          "aspect": 0.58,
+          "disc": true,
+          "umd": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sony - PlayStation Portable",
@@ -66,7 +74,8 @@
             }
           ]
         }
-      ]
+      ],
+      "default_core": "ppsspp"
     }
   ],
   "components": [
@@ -99,6 +108,56 @@
           "archive": "zip",
           "entry": "ppsspp_libretro_android.so"
         }
+      },
+      "tuning": {
+        "ppsspp_internal_resolution": [
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 2116,
+            "value": "3840x2176",
+            "describe": "PSP 8x"
+          },
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1814,
+            "value": "3360x1904",
+            "describe": "PSP 7x"
+          },
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1512,
+            "value": "2880x1632",
+            "describe": "PSP 6x"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 1209,
+            "value": "2400x1360",
+            "describe": "PSP 5x"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 907,
+            "value": "1920x1088",
+            "describe": "PSP 4x"
+          },
+          {
+            "min_tier": "mid",
+            "min_screen_height": 605,
+            "value": "1440x816",
+            "describe": "PSP 3x"
+          },
+          {
+            "min_tier": "mid",
+            "min_screen_height": 303,
+            "value": "960x544",
+            "describe": "PSP 2x"
+          },
+          {
+            "value": "480x272",
+            "describe": "PSP 1x"
+          }
+        ]
       }
     },
     {

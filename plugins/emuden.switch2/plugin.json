@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
@@ -34,7 +34,13 @@
       "presentation": {
         "cover_aspect": 1.0,
         "handheld": false,
-        "right_stick_holds": false
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "card",
+          "aspect": 0.68
+        }
       },
       "bios": [
         {

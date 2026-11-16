@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gb",
   "name": "Game Boy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Game Boy games with mGBA.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -35,6 +36,19 @@
             "length": 11,
             "encoding": "ascii"
           }
+        ],
+        "magic": [
+          {
+            "offset": 260,
+            "bytes": "CEED6666CC0D000B",
+            "also": [
+              {
+                "offset": 323,
+                "bytes": "00",
+                "mask": "80"
+              }
+            ]
+          }
         ]
       },
       "presentation": {
@@ -58,7 +72,13 @@
             "pad": "select",
             "label": "Select"
           }
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "pocket"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Game Boy",
@@ -73,7 +93,8 @@
         "sameboy",
         "tgbdual"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mgba"
     }
   ],
   "components": [
@@ -198,6 +219,27 @@
           "size": 106053,
           "archive": "zip",
           "entry": "tgbdual_libretro_android.so"
+        }
+      },
+      "netplay": {
+        "mode": "lockstep",
+        "subsystem": 257,
+        "description": "A link cable between two Game Boys: each device runs both, linked, and shows its own. Trades and battles work as on the real consoles; each keeps its own save.",
+        "host": {
+          "save_memory": 256,
+          "options": {
+            "tgbdual_gblink_enable": "enabled",
+            "tgbdual_single_screen_mp": "player 1 only",
+            "tgbdual_audio_output": "Game Boy #1"
+          }
+        },
+        "guest": {
+          "save_memory": 768,
+          "options": {
+            "tgbdual_gblink_enable": "enabled",
+            "tgbdual_single_screen_mp": "player 2 only",
+            "tgbdual_audio_output": "Game Boy #2"
+          }
         }
       }
     }

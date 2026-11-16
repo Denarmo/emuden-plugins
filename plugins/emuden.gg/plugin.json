@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gg",
   "name": "Sega Game Gear",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Game Gear games with Genesis Plus GX.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -28,7 +29,108 @@
         "folder_aliases": [
           "gamegear"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 32752,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 32767,
+                "bytes": "50",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 32752,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 32767,
+                "bytes": "60",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 32752,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 32767,
+                "bytes": "70",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 16368,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 16383,
+                "bytes": "50",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 16368,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 16383,
+                "bytes": "60",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 16368,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 16383,
+                "bytes": "70",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 8176,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 8191,
+                "bytes": "50",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 8176,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 8191,
+                "bytes": "60",
+                "mask": "F0"
+              }
+            ]
+          },
+          {
+            "offset": 8176,
+            "bytes": "544D522053454741",
+            "also": [
+              {
+                "offset": 8191,
+                "bytes": "70",
+                "mask": "F0"
+              }
+            ]
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 0.71,
@@ -47,7 +149,13 @@
             "pad": "start",
             "label": "Start"
           }
-        ]
+        ],
+        "layout": "other",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "gamegear"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - Game Gear",
@@ -60,7 +168,8 @@
         "genesis_plus_gx",
         "picodrive"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "genesis_plus_gx"
     }
   ],
   "components": [

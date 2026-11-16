@@ -194,6 +194,25 @@
     "platform": { "enum": ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64", "any"] },
     "platforms": { "type": "array", "items": { "$ref": "#/$defs/platform" } },
     "extension": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]{0,15}$" },
+    "magic_bytes": { "type": "object", "required": ["offset", "bytes"],
+      "properties": { "offset": { "type": "integer", "minimum": 0, "maximum": 16777215 },
+        "bytes": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}){1,64}$" },
+        "mask": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}){1,64}$" } } },
+    "screens": {
+      "type": "array", "maxItems": 8,
+      "items": {
+        "type": "object", "required": ["frame", "screens"],
+        "properties": {
+          "frame": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 16384 }, "minItems": 2, "maxItems": 2 },
+          "screens": { "type": "array", "minItems": 1, "maxItems": 4, "items": { "type": "object", "required": ["rect"],
+            "properties": { "rect": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 1 }, "minItems": 4, "maxItems": 4 },
+              "touch": { "type": "boolean" } } } }
+        }
+      }
+    },
+    "netplay_side": { "type": "object",
+      "properties": { "save_memory": { "type": "integer", "minimum": 0, "maximum": 65535 },
+        "options": { "type": "object", "additionalProperties": { "type": "string" } } } },
     "relative_path": { "type": "string", "minLength": 1, "pattern": "^(?![/\\\\])(?!.*(^|/)\\.\\.(/|$))[^\\\\:{]+$" },
     "capabilities": {
       "type": "object",
@@ -214,6 +233,7 @@
         "group": { "type": "string", "minLength": 1, "maxLength": 64 },
         "order": { "type": "integer" },
         "platforms": { "$ref": "#/$defs/platforms" },
+        "default_core": { "type": "string", "minLength": 1 },
         "content": {
           "type": "object",
           "properties": {
@@ -232,7 +252,11 @@
               }
             },
             "magic": { "type": "array", "items": { "type": "object", "required": ["offset", "bytes"],
-              "properties": { "offset": { "type": "integer", "minimum": 0 }, "bytes": { "type": "string", "pattern": "^([0-9A-Fa-f]{2})+$" } } } },
+              "properties": { "offset": { "type": "integer", "minimum": 0, "maximum": 16777215 },
+                "bytes": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}){1,64}$" },
+                "mask": { "type": "string", "pattern": "^([0-9A-Fa-f]{2}){1,64}$" },
+                "also": { "type": "array", "items": { "$ref": "#/$defs/magic_bytes" } } } } },
+            "sync": { "type": "boolean" },
             "header_title": { "type": "array", "items": { "type": "object", "required": ["offset", "length"],
               "properties": { "offset": { "type": "integer", "minimum": 0 }, "length": { "type": "integer", "minimum": 1, "maximum": 256 }, "encoding": { "enum": ["ascii"] } } } },
             "hash_variants": { "type": "array", "items": { "type": "object", "required": ["skip_bytes"],
@@ -248,6 +272,13 @@
             "handheld": { "type": "boolean" },
             "right_stick_holds": { "type": "boolean" },
             "native_size": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 16384 }, "minItems": 2, "maxItems": 2 },
+            "layout": { "enum": ["nintendo", "other"] },
+            "digital_only": { "type": "boolean" },
+            "media": { "type": "object", "required": ["shape"],
+              "properties": { "shape": { "enum": ["cartridge", "card", "case", "jewel", "disc"] },
+                "style": { "type": "string", "maxLength": 64 }, "aspect": { "type": "number", "minimum": 0.1, "maximum": 10 },
+                "disc": { "type": "boolean" }, "umd": { "type": "boolean" } } },
+            "screens": { "$ref": "#/$defs/screens" },
             "buttons": {
               "type": "array", "maxItems": 16,
               "items": {
@@ -333,6 +364,18 @@
         "homepage": { "type": "string" },
         "gpu": { "enum": ["none", "opengl"] },
         "forced_core_options": { "type": "object", "additionalProperties": { "type": "string" } },
+        "option_hints": { "type": "object", "additionalProperties": { "type": "string" } },
+        "presentation": { "type": "object", "properties": { "screens": { "$ref": "#/$defs/screens" } } },
+        "netplay": { "type": "object", "required": ["mode"],
+          "properties": { "mode": { "enum": ["link", "lockstep"] }, "subsystem": { "type": "integer", "minimum": 0, "maximum": 65535 },
+            "description": { "type": "string", "maxLength": 400 },
+            "host": { "$ref": "#/$defs/netplay_side" }, "guest": { "$ref": "#/$defs/netplay_side" } } },
+        "options_name": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "tuning": { "type": "object", "additionalProperties": { "type": "array", "maxItems": 32,
+          "items": { "type": "object", "required": ["value"],
+            "properties": { "min_tier": { "enum": ["low", "mid", "high", "very_high"] },
+              "min_screen_height": { "type": "integer", "minimum": 0 }, "min_cpu_cores": { "type": "integer", "minimum": 0 },
+              "value": { "type": "string" }, "describe": { "type": "string", "maxLength": 80 } } } } },
         "widescreen": {
           "type": "object",
           "additionalProperties": false,

@@ -36,7 +36,6 @@ IGNORED_FIELDS = {
     "systems.*.capabilities.fast_forward": "the player asks the core",
     "systems.*.capabilities.run_ahead": "the player asks the core",
     "systems.*.capabilities.cheats": "the player asks the core",
-    "systems.*.content.magic": "the scanner goes by extension and folder",
     "systems.*.content.hash_variants": "games are looked up by their whole file",
     "systems.*.presentation.native_size": "the core reports its picture size",
     "systems.*.romm_slugs": "",

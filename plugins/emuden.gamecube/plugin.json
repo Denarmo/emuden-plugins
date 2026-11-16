@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gamecube",
   "name": "Nintendo GameCube",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "GameCube games with Dolphin.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -32,7 +33,13 @@
           "gc",
           "ngc"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 28,
+            "bytes": "C2339F3D"
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 0.71,
@@ -41,7 +48,14 @@
         "native_size": [
           640,
           480
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": false,
+        "media": {
+          "shape": "case",
+          "aspect": 0.72,
+          "disc": true
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - GameCube",
@@ -64,7 +78,8 @@
             }
           ]
         }
-      ]
+      ],
+      "default_core": "dolphin"
     }
   ],
   "components": [
@@ -103,6 +118,23 @@
           "archive": "zip",
           "entry": "dolphin_libretro_android.so"
         }
+      },
+      "options_name": "dolphin-emu",
+      "tuning": {
+        "dolphin_efb_scale": [
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1080,
+            "value": "x3 (1920 x 1584)"
+          },
+          {
+            "min_tier": "high",
+            "value": "x2 (1280 x 1056)"
+          },
+          {
+            "value": "x1 (640 x 528)"
+          }
+        ]
       }
     }
   ],

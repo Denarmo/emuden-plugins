@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pico8",
   "name": "PICO-8",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -38,13 +38,19 @@
       "presentation": {
         "cover_aspect": 1.0,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge"
+        }
       },
       "cores": [
         "fake08",
         "retro8"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "fake08"
     }
   ],
   "components": [

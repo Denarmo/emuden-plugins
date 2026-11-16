@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari7800",
   "name": "Atari 7800",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Atari 7800 games with ProSystem.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -34,12 +35,24 @@
           "7800",
           "atari 7800"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 1,
+            "bytes": "415441524937383030"
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "atari"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Atari - 7800",
@@ -50,7 +63,8 @@
       },
       "cores": [
         "prosystem"
-      ]
+      ],
+      "default_core": "prosystem"
     }
   ],
   "components": [

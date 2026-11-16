@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.virtualboy",
   "name": "Virtual Boy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -40,7 +40,13 @@
         "native_size": [
           384,
           224
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "virtualboy"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Virtual Boy",
@@ -52,7 +58,8 @@
       "cores": [
         "mednafen_vb"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mednafen_vb"
     }
   ],
   "components": [

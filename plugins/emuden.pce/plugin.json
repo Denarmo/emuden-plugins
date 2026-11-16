@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pce",
   "name": "PC Engine / TurboGrafx-16",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -42,7 +42,13 @@
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "card",
+          "style": "hucard"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "NEC - PC Engine - TurboGrafx 16",
@@ -55,7 +61,8 @@
         "mednafen_pce_fast",
         "mednafen_pce"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mednafen_pce_fast"
     }
   ],
   "components": [

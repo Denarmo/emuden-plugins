@@ -35,12 +35,13 @@ plugins have their own pages ([feature-plugins.md](feature-plugins.md),
 | `group` | yes | `nintendo`, `sega`, `sony`, `microsoft`, `pc`, `other`, or your own heading |
 | `order` | yes | Place among the home groups. EmuDEN's consoles use 100, 200, ... |
 | `content` | yes | Which files are games ([content.md](content.md)) |
-| `presentation` | yes | `cover_aspect` (width over height), `handheld`, `right_stick_holds`, `buttons` (below) |
+| `presentation` | yes | `cover_aspect` (width over height), `handheld`, `right_stick_holds`, `buttons`, `layout`, `digital_only`, `media`, `screens` (below) |
 | `artwork` | no | `libretro_thumbnails` (folder on the thumbnail server), `rdb` (libretro database name), `launchbox` (LaunchBox platform), `cover_by_id` (cover addresses with `{id}`) |
 | `achievements` | no | `{"rcheevos_console": 7}` |
 | `capabilities` | no | Wins over the manifest's ([engines.md](engines.md#capabilities)) |
 | `platforms` | no | As the top-level field, for this system only |
 | `cores` | yes | Component ids, best first |
+| `default_core` | no | The core chosen until the player picks one; the first of `cores` that has a download when it is left out |
 | `bios` | no | Below |
 
 `presentation.buttons` names the buttons of the console's own pad, for the button mapping screen
@@ -49,6 +50,30 @@ RetroPad button (`b`, `y`, `select`, `start`, `a`, `x`, `l`, `r`, `l2`, `r2`, `l
 `up`, `down`, `left`, `right`); buttons you leave out are not offered for the console. The D-pad
 is added for you. Without `buttons` the RetroPad's own names are shown. Needs
 `presentation.buttons`.
+
+The rest of `presentation` says how the console's games look and play. A field left out is
+filled from EmuDEN's own tables for the consoles it knows, and otherwise as the defaults say:
+
+| Field | Default | Meaning |
+|---|---|---|
+| `layout` | `other` | `nintendo`: the console's own pad has A on the right and B below it, so a pad lettered the other way round (Xbox) presses the button of the same letter |
+| `digital_only` | false | The console has no stick: the left stick works as the D-pad too |
+| `media` | a plain cartridge | How the standard Home and the boot screen draw a game: `{"shape": "card", "style": "hucard", "aspect": 0.64, "disc": false, "umd": false}`. `shape` is `cartridge`, `card`, `case`, `jewel` or `disc`; `style` one of EmuDEN's moulds (`pocket`, `pocket_wide`, `nes`, `snes`, `n64`, `megadrive`, `mastersystem`, `gamegear`, `32x`, `mycard`, `hucard`, `lynx`, `neogeopocket`, `wonderswan`, `virtualboy`, `pokemini`, `atari`, `atari5200`, `jaguar`, `vectrex`, `colecovision`, `intellivision`); `aspect` is width over height; `disc` puts a disc in a case or jewel case, `umd` a UMD |
+| `screens` | one screen | A picture of several screens, below |
+
+`screens` lists the shapes a core's picture may have and which part of it each screen is. A
+shape applies when the picture's width over its height is that of `frame` (any multiple, so a
+core drawing at twice the size still matches); each screen's `rect` is `[x, y, w, h]` of the
+picture, 0 to 1 with row 0 at the top, and `touch` says presses on it reach the game. The
+player then lays the screens out on one display or puts one on the device's second screen:
+
+```json
+"screens": [{ "frame": [256, 384],
+              "screens": [{ "rect": [0, 0, 1, 0.5] }, { "rect": [0, 0.5, 1, 0.5], "touch": true }] }]
+```
+
+A core can have `presentation.screens` of its own (below), which win over the console's. Give
+the core options that make the core draw that shape as the core's `option_hints`.
 
 ## `components[]`
 
@@ -60,10 +85,46 @@ is added for you. Without `buttons` the RetroPad's own names are shown. Needs
 | `version`, `license`, `homepage` | no | |
 | `gpu` | no | `none` (default) or `opengl`: the core draws with the graphics card |
 | `forced_core_options` | no | Core option to value, always applied unless the player chose otherwise |
+| `option_hints` | no | Core option to value, applied before `forced_core_options` and the player's own values: what makes the core draw the shape its `screens` describe |
+| `presentation` | no | `{"screens": [...]}`: the screens of this core's picture, as the system's `presentation.screens` |
+| `netplay` | no | How the core plays a game together with another device (below) |
+| `options_name` | no | The name the core reports for itself (`dolphin-emu`), whose letters and digits key its stored option values; the component id when left out |
+| `tuning` | no | Core option values chosen by device (below) |
 | `widescreen` | no | `{"options": {...}, "restart": false}`: the core options that make the picture widescreen |
 | `games` | no | `{"offset": 172, "length": 4, "codes": [...]}`: games this core plays instead of the console's chosen one, by the code in their header |
 | `downloads` | yes | Platform key (or `any`) to a download |
 | `ecp`, `executable`, `android` | engine app | [engines.md](engines.md#engine-app) |
+
+`netplay` gives the Together page the core that plays the console's games linked, the way
+the real consoles linked (Game Boys by cable, DS by local wireless). The first core of the
+console that has one is used; without one, the console's chosen core plays in lockstep, one
+console with a controller on each device:
+
+```json
+"netplay": { "mode": "link",
+             "description": "Local wireless between two DS. Each device plays its own game and save." }
+```
+
+| Field | Meaning |
+|---|---|
+| `mode` | `link`: each device plays its own game and save, linked. `lockstep`: both run the same emulation |
+| `subsystem` | Non-zero: the game is loaded twice through this libretro subsystem (TGB Dual's 257, two linked Game Boys) |
+| `description` | What it does, shown before the player starts |
+| `host`, `guest` | Per side: `save_memory`, the libretro memory its own battery save is kept in (with a subsystem the other side's is the peer's), and `options`, core option values for that session only |
+
+`tuning` picks a core option's value by the device: the tier EmuDEN classified it as (`low`,
+`mid`, `high`, `very_high`), the height of its main screen and its processor cores. Each option
+lists cases; the first one the device meets is installed as the default the player can change:
+
+```json
+"tuning": { "ppsspp_internal_resolution": [
+  { "min_tier": "high", "min_screen_height": 907, "value": "1920x1088", "describe": "PSP 4x" },
+  { "min_tier": "mid", "min_screen_height": 605, "value": "1440x816", "describe": "PSP 3x" },
+  { "value": "480x272", "describe": "PSP 1x" } ] }
+```
+
+`describe` is shown on the setup page's summary; a case without it is not. A case with a tier
+this EmuDEN does not know is left out.
 
 A download:
 
@@ -118,7 +179,7 @@ nobody relies on them:
 |---|---|
 | `sync` (`saves`, `states`, `settings`, `cheats`) | Every console syncs alike, as the player set up sync |
 | `capabilities.save_states`, `rewind`, `fast_forward`, `run_ahead`, `cheats` | The player asks the core or the engine |
-| `systems[].content.magic`, `hash_variants` | The scanner goes by extension and folder; games are looked up by their whole file |
+| `systems[].content.hash_variants` | Games are looked up by their whole file |
 | `systems[].presentation.native_size`, `systems[].romm_slugs` | |
 | `settings[].scope` `"game"`, `live`, `inherit` | Every setting is the console's and shown on its page only ([settings.md](settings.md)) |
 | `settings[].apply` other than `core_option` | The row is shown; nothing applies the value |

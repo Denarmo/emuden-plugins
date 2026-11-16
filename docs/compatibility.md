@@ -21,6 +21,8 @@ The names `needs` may hold are listed, with what each means, in
 | `settings.v1` | a console with `settings` |
 | `content.multi_file`, `content.magic` | a console using those `content` fields |
 | `presentation.buttons` | `presentation.buttons` |
+| `presentation.screens` | a system's or a core's `presentation.screens` |
+| `core.netplay`, `core.tuning` | a core's `netplay`, its `tuning` |
 | `core.engine-app.1` | a core of type `engine-app` |
 | `kind.feature`, `feature.lua.1` | every feature plugin |
 | `feature.web.1` | the `browse` permission |
@@ -31,9 +33,9 @@ The names `needs` may hold are listed, with what each means, in
 
 A plugin must list the engine it uses, `settings.v1` when it has settings, the `content.` name
 of each of those content fields it uses, and the capability of each permission (EmuDEN refuses a
-feature plugin with a permission whose capability is missing). List `presentation.buttons` and
-`core.engine-app.1` too when you use them, so an older EmuDEN refuses the plugin instead of
-showing it half-working. New features get new names; an older EmuDEN then says so instead of
+feature plugin with a permission whose capability is missing). List `presentation.buttons`,
+`presentation.screens`, `core.netplay`, `core.tuning` and `core.engine-app.1` too when you use
+them, so an older EmuDEN refuses the plugin instead of showing it half-working. New features get new names; an older EmuDEN then says so instead of
 misreading the plugin.
 
 `platforms` says where a console plugin works. Elsewhere its console has no core to install.

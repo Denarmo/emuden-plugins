@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.snes",
   "name": "Super Nintendo Entertainment System",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -39,7 +39,13 @@
       "presentation": {
         "cover_aspect": 1.37,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "nintendo",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "snes"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Super Nintendo Entertainment System",
@@ -52,7 +58,8 @@
         "bsnes",
         "snes9x"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "snes9x"
     }
   ],
   "components": [

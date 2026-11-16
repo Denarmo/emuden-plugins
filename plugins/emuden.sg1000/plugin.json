@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sg1000",
   "name": "SG-1000",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -36,7 +36,13 @@
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "card",
+          "style": "mycard"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - SG-1000",
@@ -48,7 +54,8 @@
       "cores": [
         "genesis_plus_gx"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "genesis_plus_gx"
     }
   ],
   "components": [

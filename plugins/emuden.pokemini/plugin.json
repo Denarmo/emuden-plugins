@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pokemini",
   "name": "Pokémon mini",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -35,7 +35,13 @@
       "presentation": {
         "cover_aspect": 1.0,
         "handheld": true,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "nintendo",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "pokemini"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Pokemon Mini",
@@ -46,7 +52,8 @@
       },
       "cores": [
         "pokemini"
-      ]
+      ],
+      "default_core": "pokemini"
     }
   ],
   "components": [

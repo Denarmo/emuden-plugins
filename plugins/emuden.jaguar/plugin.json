@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.jaguar",
   "name": "Atari Jaguar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -44,7 +44,13 @@
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": false
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "jaguar"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Atari - Jaguar",
@@ -56,7 +62,8 @@
       "cores": [
         "virtualjaguar"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "virtualjaguar"
     }
   ],
   "components": [

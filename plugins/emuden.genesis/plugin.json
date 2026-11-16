@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.genesis",
   "name": "Sega Genesis / Mega Drive",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Genesis and Mega Drive games with Genesis Plus GX.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -42,6 +43,12 @@
             "offset": 336,
             "length": 48,
             "encoding": "ascii"
+          }
+        ],
+        "magic": [
+          {
+            "offset": 256,
+            "bytes": "53454741"
           }
         ]
       },
@@ -82,7 +89,13 @@
             "pad": "select",
             "label": "Mode"
           }
-        ]
+        ],
+        "layout": "other",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "megadrive"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - Mega Drive - Genesis",
@@ -95,7 +108,8 @@
         "genesis_plus_gx",
         "picodrive"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "genesis_plus_gx"
     }
   ],
   "components": [

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.vectrex",
   "name": "Vectrex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Vectrex games with vecx.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -35,12 +36,24 @@
         "folder_aliases": [
           "gce vectrex"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": "6720474345"
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "vectrex"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "GCE - Vectrex",
@@ -52,7 +65,8 @@
       "cores": [
         "vecx"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "vecx"
     }
   ],
   "components": [

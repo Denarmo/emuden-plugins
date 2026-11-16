@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.32x",
   "name": "Sega 32X",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "32X games with PicoDrive.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -30,12 +31,24 @@
           "sega32x",
           "sega 32x"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 256,
+            "bytes": "5345474120333258"
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "32x"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Sega - 32X",
@@ -47,7 +60,8 @@
       "cores": [
         "picodrive"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "picodrive"
     }
   ],
   "components": [

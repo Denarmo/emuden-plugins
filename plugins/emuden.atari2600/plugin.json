@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari2600",
   "name": "Atari 2600",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -41,7 +41,13 @@
       "presentation": {
         "cover_aspect": 0.71,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "atari"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Atari - 2600",
@@ -53,7 +59,8 @@
       "cores": [
         "stella"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "stella"
     }
   ],
   "components": [

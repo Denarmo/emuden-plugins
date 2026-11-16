@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.n64",
   "name": "Nintendo 64",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Nintendo 64 games with Mupen64Plus-Next.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -30,7 +31,21 @@
         "folder_aliases": [
           "nintendo64"
         ],
-        "zip": "unpack"
+        "zip": "unpack",
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": "80371240"
+          },
+          {
+            "offset": 0,
+            "bytes": "37804012"
+          },
+          {
+            "offset": 0,
+            "bytes": "40123780"
+          }
+        ]
       },
       "presentation": {
         "cover_aspect": 1.37,
@@ -65,7 +80,13 @@
             "pad": "start",
             "label": "Start"
           }
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "n64"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Nintendo 64",
@@ -78,7 +99,8 @@
         "mupen64plus_next",
         "parallel_n64"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mupen64plus_next"
     }
   ],
   "components": [
@@ -117,6 +139,44 @@
           "archive": "zip",
           "entry": "mupen64plus_next_gles3_libretro_android.so"
         }
+      },
+      "tuning": {
+        "mupen64plus-43screensize": [
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1440,
+            "value": "1920x1440",
+            "describe": "Nintendo 64 1920x1440"
+          },
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1200,
+            "value": "1600x1200",
+            "describe": "Nintendo 64 1600x1200"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 1080,
+            "value": "1440x1080",
+            "describe": "Nintendo 64 1440x1080"
+          },
+          {
+            "min_tier": "high",
+            "min_screen_height": 960,
+            "value": "1280x960",
+            "describe": "Nintendo 64 1280x960"
+          },
+          {
+            "min_tier": "mid",
+            "min_screen_height": 720,
+            "value": "960x720",
+            "describe": "Nintendo 64 960x720"
+          },
+          {
+            "value": "640x480",
+            "describe": "Nintendo 64 640x480"
+          }
+        ]
       }
     },
     {

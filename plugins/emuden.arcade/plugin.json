@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.arcade",
   "name": "Arcade",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -44,7 +44,12 @@
       "presentation": {
         "cover_aspect": 1.33,
         "handheld": false,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "FBNeo - Arcade Games",
@@ -57,7 +62,8 @@
         "fbneo",
         "mame2003_plus"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "fbneo"
     }
   ],
   "components": [

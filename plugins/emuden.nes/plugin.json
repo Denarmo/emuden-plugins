@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nes",
   "name": "Nintendo Entertainment System",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "NES and Famicom games with FCEUmm.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -38,6 +39,12 @@
             "skip_bytes": 16,
             "min_size": 17
           }
+        ],
+        "magic": [
+          {
+            "offset": 0,
+            "bytes": "4E45531A"
+          }
         ]
       },
       "presentation": {
@@ -61,7 +68,13 @@
             "pad": "select",
             "label": "Select"
           }
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "nes"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Nintendo Entertainment System",
@@ -74,7 +87,8 @@
         "fceumm",
         "nestopia",
         "mesen"
-      ]
+      ],
+      "default_core": "fceumm"
     }
   ],
   "components": [

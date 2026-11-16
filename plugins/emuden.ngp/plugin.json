@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ngp",
   "name": "Neo Geo Pocket",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -35,7 +35,13 @@
       "presentation": {
         "cover_aspect": 1.0,
         "handheld": true,
-        "right_stick_holds": true
+        "right_stick_holds": true,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "neogeopocket"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "SNK - Neo Geo Pocket",
@@ -47,7 +53,8 @@
       "cores": [
         "mednafen_ngp"
       ],
-      "bios": []
+      "bios": [],
+      "default_core": "mednafen_ngp"
     }
   ],
   "components": [

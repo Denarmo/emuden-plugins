@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -10,7 +10,8 @@
   "summary": "Game Boy Advance games with mGBA.",
   "api": 1,
   "needs": [
-    "engine.libretro"
+    "engine.libretro",
+    "content.magic"
   ],
   "platforms": [
     "any"
@@ -34,6 +35,18 @@
             "offset": 160,
             "length": 12,
             "encoding": "ascii"
+          }
+        ],
+        "magic": [
+          {
+            "offset": 4,
+            "bytes": "24FFAE51699AA221",
+            "also": [
+              {
+                "offset": 178,
+                "bytes": "96"
+              }
+            ]
           }
         ]
       },
@@ -66,7 +79,13 @@
             "pad": "select",
             "label": "Select"
           }
-        ]
+        ],
+        "layout": "nintendo",
+        "digital_only": true,
+        "media": {
+          "shape": "cartridge",
+          "style": "pocket_wide"
+        }
       },
       "artwork": {
         "libretro_thumbnails": "Nintendo - Game Boy Advance",
@@ -80,7 +99,8 @@
         "vba_next",
         "gbads",
         "gpsp"
-      ]
+      ],
+      "default_core": "mgba"
     }
   ],
   "components": [
@@ -327,6 +347,34 @@
           "archive": "zip",
           "entry": "gbads_libretro_android.so"
         }
+      },
+      "presentation": {
+        "screens": [
+          {
+            "frame": [
+              240,
+              320
+            ],
+            "screens": [
+              {
+                "rect": [
+                  0,
+                  0,
+                  1,
+                  0.5
+                ]
+              },
+              {
+                "rect": [
+                  0,
+                  0.5,
+                  1,
+                  0.5
+                ]
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -358,6 +406,10 @@
           "archive": "zip",
           "entry": "gpsp_libretro_android.so"
         }
+      },
+      "netplay": {
+        "mode": "link",
+        "description": "A link cable or wireless adapter between two Game Boy Advance, played with gpSP. Each device plays its own game and save; in Pokemon go to a Pokemon Center's upper floor."
       }
     }
   ],
