@@ -49,13 +49,14 @@ class Tool(unittest.TestCase):
         manifest = plugin_tool.load_json(REPO / "examples" / "jdoe.wiiu-cemu" / "plugin.json")
         self.assertEqual(ignored_fields(manifest), [])
         changed = copy.deepcopy(manifest)
-        changed["sync"] = {"saves": True}
+        changed["sync"] = {"saves": True, "cheats": True}
         changed["systems"][0]["capabilities"]["rewind"] = True
+        changed["systems"][0]["capabilities"]["run_ahead"] = True
         changed["settings"][0]["scope"] = "game"
         changed["settings"][0]["live"] = True
         paths = [path for path, _ in ignored_fields(changed)]
-        self.assertEqual(sorted(paths), ["settings[0].live", "settings[0].scope", "sync",
-                                         "systems[0].capabilities.rewind"])
+        self.assertEqual(sorted(paths), ["settings[0].live", "settings[0].scope", "sync.cheats",
+                                         "systems[0].capabilities.run_ahead"])
 
     def test_manual_plugins_are_in_no_list(self):
         import plugin_manual
