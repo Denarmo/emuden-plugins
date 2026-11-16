@@ -76,11 +76,7 @@ function names.lower_ext(file)
   return (file:match("%.([^.]+)$") or ""):lower()
 end
 
-function names.urlencode(text)
-  return (tostring(text):gsub("[^%w%-%._~]", function(c)
-    return string.format("%%%02X", c:byte())
-  end))
-end
+names.urlencode = den.include("urlencode.lua")
 
 -- "2026-11-14T10:20:30.123456Z" or "...+00:00" -> Unix seconds (0 when unreadable).
 function names.unix_time(iso)

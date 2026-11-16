@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.emuready",
   "name": "Tune: EmuReady",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",

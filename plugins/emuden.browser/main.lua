@@ -8,6 +8,7 @@
 -- at the page. The script never reads a page or a file; it names files by their name.
 
 local pages = den.include("pages.lua")
+local urlencode = den.include("urlencode.lua")
 
 local plugin = { actions = {} }
 
@@ -68,8 +69,8 @@ local function address_of(text)
   if not text:find("%s") and text:match("^[%w%-]+%.[%w%-%.]+") then
     return "https://" .. text
   end
-  local query = text:gsub("[^%w%-_%.~ ]", function(c) return string.format("%%%02X", c:byte()) end)
-  return "https://duckduckgo.com/?q=" .. query:gsub(" ", "+")
+  local query = urlencode(text):gsub("%%20", "+")
+  return "https://duckduckgo.com/?q=" .. query
 end
 
 -- Sets one file of the Downloads folder up and tells the user what became of it.

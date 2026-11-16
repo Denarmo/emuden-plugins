@@ -256,7 +256,7 @@ den = {
   },
 }
 function den.include(name)
-  local f = assert(io.open(root .. name, "rb"))
+  local f = io.open(root .. name, "rb") or assert(io.open(here .. "/../../shared/urlencode/" .. name, "rb"))
   local chunk = assert(load(f:read("a"), "=" .. name, "t"))
   f:close()
   return chunk()

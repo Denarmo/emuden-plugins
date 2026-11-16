@@ -26,9 +26,7 @@ local SYSTEM_NAMES = {
   gamecube = "GameCube", wii = "Wii", dreamcast = "Dreamcast", saturn = "Saturn",
 }
 
-local function escape(text)
-  return (text:gsub("[^%w%-_%.~]", function(c) return string.format("%%%02X", string.byte(c)) end))
-end
+local escape = den.include("urlencode.lua")
 
 -- JSON null becomes nil, so a missing chip or rating reads like an absent field.
 local function strip_nulls(value, depth)

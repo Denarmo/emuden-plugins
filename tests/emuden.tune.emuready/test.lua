@@ -133,7 +133,7 @@ do
   den = {
     now = function() return NOW end,
     log = function() end,
-    include = function(name) return dofile(DIR .. name) end,
+    include = function(name) return dofile((io.open(DIR .. name) and DIR or "shared/urlencode/") .. name) end,
     json = { null = setmetatable({}, { __name = "null" }), decode = decode,
              encode = function(v) json[#json + 1] = v return "J" .. #json end },
     device = { info = function() return DUO end },
