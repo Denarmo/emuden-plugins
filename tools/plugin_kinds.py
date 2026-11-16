@@ -25,17 +25,11 @@ HOST_NAME = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-
 # Fields the schema allows that this EmuDEN does not read yet: `validate` warns, so nobody
 # relies on them. "*" stands for any list index or object key; "=value" warns only for that value.
 IGNORED_FIELDS = {
-    "sync": "console sync settings: every console's saves, states and settings sync alike",
-    "capabilities.save_states": "the player asks the core",
-    "capabilities.rewind": "the player asks the core",
-    "capabilities.fast_forward": "the player asks the core",
-    "capabilities.run_ahead": "the player asks the core",
-    "capabilities.cheats": "the player asks the core",
-    "systems.*.capabilities.save_states": "the player asks the core",
-    "systems.*.capabilities.rewind": "the player asks the core",
-    "systems.*.capabilities.fast_forward": "the player asks the core",
-    "systems.*.capabilities.run_ahead": "the player asks the core",
-    "systems.*.capabilities.cheats": "the player asks the core",
+    "sync.cheats": "EmuDEN has no cheats",
+    "capabilities.run_ahead": "EmuDEN has no run-ahead",
+    "capabilities.cheats": "EmuDEN has no cheats",
+    "systems.*.capabilities.run_ahead": "EmuDEN has no run-ahead",
+    "systems.*.capabilities.cheats": "EmuDEN has no cheats",
     "systems.*.content.hash_variants": "games are looked up by their whole file",
     "systems.*.presentation.native_size": "the core reports its picture size",
     "systems.*.romm_slugs": "",
