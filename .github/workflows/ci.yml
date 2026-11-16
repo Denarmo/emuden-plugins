@@ -1,0 +1,45 @@
+# Checks every push to main and every pull request: manifests, the tool's own tests, the
+# plugins' offline Lua tests and the signed index.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Packages
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends lua5.4
+          python -m pip install --quiet cryptography
+
+      - name: Validate
+        run: python -I tools/plugin_tool.py validate --all --trust bundled
+
+      - name: Tool tests
+        run: python -I tests/tool_test.py
+
+      - name: Lua tests
+        run: python -I tools/plugin_tool.py test
+
+      - name: Signed index
+        run: python -I tools/plugin_tool.py verify
