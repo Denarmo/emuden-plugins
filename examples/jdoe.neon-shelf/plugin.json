@@ -1,0 +1,28 @@
+{
+  "manifest_version": 1,
+  "id": "jdoe.neon-shelf",
+  "name": "Neon Shelf",
+  "version": "1.0.0",
+  "kind": "interface",
+  "publisher": "J. Doe",
+  "license": "CC-BY-4.0",
+  "summary": "Dark tabs, bright covers.",
+  "api": 1,
+  "needs": ["kind.interface", "interface.1"],
+  "interface": {
+    "layout": "carousel",
+    "colors": { "background": "#0b0b12", "text": "#ffffff", "dim": "#a0a0b8",
+                "accent": "#ff3fa4", "panel": "#ffffff20" },
+    "backdrop": { "art": "cover", "tint": 0.4 },
+    "covers": { "height": 0.62, "side_scale": 0.72, "side_dim": 0.45, "spacing": 28,
+                "reflection": 0.18, "bob": 4, "speed": 12 },
+    "tabs": { "continue": true, "recent": true, "all": true },
+    "launch": { "animation": "zoom", "seconds": 0.32 },
+    "consoles": {
+      "*": { "color": "#4a4f66" },
+      "group:nintendo": { "color": "#c8323c" },
+      "group:sony": { "color": "#2f5fd0" },
+      "gba": { "color": "#5440a6", "label": "GBA" }
+    }
+  }
+}

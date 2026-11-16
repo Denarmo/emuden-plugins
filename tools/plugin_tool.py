@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: Copyright 2026 Lichii Emulator Project
+# SPDX-FileCopyrightText: Copyright 2026 EmuDEN contributors
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Builds and checks an EmuDEN plugin repository. Standard library only; signing calls the
-`openssl` program (3.0 or newer).
+"""Builds and checks an EmuDEN plugin repository. Standard library only; signing uses the Python
+package `cryptography` when it is installed, else the `openssl` program (3.0 or newer).
 
     python -I tools/plugin_tool.py validate plugins/emuden.nes        one plugin
     python -I tools/plugin_tool.py validate --all                     everything in the repository
-    python -I tools/plugin_tool.py pack plugins/jdoe.wiiu-cemu        -> packages/<id>-<version>.emuplugin
+    python -I tools/plugin_tool.py test examples/jdoe.hello-feature   its tests/<id>/*test.lua (Lua 5.4)
+    python -I tools/plugin_tool.py assemble plugins/<id> -o <folder>  a feature plugin's files, to try it
+    python -I tools/plugin_tool.py pack plugins/jdoe.consoles         -> packages/<id>-<version>.emuplugin
     python -I tools/plugin_tool.py pack addons/<program id>/<id>      -> packages/<id>-<version>.emuaddon
     python -I tools/plugin_tool.py index --sequence 2                 packs all, writes index.json and
                                                                       the add-on list in addons.json
@@ -25,24 +27,22 @@ import hashlib
 import json
 import pathlib
 import re
-import subprocess
 import sys
-import tempfile
 import urllib.request
 import zipfile
 
-HOST_CAPABILITIES = ["engine.libretro", "engine.external", "engine.switch2", "engine.pcstore",
-                     "settings.v1", "content.multi_file", "content.magic",
-                     "kind.feature", "feature.lua.1", "feature.web.1",
-                     "kind.interface", "interface.1", "feature.tune.1", "feature.achievements.1",
-                     "feature.browser.1"]
+# The tool's own modules beside it (python -I leaves its folder off the path).
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+
+from plugin_addons import (EXECUTABLE_EXTENSIONS, EXECUTABLE_MAGICS, addon_folders,  # noqa: E402
+                           build_catalogue, pack_addon, sha256_file, validate_addon)
+from plugin_kinds import (HOST_CAPABILITIES, SHARED_MARK, ignored_fields, safe_relative,  # noqa: E402
+                          shared_files, validate_feature, validate_interface)
+from plugin_schema import check_schema, load_json, load_schema  # noqa: E402
+import plugin_sign  # noqa: E402
+import plugin_test  # noqa: E402
+
 PLATFORMS = ["windows-x86_64", "linux-x86_64", "linux-aarch64", "macos-arm64", "android-arm64"]
-LAUNCH_VARIABLES = ["rom", "rom_dir", "rom_name", "emulator_dir", "data_dir", "save_dir",
-                    "bios_dir", "platform"]
-DENIED_ENV = ["PATH", "HOME", "USERPROFILE", "APPDATA", "LOCALAPPDATA", "TEMP", "TMP", "SHELL",
-              "COMSPEC", "IFS"]
-DENIED_ENV_PREFIXES = ["LD_", "DYLD_", "XDG_", "QT_", "STEAM_", "WINE", "PROTON", "PYTHON", "SDL_",
-                       "VK_", "__", "EMUDEN_"]
 GLOBAL_KEYS = ["video.fullscreen", "audio.volume", "audio.mute", "general.pause_in_background"]
 PLAYER_KEYS = ["picture", "fast_forward", "run_ahead", "screen_size", "border", "volume",
                "mute_fast_forward", "low_latency"]
@@ -50,30 +50,10 @@ RESERVED_SYSTEM_IDS = ["global", "defaults", "local", "dev"]
 UNPINNED_HOST = "buildbot.libretro.com"
 MAX_UNPINNED_SIZE = 256 * 1024 * 1024
 PACKAGE_FILES = re.compile(r"^(plugin\.json|icon\.png|assets/.+|LICENSE[^/]*|README[^/]*)$")
-EXECUTABLE_EXTENSIONS = (".exe", ".dll", ".so", ".dylib", ".bat", ".cmd", ".com", ".ps1", ".sh",
-                         ".py", ".js", ".vbs", ".msi", ".scr", ".jar", ".appimage", ".lnk")
-EXECUTABLE_MAGICS = (b"MZ", b"\x7fELF", b"#!", b"\xcf\xfa\xed\xfe", b"\xce\xfa\xed\xfe",
-                     b"\xfe\xed\xfa\xcf", b"\xfe\xed\xfa\xce", b"\xca\xfe\xba\xbe")
 MAX_PACKAGE_FILES = 256
 MAX_PACKAGE_BYTES = 16 * 1024 * 1024
 MAX_EXPIRY_DAYS = 120
 
-# Feature plugins (kind "feature"): Lua scripts the app runs in a sandbox.
-FEATURE_PERMISSIONS = ["http", "download", "open-url", "browse", "files.import",
-                       "downloads.watch", "library.read", "patch", "library.write",
-                       "sync", "http.local", "http.user_host",
-                       "device.info", "game.settings", "steam", "achievements",
-                       "browse.any", "downloads.setup"]
-# The browser for any site and the setup of what is downloaded there: EmuDEN's own plugins
-# only, with feature.browser.1.
-BROWSER_PERMISSIONS = ["browse.any", "downloads.setup"]
-# Need feature.tune.1 (EmuDEN docs/feature-plugins.md, section 4.2).
-TUNE_PERMISSIONS = ["device.info", "game.settings", "steam"]
-# What a sync provider (permission "sync") may carry between devices (EmuDEN docs/sync.md).
-SYNC_CATEGORIES = ["saves", "states", "config", "games", "bios"]
-# Lua kept once in shared/<name>/ and copied into the package of every plugin whose folder
-# names it in the file ".shared" (one name a line). A file of the plugin's own folder wins.
-SHARED_MARK = ".shared"
 FEATURE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
                                    r"\.(json|lua|png|jpg|txt|md)$")
 # Interface plugins (kind "interface"): data only, a look for EmuDEN's Home screen.
@@ -81,7 +61,6 @@ INTERFACE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_
                                      r"\.(json|png|jpg|txt|md)$")
 MAX_FEATURE_FILES = 200
 MAX_FEATURE_BYTES = 8 * 1024 * 1024
-HOST_NAME = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$")
 
 # A field that changes what runs, what is written or what is synced needs a capability, so an
 # older EmuDEN refuses the manifest instead of reading half of it.
@@ -94,254 +73,10 @@ FIELD_CAPABILITIES = [
 ]
 
 
-# --- a small JSON Schema checker (the subset the schemas in schema/ use) ---------------------
-
-def _type_ok(value, name):
-    return {
-        "object": isinstance(value, dict),
-        "array": isinstance(value, list),
-        "string": isinstance(value, str),
-        "boolean": isinstance(value, bool),
-        "null": value is None,
-        "integer": isinstance(value, int) and not isinstance(value, bool),
-        "number": isinstance(value, (int, float)) and not isinstance(value, bool),
-    }[name]
-
-
-def check_schema(value, schema, root, path, errors):
-    if "$ref" in schema:
-        target = root
-        for part in schema["$ref"].lstrip("#/").split("/"):
-            target = target[part]
-        check_schema(value, target, root, path, errors)
-        return
-    if "anyOf" in schema:
-        if not any(not _collect(value, option, root) for option in schema["anyOf"]):
-            errors.append((path, "fits none of the allowed forms"))
-        return
-    if "type" in schema:
-        names = schema["type"] if isinstance(schema["type"], list) else [schema["type"]]
-        if not any(_type_ok(value, name) for name in names):
-            errors.append((path, "must be " + " or ".join(names)))
-            return
-    if "enum" in schema and value not in schema["enum"]:
-        errors.append((path, "must be one of " + ", ".join(json.dumps(e) for e in schema["enum"])))
-    if isinstance(value, str):
-        if "pattern" in schema and not re.search(schema["pattern"], value):
-            errors.append((path, "has the wrong form"))
-        if len(value) < schema.get("minLength", 0):
-            errors.append((path, "must not be empty"))
-        if len(value) > schema.get("maxLength", 1 << 30):
-            errors.append((path, "too long"))
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
-        if "minimum" in schema and value < schema["minimum"]:
-            errors.append((path, f"must be at least {schema['minimum']}"))
-        if "maximum" in schema and value > schema["maximum"]:
-            errors.append((path, f"must be at most {schema['maximum']}"))
-    if isinstance(value, list):
-        if len(value) < schema.get("minItems", 0) or len(value) > schema.get("maxItems", 1 << 30):
-            errors.append((path, "has the wrong number of items"))
-        if "items" in schema:
-            for i, item in enumerate(value):
-                check_schema(item, schema["items"], root, f"{path}[{i}]", errors)
-    if isinstance(value, dict):
-        properties = schema.get("properties", {})
-        for key in schema.get("required", []):
-            if key not in value:
-                errors.append((f"{path}.{key}".lstrip("."), "missing"))
-        if len(value) < schema.get("minProperties", 0):
-            errors.append((path, "must not be empty"))
-        extra = schema.get("additionalProperties", True)
-        for key, item in value.items():
-            child = f"{path}.{key}".lstrip(".")
-            if key in properties:
-                check_schema(item, properties[key], root, child, errors)
-            elif extra is False:
-                errors.append((child, "unknown key"))
-            elif isinstance(extra, dict):
-                check_schema(item, extra, root, child, errors)
-
-
-def _collect(value, schema, root):
-    errors = []
-    check_schema(value, schema, root, "", errors)
-    return errors
-
-
-def load_schema(repo, name):
-    return json.loads((repo / "schema" / name).read_text(encoding="utf-8"))
-
-
-def load_json(path):
-    def no_duplicates(pairs):
-        keys = [key for key, _ in pairs]
-        for key in keys:
-            if keys.count(key) > 1:
-                raise ValueError(f"key given twice: {key}")
-        return dict(pairs)
-    return json.loads(pathlib.Path(path).read_text(encoding="utf-8"),
-                      object_pairs_hook=no_duplicates)
-
-
 # --- manifest rules that a schema cannot say ---------------------------------------------------
-
-def template_error(text, setting_keys, allow_value=False):
-    for name in re.findall(r"\{([^}]*)\}", text):
-        if name.startswith("setting:"):
-            if name[len("setting:"):] not in setting_keys:
-                return f"unknown setting in {{{name}}}"
-        elif name not in LAUNCH_VARIABLES and not (allow_value and name == "value"):
-            return f"unknown variable {{{name}}}"
-    if text.count("{") != len(re.findall(r"\{[^}]*\}", text)):
-        return "unclosed '{'"
-    return None
-
-
-def env_name_allowed(name):
-    return (re.fullmatch(r"[A-Z][A-Z0-9_]{0,63}", name) is not None and name not in DENIED_ENV
-            and not any(name.startswith(prefix) for prefix in DENIED_ENV_PREFIXES))
-
-
-def safe_relative(path):
-    return (bool(path) and not path.startswith("/") and "\\" not in path and ":" not in path
-            and "{" not in path and ".." not in path.split("/"))
-
 
 def url_host(url):
     return url.split("://", 1)[-1].split("/", 1)[0].lower()
-
-
-def shared_files(folder):
-    """{package path: file} of the shared libraries a plugin folder names."""
-    mark = folder / SHARED_MARK
-    found = {}
-    if not mark.is_file():
-        return found
-    for name in mark.read_text(encoding="utf-8").split():
-        library = folder.resolve().parent.parent / "shared" / name
-        if not re.match(r"^[a-z0-9][a-z0-9_-]*$", name) or not library.is_dir():
-            raise SystemExit(f"{folder.name}: {SHARED_MARK} names {name}, which is not a folder "
-                             "of shared/")
-        for path in sorted(library.rglob("*")):
-            if path.is_file():
-                found.setdefault(path.relative_to(library).as_posix(), path)
-    return found
-
-
-def in_package(folder, name):
-    return (folder / name).is_file() or name in shared_files(folder)
-
-
-def validate_interface(manifest, folder, err):
-    """The rules of an interface plugin: data the app's layouts draw, and its pictures."""
-    for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
-        if manifest.get(field):
-            err(field, "an interface plugin has none")
-    for need in ("kind.interface", "interface.1"):
-        if need not in manifest["needs"]:
-            err("needs", f"must list {need}")
-    look = manifest.get("interface")
-    if not isinstance(look, dict):
-        err("interface", "missing")
-        return
-    pictures = [("interface.icon", look.get("icon")),
-                ("interface.backdrop.wallpaper", look.get("backdrop", {}).get("wallpaper"))]
-    for key, console in look.get("consoles", {}).items():
-        pictures.append((f"interface.consoles.{key}.wallpaper", console.get("wallpaper")))
-    for path, name in pictures:
-        if not name:
-            continue
-        if not safe_relative(name) or not name.lower().endswith((".png", ".jpg", ".jpeg")):
-            err(path, "must be a PNG or JPEG of the package")
-        elif folder is not None and not (folder / name).is_file():
-            err(path, "there is no such file in the plugin folder")
-
-
-def validate_feature(manifest, trust, folder, err):
-    """The rules of a feature plugin: a sandboxed Lua script with declared permissions."""
-    reserved = trust in ("bundled", "official")
-    for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
-        if manifest.get(field):
-            err(field, "a feature plugin has none")
-    for need in ("kind.feature", "feature.lua.1"):
-        if need not in manifest["needs"]:
-            err("needs", f"must list {need}")
-    feature = manifest.get("feature")
-    if not isinstance(feature, dict):
-        err("feature", "missing")
-        return
-    entry = feature["entry"]
-    if not safe_relative(entry) or not entry.endswith(".lua"):
-        err("feature.entry", "must be a script of the package (a relative path ending in .lua)")
-    elif folder is not None and not in_package(folder, entry):
-        err("feature.entry", "there is no such file in the plugin folder")
-    icon = feature.get("icon")
-    if icon and (not safe_relative(icon) or not icon.endswith(".png")):
-        err("feature.icon", "must be a PNG of the package")
-    elif icon and folder is not None and not in_package(folder, icon):
-        err("feature.icon", "there is no such file in the plugin folder")
-    permissions = feature["permissions"]
-    for permission in permissions:
-        if permission not in FEATURE_PERMISSIONS:
-            err("feature.permissions", f"{permission} is not a permission")
-    if len(set(permissions)) != len(permissions):
-        err("feature.permissions", "a permission is listed twice")
-    http_hosts = feature.get("http", {}).get("hosts", [])
-    open_hosts = feature.get("open_hosts", [])
-    browse_hosts = feature.get("browse_hosts", [])
-    for path, hosts in (("feature.http.hosts", http_hosts), ("feature.open_hosts", open_hosts),
-                        ("feature.browse_hosts", browse_hosts)):
-        if len(hosts) > 8:
-            err(path, "at most 8 hosts")
-        for host in hosts:
-            if not HOST_NAME.match(host):
-                err(path, f"{host} is not an exact host name (no scheme, path or wildcard)")
-    if ("http" in permissions or "download" in permissions) != bool(http_hosts):
-        err("feature.http.hosts", "needed with http or download, and only with them")
-    if ("open-url" in permissions) != bool(open_hosts):
-        err("feature.open_hosts", "needed with open-url, and only with it")
-    if ("browse" in permissions) != bool(browse_hosts):
-        err("feature.browse_hosts", "needed with browse, and only with it")
-    if "browse" in permissions and "feature.web.1" not in manifest["needs"]:
-        err("needs", "must list feature.web.1 with browse")
-    if any(p in TUNE_PERMISSIONS for p in permissions) and "feature.tune.1" not in manifest["needs"]:
-        err("needs", "must list feature.tune.1 with device.info, game.settings or steam")
-    if any(p in BROWSER_PERMISSIONS for p in permissions):
-        if "feature.browser.1" not in manifest["needs"]:
-            err("needs", "must list feature.browser.1 with browse.any or downloads.setup")
-        if not reserved:
-            err("feature.permissions", "only EmuDEN's own plugins show any site or set up downloads")
-    if "achievements" in permissions and "feature.achievements.1" not in manifest["needs"]:
-        err("needs", "must list feature.achievements.1 with achievements")
-    sync = feature.get("sync")
-    if ("sync" in permissions) != (sync is not None):
-        err("feature.sync", "needed with sync, and only with it")
-    if sync is not None:
-        categories = sync.get("categories", [])
-        if not categories:
-            err("feature.sync.categories", "a provider carries at least one category")
-        for category in categories:
-            if category not in SYNC_CATEGORIES:
-                err("feature.sync.categories", f"{category} is not a sync category")
-        if len(set(categories)) != len(categories):
-            err("feature.sync.categories", "a category is listed twice")
-    systems = feature.get("systems", [])
-    for system in systems:
-        if system != "*" and not re.match(r"^[a-z0-9][a-z0-9_-]*$", system):
-            err("feature.systems", f"{system} is not a system id")
-    if "*" in systems and (not reserved or len(systems) != 1):
-        err("feature.systems", "only EmuDEN's own plugins see every console, as [\"*\"] alone")
-    if any(p in permissions for p in ("library.read", "patch", "library.write", "game.settings")) and not systems:
-        err("feature.systems", "needed with the library and patch permissions")
-    file_types = feature.get("file_types", [])
-    for extension in file_types:
-        if not re.match(r"^[a-z0-9]{1,10}$", extension):
-            err("feature.file_types", f"{extension} is not a file extension")
-    if "downloads.watch" in permissions:
-        if not file_types:
-            err("feature.file_types", "needed with downloads.watch")
-        if not reserved:
-            err("feature.permissions", "only EmuDEN's own plugins watch the Downloads folder")
 
 
 def validate_manifest(manifest, repo, trust="third-party", namespace=None, folder=None):
@@ -374,7 +109,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         err("engine", "only a console has an engine")
     if kind == "tweak-tool" and not reserved:
         err("kind", "only EmuDEN's own plugins change PC game folders")
-    if (engine == "switch2" and not reserved) or (engine == "pcstore" and trust != "bundled"):
+    if engine == "switch2" and not reserved:
         err("engine", "this engine is only for EmuDEN's own plugins")
     if engine and f"engine.{engine}" not in manifest["needs"]:
         err("needs", f"must list engine.{engine}")
@@ -395,8 +130,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
     if len(set(setting_keys)) != len(setting_keys):
         err("settings", "a setting key is used twice")
 
-    fitting = {"libretro-core": "libretro", "engine-app": "libretro", "external-emulator": "external",
-               "engine": "switch2"}
+    fitting = {"libretro-core": "libretro", "engine-app": "libretro", "engine": "switch2"}
     for i, component in enumerate(manifest.get("components", [])):
         path = f"components[{i}]"
         kind_of = component["type"]
@@ -454,36 +188,6 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
                     err(f"{path}.android.apk", "must be a pinned https download (url, sha256, size)")
         elif "ecp" in component or "android" in component or "executable" in component:
             err(path, "ecp, android and executable are only for an engine app")
-        launch = component.get("launch")
-        if kind_of == "external-emulator" and launch is None:
-            err(f"{path}.launch", "missing")
-        if kind_of != "external-emulator" and launch is not None:
-            err(f"{path}.launch", "only an external emulator is launched")
-        if launch:
-            for platform in launch["executable"]:
-                if platform not in PLATFORMS:
-                    err(f"{path}.launch.executable.{platform}", "unknown platform")
-            for j, arg in enumerate(launch["args"]):
-                if problem := template_error(arg, setting_keys):
-                    err(f"{path}.launch.args[{j}]", problem)
-            for name, text in launch.get("env", {}).items():
-                if not env_name_allowed(name):
-                    err(f"{path}.launch.env.{name}", "this environment variable may not be set")
-                elif problem := template_error(text, setting_keys):
-                    err(f"{path}.launch.env.{name}", problem)
-            for j, created in enumerate(launch.get("create_files", [])):
-                relative = re.sub(r"^\{(data_dir|emulator_dir)\}/", "", created["path"])
-                if not safe_relative(relative):
-                    err(f"{path}.launch.create_files[{j}].path",
-                        "must be a relative path in the emulator's or the data folder")
-            own = launch.get("user_provided_setting")
-            if own:
-                setting = next((s for s in settings if s["key"] == own), None)
-                if (not setting or setting["type"] != "path" or setting.get("path_kind") != "file"
-                        or "launch_var" not in setting["apply"]):
-                    err(f"{path}.launch.user_provided_setting",
-                        "must name a file setting applied as launch_var")
-
     system_ids = []
     for i, system in enumerate(manifest.get("systems", [])):
         path = f"systems[{i}]"
@@ -508,11 +212,6 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         for core in cores:
             if components.get(core, {}).get("type") not in ("libretro-core", "engine-app"):
                 err(f"{path}.cores", f"{core} is not a core of the plugin")
-        emulator = system.get("emulator")
-        if engine == "external" and not emulator:
-            err(f"{path}.emulator", "missing")
-        if emulator and components.get(emulator, {}).get("type") != "external-emulator":
-            err(f"{path}.emulator", "not an emulator of the plugin")
         for j, bios in enumerate(system.get("bios", [])):
             for k, entry in enumerate(bios["files"]):
                 name = entry["path"]
@@ -534,8 +233,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         check_capabilities(system.get("capabilities", {}), f"systems[{i}].capabilities")
 
     forms = {"core_option": "libretro", "core_option_contains": "libretro", "player": "libretro",
-             "args": "external", "args_if_true": "external", "args_if_false": "external",
-             "env": "external", "launch_var": "external", "native_setting": "switch2"}
+             "native_setting": "switch2"}
     for i, setting in enumerate(settings):
         path = f"settings[{i}]"
         apply = setting["apply"]
@@ -546,14 +244,6 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         form = used[0]
         if forms[form] != engine:
             err(f"{path}.apply.{form}", f"not available with the {engine} engine")
-        if form.startswith("args"):
-            if form != "args" and setting["type"] != "toggle":
-                err(f"{path}.apply.{form}", "only for a toggle")
-            for arg in apply[form]:
-                if problem := template_error(arg, setting_keys, allow_value=form == "args"):
-                    err(f"{path}.apply.{form}", problem)
-        if form == "env" and not env_name_allowed(apply["env"]):
-            err(f"{path}.apply.env", "this environment variable may not be set")
         native, from_core = form == "native_setting", form == "core_option_contains"
         if not native and not setting.get("label"):
             err(f"{path}.label", "missing")
@@ -583,22 +273,15 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
 
     sync = manifest.get("sync")
     if sync is not None:
-        if kind != "console" or engine not in ("libretro", "external", "switch2"):
+        if kind != "console" or engine not in ("libretro", "switch2"):
             err("sync", "this kind of plugin never syncs")
-        if sync.get("paths") and engine != "external":
-            err("sync.paths", "only for the external engine")
-        ids = [p["id"] for p in sync.get("paths", [])]
-        if len(set(ids)) != len(ids):
-            err("sync.paths", "an id is used twice")
     return errors
 
 
 def code_class(manifest, trusted=()):
-    """none, cores or external: what the plugin makes run on any platform."""
+    """none or cores: what the plugin makes run on any platform."""
     result = "none"
     for component in manifest.get("components", []):
-        if component["type"] == "external-emulator":
-            return "external"
         if component["type"] == "engine-app":
             result = "cores"
         if component["type"] == "libretro-core":
@@ -621,50 +304,11 @@ def usable_platforms(manifest):
                          if c["type"] == "libretro-core"]
             if any(downloads) and not any(platform in d or "any" in d for d in downloads):
                 continue
-        elif engine == "external":
-            if not any(platform in c.get("launch", {}).get("executable", {})
-                       or c.get("launch", {}).get("user_provided_setting") for c in components):
-                continue
         elif engine == "switch2":
             if not any(platform in c.get("delivery", {}) for c in components):
                 continue
         out.append(platform)
     return out
-
-
-def sample_argv(manifest):
-    """The command line a sample game would be started with, for `validate` to print."""
-    for component in manifest.get("components", []):
-        launch = component.get("launch")
-        if not launch:
-            continue
-        values = {"rom": "/games/Sample Game.rom", "rom_dir": "/games", "rom_name": "Sample Game",
-                  "emulator_dir": f"<emuden>/emulators/{component['id']}/{component.get('version', '0')}",
-                  "data_dir": f"<emuden>/plugin-data/{manifest['id']}", "save_dir": "<emuden>/saves",
-                  "bios_dir": "<emuden>/bios", "platform": "<platform>"}
-        defaults = {s["key"]: s.get("default", "") for s in manifest.get("settings", [])}
-
-        def expand(text, value=None):
-            def one(match):
-                name = match.group(1)
-                if name == "value":
-                    return str(value).lower() if isinstance(value, bool) else str(value)
-                if name.startswith("setting:"):
-                    return str(defaults.get(name[8:], ""))
-                return values[name]
-            return re.sub(r"\{([^}]*)\}", one, text)
-
-        argv = [next(iter(launch["executable"].values()))] + [expand(a) for a in launch["args"]]
-        for setting in manifest.get("settings", []):
-            apply, value = setting["apply"], setting.get("default")
-            if "args" in apply:
-                argv += [expand(a, value) for a in apply["args"]]
-            if "args_if_true" in apply and value is True:
-                argv += [expand(a) for a in apply["args_if_true"]]
-            if "args_if_false" in apply and value is False:
-                argv += [expand(a) for a in apply["args_if_false"]]
-        return argv
-    return None
 
 
 # --- packages, index, signatures ---------------------------------------------------------------
@@ -710,149 +354,6 @@ def pack(folder, out_dir):
             info.external_attr = 0o644 << 16
             archive.writestr(info, data)
     return target
-
-
-ADDON_FOLDERS = ("blobs", "exefs", "romfs", "romfslite", "romfs_ext", "cheats", "font", "data",
-                 "screenshots")
-ADDON_FILE_LAYERS = ("exefs", "romfs", "romfslite", "romfs_ext", "cheats")
-ADDON_CAPABILITIES = ("addon.code_patch", "addon.transform.bfotf_add_glyphs",
-                      "addon.literal.scene_aspect")
-MAX_ADDON_BYTES = 2 << 30
-
-
-def addon_folders(repo):
-    return sorted(p.parent for p in (repo / "addons").glob("*/*/addon.json"))
-
-
-def addon_files(folder):
-    files = []
-    for path in sorted(folder.rglob("*")):
-        if path.is_dir():
-            continue
-        name = path.relative_to(folder).as_posix()
-        if path.is_symlink() or not (name in ("addon.json", "icon.png") or
-                                     name.split("/")[0] in ADDON_FOLDERS and "/" in name):
-            raise SystemExit(f"{folder.name}: {name} does not belong in an add-on package "
-                             "(addon.json, icon.png, " + "/, ".join(ADDON_FOLDERS) + "/)")
-        data = path.read_bytes()
-        if name.lower().endswith(EXECUTABLE_EXTENSIONS) or data.startswith(EXECUTABLE_MAGICS):
-            raise SystemExit(f"{folder.name}: {name} is a program; an add-on holds none")
-        files.append((name, data))
-    if sum(len(d) for _, d in files) > MAX_ADDON_BYTES:
-        raise SystemExit(f"{folder.name}: more than 2 GiB")
-    return files
-
-
-def validate_addon(folder, repo, namespace=None, trust="third-party"):
-    """The problems of an add-on folder, as (path, reason)."""
-    problems = []
-    try:
-        manifest = load_json(folder / "addon.json")
-    except (ValueError, OSError) as error:
-        return [("", str(error))]
-    schema = load_schema(repo, "addon.schema.json")
-    check_schema(manifest, schema, schema, "", problems)
-    if problems:
-        return problems
-    if folder.name != manifest["id"] or folder.parent.name != manifest["program_id"]:
-        problems.append(("id", "the folder is addons/<program_id>/<id>"))
-    if namespace and trust == "third-party" and manifest["id"].split(".")[0] != namespace:
-        problems.append(("id", f"must start with {namespace}."))
-    for need in manifest["needs"]:
-        if need not in ADDON_CAPABILITIES:
-            problems.append(("needs", f"{need} is not something EmuDEN has"))
-    names = {name for name, _ in addon_files(folder)}
-    wanted = set()
-
-    def needs_file(path, name):
-        if not name or name not in names or name.split("/")[0] not in ("blobs", "font", "data"):
-            problems.append((path, f"{name or 'the file'} is not in blobs/, font/ or data/"))
-
-    for i, layer in enumerate(manifest["layers"]):
-        at = f"layers[{i}]"
-        kind = layer["type"]
-        if kind in ADDON_FILE_LAYERS:
-            if layer.get("dir") != kind or set(layer) - {"type", "dir"}:
-                problems.append((at, f"a {kind} layer is {{\"type\": \"{kind}\", \"dir\": \"{kind}\"}}"))
-            elif not any(name.startswith(kind + "/") for name in names):
-                problems.append((at, f"the folder {kind}/ is empty or missing"))
-        elif kind == "nso-patch":
-            wanted.add("addon.code_patch")
-            if not layer.get("module") or not layer.get("build_id") or not layer.get("records"):
-                problems.append((at, "module, build_id and records are needed"))
-            for j, record in enumerate(layer.get("records", [])):
-                if ("bytes" in record) == ("bytes_file" in record):
-                    problems.append((f"{at}.records[{j}]", "one of bytes and bytes_file"))
-                elif "bytes_file" in record:
-                    needs_file(f"{at}.records[{j}].bytes_file", record["bytes_file"])
-            for literal in layer.get("literals", []):
-                wanted.add("addon.literal." + literal["from"])
-        elif kind == "transform":
-            wanted.add("addon.transform." + layer.get("transform", ""))
-            if not layer.get("target", "").startswith("romfs:/"):
-                problems.append((at, "target is a romfs:/ path"))
-            for key in ("glyphs_file", "charstrings_file"):
-                needs_file(f"{at}.{key}", layer.get(key))
-    for need in sorted(wanted - set(manifest["needs"])):
-        problems.append(("needs", f"{need} is missing"))
-    return problems
-
-
-def pack_addon(folder, out_dir):
-    """Writes <id>-<version>.emuaddon; the same input always gives the same bytes."""
-    manifest = load_json(folder / "addon.json")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    target = out_dir / f"{manifest['id']}-{manifest['version']}.emuaddon"
-    with zipfile.ZipFile(target, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
-        for name, data in addon_files(folder):
-            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = 0o644 << 16
-            archive.writestr(info, data)
-    return target
-
-
-def build_catalogue(repo, base, namespace=None, trust="third-party"):
-    """Packs every folder of addons/ and rewrites its entry in addons.json. Titles, tags and
-    entries without a folder stay as they are."""
-    file = repo / "addons.json"
-    catalogue = load_json(file) if file.exists() else {"catalogue_version": 1, "titles": [],
-                                                       "addons": []}
-    entries = {entry["id"]: entry for entry in catalogue.get("addons", [])}
-    titles = {title["program_id"] for title in catalogue.get("titles", [])}
-    for folder in addon_folders(repo):
-        problems = validate_addon(folder, repo, namespace, trust)
-        if problems:
-            for path, reason in problems:
-                print(f"{folder}: {path or 'addon.json'}: {reason}", file=sys.stderr)
-            raise SystemExit(1)
-        manifest = load_json(folder / "addon.json")
-        if manifest["program_id"] not in titles:
-            raise SystemExit(f"addons.json: add {manifest['program_id']} and the game's name to "
-                             "\"titles\" first")
-        package = pack_addon(folder, repo / "packages")
-        builds = manifest.get("builds", [])
-        entries[manifest["id"]] = {
-            "id": manifest["id"], "name": manifest["name"], "version": manifest["version"],
-            "summary": manifest.get("summary", ""), "authors": manifest.get("authors", []),
-            "tags": entries.get(manifest["id"], {}).get("tags", []),
-            "program_id": manifest["program_id"],
-            "game_versions": sorted({b["game_version"] for b in builds if b.get("game_version")}),
-            "build_ids": sorted({b["build_id"].upper() for b in builds}),
-            "needs": manifest["needs"],
-            "layer_types": sorted({layer["type"] for layer in manifest["layers"]}),
-            "package": {"url": base + package.name, "sha256": sha256_file(package),
-                        "size": package.stat().st_size},
-        }
-    if not file.exists() and not entries:
-        return
-    catalogue["addons"] = sorted(entries.values(), key=lambda e: (e["program_id"], e["id"]))
-    file.write_bytes((json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
-    print(f"addons.json: {len(catalogue['addons'])} add-ons")
-
-
-def sha256_file(path):
-    return hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
 
 
 def plugin_folders(repo):
@@ -962,85 +463,6 @@ def build_index(repo, args):
     print("Not signed yet: run `plugin_tool.py sign --key <private key>`.")
 
 
-def openssl(*args, data=None):
-    try:
-        done = subprocess.run(["openssl", *args], input=data, capture_output=True, check=False)
-    except FileNotFoundError:
-        raise SystemExit("the openssl program was not found; install OpenSSL 3")
-    if done.returncode != 0:
-        raise SystemExit("openssl failed: " + done.stderr.decode(errors="replace").strip())
-    return done.stdout
-
-
-def public_key_of(private_key):
-    """The raw 32-byte Ed25519 public key of a PEM private key, as base64."""
-    der = openssl("pkey", "-in", str(private_key), "-pubout", "-outform", "DER")
-    if len(der) != 44:
-        raise SystemExit("that is not an Ed25519 key")
-    return base64.b64encode(der[-32:]).decode()
-
-
-def fingerprint(public_b64):
-    digest = hashlib.sha256(base64.b64decode(public_b64)).hexdigest()[:16]
-    return " ".join(digest[i:i + 4] for i in range(0, 16, 4))
-
-
-def keygen(repo, args):
-    key = pathlib.Path(args.key).expanduser()
-    if key.exists():
-        raise SystemExit(f"{key} exists already; a source keeps one key for good")
-    if repo.resolve() in key.resolve().parents:
-        raise SystemExit("keep the private key outside the repository")
-    key.parent.mkdir(parents=True, exist_ok=True)
-    openssl("genpkey", "-algorithm", "ed25519", "-out", str(key))
-    public = public_key_of(key)
-    (repo / "keys").mkdir(exist_ok=True)
-    (repo / "keys" / "source.pub").write_text(public + "\n", encoding="ascii", newline="\n")
-    print(f"private key: {key}  (never commit or share it)")
-    print(f"public key:  keys/source.pub, fingerprint {fingerprint(public)}")
-
-
-def sign(repo, args):
-    key = pathlib.Path(args.key).expanduser()
-    index = repo / "index.json"
-    public = public_key_of(key)
-    published = (repo / "keys" / "source.pub").read_text(encoding="ascii").strip()
-    if public != published:
-        raise SystemExit("this key is not the one in keys/source.pub")
-    with tempfile.TemporaryDirectory() as temp:
-        out = pathlib.Path(temp) / "sig"
-        openssl("pkeyutl", "-sign", "-inkey", str(key), "-rawin", "-in", str(index),
-                "-out", str(out))
-        signature = out.read_bytes()
-    if len(signature) != 64:
-        raise SystemExit("unexpected signature size")
-    (repo / "index.json.sig").write_text(base64.b64encode(signature).decode() + "\n",
-                                         encoding="ascii", newline="\n")
-    verify(repo, args)
-
-
-def verify(repo, args):
-    public = base64.b64decode((repo / "keys" / "source.pub").read_text(encoding="ascii").strip())
-    signature = base64.b64decode((repo / "index.json.sig").read_text(encoding="ascii").strip())
-    # SubjectPublicKeyInfo of an Ed25519 key: a fixed 12-byte header, then the key.
-    der = bytes.fromhex("302a300506032b6570032100") + public
-    with tempfile.TemporaryDirectory() as temp:
-        temp = pathlib.Path(temp)
-        (temp / "pub.der").write_bytes(der)
-        (temp / "sig").write_bytes(signature)
-        openssl("pkeyutl", "-verify", "-pubin", "-inkey", str(temp / "pub.der"), "-keyform", "DER",
-                "-rawin", "-in", str(repo / "index.json"), "-sigfile", str(temp / "sig"))
-    index = load_json(repo / "index.json")
-    for entry in index["plugins"]:
-        url = entry["package"]["url"]
-        if "://" not in url:
-            package = repo / url
-            if not package.exists() or sha256_file(package) != entry["package"]["sha256"]:
-                raise SystemExit(f"{url} is not the package the index lists; run `index` again")
-    print(f"index.json.sig is good (key {fingerprint(base64.b64encode(public).decode())}, "
-          f"sequence {index['sequence']}, expires {index['expires']})")
-
-
 def pin_cores(repo, args):
     lock = {}
     for folder in plugin_folders(repo):
@@ -1091,9 +513,10 @@ def cmd_validate(repo, args):
             print(f"{file}: {path or 'plugin.json'}: {reason}")
         failed = failed or bool(errors)
         if not errors:
-            line = f"{file}: ok ({manifest['id']} {manifest['version']}, code: {code_class(manifest)})"
-            argv = sample_argv(manifest)
-            print(line + (f"\n  would run: {argv}" if argv else ""))
+            print(f"{file}: ok ({manifest['id']} {manifest['version']}, code: {code_class(manifest)})")
+            if ignored := ignored_fields(manifest):
+                print("  warning: not read by EmuDEN yet (docs/manifest.md): " +
+                      ", ".join(path for path, _ in ignored))
             if target.is_dir():
                 package_files(target)
     if args.all:
@@ -1152,12 +575,18 @@ def main():
         command = commands.add_parser(name)
         command.add_argument("--key", required=True, help="the private key file (PEM)")
     commands.add_parser("verify", help="check index.json.sig against keys/source.pub")
+    tester = commands.add_parser("test", help="run the offline Lua tests of plugin folders "
+                                 "(tests/<id>/*test.lua; every plugin and example that has some)")
+    tester.add_argument("paths", nargs="*")
+    tester.add_argument("--lua", help="a Lua 5.4 interpreter (default: $LUA, then lua5.4, lua54, lua)")
     commands.add_parser("pin-cores", help="download every core and record its checksum")
 
     args = parser.parse_args()
     repo = pathlib.Path(args.repo).resolve()
     if args.command == "validate":
         return cmd_validate(repo, args)
+    if args.command == "test":
+        return plugin_test.run(repo, [pathlib.Path(p) for p in args.paths], args.lua)
     if args.command == "assemble":
         out = pathlib.Path(args.out)
         for name, data in package_files(pathlib.Path(args.path)):
@@ -1183,7 +612,7 @@ def main():
             return 1
         print(pack(folder, pathlib.Path(args.out) if args.out else repo / "packages"))
         return 0
-    {"index": build_index, "sign": sign, "verify": verify, "keygen": keygen,
+    {"index": build_index, "sign": plugin_sign.sign, "verify": plugin_sign.verify, "keygen": plugin_sign.keygen,
      "pin-cores": pin_cores}[args.command](repo, args)
     return 0
 

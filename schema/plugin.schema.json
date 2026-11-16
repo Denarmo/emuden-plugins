@@ -144,7 +144,8 @@
             "categories": {
               "type": "array",
               "items": { "enum": ["saves", "states", "config", "games", "bios"] }
-            }
+            },
+            "listing": { "enum": ["category", "all", "per_folder"] }
           }
         },
         "limits": {
@@ -156,7 +157,7 @@
         }
       }
     },
-    "engine": { "enum": ["libretro", "external", "switch2", "pcstore"] },
+    "engine": { "enum": ["libretro", "switch2"] },
     "publisher": { "type": "string", "minLength": 1 },
     "license": { "type": "string", "minLength": 1 },
     "homepage": { "type": "string" },
@@ -237,7 +238,7 @@
             "hash_variants": { "type": "array", "items": { "type": "object", "required": ["skip_bytes"],
               "properties": { "skip_bytes": { "type": "integer", "minimum": 1 }, "min_size": { "type": "integer", "minimum": 0 } } } },
             "cover_is_rom": { "type": "boolean" },
-            "scanner": { "enum": ["switch2", "pcstore"] }
+            "scanner": { "enum": ["switch2"] }
           }
         },
         "presentation": {
@@ -272,7 +273,6 @@
           "properties": { "rcheevos_console": { "type": "integer", "minimum": 1, "maximum": 65535 } } },
         "romm_slugs": { "type": "array", "items": { "type": "string" } },
         "cores": { "type": "array", "items": { "type": "string" } },
-        "emulator": { "type": "string" },
         "bios": {
           "type": "array",
           "items": {
@@ -320,36 +320,12 @@
         "file": { "type": "string" }
       }
     },
-    "launch": {
-      "type": "object",
-      "required": ["executable", "args"],
-      "additionalProperties": false,
-      "properties": {
-        "executable": { "type": "object", "minProperties": 1, "additionalProperties": { "$ref": "#/$defs/relative_path" } },
-        "user_provided_setting": { "type": "string" },
-        "args": { "type": "array", "items": { "type": "string" } },
-        "working_dir": { "enum": ["{emulator_dir}", "{data_dir}", "{rom_dir}"] },
-        "env": { "type": "object", "additionalProperties": { "type": "string" } },
-        "create_files": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["path"],
-            "additionalProperties": false,
-            "properties": {
-              "path": { "type": "string", "minLength": 1 },
-              "content": { "type": "string", "maxLength": 65536 }
-            }
-          }
-        }
-      }
-    },
     "component": {
       "type": "object",
       "required": ["id", "type", "name"],
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_+-]{0,63}$" },
-        "type": { "enum": ["libretro-core", "external-emulator", "engine", "tool", "system-files", "engine-app"] },
+        "type": { "enum": ["libretro-core", "engine", "tool", "system-files", "engine-app"] },
         "cores": { "type": "array", "items": { "type": "string" } },
         "name": { "type": "string", "minLength": 1 },
         "version": { "type": "string" },
@@ -399,8 +375,7 @@
           }
         },
         "delivery": { "type": "object", "additionalProperties": { "enum": ["builtin", "bundled-library", "download"] } },
-        "downloads": { "type": "object", "additionalProperties": { "$ref": "#/$defs/download" } },
-        "launch": { "$ref": "#/$defs/launch" }
+        "downloads": { "type": "object", "additionalProperties": { "$ref": "#/$defs/download" } }
       }
     },
     "apply": {
@@ -412,11 +387,6 @@
         "map": { "type": "object", "additionalProperties": { "type": "string" } },
         "core_option_contains": { "type": "string", "minLength": 1 },
         "player": { "enum": ["picture", "fast_forward", "run_ahead", "screen_size", "border", "volume", "mute_fast_forward", "low_latency"] },
-        "args": { "type": "array", "items": { "type": "string" } },
-        "args_if_true": { "type": "array", "items": { "type": "string" } },
-        "args_if_false": { "type": "array", "items": { "type": "string" } },
-        "env": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,63}$" },
-        "launch_var": { "enum": [true] },
         "native_setting": { "type": "string", "minLength": 1 }
       }
     },
@@ -449,20 +419,7 @@
       "additionalProperties": false,
       "properties": {
         "saves": { "type": "boolean" }, "states": { "type": "boolean" },
-        "settings": { "type": "boolean" }, "cheats": { "type": "boolean" },
-        "paths": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["id", "path", "toggle"],
-            "additionalProperties": false,
-            "properties": {
-              "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,31}$" },
-              "path": { "$ref": "#/$defs/relative_path" },
-              "toggle": { "enum": ["saves", "play-data", "captures", "settings"] }
-            }
-          }
-        }
+        "settings": { "type": "boolean" }, "cheats": { "type": "boolean" }
       }
     }
   }

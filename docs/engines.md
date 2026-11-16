@@ -1,60 +1,84 @@
-# Engines
+# Engines and cores
 
-A plugin picks one of two engines.
+A console plugin says `"engine": "libretro"`, and each of its systems lists its `cores`, best
+first. A core is one of two component types:
 
-## `libretro`
+| `type` | Runs | Player features |
+|---|---|---|
+| `libretro-core` | inside EmuDEN's player, loaded from a pinned download | all of EmuDEN's: save states, rewind, fast-forward, run-ahead, cheats, shaders, borders, achievements, playing together |
+| `engine-app` | as a standalone emulator app that speaks the [Emulator Control Protocol](https://github.com/Denarmo/emulator-control-protocol) (ECP); EmuDEN starts it with the game and drives it | what the engine offers over ECP: pause menu, save states, fast-forward, reset, its settings, screenshots |
 
-Games run inside EmuDEN in a libretro core. The console gets EmuDEN's player: save states, rewind,
-fast-forward, run-ahead, cheats, shaders, borders, achievements and playing together.
+The player picks a console's core on its page (Settings > Consoles > the console > Core); a game
+may have its own. `"engine": "switch2"` is EmuDEN's own engine and only for its own plugins.
+There is no engine for other programs: an emulator that does not speak ECP cannot be a core, and
+no plugin starts anything else.
 
-`capabilities` says which of those the console offers: `save_states`, `rewind`, `fast_forward`,
-`run_ahead`, `cheats`, `netplay`, `achievements`. What you claim is cut down to what the engine can
-do: playing together is off for a core with `"gpu": "opengl"`, because such cores do not stay in
-step on two PCs.
-
-A core is loaded into EmuDEN's own process, so its licence must be compatible with the GPL.
-
-## `external`
-
-Games run in a standalone emulator that EmuDEN downloads, unpacks into its own folder and starts.
-It offers none of the player features; `capabilities` must be empty. Play time is measured from
-how long the emulator ran.
-
-### The launch template
+## `libretro-core`
 
 ```json
-"launch": {
-  "executable": { "windows-x86_64": "Cemu.exe", "linux-x86_64": "Cemu.AppImage" },
-  "user_provided_setting": "own_copy",
-  "args": ["-g", "{rom}"],
-  "working_dir": "{emulator_dir}",
-  "env": { "CEMU_DATA": "{data_dir}" },
-  "create_files": [{ "path": "portable/.keep", "content": "" }]
+{ "id": "fceumm", "type": "libretro-core", "name": "FCEUmm", "version": "2024.1",
+  "downloads": { "windows-x86_64": { "url": "https://...", "sha256": "...", "size": 1234567,
+                                     "archive": "zip", "entry": "fceumm_libretro.dll" } } }
+```
+
+The `id` is the library's base name. The file is hashed again before every load. A core is loaded
+into EmuDEN's own process, so its licence must be compatible with the GPL. `"gpu": "opengl"`
+marks a core that draws with OpenGL; playing together is off for such cores.
+
+## `engine-app`
+
+```json
+{
+  "id": "cemu", "type": "engine-app", "name": "Cemu (ECP)", "version": "2.6-ecp1",
+  "ecp": { "id": "io.github.jdoe.cemu", "level": 2,
+           "capabilities": ["pause", "menu", "states", "reset", "fast_forward", "settings"],
+           "needs": ["keys"] },
+  "executable": { "windows-x86_64": "Cemu/Cemu.exe", "linux-x86_64": "Cemu/Cemu.AppImage" },
+  "downloads": {
+    "windows-x86_64": { "url": "https://...", "sha256": "...", "size": 12345678,
+                        "archive": "zip", "entry": "Cemu/" }
+  },
+  "android": {
+    "package": "io.github.jdoe.cemu", "cert_sha256": "AB:CD:...:EF", "min_version_code": 12,
+    "apk": { "url": "https://...", "sha256": "...", "size": 34567890, "archive": "none" },
+    "store": "https://play.google.com/store/apps/details?id=io.github.jdoe.cemu"
+  }
 }
 ```
 
-- `args` is the argument list, one argument per element. No shell is involved: a game called
-  `a "b" & c.wua` stays one argument, and nothing in it is interpreted.
-- Variables: `{rom}`, `{rom_dir}`, `{rom_name}`, `{emulator_dir}`, `{data_dir}`, `{save_dir}`,
-  `{bios_dir}`, `{platform}`, `{setting:<key>}`. An unknown one is an error. A variable expands
-  inside its element and never splits it.
-- `{emulator_dir}` is where the download was unpacked. `{data_dir}` is
-  `<EdenDir>/emuden/plugin-data/<plugin id>/`, the place for the emulator's own files.
-- `executable` is a path inside `{emulator_dir}`. Absolute paths, `..` and `{rom}` are refused.
-  With `user_provided_setting`, the player may point at their own copy of the emulator in a file
-  dialog; that choice is stored on the device only.
-- `working_dir` is `{emulator_dir}` (default), `{data_dir}` or `{rom_dir}`.
-- `env` names are upper case (`^[A-Z][A-Z0-9_]{0,63}$`) and may not be `PATH`, `HOME`,
-  `USERPROFILE`, `APPDATA`, `LOCALAPPDATA`, `TEMP`, `TMP`, `SHELL`, `COMSPEC`, `IFS`, or start with
-  `LD_`, `DYLD_`, `XDG_`, `QT_`, `STEAM_`, `WINE`, `PROTON`, `PYTHON`, `SDL_`, `VK_`, `__`,
-  `EMUDEN_`.
-- `create_files` writes small text files (64 KiB at most) at install, inside `{emulator_dir}` or
-  `{data_dir}`. A file that exists is left alone.
+- `ecp` is the engine's descriptor: its stable `id`, the protocol `level` (1 or 2), the
+  `capabilities` it has and what the player sets up inside it (`needs`: `bios`, `keys`,
+  `firmware`). It is shown before the engine runs; at run time the engine's hello decides.
+- **Desktop:** `downloads` as for a libretro core, and `executable`, the program inside them per
+  platform. A zip `entry` ending in `/` is a folder unpacked whole. EmuDEN unpacks it into its
+  own engines folder, records the executable's SHA-256 and checks it before each start; it runs
+  the program as `<executable> --ecp stdio`.
+- **Android:** `package` and `cert_sha256` (the SHA-256 of the signing certificate) are required,
+  then `apk` (a pinned file EmuDEN hands to the system installer; the player confirms) or `store`
+  (`https://` or `market://`), or both. An installed package is used only when its certificate is
+  the pinned one and its version code is at least `min_version_code`.
+- List `core.engine-app.1` in `needs`: an EmuDEN without engine apps then refuses the plugin
+  instead of offering a console it cannot play.
+- Settings of the manifest with `apply.core_option` reach the engine as setting values in its
+  launch, after the engine's own defaults ([settings.md](settings.md)).
 
-Settings reach the emulator through the `args`, `args_if_true`, `args_if_false`, `env` and
-`launch_var` forms of [settings.md](settings.md).
+### The namespace rule
 
-## Why there is no third engine
+An engine app is a program EmuDEN starts outside itself, so a source offers only its own. For a
+source added as `jdoe/consoles` (namespace `jdoe`) the engine's `ecp.id` and Android `package`
+must start with one of:
 
-Anything else would be code from a plugin running inside EmuDEN. A core is the one exception, and
-it is checked against a checksum before every load.
+- `jdoe.`
+- `io.github.jdoe.`
+- for an https source, its host reversed: `org.example.` for `https://example.org/emu/`.
+
+A plugin that names another engine is refused with "the engine app ... is not in this source's
+namespace". To offer someone else's emulator, publish your own ECP build of it under your name,
+or ask its authors to publish the plugin from their own source.
+
+## Capabilities
+
+`capabilities` (of the manifest, or of one system, which wins) may switch features off for a
+console. EmuDEN reads `netplay` (false: its games cannot be played together) and `achievements`
+(false: no RetroAchievements). `save_states`, `rewind`, `fast_forward`, `run_ahead` and `cheats`
+are not read yet: the player asks the core or the engine what it can do.

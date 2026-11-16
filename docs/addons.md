@@ -134,7 +134,7 @@ change to the list.
 
 ## In EmuDEN
 
-A Switch 2 game's details page has "Add-ons", and so has Settings, Consoles, Nintendo Switch 2.
+A Switch 2 game's details page has "Add-ons", and so has Settings > Consoles > Nintendo Switch 2.
 Installed lists the add-ons that come with EmuDEN, the installed packages and the mods copied in
 by hand, each with on or off; a package can also be moved up or down, updated and removed. Later
 add-ons win where two change the same file. Browse lists what your plugin sources offer for the

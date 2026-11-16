@@ -12,7 +12,7 @@
 | `multi_file` | none | Disc games, below. Needs `content.multi_file` |
 | `magic` | `[]` | `[{"offset": 28, "bytes": "C2339F3D"}]`: bytes that tell whose file a shared extension is. Read and checked today; the scanner does not use it yet. Needs `content.magic` |
 | `header_title` | `[]` | `[{"offset": 308, "length": 16}]`: where the ROM header holds the game's name; the first that is not empty is used |
-| `hash_variants` | `[]` | `[{"skip_bytes": 16, "min_size": 17}]`: also look the game up by its checksum without a header |
+| `hash_variants` | `[]` | `[{"skip_bytes": 16, "min_size": 17}]`: also look the game up by its checksum without a header. Not read yet |
 | `cover_is_rom` | false | The file is its own picture (PICO-8 carts) |
 
 ## How a file finds its console

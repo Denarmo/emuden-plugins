@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sync.gdrive",
   "name": "Sync: Google Drive",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -36,7 +36,8 @@
         "config",
         "games",
         "bios"
-      ]
+      ],
+      "listing": "per_folder"
     },
     "limits": {
       "memory_mb": 48

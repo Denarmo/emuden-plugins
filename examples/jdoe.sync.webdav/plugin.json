@@ -1,0 +1,32 @@
+{
+  "manifest_version": 1,
+  "id": "jdoe.sync.webdav",
+  "name": "Sync: WebDAV",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "J. Doe",
+  "license": "MIT",
+  "summary": "A template sync provider: keeps your saves, save states and settings on a WebDAV server you enter.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "permissions": [
+      "sync",
+      "http.user_host"
+    ],
+    "sync": {
+      "categories": [
+        "saves",
+        "states",
+        "config"
+      ]
+    }
+  }
+}

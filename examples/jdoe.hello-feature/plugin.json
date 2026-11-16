@@ -1,0 +1,29 @@
+{
+  "manifest_version": 1,
+  "id": "jdoe.hello-feature",
+  "name": "Hello",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "J. Doe",
+  "license": "MIT",
+  "summary": "An example feature plugin: a page, a counter kept between visits and a list read from GitHub.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "permissions": [
+      "http"
+    ],
+    "http": {
+      "hosts": [
+        "api.github.com"
+      ]
+    }
+  }
+}

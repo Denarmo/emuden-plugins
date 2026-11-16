@@ -28,7 +28,7 @@
           "open_hosts": { "type": "array", "items": { "type": "string" } },
           "browse_hosts": { "type": "array", "items": { "type": "string" } },
           "feature_systems": { "type": "array", "items": { "type": "string" } },
-          "engine": { "enum": ["libretro", "external", "switch2", "pcstore", "none"] },
+          "engine": { "enum": ["libretro", "switch2", "none"] },
           "publisher": { "type": "string" },
           "summary": { "type": "string" },
           "group": { "type": "string" },
@@ -47,7 +47,7 @@
           "api": { "type": "integer", "minimum": 1 },
           "needs": { "type": "array", "items": { "type": "string" } },
           "platforms": { "type": "array", "items": { "type": "string" } },
-          "code": { "enum": ["none", "cores", "external"] },
+          "code": { "enum": ["none", "cores"] },
           "package": { "$ref": "#/$defs/file" },
           "download_size": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
           "download_hosts": { "type": "array", "items": { "type": "string" } }

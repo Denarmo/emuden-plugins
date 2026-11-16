@@ -5,7 +5,7 @@ of kind `interface` and the pictures it names. EmuDEN draws it with one of its o
 plugin picks the layout and sets its colours, art and motion. It runs nothing and asks for no
 permission, so installing one from any source you added is safe in the same way as a theme.
 
-The user picks it under Settings, Interface ("Home interface"). EmuDEN's standard Home stays the
+The user picks it under Settings > Interface ("Home interface"). Try one first from the developer folder ([getting-started.md](getting-started.md#an-interface-plugin)); `examples/jdoe.neon-shelf` is a template. EmuDEN's standard Home stays the
 default and is always one choice away. An interface listed by a source can be picked before it
 is installed: EmuDEN downloads it first.
 
@@ -46,7 +46,7 @@ Every field of `interface` is optional; anything missing or out of range takes t
 
 | Field | Meaning |
 |---|---|
-| `layout` | The layout that draws it. `carousel`: consoles as tabs along the top (L and R step through them), one row of covers that glides, the selected one large in the middle, and its name and records under it. `shelf3d`: the same page, with each game as a lit 3D object (see `object` below) on a floor; side objects turn towards the selected one, which sways slowly, and a case with a disc slides it out, spinning. An EmuDEN without the layout refuses the plugin and keeps its own Home. |
+| `layout` | The layout that draws it. `carousel`: consoles as tabs along the top (L and R step through them), one row of covers that glides, the selected one large in the middle, and its name and records under it. `shelf3d`: the same page, with each game as a lit 3D object (see `object` below) on a floor; side objects turn towards the selected one, which sways slowly, and a case with a disc slides it out, spinning. The layout is checked when the interface is picked or drawn, not at install: an EmuDEN without it installs the plugin, says "This version of EmuDEN has no ... layout" when it is picked, and keeps its own Home. |
 | `icon` | A PNG of the package, shown in the plugin list. |
 | `colors` | `#rrggbb` or `#rrggbbaa`. `background` behind everything, `text`, `dim` (secondary text), `accent` (used when a console has no colour), `panel` (tabs and buttons). |
 | `backdrop.art` | `cover`: the selected game's cover, blurred. `console`: the console's wallpaper, else the package's `wallpaper`. `plain`: the background colour only. |

@@ -1,0 +1,40 @@
+{
+  "about": "What a plugin's needs may name, and the capability and trust each feature permission needs. Kept in contracts/capabilities.json of the EmuDEN repository, whose tests check it against the app, and copied to schema/capabilities.json of emuden-plugins, which plugin_tool.py reads.",
+  "capabilities": [
+    {"name": "engine.libretro", "kind": "console", "meaning": "Games run in a libretro core inside EmuDEN"},
+    {"name": "engine.switch2", "kind": "console", "meaning": "The Switch 2 engine; EmuDEN's own plugins only"},
+    {"name": "settings.v1", "kind": "console", "meaning": "The manifest has settings"},
+    {"name": "content.multi_file", "kind": "console", "meaning": "content.multi_file: disc games of several files"},
+    {"name": "content.magic", "kind": "console", "meaning": "content.magic: bytes that tell whose file a shared extension is"},
+    {"name": "presentation.buttons", "kind": "console", "meaning": "presentation.buttons: the names of the console's own buttons"},
+    {"name": "core.engine-app.1", "kind": "console", "meaning": "A core of type engine-app: an emulator app that speaks the Emulator Control Protocol"},
+    {"name": "kind.feature", "kind": "feature", "meaning": "A feature plugin (Lua)"},
+    {"name": "feature.lua.1", "kind": "feature", "meaning": "The den.* Lua API, version 1"},
+    {"name": "feature.web.1", "kind": "feature", "meaning": "den.web: sites of browse_hosts in the app's browser page"},
+    {"name": "feature.tune.1", "kind": "feature", "meaning": "den.device, den.game, den.steam"},
+    {"name": "feature.achievements.1", "kind": "feature", "meaning": "den.achievements"},
+    {"name": "feature.browser.1", "kind": "feature", "meaning": "The browser for any site and the setup of its downloads"},
+    {"name": "kind.interface", "kind": "interface", "meaning": "An interface plugin (a look for Home)"},
+    {"name": "interface.1", "kind": "interface", "meaning": "The interface format, version 1"}
+  ],
+  "permissions": [
+    {"name": "http", "needs": null, "official_only": false},
+    {"name": "download", "needs": null, "official_only": false},
+    {"name": "open-url", "needs": null, "official_only": false},
+    {"name": "browse", "needs": "feature.web.1", "official_only": false},
+    {"name": "files.import", "needs": null, "official_only": false},
+    {"name": "downloads.watch", "needs": null, "official_only": true},
+    {"name": "library.read", "needs": null, "official_only": false},
+    {"name": "patch", "needs": null, "official_only": false},
+    {"name": "library.write", "needs": null, "official_only": false},
+    {"name": "sync", "needs": null, "official_only": false},
+    {"name": "http.user_host", "needs": null, "official_only": false},
+    {"name": "http.local", "needs": null, "official_only": false},
+    {"name": "device.info", "needs": "feature.tune.1", "official_only": false},
+    {"name": "game.settings", "needs": "feature.tune.1", "official_only": false},
+    {"name": "steam", "needs": "feature.tune.1", "official_only": false},
+    {"name": "achievements", "needs": "feature.achievements.1", "official_only": true},
+    {"name": "browse.any", "needs": "feature.browser.1", "official_only": true},
+    {"name": "downloads.setup", "needs": "feature.browser.1", "official_only": true}
+  ]
+}

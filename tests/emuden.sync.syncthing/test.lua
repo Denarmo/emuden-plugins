@@ -1,5 +1,5 @@
 -- Offline test of emuden.sync.syncthing: a fake `den` and a fake Syncthing REST API.
--- Run from the repository root with a plain Lua 5.4: lua tests/sync-syncthing.lua
+-- Run from the repository root: python -I tools/plugin_tool.py test plugins/emuden.sync.syncthing
 local DIR = "plugins/emuden.sync.syncthing/"
 local ME = "MEMEMEM-AAAAAAA-BBBBBBB-CCCCCCC-DDDDDDD-EEEEEEE-FFFFFFF-GGGGGGG"
 local LAPTOP = "LAPTOPX-AAAAAAA-BBBBBBB-CCCCCCC-DDDDDDD-EEEEEEE-FFFFFFF-GGGGGGG"
