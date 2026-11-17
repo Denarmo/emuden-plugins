@@ -25,11 +25,9 @@ HOST_NAME = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-
 # Fields the schema allows that this EmuDEN does not read yet: `validate` warns, so nobody
 # relies on them. "*" stands for any list index or object key; "=value" warns only for that value.
 IGNORED_FIELDS = {
-    "sync.cheats": "EmuDEN has no cheats",
+    "sync.cheats": "cheats stay on the device; they do not sync",
     "capabilities.run_ahead": "EmuDEN has no run-ahead",
-    "capabilities.cheats": "EmuDEN has no cheats",
     "systems.*.capabilities.run_ahead": "EmuDEN has no run-ahead",
-    "systems.*.capabilities.cheats": "EmuDEN has no cheats",
     "systems.*.content.hash_variants": "games are looked up by their whole file",
     "systems.*.presentation.native_size": "the core reports its picture size",
     "systems.*.romm_slugs": "",
