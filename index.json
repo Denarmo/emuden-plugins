@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 85,
-  "generated": "2026-11-17T22:27:02Z",
-  "expires": "2027-03-17T22:27:02Z",
+  "sequence": 86,
+  "generated": "2026-11-17T22:33:37Z",
+  "expires": "2027-03-17T22:33:37Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -791,11 +791,11 @@
     {
       "id": "emuden.n3ds",
       "name": "Nintendo 3DS",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
-      "summary": "Nintendo 3DS games with Azahar. No BIOS or keys needed for games that run on the built-in system.",
+      "summary": "Nintendo 3DS games with Azahar. Decrypted dumps only; no BIOS, firmware or keys.",
       "group": "nintendo",
       "systems": [
         {
@@ -820,14 +820,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.n3ds-1.0.1.emuplugin",
-        "sha256": "2d548b86f7a6406f2f03db2d45ed9abd4dc2020d467cf2f3bf6b57f6b8f11cf7",
-        "size": 1487
+        "url": "packages/emuden.n3ds-1.0.2.emuplugin",
+        "sha256": "60adcae125a9a1afb0ac0804879b55168f7627861da11da38d8ec84eb1ac8031",
+        "size": 1517
       },
       "download_size": {
-        "windows-x86_64": 8390757,
-        "linux-x86_64": 15413740,
-        "android-arm64": 11986976
+        "windows-x86_64": 8377135,
+        "linux-x86_64": 15396517,
+        "android-arm64": 11974835
       },
       "download_hosts": [
         "github.com"
@@ -2328,7 +2328,6 @@
     "068d80d5165d251a647fcd56899b4a54b15d36cf56e3efcbadf5dee5fe3e1760",
     "09095b5a15d6463a7d8e4bb56dcf25282290542fa8b5f209c1aca9b370f93363",
     "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
-    "0b433890333870f89c06dc8405efb280a35263985abf1797ae3678e46132031c",
     "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
@@ -2361,6 +2360,7 @@
     "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
     "4533c718ecf90f0d4c74bada4378e27d596b2ee839182b23f02643433a686e2c",
     "457aa28912e2449a3346d1c122d1ffcd9e1f6f4f2a841c21a871f266274f239a",
+    "4b248b2ab21d1a8f68edaf446d8e01b8e30611947fdd70eff0b573fc17e138ac",
     "4e9a525813ba9dbd8c29bb38ddff70369cd7a184c559af51417f16cdcbd9fa2a",
     "55367ec5b67a9af10759cfec49ebccb75e0930549e8f2901b3541b18a9a34d26",
     "55cbaa80c3e578c6c299b06a1629dc132325c5b2f451d61ba31a398ed8ac1c6c",
@@ -2370,7 +2370,6 @@
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
-    "6274424dd0b45092be9f4739b2f117fd55928394dd5c4bcc8654ef465357e1b9",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
     "6af0529ff50fdd2314d49332d19f96fae571d9ae18e813daf40047442a4e659b",
@@ -2420,12 +2419,12 @@
     "b47dbf5bdf03a34e6b016ef19dbcafa37071de9339a04db070a5d63ebcd9ec33",
     "b80eb0ff41f261efb7b0021fc348eb747def3989083a80ec2f8d700a2f7a77c5",
     "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
+    "ba3463503177bae7ef12950788ce8892cd69763a968da03cd0cf9b9831f95aa3",
     "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
     "be695d2db1b8d1080490e8a55f4eb1871c48bd516b880ac99905e84d8b726b21",
     "bf2075fa46a526e889999acc438ac85123ab62731d4aaeb787b0446d2fcfbd0d",
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
-    "c70779ebc4232f79da55450f2a945b6c776f5102bf6e6fce4efdb0ec3576fc69",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
     "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
     "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
@@ -2450,6 +2449,7 @@
     "ef1d32c6f97e33649d8ffd65d2f4dfc074546a962aa9006f8aef6593d8a66f1f",
     "ef8fe0ac80d5cc9d95d480cb5ab3456be80e72f185ff9b3b865cd8abea9717b7",
     "f3eb67982046ccc51cd3af044ea4764406c0a11572038ea6d8b26ad776a36918",
+    "fa5972c111bee5b129dfbad347c1ee09c95a6e381057c9f5f0158e2282dea6e5",
     "ffe1b42c1b4d49b952585c98be42d718de8d410d0e370642c159cc1d3d7f7ea5"
   ],
   "revoked": [],

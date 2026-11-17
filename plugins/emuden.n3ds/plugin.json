@@ -2,12 +2,12 @@
   "manifest_version": 1,
   "id": "emuden.n3ds",
   "name": "Nintendo 3DS",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Nintendo 3DS games with Azahar. No BIOS or keys needed for games that run on the built-in system.",
+  "summary": "Nintendo 3DS games with Azahar. Decrypted dumps only; no BIOS, firmware or keys.",
   "api": 1,
   "needs": [
     "engine.libretro",
@@ -27,7 +27,6 @@
           "3ds",
           "cci",
           "cxi",
-          "cia",
           "3dsx"
         ],
         "folder_aliases": [
@@ -95,27 +94,27 @@
       "name": "Azahar",
       "license": "GPL-2.0-or-later",
       "gpu": "opengl",
-      "version": "2026-11-17",
+      "version": "2026-11-17b",
       "options_name": "Azahar",
       "downloads": {
         "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-windows-x86_64-2026-11-17.zip",
-          "sha256": "6274424dd0b45092be9f4739b2f117fd55928394dd5c4bcc8654ef465357e1b9",
-          "size": 8390757,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17b/azahar-windows-x86_64-2026-11-17b.zip",
+          "sha256": "4b248b2ab21d1a8f68edaf446d8e01b8e30611947fdd70eff0b573fc17e138ac",
+          "size": 8377135,
           "archive": "zip",
           "entry": "azahar_libretro.dll"
         },
         "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-linux-x86_64-2026-11-17.zip",
-          "sha256": "c70779ebc4232f79da55450f2a945b6c776f5102bf6e6fce4efdb0ec3576fc69",
-          "size": 15413740,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17b/azahar-linux-x86_64-2026-11-17b.zip",
+          "sha256": "ba3463503177bae7ef12950788ce8892cd69763a968da03cd0cf9b9831f95aa3",
+          "size": 15396517,
           "archive": "zip",
           "entry": "azahar_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-android-arm64-2026-11-17.zip",
-          "sha256": "0b433890333870f89c06dc8405efb280a35263985abf1797ae3678e46132031c",
-          "size": 11986976,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17b/azahar-android-arm64-2026-11-17b.zip",
+          "sha256": "fa5972c111bee5b129dfbad347c1ee09c95a6e381057c9f5f0158e2282dea6e5",
+          "size": 11974835,
           "archive": "zip",
           "entry": "azahar_libretro_android.so"
         }

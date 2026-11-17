@@ -1397,28 +1397,28 @@
   "azahar:android-arm64": {
     "core": "azahar",
     "platform": "android-arm64",
-    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17 (Azahar libretro core, built locally)",
+    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17b (Azahar libretro core without console keys, built locally)",
     "license": "GPL-2.0-or-later",
     "fetched": "2026-11-17",
-    "sha256": "0b433890333870f89c06dc8405efb280a35263985abf1797ae3678e46132031c",
-    "size": 11986976
+    "sha256": "fa5972c111bee5b129dfbad347c1ee09c95a6e381057c9f5f0158e2282dea6e5",
+    "size": 11974835
   },
   "azahar:linux-x86_64": {
     "core": "azahar",
     "platform": "linux-x86_64",
-    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17 (Azahar libretro core, built locally)",
+    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17b (Azahar libretro core without console keys, built locally)",
     "license": "GPL-2.0-or-later",
     "fetched": "2026-11-17",
-    "sha256": "c70779ebc4232f79da55450f2a945b6c776f5102bf6e6fce4efdb0ec3576fc69",
-    "size": 15413740
+    "sha256": "ba3463503177bae7ef12950788ce8892cd69763a968da03cd0cf9b9831f95aa3",
+    "size": 15396517
   },
   "azahar:windows-x86_64": {
     "core": "azahar",
     "platform": "windows-x86_64",
-    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17 (Azahar libretro core, built locally)",
+    "upstream": "https://github.com/Denarmo/emuden-azahar/tree/emuden-2026-11-17b (Azahar libretro core without console keys, built locally)",
     "license": "GPL-2.0-or-later",
     "fetched": "2026-11-17",
-    "sha256": "6274424dd0b45092be9f4739b2f117fd55928394dd5c4bcc8654ef465357e1b9",
-    "size": 8390757
+    "sha256": "4b248b2ab21d1a8f68edaf446d8e01b8e30611947fdd70eff0b573fc17e138ac",
+    "size": 8377135
   }
 }
