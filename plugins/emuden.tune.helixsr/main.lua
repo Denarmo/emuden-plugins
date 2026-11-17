@@ -242,7 +242,10 @@ local function install()
   if allowed then path, why = library() end
   if path then
     local files = {}
-    for i, target in ipairs(game.targets) do files[i] = { from = path, to = target } end
+    -- The game's own library stays beside it under the name HLX FSR 4 falls back to.
+    for i, target in ipairs(game.targets) do
+      files[i] = { from = path, to = target, keep_as = "amd_fidelityfx_upscaler_dx12.amd.dll" }
+    end
     den.ui.set(game_page("Waiting for your answer"))
     local ok, apply_why = den.mods.apply{ appid = game.appid, name = "Helix SR " .. release.version .. " (HLX FSR 4)", files = files }
     if ok then

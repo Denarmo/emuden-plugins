@@ -146,7 +146,7 @@ return function(den, h)
       if not allowed() then return denied(NO) end
       local ok, why = user("a game's files are changed")
       if not ok then return nil, why end
-      if not M.mods[appid] then return refuse("this plugin changed nothing in that game") end
+      if not M.mods[appid] then return true, {} end
       wait()
       if not take_answer({ kind = "confirm", title = "Remove " .. M.mods[appid].name .. " from this game?", appid = appid }) then
         return refuse("cancelled")
