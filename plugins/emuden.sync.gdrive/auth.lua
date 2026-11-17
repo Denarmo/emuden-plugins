@@ -81,8 +81,8 @@ function auth.start()
   local response, body = post(DEVICE_URL, { client_id = c.id, scope = auth.SCOPE })
   if not response then return nil, body end
   if response.status ~= 200 or not body.device_code then
-    return nil, "Google refused the sign-in: " .. tostring(body.error_description or body.error
-                                                           or response.status)
+    return nil, den.tr("Google refused the sign-in: {}", tostring(body.error_description or body.error
+                                                                  or response.status))
   end
   body.verification_url = body.verification_url or body.verification_uri
                           or auth.DEFAULT_VERIFICATION_URL
@@ -122,8 +122,8 @@ function auth.wait(device, still)
     elseif code == "expired_token" or code == "invalid_grant" then
       return nil, "expired"
     elseif response then
-      return nil, "Google refused the sign-in: " .. tostring(body.error_description or code
-                                                             or response.status)
+      return nil, den.tr("Google refused the sign-in: {}", tostring(body.error_description or code
+                                                                    or response.status))
     end
     -- no connection: try again at the next interval until the code expires
   end
@@ -153,8 +153,8 @@ function auth.refresh()
     drop_access()
     return nil, "The Google sign-in has ended. Sign in again."
   end
-  return nil, "Google refused the token: " .. tostring(body.error_description or body.error
-                                                       or response.status)
+  return nil, den.tr("Google refused the token: {}", tostring(body.error_description or body.error
+                                                              or response.status))
 end
 
 function auth.token()

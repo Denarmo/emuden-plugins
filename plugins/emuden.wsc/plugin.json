@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.wsc",
   "name": "WonderSwan Color",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -105,5 +105,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "WonderSwan Color games with Beetle Cygne.": "Juegos de WonderSwan Color con Beetle Cygne."
+    }
   }
 }

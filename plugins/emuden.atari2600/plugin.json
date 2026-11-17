@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari2600",
   "name": "Atari 2600",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -110,5 +110,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Atari 2600 games with Stella.": "Juegos de Atari 2600 con Stella."
+    }
   }
 }

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gb",
   "name": "Game Boy",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -258,5 +258,11 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "A link cable between two Game Boys: each device runs both, linked, and shows its own. Trades and battles work as on the real consoles; each keeps its own save.": "Un cable link entre dos Game Boy: cada dispositivo ejecuta las dos, conectadas, y muestra la suya. Los intercambios y combates funcionan como en las consolas reales; cada una conserva su partida guardada.",
+      "Game Boy games with mGBA.": "Juegos de Game Boy con mGBA."
+    }
   }
 }

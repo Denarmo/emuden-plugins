@@ -24,9 +24,9 @@ local game = nil         -- { appid, name, ranked, total, tier, config, suggesti
 local function when(t)
   if type(t) ~= "number" or t <= 0 then return "" end
   local days = (den.now() - t) // 86400
-  if days < 31 then return string.format("%d days ago", math.max(days, 0)) end
-  if days < 365 then return string.format("%d months ago", days // 30) end
-  return string.format("%.1f years ago", days / 365)
+  if days < 31 then return den.tr("{} days ago", string.format("%d", math.max(days, 0))) end
+  if days < 365 then return den.tr("{} months ago", string.format("%d", days // 30)) end
+  return den.tr("{} years ago", string.format("%.1f", days / 365))
 end
 
 local OS_NAMES = { windows = "Windows", linux = "Linux", macos = "macOS", android = "Android" }
@@ -36,7 +36,7 @@ local function trim(text)
 end
 
 local function device_line()
-  local parts = { trim(info.name) ~= "" and trim(info.name) or "This device" }
+  local parts = { trim(info.name) ~= "" and trim(info.name) or den.tr("This device") }
   for _, part in ipairs({ trim(info.gpu), trim(info.soc) }) do
     if part ~= "" then parts[#parts + 1] = part end
   end
@@ -89,7 +89,7 @@ local function fetch_reports(appid)
   local answer, why = den.http.get{ url = DATA .. folder .. "/" .. appid .. ".json", cache_seconds = 7 * 86400 }
   if not answer then return nil, why end
   if answer.status == 404 then return { reports = {}, total = 0 } end
-  if answer.status ~= 200 then return nil, "the report data answered " .. answer.status end
+  if answer.status ~= 200 then return nil, den.tr("the report data answered {}", answer.status) end
   return den.json.decode(answer.body) or { reports = {}, total = 0 }
 end
 
@@ -106,9 +106,9 @@ local function report_text(entry)
   local r = entry.report
   local lines = {}
   local proton = r.custom_proton or r.proton
-  if proton then lines[#lines + 1] = "Proton: " .. proton end
-  if r.launch then lines[#lines + 1] = "Launch options: " .. r.launch end
-  if r.faults then lines[#lines + 1] = "Problems: " .. table.concat(r.faults, ", ") end
+  if proton then lines[#lines + 1] = den.tr("Proton: {}", proton) end
+  if r.launch then lines[#lines + 1] = den.tr("Launch options: {}", r.launch) end
+  if r.faults then lines[#lines + 1] = den.tr("Problems: {}", table.concat(r.faults, ", ")) end
   if r.notes then lines[#lines + 1] = r.notes end
   return table.concat(lines, "\n")
 end
@@ -131,7 +131,7 @@ local function game_page()
   local s, config = game.suggestion, game.config or {}
   local facts = {
     { label = "ProtonDB rating", value = game.tier and (game.tier:sub(1, 1):upper() .. game.tier:sub(2)) or "Not rated" },
-    { label = "Reports", value = string.format("%d (%d kept, closest first)", game.total or 0, #game.ranked) },
+    { label = "Reports", value = den.tr("{} ({} kept, closest first)", string.format("%d", game.total or 0), string.format("%d", #game.ranked)) },
     { label = "Proton now", value = config.compat_tool_display ~= "" and config.compat_tool_display
                                      or (config.compat_tool ~= "" and config.compat_tool or "Steam's choice") },
     { label = "Launch options now", value = (config.launch_options or "") ~= "" and config.launch_options or "None" },
@@ -141,19 +141,19 @@ local function game_page()
   local buttons = {}
   local lines = {}
   if s.tool and me.windows then
-    lines[#lines + 1] = "Reports used " .. s.tool.display
+    lines[#lines + 1] = den.tr("Reports used {}", s.tool.display)
   elseif s.tool then
-    lines[#lines + 1] = "Proton: " .. s.tool.display
-        .. (s.tool.installed and "" or (s.tool.official and " (Steam downloads it)" or " (not installed)"))
+    lines[#lines + 1] = den.tr(s.tool.installed and "Proton: {}" or (s.tool.official and "Proton: {} (Steam downloads it)" or "Proton: {} (not installed)"),
+                               s.tool.display)
   end
   local launch = me.windows and rank.windows_args(s.launch) or s.launch
-  if launch then lines[#lines + 1] = "Launch options: " .. launch end
+  if launch then lines[#lines + 1] = den.tr("Launch options: {}", launch) end
   if s.from then
-    lines[#lines + 1] = string.format("From %s, %s (match %d%%)", rank.describe(s.from.report), when(s.from.report.t), s.from.score)
+    lines[#lines + 1] = den.tr("From {}, {} (match {}%)", den.tr(rank.describe(s.from.report)), when(s.from.report.t), string.format("%d", s.from.score))
   end
   if #lines == 0 then
-    lines[1] = #game.ranked == 0 and "There are no reports for this game yet."
-        or "The closest working reports change nothing: the game runs with Steam's default."
+    lines[1] = den.tr(#game.ranked == 0 and "There are no reports for this game yet."
+        or "The closest working reports change nothing: the game runs with Steam's default.")
   end
   local can_apply = steam.can_change and next(change) ~= nil and not (s.tool and not s.tool.installed and not s.tool.official and change.compat_tool)
   if can_apply then
@@ -166,7 +166,7 @@ local function game_page()
   if game.chosen then
     buttons[#buttons + 1] = { label = "Best match", action = "choose", arg = 0 }
   end
-  body[#body + 1] = { type = "detail", id = "game", title = game.name, subtitle = "Suggested for " .. me.name,
+  body[#body + 1] = { type = "detail", id = "game", title = game.name, subtitle = den.tr("Suggested for {}", me.name),
                       image = string.format(COVER, game.appid), aspect = 0.667,
                       facts = facts, text = table.concat(lines, "\n"), buttons = buttons }
   if next(change) == nil and #game.ranked > 0 and (s.tool or s.launch) then
@@ -179,7 +179,7 @@ local function game_page()
   end
   if s.tool and not s.tool.installed and not s.tool.official and not me.windows then
     body[#body + 1] = { type = "text", style = "warning", text =
-        s.tool.display .. " is not installed. Install it (ProtonUp-Qt, or Decky's Wine Cellar), then open this game again." }
+        den.tr("{} is not installed. Install it (ProtonUp-Qt, or Decky's Wine Cellar), then open this game again.", s.tool.display) }
   end
   if #game.ranked > 0 then
     body[#body + 1] = { type = "text", style = "heading", text = "Closest reports" }
@@ -188,9 +188,11 @@ local function game_page()
     local entry = game.ranked[i]
     local r = entry.report
     body[#body + 1] = { type = "row", id = "report-" .. i,
-                        label = string.format("%s · %s · %s", rank.describe(r), r.verdict == "yes" and "Works" or "Does not work", when(r.t)),
+                        label = string.format("%s · %s · %s", den.tr(rank.describe(r)), den.tr(r.verdict == "yes" and "Works" or "Does not work"), when(r.t)),
                         value = string.format("%d%%", entry.score), action = "choose", arg = i }
-    local why = #entry.why > 0 and ("Close by: " .. table.concat(entry.why, ", ") .. "\n") or ""
+    local reasons = {}
+    for k, reason in ipairs(entry.why) do reasons[k] = den.tr(reason) end
+    local why = #reasons > 0 and (den.tr("Close by: {}", table.concat(reasons, ", ")) .. "\n") or ""
     body[#body + 1] = { type = "text", style = "caption", text = why .. report_text(entry) }
   end
   for i = 1, math.min(SHOWN, #game.ranked) do

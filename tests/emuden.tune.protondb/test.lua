@@ -119,6 +119,12 @@ do
   den = {
     now = function() return NOW end,
     log = function() end,
+    -- English, as the app gives it: {} filled in order.
+    language = function() return "en" end,
+    tr = function(text, ...)
+      local values, n = table.pack(...), 0
+      return (text:gsub("{}", function() n = n + 1 return tostring(values[n]) end))
+    end,
     include = function(name) return dofile(DIR .. name) end,
     json = {
       null = {},

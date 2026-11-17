@@ -60,7 +60,7 @@ function Client:call(method, path, body)
         self.scheme = scheme
         return response
       end
-      failure = "Syncthing only answers over https"
+      failure = den.tr("Syncthing only answers over https")
     else
       failure = err
     end
@@ -72,14 +72,14 @@ end
 function Client:json_call(method, path, body)
   local response, err = self:call(method, path, body)
   if not response then
-    return nil, "Syncthing does not answer at " .. self.address .. " (" .. tostring(err) .. ")."
+    return nil, den.tr("Syncthing does not answer at {} ({}).", self.address, tostring(err))
   end
   local status = response.status
   if status == 401 or status == 403 then
     return nil, "Syncthing refused the API key.", status
   elseif status < 200 or status >= 300 then
     local why = (response.body or ""):gsub("%s+$", "")
-    return nil, "Syncthing answered " .. status .. (why ~= "" and (": " .. why) or "") .. ".",
+    return nil, den.tr("Syncthing answered {}{}.", status, why ~= "" and (": " .. why) or ""),
            status
   end
   if not response.body or response.body == "" then return {} end
@@ -178,8 +178,8 @@ function Client:save_folder(path, my_id, ticked, known)
   if current == nil then return nil, err end
   local other = self:folder_at(path)
   if other then
-    return nil, "Syncthing already syncs this folder as \"" .. other .. "\". Choose another " ..
-                "folder, or remove that one from Syncthing first."
+    return nil, den.tr("Syncthing already syncs this folder as \"{}\". Choose another " ..
+                       "folder, or remove that one from Syncthing first.", other)
   end
   local fields = { label = M.FOLDER_LABEL, path = path, type = "sendreceive",
                    devices = M.folder_devices(current and current.devices, my_id, ticked, known) }

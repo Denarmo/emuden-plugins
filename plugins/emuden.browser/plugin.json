@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.browser",
   "name": "Browser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -12,7 +12,8 @@
     "kind.feature",
     "feature.lua.1",
     "feature.web.1",
-    "feature.browser.1"
+    "feature.browser.1",
+    "feature.tr.1"
   ],
   "platforms": [
     "any"
@@ -24,5 +25,55 @@
       "browse.any",
       "downloads.setup"
     ]
+  },
+  "translations": {
+    "es": {
+      "Browse any website inside EmuDEN. Games and ROM hack patches you download there are added to your library for you.": "Navega por cualquier sitio web dentro de EmuDEN. Los juegos y parches de ROM hacks que descargues ahí se añaden solos a tu biblioteca.",
+      "Browser": "Navegador",
+      "{} Choose the game on the Browser's Downloads page.": "{} Elige el juego en la página Descargas del Navegador.",
+      "Undo": "Deshacer",
+      "Done: the files are back in Downloads": "Hecho: los archivos volvieron a Descargas",
+      "That file is not in Downloads any more": "Ese archivo ya no está en Descargas",
+      "Patching": "Parcheando",
+      "Added": "Añadido",
+      "Hack added": "Hack añadido",
+      "Choose the game": "Elige el juego",
+      "Game missing": "Falta el juego",
+      "Waiting": "Esperando",
+      "BIOS, not used": "BIOS, no se usa",
+      "Left in Downloads": "Se queda en Descargas",
+      "Failed": "Falló",
+      "Undone": "Deshecho",
+      "Browse": "Navegar",
+      "Downloads": "Descargas",
+      "About": "Acerca de",
+      "Any website; downloads are set up for you": "Cualquier sitio web; las descargas se preparan solas",
+      "Address or search": "Dirección o búsqueda",
+      "Open the browser": "Abrir el navegador",
+      "Browse any site and download a game or a ROM hack patch the way you would in any browser. EmuDEN looks at every file you download: games go into your library with their box art, patches are applied to a copy of your own game. You see a message for each, and the Downloads tab lists them, with undo.": "Navega por cualquier sitio y descarga un juego o un parche de ROM hack como lo harías en cualquier navegador. EmuDEN revisa cada archivo que descargas: los juegos van a tu biblioteca con su carátula y los parches se aplican a una copia de tu propio juego. Ves un mensaje por cada uno, y la pestaña Descargas los muestra, con la opción de deshacer.",
+      "Bookmarks": "Marcadores",
+      "Bookmarks: in the browser, press Start (Menu) and choose \"Bookmark this page\".": "Marcadores: en el navegador, pulsa Start (Menú) y elige \"Añadir esta página a marcadores\".",
+      "In the browser: the left stick moves the pointer, A clicks, the right stick scrolls, X types into the page, Y is the address bar, LB and RB go back and forward, Start opens the menu, B goes back. Touch works too.": "En el navegador: el stick izquierdo mueve el puntero, A hace clic, el stick derecho desplaza, X escribe en la página, Y es la barra de direcciones, LB y RB van atrás y adelante, Start abre el menú, B vuelve. También funciona el tacto.",
+      "This device shows no web pages inside EmuDEN: sites open in your own browser, and files that then appear in your Downloads folder are offered here.": "Este dispositivo no muestra páginas web dentro de EmuDEN: los sitios se abren en tu propio navegador, y los archivos que luego aparecen en tu carpeta de Descargas se ofrecen aquí.",
+      "Nothing downloaded yet": "Aún no has descargado nada",
+      "What you download in the browser is listed here.": "Lo que descargues en el navegador aparece aquí.",
+      "Also in Downloads": "También en Descargas",
+      "{}, set up": "{}, preparar",
+      "File: {}, {}": "Archivo: {}, {}",
+      "Play": "Jugar",
+      "This was undone.": "Esto se deshizo.",
+      "Try again": "Intentar de nuevo",
+      "Download": "Descarga",
+      "Remove {} from your library? Its saves stay; the patch stays in Downloads.": "¿Quitar {} de tu biblioteca? Sus partidas guardadas se quedan; el parche se queda en Descargas.",
+      "the hack": "el hack",
+      "The earlier version it replaced is not brought back.": "La versión anterior que reemplazó no vuelve.",
+      "Take {} out of your library and put its files back in Downloads? Its saves stay.": "¿Sacar {} de tu biblioteca y devolver sus archivos a Descargas? Sus partidas guardadas se quedan.",
+      "{} The patch does not say which game it was made for. Choose your copy of it; the original stays as it is.": "{} El parche no dice para qué juego se hizo. Elige tu copia; el original se queda como está.",
+      "Browser {}. One browser for every site: EmuDEN looks at the files you download, not at the pages, so it needs nothing made for a particular site.": "Navegador {}. Un navegador para todos los sitios: EmuDEN revisa los archivos que descargas, no las páginas, así que no necesita nada hecho para un sitio en particular.",
+      "Games: the console comes from the file's extension, its first bytes or the folders it came in. Zip and 7z archives are unpacked; a cue sheet stays with its tracks and the discs of one game stay together. Patches (IPS, BPS, UPS, xdelta, APS, PPF) are applied to a copy of your game: the one the patch names by its checksum, else the one whose name fits the hack's, else the one you pick. A newer version of the same hack replaces the old one and keeps its saves.": "Juegos: la consola se deduce de la extensión del archivo, sus primeros bytes o las carpetas en las que venía. Los archivos zip y 7z se descomprimen; un archivo cue se queda con sus pistas y los discos de un juego se quedan juntos. Los parches (IPS, BPS, UPS, xdelta, APS, PPF) se aplican a una copia de tu juego: el que el parche indica por su checksum, si no el que tiene un nombre parecido al del hack, si no el que elijas. Una versión más nueva del mismo hack reemplaza a la anterior y conserva sus partidas guardadas.",
+      "Left in Downloads: files EmuDEN does not know, rar archives, and BIOS files (EmuDEN doesn't use BIOS files).": "Se quedan en Descargas: los archivos que EmuDEN no conoce, los archivos rar y los archivos BIOS (EmuDEN no usa archivos BIOS).",
+      "Downloads folder: {}": "Carpeta de Descargas: {}",
+      "Download only games and patches you have the right to. Sign-ins, passwords and cookies stay in the device's web engine; the plugin never sees a page.": "Descarga solo juegos y parches a los que tengas derecho. Los inicios de sesión, contraseñas y cookies se quedan en el motor web del dispositivo; el plugin nunca ve una página."
+    }
   }
 }

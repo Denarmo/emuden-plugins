@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sms",
   "name": "Sega Master System",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -217,5 +217,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Master System games with Genesis Plus GX.": "Juegos de Master System con Genesis Plus GX."
+    }
   }
 }

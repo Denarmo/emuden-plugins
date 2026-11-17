@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.genesis",
   "name": "Sega Genesis / Mega Drive",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -190,5 +190,11 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Genesis and Mega Drive games with Genesis Plus GX.": "Juegos de Genesis y Mega Drive con Genesis Plus GX.",
+      "Mode": "Modo"
+    }
   }
 }

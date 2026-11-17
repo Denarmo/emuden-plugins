@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nes",
   "name": "Nintendo Entertainment System",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -200,5 +200,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "NES and Famicom games with FCEUmm.": "Juegos de NES y Famicom con FCEUmm."
+    }
   }
 }

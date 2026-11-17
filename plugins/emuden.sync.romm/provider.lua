@@ -99,14 +99,14 @@ end
 local function rom_for(path)
   local category, system, file = names.parse(path)
   if not category then
-    return nil, "RomM keeps only saves, states and games; " .. tostring(path) .. " is none."
+    return nil, den.tr("RomM keeps only saves, states and games; {} is none.", tostring(path))
   end
   if category == "games" then
     return nil, nil, category, system, file
   end
   local stem, kind, state_file = names.stem_of(category, file)
   if not stem then
-    return nil, file .. " is not a save state EmuDEN syncs."
+    return nil, den.tr("{} is not a save state EmuDEN syncs.", file)
   end
   local idx, why = build_index()
   if not idx then
@@ -114,7 +114,7 @@ local function rom_for(path)
   end
   local rom = (idx.by_stem[system] or {})[stem:lower()]
   if not rom then
-    return nil, "RomM has no " .. system .. " game named " .. stem .. "."
+    return nil, den.tr("RomM has no {} game named {}.", system, stem)
   end
   return rom, nil, category, system, file, kind, state_file
 end
@@ -217,7 +217,7 @@ end
 function provider.get(path, local_path, progress)
   local entry, why = entry_of(path)
   if not entry then
-    return nil, why or ("RomM has no " .. path .. ".")
+    return nil, why or den.tr("RomM has no {}.", path)
   end
   if entry.kind == "games" then
     return romm.download("/api/roms/" .. entry.rom_id .. "/content/" ..
@@ -268,7 +268,7 @@ function provider.put(path, local_path, rev, modified)
     if state == nil then
       return nil, why
     elseif not state then
-      return nil, "The state " .. state_file .. " is not on RomM yet; its picture follows it."
+      return nil, den.tr("The state {} is not on RomM yet; its picture follows it.", state_file)
     end
     local shot = value(state.screenshot)
     local now = shot and rev_of(shot)
@@ -282,7 +282,7 @@ function provider.put(path, local_path, rev, modified)
     end
     shot = value(saved.screenshot)
     if not shot then
-      return nil, "RomM did not keep the picture of " .. state_file .. "."
+      return nil, den.tr("RomM did not keep the picture of {}.", state_file)
     end
     return remember(path, { kind = "screenshots", id = shot.id, rom_id = rom.id,
                             state_id = state.id }, rev_of(shot), modified)

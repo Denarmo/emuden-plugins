@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.helixsr",
   "name": "Tune: Helix SR",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -12,7 +12,8 @@
     "kind.feature",
     "feature.lua.1",
     "feature.tune.1",
-    "feature.mods.1"
+    "feature.mods.1",
+    "feature.tr.1"
   ],
   "platforms": [
     "windows-x86_64",
@@ -37,6 +38,52 @@
     "limits": {
       "memory_mb": 32,
       "storage_mb": 1024
+    }
+  },
+  "translations": {
+    "es": {
+      "Puts Helix SR's FSR 4 upscaler (HLX FSR 4) into Steam games that ship FSR 3.1, as a drop-in for the game's own FSR library. Helix SR is downloaded from its official release; EmuDEN lists every file first, keeps the original and puts it back on Remove. Games with anti-cheat are refused.": "Pone el escalador FSR 4 de Helix SR (HLX FSR 4) en los juegos de Steam que traen FSR 3.1, como reemplazo directo de la biblioteca FSR propia del juego. Helix SR se descarga de su versión oficial; EmuDEN muestra antes cada archivo, guarda el original y lo devuelve al quitarlo. Los juegos con antitrampas se rechazan.",
+      "No Steam here": "Aquí no hay Steam",
+      "No Steam games": "No hay juegos de Steam",
+      "Install a game in Steam, then open this page again.": "Instala un juego en Steam y vuelve a abrir esta página.",
+      "Find a game": "Buscar un juego",
+      "Changed by a game update": "Cambiado por una actualización del juego",
+      "Installed": "Instalado",
+      "Check": "Comprobar",
+      "Helix SR {} by lonewolf0622, freeware. It is downloaded from github.com/lonewolf0622/HelixSR when you install it in a game; nothing of it is part of this plugin.": "Helix SR {} de lonewolf0622, freeware. Se descarga de github.com/lonewolf0622/HelixSR cuando lo instalas en un juego; nada de él forma parte de este plugin.",
+      "FSR 4 upscaling for games with FSR 3.1": "Escalado FSR 4 para juegos con FSR 3.1",
+      "The game's folder could not be read: {}": "No se pudo leer la carpeta del juego: {}",
+      "unknown": "desconocido",
+      "FSR 3.1 library": "Biblioteca FSR 3.1",
+      "Not found": "No encontrada",
+      "Anti-cheat": "Antitrampas",
+      "None found": "No se encontró ninguno",
+      "Not installed": "No instalado",
+      "This game ships {}. A changed library in a protected game can get an account banned, so Helix SR is not installed here.": "Este juego trae {}. Una biblioteca cambiada en un juego protegido puede hacer que se bloquee una cuenta, así que Helix SR no se instala aquí.",
+      "HLX FSR 4 is in place of the game's FSR library. Pick AMD FSR in the game's graphics settings to use it.": "HLX FSR 4 está en lugar de la biblioteca FSR del juego. Elige AMD FSR en los ajustes gráficos del juego para usarlo.",
+      "A game update put the game's own library back. Install again to use Helix SR, or Remove to forget it.": "Una actualización del juego volvió a poner su propia biblioteca. Usa Instalar de nuevo para usar Helix SR, o Quitar para olvidarlo.",
+      "This game has FSR 3.1. Install replaces {} with HLX FSR 4; the game's own file is kept and Remove puts it back.": "Este juego tiene FSR 3.1. Instalar reemplaza {} por HLX FSR 4; el archivo propio del juego se guarda y Quitar lo devuelve.",
+      "This game has FSR 3 as one library ({}). The drop-in needs {}, which games have from FSR 3.1 on.": "Este juego tiene FSR 3 en una sola biblioteca ({}). El reemplazo directo necesita {}, que los juegos tienen desde FSR 3.1.",
+      "No FSR 3.1 library ({}) was found in this game's folder. The drop-in works only in Direct3D 12 games that ship it.": "No se encontró ninguna biblioteca FSR 3.1 ({}) en la carpeta de este juego. El reemplazo directo solo funciona en juegos Direct3D 12 que la traen.",
+      "Install again": "Instalar de nuevo",
+      "Install": "Instalar",
+      "Remove": "Quitar",
+      "Helix SR {}, FSR drop-in": "Helix SR {}, reemplazo directo de FSR",
+      "Use it in single-player games. An online game may treat a changed library as cheating, also where no anti-cheat file was found.": "Úsalo en juegos para un jugador. Un juego en línea puede tomar una biblioteca cambiada como trampa, también donde no se encontró ningún archivo antitrampas.",
+      "A game update or Steam's \"Verify integrity of game files\" brings the game's own library back; this page then offers to install again.": "Una actualización del juego o \"Verificar la integridad de los archivos del juego\" de Steam devuelve la biblioteca propia del juego; entonces esta página ofrece instalar de nuevo.",
+      "Download Helix SR {}?": "¿Descargar Helix SR {}?",
+      "{} MB from github.com/lonewolf0622/HelixSR, the project's own release. It is checked against its published SHA-256 and kept for your other games.": "{} MB de github.com/lonewolf0622/HelixSR, la versión del propio proyecto. Se comprueba con su SHA-256 publicado y se guarda para tus otros juegos.",
+      "Download": "Descargar",
+      "Downloading Helix SR {}": "Descargando Helix SR {}",
+      "Helix SR could not be downloaded: {}": "No se pudo descargar Helix SR: {}",
+      "The download is not the Helix SR {} this plugin knows (another size). Nothing was installed.": "La descarga no es el Helix SR {} que conoce este plugin (otro tamaño). No se instaló nada.",
+      "Unpacking HLX FSR 4": "Descomprimiendo HLX FSR 4",
+      "Helix SR could not be unpacked: {}": "No se pudo descomprimir Helix SR: {}",
+      "The unpacked library is not the one this plugin knows (another size). Nothing was installed.": "La biblioteca descomprimida no es la que conoce este plugin (otro tamaño). No se instaló nada.",
+      "Looking at the game's files": "Mirando los archivos del juego",
+      "Waiting for your answer": "Esperando tu respuesta",
+      "Installed. Pick AMD FSR in the game's graphics settings.": "Instalado. Elige AMD FSR en los ajustes gráficos del juego.",
+      "Removed. The game has its own FSR library again.": "Quitado. El juego vuelve a tener su propia biblioteca FSR."
     }
   }
 }

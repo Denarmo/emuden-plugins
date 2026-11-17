@@ -301,6 +301,17 @@ function fake.den(plugin_dir, google, opts)
   d.json = { encode = encode, decode = decode, null = null }
   d.log = function(text) d.logs[#d.logs + 1] = text end
   d.now = function() return clock end
+  d.language = function() return "en" end
+  d.tr = function(text, ...)
+    local values, out, i, n = table.pack(...), {}, 1, 0
+    while i <= #text do
+      local two = text:sub(i, i + 1)
+      if two == "{{" or two == "}}" then out[#out + 1] = two:sub(1, 1); i = i + 2
+      elseif two == "{}" then n = n + 1; out[#out + 1] = tostring(values[n]); i = i + 2
+      else out[#out + 1] = text:sub(i, i); i = i + 1 end
+    end
+    return table.concat(out)
+  end
   d.sleep = function(ms) d.slept = d.slept + ms; clock = clock + ms // 1000 end
   d.storage = { get = function(k) return storage[k] end, set = function(k, v) storage[k] = v end,
                 remove = function(k) storage[k] = nil end }

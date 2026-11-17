@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pokemini",
   "name": "Pokémon mini",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -103,5 +103,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Pokémon mini games with PokeMini.": "Juegos de Pokémon mini con PokeMini."
+    }
   }
 }

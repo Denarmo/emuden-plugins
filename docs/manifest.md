@@ -26,6 +26,24 @@ plugins have their own pages ([feature-plugins.md](feature-plugins.md),
 | `capabilities` | object | no | [engines.md](engines.md#capabilities) |
 | `settings` | object[] | no | [settings.md](settings.md) |
 | `sync` | object | no | `saves`, `states`, `settings`: false keeps that part of the plugin's consoles off sync (default true). `cheats` is not read yet: cheats stay on the device |
+| `translations` | object | no | The plugin's texts in other languages, below. Every plugin kind may have it |
+
+## `translations`
+
+`{"<language code>": {"<English text>": "<translation>"}}`. The English text is the key: a
+system's or setting's name, a label, a description, a summary, or a text the plugin's script
+passes to `den.tr`. The app shows the translation when it is in that language (`es-MX` reads
+`es-MX`, then `es`); a text with none stays English. A translation keeps the `{}` fields of its
+English text (`"{} saves": "{} partidas"`), or the app ignores it and `validate` refuses it.
+
+```json
+"translations": {
+  "es": { "Region": "Región", "Fast boot": "Arranque rápido", "{} saves": "{} partidas" }
+}
+```
+
+A [language pack](language-packs.md) can add texts for a plugin, or reword them, in its
+`plugin_strings.json`; the pack's wins.
 
 ## `systems[]`
 

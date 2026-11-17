@@ -39,6 +39,18 @@ class Tool(unittest.TestCase):
         cheevos["id"] = "emuden.thing"
         self.assertEqual(problems(cheevos, "official"), [])
 
+    def test_translations_keep_their_fields(self):
+        thing = feature([])
+        thing["translations"] = {"es": {"Sign in": "Entrar", "{} saves": "{} partidas"}}
+        self.assertEqual(problems(thing), [])
+        thing["translations"]["es"]["{} of {}"] = "{} de"
+        self.assertTrue(any("{} fields" in p for p in problems(thing)))
+        del thing["translations"]["es"]["{} of {}"]
+        thing["translations"]["en"] = {"Sign in": "Log in"}
+        self.assertTrue(any("translations.en" in p for p in problems(thing)))
+        thing["translations"] = {"Spanish": {"Sign in": "Entrar"}}
+        self.assertTrue(problems(thing))  # not a language code
+
     def test_no_external_engine(self):
         manifest = plugin_tool.load_json(REPO / "examples" / "jdoe.wiiu-cemu" / "plugin.json")
         self.assertEqual(problems(manifest), [])

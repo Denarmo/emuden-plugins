@@ -29,10 +29,10 @@ local function folder_part(state, body)
                         "does it without a server." }
     body[#body + 1] = { type = "button", label = "Choose another folder", action = "choose_folder" }
   else
-    local where = android() and "your device's shared storage" or "your home folder"
-    body[#body + 1] = { type = "text", text = "Pick the folder EmuDEN syncs through. The usual " ..
-                        "one is " .. M.DEFAULT_FOLDER .. " in " .. where .. "." }
-    body[#body + 1] = { type = "button", label = "Use " .. M.DEFAULT_FOLDER,
+    local where = android() and den.tr("your device's shared storage") or den.tr("your home folder")
+    body[#body + 1] = { type = "text", text = den.tr("Pick the folder EmuDEN syncs through. The " ..
+                        "usual one is {} in {}.", M.DEFAULT_FOLDER, where) }
+    body[#body + 1] = { type = "button", label = den.tr("Use {}", M.DEFAULT_FOLDER),
                         action = "use_default" }
     body[#body + 1] = { type = "button", label = "Choose a folder", action = "choose_folder" }
   end
@@ -41,9 +41,9 @@ end
 local function ago(seconds)
   local d = den.now() - seconds
   if d < 90 then return "just now" end
-  if d < 5400 then return string.format("%d minutes ago", d // 60) end
-  if d < 129600 then return string.format("%d hours ago", d // 3600) end
-  return string.format("%d days ago", d // 86400)
+  if d < 5400 then return den.tr("{} minutes ago", math.floor(d // 60)) end
+  if d < 129600 then return den.tr("{} hours ago", math.floor(d // 3600)) end
+  return den.tr("{} days ago", math.floor(d // 86400))
 end
 
 -- EmuDEN's own side: den.sync.status() (docs/sync.md section 5).
@@ -59,8 +59,8 @@ local function emuden_part(state, body)
   body[#body + 1] = { type = "row", id = "emuden-sync", label = "EmuDEN last synced the folder",
                       value = status.running and "Syncing now" or last > 0 and ago(last) or "Never" }
   if (tonumber(status.conflicts) or 0) > 0 then
-    body[#body + 1] = { type = "text", style = "warning", text = string.format(
-                        "%d conflicts. Settings > Sync lists them.", status.conflicts) }
+    body[#body + 1] = { type = "text", style = "warning", text = den.tr(
+                        "{} conflicts. Settings > Sync lists them.", math.floor(tonumber(status.conflicts))) }
   end
   if type(status.error) == "string" then
     body[#body + 1] = { type = "text", style = "warning", text = status.error }
@@ -95,8 +95,10 @@ end
 local function status_rows(state, body)
   local local_done = state.completion
   if local_done then
-    local label = string.format("This device: %d %%", math.floor(local_done.percent))
-    if local_done.need_bytes > 0 then label = label .. ", " .. size(local_done.need_bytes) .. " to get" end
+    local percent = math.floor(local_done.percent)
+    local label = local_done.need_bytes > 0
+                  and den.tr("This device: {} %, {} to get", percent, size(local_done.need_bytes))
+                  or den.tr("This device: {} %", percent)
     body[#body + 1] = { type = "progress", id = "completion", label = label,
                         fraction = local_done.percent / 100 }
   end
@@ -133,8 +135,8 @@ local function connect_part(state, body)
     body[#body + 1] = { type = "text", style = "caption", text = "Syncthing-Fork shows the API " ..
                         "key under Settings > Syncthing options > API key; tap it to copy." }
   else
-    body[#body + 1] = { type = "text", style = "caption", text = "In Syncthing's web page (" ..
-                        syncthing.DEFAULT_ADDRESS .. "): Actions > Settings > General > API Key." }
+    body[#body + 1] = { type = "text", style = "caption", text = den.tr("In Syncthing's web page ({}): " ..
+                        "Actions > Settings > General > API Key.", syncthing.DEFAULT_ADDRESS) }
   end
   if state.error then
     body[#body + 1] = { type = "text", style = "warning", id = "error", text = state.error }
@@ -160,9 +162,8 @@ local function connect_part(state, body)
                   state.dirty and "Save the changes in Syncthing" or "Update the folder in Syncthing"
     body[#body + 1] = { type = "button", id = "save_folder", label = label, action = "save_folder" }
     if in_syncthing and not syncthing.same_path(in_syncthing.path, state.folder) then
-      body[#body + 1] = { type = "text", style = "warning", text = "Syncthing's EmuDEN folder " ..
-                          "is " .. tostring(in_syncthing.path) .. ". Update it to use " ..
-                          state.folder .. "." }
+      body[#body + 1] = { type = "text", style = "warning", text = den.tr("Syncthing's EmuDEN folder " ..
+                          "is {}. Update it to use {}.", tostring(in_syncthing.path), state.folder) }
     end
   end
   if state.syncthing_folder then

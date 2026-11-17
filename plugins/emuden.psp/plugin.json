@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psp",
   "name": "PlayStation Portable",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -195,5 +195,11 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "PPSSPP assets": "Recursos de PPSSPP",
+      "PSP games with PPSSPP.": "Juegos de PSP con PPSSPP."
+    }
   }
 }

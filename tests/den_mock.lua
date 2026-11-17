@@ -106,7 +106,7 @@ function M.find(id, page) return find_in((page or M.page() or {}).body, id) end
 
 -------------------------------------------------------------------------------- the manifest
 local CAPS = { ["kind.feature"] = 1, ["feature.lua.1"] = 1, ["feature.web.1"] = 1, ["feature.tune.1"] = 1,
-               ["feature.achievements.1"] = 1, ["feature.browser.1"] = 1, ["feature.mods.1"] = 1 }
+               ["feature.achievements.1"] = 1, ["feature.browser.1"] = 1, ["feature.mods.1"] = 1, ["feature.tr.1"] = 1 }
 local PERMS = { http = 0, download = 0, ["open-url"] = 0, browse = "feature.web.1", ["files.import"] = 0,
                 ["downloads.watch"] = 0, ["library.read"] = 0, patch = 0, ["library.write"] = 0, sync = 0,
                 ["http.user_host"] = 0, ["http.local"] = 0, ["device.info"] = "feature.tune.1",
@@ -295,6 +295,25 @@ local function build_den(opts)
     if os.getenv("DEN_MOCK_VERBOSE") then print("[log] " .. line) end
   end
   function den.now() return M.clock end
+  function den.language() return opts.language or M.language or "en" end
+  -- The plugin's own translation of `text` (manifest "translations"), {} filled in order.
+  function den.tr(text, ...)
+    local code = den.language()
+    local all = type(manifest.translations) == "table" and manifest.translations or {}
+    local found
+    for _, c in ipairs({ code, code:match("^[^-]+") }) do
+      local texts = all[c]
+      if found == nil and type(texts) == "table" and type(texts[text]) == "string" then found = texts[text] end
+    end
+    local s, values, out, i, n = found or text, table.pack(...), {}, 1, 0
+    while i <= #s do
+      local two = s:sub(i, i + 1)
+      if two == "{{" or two == "}}" then out[#out + 1] = two:sub(1, 1); i = i + 2
+      elseif two == "{}" then n = n + 1; if n <= values.n then out[#out + 1] = tostring(values[n]) end; i = i + 2
+      else out[#out + 1] = s:sub(i, i); i = i + 1 end
+    end
+    return table.concat(out)
+  end
   function den.sleep(ms) wait() M.clock = M.clock + math.max(0, math.min(ms, 600000)) // 1000 end
   function den.include(name)
     local text = name:match("%.lua$") and safe_path(name) and read_file(dir .. "/" .. name)

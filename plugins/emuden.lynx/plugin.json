@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.lynx",
   "name": "Atari Lynx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -114,5 +114,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Atari Lynx games with Handy.": "Juegos de Atari Lynx con Handy."
+    }
   }
 }

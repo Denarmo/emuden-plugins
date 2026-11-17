@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -552,6 +552,11 @@
         "label": "PICO-8",
         "color": "#ff6c8a"
       }
+    }
+  },
+  "translations": {
+    "es": {
+      "Your games as 3D cartridges, cards, cases and discs on a lit shelf. The chosen one turns to face you, and a disc slides out of its case.": "Tus juegos como cartuchos, tarjetas, cajas y discos en 3D sobre una estantería iluminada. El elegido se gira hacia ti y el disco sale de su caja."
     }
   }
 }

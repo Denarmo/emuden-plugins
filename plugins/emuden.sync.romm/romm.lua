@@ -55,15 +55,15 @@ end
 function romm.check_version(server)
   local response, why = den.http.request{ url = server .. "/api/heartbeat" }
   if not response then
-    return nil, "Could not reach " .. server .. ": " .. tostring(why)
+    return nil, den.tr("Could not reach {}: {}", server, tostring(why))
   end
   if response.status ~= 200 then
-    return nil, server .. " did not answer as a RomM server (" .. detail_of(response) .. ")."
+    return nil, den.tr("{} did not answer as a RomM server ({}).", server, detail_of(response))
   end
   local beat = den.json.decode(response.body or "")
   local text = type(beat) == "table" and type(beat.SYSTEM) == "table" and value(beat.SYSTEM.VERSION)
   if not text then
-    return nil, server .. " did not answer as a RomM server."
+    return nil, den.tr("{} did not answer as a RomM server.", server)
   end
   local version = names.version(text)
   if not version then
@@ -72,8 +72,8 @@ function romm.check_version(server)
     return text
   end
   if names.older(version, MIN_VERSION) then
-    return nil, "This RomM server runs version " .. text .. ". EmuDEN works with RomM " ..
-        romm.TESTED .. " or newer; update the server to sync with it."
+    return nil, den.tr("This RomM server runs version {}. EmuDEN works with RomM {} or newer; " ..
+        "update the server to sync with it.", text, romm.TESTED)
   end
   return text
 end
@@ -103,7 +103,7 @@ local function token_request(fields)
     body = form(fields),
   }
   if not response then
-    return nil, "Could not reach " .. server .. ": " .. tostring(why)
+    return nil, den.tr("Could not reach {}: {}", server, tostring(why))
   end
   if response.status ~= 200 then
     return nil, detail_of(response), response.status
@@ -119,8 +119,8 @@ function romm.sign_in(user, password)
     if status == 401 then
       return nil, "Wrong user name or password."
     elseif status == 403 then
-      return nil, "RomM refused the sign-in: " .. why ..
-          " (the user needs to see ROMs and platforms and to upload saves)."
+      return nil, den.tr("RomM refused the sign-in: {} (the user needs to see ROMs and " ..
+          "platforms and to upload saves).", why)
     end
     return nil, why
   end
@@ -191,7 +191,7 @@ function romm.call(path, opts)
       multipart = opts.multipart, to_file = opts.to_file, on_progress = opts.on_progress,
     }
     if not response then
-      return nil, "Could not reach " .. server .. ": " .. tostring(why)
+      return nil, den.tr("Could not reach {}: {}", server, tostring(why))
     end
     if response.status == 401 and attempt == 1 then
       access, access_until = nil, 0

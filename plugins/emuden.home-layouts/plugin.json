@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.home-layouts",
   "name": "Home Layouts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -602,5 +602,14 @@
         }
       }
     }
-  ]
+  ],
+  "translations": {
+    "es": {
+      "Four other ways to show your games on Home: a grid of covers, a list of names, an arcade-style wheel, or one game large with a row of covers under it.": "Otras cuatro formas de mostrar tus juegos en Inicio: una cuadrícula de portadas, una lista de nombres, una rueda estilo arcade o un juego en grande con una fila de portadas debajo.",
+      "Grid": "Cuadrícula",
+      "Hero": "Destacado",
+      "List": "Lista",
+      "Wheel": "Rueda"
+    }
+  }
 }

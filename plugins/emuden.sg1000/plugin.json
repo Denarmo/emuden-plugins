@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.sg1000",
   "name": "SG-1000",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -105,5 +105,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "SG-1000 games with Genesis Plus GX.": "Juegos de SG-1000 con Genesis Plus GX."
+    }
   }
 }

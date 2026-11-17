@@ -47,7 +47,7 @@ local function call(procedure, input, cache_seconds)
   local answer, why = den.http.get{ url = url, cache_seconds = cache_seconds or DAY }
   if not answer then return nil, why end
   if answer.status == 429 then return nil, "EmuReady asks to wait a little; try again in a few minutes." end
-  if answer.status ~= 200 then return nil, "EmuReady answered " .. tostring(answer.status) end
+  if answer.status ~= 200 then return nil, den.tr("EmuReady answered {}", tostring(answer.status)) end
   local body = den.json.decode(answer.body)
   local data = body and body.result and body.result.data
   if not data then return nil, "EmuReady's answer could not be read" end
@@ -57,9 +57,9 @@ end
 local function when(t)
   if not t then return "" end
   local days = (den.now() - t) // DAY
-  if days < 31 then return string.format("%d days ago", math.max(days, 0)) end
-  if days < 365 then return string.format("%d months ago", days // 30) end
-  return string.format("%.1f years ago", days / 365)
+  if days < 31 then return den.tr("{} days ago", string.format("%d", math.max(days, 0))) end
+  if days < 365 then return den.tr("{} months ago", string.format("%d", days // 30)) end
+  return den.tr("{} years ago", string.format("%.1f", days / 365))
 end
 
 -- This device as EmuReady knows it: its entry, chip and graphics (cached for a month).
@@ -194,19 +194,20 @@ local function game_page()
   local undo = den.storage.get("undo:" .. g.id)
   local lines = {}
   for _, change in ipairs(current.changes or {}) do
-    lines[#lines + 1] = string.format("%s: %s -> %s", change.label, change.from ~= "" and change.from or "default", change.to)
+    lines[#lines + 1] = string.format("%s: %s -> %s", den.tr(change.label), change.from ~= "" and change.from or den.tr("default"), change.to)
   end
   local source -- its own block below, so the page's outcome is never cut off
   if current.source then
     local d = current.source.details
     local said = d and match.settings_text(d.customFieldValues) or ""
-    source = string.format("From %s (match %d%%)%s", listing_line(current.source), current.source.score,
-                           said ~= "" and ("\nIt used " .. said) or "")
+    source = den.tr("From {} (match {}%)", listing_line(current.source), string.format("%d", current.source.score))
+        .. (said ~= "" and ("\n" .. den.tr("It used {}", said)) or "")
   end
   if #(current.ranked or {}) == 0 then
-    lines[#lines + 1] = "EmuReady has no listings for this game yet."
+    lines[#lines + 1] = den.tr("EmuReady has no listings for this game yet.")
   elseif #(current.changes or {}) == 0 and not core_unknown() then
-    lines[#lines + 1] = "Nothing to change: the listing's settings are what " .. (s.core_name or "the core") .. " uses already, or it gives none EmuDEN's core has."
+    lines[#lines + 1] = den.tr("Nothing to change: the listing's settings are what {} uses already, or it gives none EmuDEN's core has.",
+                               s.core_name or den.tr("the core"))
   end
   local buttons = {}
   if #(current.changes or {}) > 0 and not core_unknown() then
@@ -216,7 +217,7 @@ local function game_page()
   if current.chosen then buttons[#buttons + 1] = { label = "Best match", action = "choose", arg = 0 } end
   buttons[#buttons + 1] = { label = "Another EmuReady game", action = "rematch" }
   local body = {
-    { type = "detail", id = "game", title = g.name, subtitle = "Suggested for " .. me.name, image = "game:" .. g.id,
+    { type = "detail", id = "game", title = g.name, subtitle = den.tr("Suggested for {}", me.name), image = "game:" .. g.id,
       facts = { { label = "Core", value = s.core_name or "None" },
                 { label = "EmuReady game", value = current.er_game.title },
                 { label = "Listings", value = tostring(#(current.ranked or {})) } },
@@ -224,8 +225,8 @@ local function game_page()
   }
   if source then body[#body + 1] = { type = "text", text = source } end
   if core_unknown() then
-    body[#body + 1] = { type = "text", style = "warning", text = string.format(
-        "Start %s once, so EmuDEN learns the options of %s; then come back to apply these.", g.name, s.core_name or "its core") }
+    body[#body + 1] = { type = "text", style = "warning", text = den.tr(
+        "Start {} once, so EmuDEN learns the options of {}; then come back to apply these.", g.name, s.core_name or den.tr("its core")) }
   end
   if #(current.ranked or {}) > 0 then
     body[#body + 1] = { type = "text", style = "heading", text = "Closest listings" }
@@ -235,7 +236,9 @@ local function game_page()
     body[#body + 1] = { type = "row", id = "listing-" .. i, label = listing_line(entry),
                         value = string.format("%d%%", entry.score), action = "choose", arg = i }
     local notes = entry.listing.notes and entry.listing.notes ~= "" and entry.listing.notes or nil
-    local why = #entry.why > 0 and ("Close by: " .. table.concat(entry.why, ", ")) or nil
+    local reasons = {}
+    for k, reason in ipairs(entry.why) do reasons[k] = den.tr(reason) end
+    local why = #reasons > 0 and den.tr("Close by: {}", table.concat(reasons, ", ")) or nil
     local text = table.concat({ why or "", notes or "" }, why and notes and "\n" or "")
     if text ~= "" then body[#body + 1] = { type = "text", style = "caption", text = text } end
   end
@@ -245,10 +248,10 @@ local function game_page()
 end
 
 local function choice_page(game)
-  local body = { { type = "text", text = "Which EmuReady game is " .. game.name .. "?" } }
+  local body = { { type = "text", text = den.tr("Which EmuReady game is {}?", game.name) } }
   for i, item in ipairs(candidates or {}) do
     body[#body + 1] = { type = "row", id = "pick-" .. i, label = item.title,
-                        value = string.format("%d listings", item._count and item._count.listings or 0),
+                        value = den.tr("{} listings", string.format("%d", item._count and item._count.listings or 0)),
                         action = "pick", arg = i }
   end
   if not candidates or #candidates == 0 then
@@ -345,7 +348,7 @@ function plugin.actions.apply()
   end
   current.settings = den.game.settings(current.game.id)
   refresh_changes()
-  den.ui.toast("Set for " .. current.game.name .. ". It takes effect the next time it starts.")
+  den.ui.toast(den.tr("Set for {}. It takes effect the next time it starts.", current.game.name))
   den.ui.set(game_page())
 end
 
@@ -361,7 +364,7 @@ function plugin.actions.undo()
   den.storage.remove("undo:" .. current.game.id)
   current.settings = den.game.settings(current.game.id)
   refresh_changes()
-  den.ui.toast(current.game.name .. " has its earlier settings again.")
+  den.ui.toast(den.tr("{} has its earlier settings again.", current.game.name))
   den.ui.set(game_page())
 end
 

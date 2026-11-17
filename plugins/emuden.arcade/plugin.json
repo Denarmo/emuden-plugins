@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.arcade",
   "name": "Arcade",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -144,5 +144,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Arcade games with FinalBurn Neo and MAME 2003-Plus.": "Juegos arcade con FinalBurn Neo y MAME 2003-Plus."
+    }
   }
 }

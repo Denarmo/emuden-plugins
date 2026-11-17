@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.psx",
   "name": "PlayStation",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -188,5 +188,14 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Circle": "Círculo",
+      "Cross": "Cruz",
+      "PlayStation games with PCSX ReARMed.": "Juegos de PlayStation con PCSX ReARMed.",
+      "Square": "Cuadrado",
+      "Triangle": "Triángulo"
+    }
   }
 }

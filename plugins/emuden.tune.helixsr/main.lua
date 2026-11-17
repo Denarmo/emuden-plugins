@@ -112,7 +112,7 @@ local function home_page()
     body[#body + 1] = { type = "empty", title = "No Steam games", text = "Install a game in Steam, then open this page again." }
   end
   body[#body + 1] = { type = "text", style = "caption", text =
-      "Helix SR " .. release.version .. " by lonewolf0622, freeware. It is downloaded from github.com/lonewolf0622/HelixSR when you install it in a game; nothing of it is part of this plugin." }
+      den.tr("Helix SR {} by lonewolf0622, freeware. It is downloaded from github.com/lonewolf0622/HelixSR when you install it in a game; nothing of it is part of this plugin.", release.version) }
   return { title = "Helix SR", subtitle = "FSR 4 upscaling for games with FSR 3.1",
            search = { placeholder = "Find a game", value = filter, action = "search" }, body = body }
 end
@@ -122,25 +122,25 @@ local function game_page(progress)
   local state = game.state
   local can_install = false
   if game.error then
-    lines[1] = "The game's folder could not be read: " .. game.error
+    lines[1] = den.tr("The game's folder could not be read: {}", game.error)
   else
     facts[#facts + 1] = { label = "FSR 3.1 library", value = #game.targets > 0 and table.concat(game.targets, ", ") or "Not found" }
     facts[#facts + 1] = { label = "Anti-cheat", value = game.guard and (game.guard .. " (" .. game.guard_file .. ")") or "None found" }
     facts[#facts + 1] = { label = "Helix SR", value = state and (state.changed and "Changed by a game update" or "Installed") or "Not installed" }
     if game.guard then
-      lines[#lines + 1] = "This game ships " .. game.guard .. ". A changed library in a protected game can get an account banned, so Helix SR is not installed here."
+      lines[#lines + 1] = den.tr("This game ships {}. A changed library in a protected game can get an account banned, so Helix SR is not installed here.", game.guard)
     elseif state and not state.changed then
-      lines[#lines + 1] = "HLX FSR 4 is in place of the game's FSR library. Pick AMD FSR in the game's graphics settings to use it."
+      lines[#lines + 1] = den.tr("HLX FSR 4 is in place of the game's FSR library. Pick AMD FSR in the game's graphics settings to use it.")
     elseif state then
-      lines[#lines + 1] = "A game update put the game's own library back. Install again to use Helix SR, or Remove to forget it."
+      lines[#lines + 1] = den.tr("A game update put the game's own library back. Install again to use Helix SR, or Remove to forget it.")
       can_install = #game.targets > 0
     elseif #game.targets > 0 then
-      lines[#lines + 1] = "This game has FSR 3.1. Install replaces " .. FSR .. " with HLX FSR 4; the game's own file is kept and Remove puts it back."
+      lines[#lines + 1] = den.tr("This game has FSR 3.1. Install replaces {} with HLX FSR 4; the game's own file is kept and Remove puts it back.", FSR)
       can_install = true
     elseif game.old then
-      lines[#lines + 1] = "This game has FSR 3 as one library (" .. FSR_OLD .. "). The drop-in needs " .. FSR .. ", which games have from FSR 3.1 on."
+      lines[#lines + 1] = den.tr("This game has FSR 3 as one library ({}). The drop-in needs {}, which games have from FSR 3.1 on.", FSR_OLD, FSR)
     else
-      lines[#lines + 1] = "No FSR 3.1 library (" .. FSR .. ") was found in this game's folder. The drop-in works only in Direct3D 12 games that ship it."
+      lines[#lines + 1] = den.tr("No FSR 3.1 library ({}) was found in this game's folder. The drop-in works only in Direct3D 12 games that ship it.", FSR)
     end
   end
   if can_install and not progress then
@@ -149,7 +149,7 @@ local function game_page(progress)
   if state and not progress then
     buttons[#buttons + 1] = { label = "Remove", action = "remove" }
   end
-  body[#body + 1] = { type = "detail", id = "game", title = game.name, subtitle = "Helix SR " .. release.version .. ", FSR drop-in",
+  body[#body + 1] = { type = "detail", id = "game", title = game.name, subtitle = den.tr("Helix SR {}, FSR drop-in", release.version),
                       image = string.format(COVER, game.appid), aspect = 0.667,
                       facts = facts, text = table.concat(lines, "\n"), buttons = buttons }
   if progress then
@@ -170,7 +170,7 @@ local function load_game(appid, name)
   if found then
     game.targets, game.old, game.guard, game.guard_file = found.targets, found.old, found.guard, found.guard_file
   else
-    game.error = why or "unknown"
+    game.error = why or den.tr("unknown")
   end
   game.state = mod_state(appid)
 end
@@ -183,24 +183,24 @@ local function library()
     return kept.path
   end
   local megabytes = math.floor(release.size / 1048576 + 0.5)
-  if not den.ui.confirm{ title = "Download Helix SR " .. release.version .. "?",
-                         message = string.format("%d MB from github.com/lonewolf0622/HelixSR, the project's own release. It is checked against its published SHA-256 and kept for your other games.", megabytes),
+  if not den.ui.confirm{ title = den.tr("Download Helix SR {}?", release.version),
+                         message = den.tr("{} MB from github.com/lonewolf0622/HelixSR, the project's own release. It is checked against its published SHA-256 and kept for your other games.", string.format("%d", megabytes)),
                          yes = "Download" } then
     return nil
   end
-  den.ui.set(game_page("Downloading Helix SR " .. release.version))
+  den.ui.set(game_page(den.tr("Downloading Helix SR {}", release.version)))
   local zip, why = den.download{ url = release.url, name = release.name, sha256 = release.sha256,
                                  on_progress = function(fraction) den.ui.patch("progress", { fraction = fraction }) end }
-  if not zip then return nil, "Helix SR could not be downloaded: " .. tostring(why) end
+  if not zip then return nil, den.tr("Helix SR could not be downloaded: {}", tostring(why)) end
   if den.files.size(zip) ~= release.size then
     den.files.remove(zip)
-    return nil, "The download is not the Helix SR " .. release.version .. " this plugin knows (another size). Nothing was installed."
+    return nil, den.tr("The download is not the Helix SR {} this plugin knows (another size). Nothing was installed.", release.version)
   end
   den.ui.patch("progress", { label = "Unpacking HLX FSR 4", fraction = -1 })
   local unpacked, unpack_why = den.mods.unpack{ file = zip, entries = { release.library } }
   den.files.remove(zip)
   local path = unpacked and unpacked[release.library]
-  if not path then return nil, "Helix SR could not be unpacked: " .. tostring(unpack_why) end
+  if not path then return nil, den.tr("Helix SR could not be unpacked: {}", tostring(unpack_why)) end
   if den.files.size(path) ~= release.library_size then
     return nil, "The unpacked library is not the one this plugin knows (another size). Nothing was installed."
   end

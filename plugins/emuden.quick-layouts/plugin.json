@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.quick-layouts",
   "name": "Quick Layouts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -58,5 +58,14 @@
         "actions": ["pause", "rewind", "fast_forward", "exit"]
       }
     ]
+  },
+  "translations": {
+    "es": {
+      "Compact": "Compacto",
+      "Dock": "Barra",
+      "Grid": "Cuadrícula",
+      "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, or controls beside your save states.": "Otras formas de colocar los ajustes rápidos de la segunda pantalla mientras juegas: mosaicos táctiles grandes, una lista compacta, una barra bajo el juego o controles junto a tus estados guardados.",
+      "Split": "Dividido"
+    }
   }
 }

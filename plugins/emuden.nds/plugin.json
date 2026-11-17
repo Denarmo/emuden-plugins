@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nds",
   "name": "Nintendo DS",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -265,5 +265,13 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "How the two screens are laid out. The choices come from the emulator.": "Cómo se colocan las dos pantallas. Las opciones vienen del emulador.",
+      "Local wireless between two DS, played with melonDS DS. Each device plays its own game and save.": "Conexión inalámbrica local entre dos DS, con melonDS DS. Cada dispositivo juega su propio juego y partida.",
+      "Nintendo DS games with melonDS.": "Juegos de Nintendo DS con melonDS.",
+      "Screens": "Pantallas"
+    }
   }
 }

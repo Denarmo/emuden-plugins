@@ -37,7 +37,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from plugin_addons import (EXECUTABLE_EXTENSIONS, EXECUTABLE_MAGICS, addon_folders,  # noqa: E402
                            build_catalogue, pack_addon, sha256_file, validate_addon)
 from plugin_kinds import (HOST_CAPABILITIES, SHARED_MARK, ignored_fields, safe_relative,  # noqa: E402
-                          shared_files, validate_feature, validate_interface)
+                          shared_files, validate_feature, validate_interface,
+                          validate_translations)
 from plugin_schema import check_schema, load_json, load_schema  # noqa: E402
 import plugin_manual  # noqa: E402
 import plugin_sign  # noqa: E402
@@ -96,6 +97,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
     if namespace and trust == "third-party" and plugin_id.split(".")[0] != namespace:
         err("id", f"must start with {namespace}. (the owner of the repository)")
     kind, engine = manifest["kind"], manifest.get("engine")
+    validate_translations(manifest, err)
     if kind == "feature":
         validate_feature(manifest, trust, folder, err)
     elif "feature" in manifest:

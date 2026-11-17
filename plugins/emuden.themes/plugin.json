@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.themes",
   "name": "Themes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -129,5 +129,20 @@
         "accent": "#3b5d22"
       }
     }
-  ]
+  ],
+  "translations": {
+    "es": {
+      "Cloud": "Nube",
+      "Deep Harbor": "Puerto profundo",
+      "Ember Dusk": "Brasas al atardecer",
+      "Fernwood": "Helechal",
+      "Glacier": "Glaciar",
+      "Lavender Night": "Noche lavanda",
+      "Parchment": "Pergamino",
+      "Pocket Green": "Verde de bolsillo",
+      "Signal": "Señal",
+      "Ten more colour themes for the whole app, dark and light: pure black, deep blue, forest, warm dusk, lavender, cool grey, a bold high-contrast one, paper, a soft light one and a retro handheld green.": "Diez temas de color más para toda la app, oscuros y claros: negro puro, azul profundo, bosque, atardecer cálido, lavanda, gris frío, uno de alto contraste, papel, uno claro y suave y un verde de portátil retro.",
+      "Void": "Vacío"
+    }
+  }
 }

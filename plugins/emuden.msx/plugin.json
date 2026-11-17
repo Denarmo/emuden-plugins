@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.msx",
   "name": "MSX",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -148,5 +148,12 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "C-BIOS machines": "Máquinas C-BIOS",
+      "MSX, MSX2 and MSX2+ cartridge games with blueMSX and the free C-BIOS.": "Juegos en cartucho de MSX, MSX2 y MSX2+ con blueMSX y el C-BIOS libre.",
+      "blueMSX databases": "Bases de datos de blueMSX"
+    }
   }
 }

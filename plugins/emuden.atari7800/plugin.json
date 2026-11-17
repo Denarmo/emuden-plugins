@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari7800",
   "name": "Atari 7800",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -114,5 +114,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Atari 7800 games with ProSystem.": "Juegos de Atari 7800 con ProSystem."
+    }
   }
 }

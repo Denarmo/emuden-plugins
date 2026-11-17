@@ -88,8 +88,8 @@ return function(auth)
     if response.status == 403 and why == "storageQuotaExceeded" then
       return "Your Google Drive is full"
     end
-    return string.format("%s: Google Drive answered %d%s", what, response.status,
-                         message and (" (" .. message .. ")") or "")
+    return den.tr("{}: Google Drive answered {}{}", what, response.status,
+                  message and (" (" .. message .. ")") or "")
   end
 
   -- den.json.encode of an empty table is "[]"; Drive wants an object.
@@ -111,7 +111,7 @@ return function(auth)
       if token then params.pageToken = token end
       local response, err = call{ url = API .. "/files" .. util.query(params) }
       if not response then return nil, err end
-      if response.status ~= 200 then return nil, failure(response, "Listing failed") end
+      if response.status ~= 200 then return nil, failure(response, den.tr("Listing failed")) end
       local body = decode(response)
       for _, file in ipairs(body.files or {}) do each(file) end
       token = body.nextPageToken
@@ -135,7 +135,7 @@ return function(auth)
     if parent then meta.parents = { parent } end
     local response, err = json_call("POST", API .. "/files?fields=id", meta)
     if not response then return nil, err end
-    if response.status ~= 200 then return nil, failure(response, "Creating " .. name .. " failed") end
+    if response.status ~= 200 then return nil, failure(response, den.tr("Creating {} failed", name)) end
     return decode(response).id
   end
 
@@ -148,7 +148,7 @@ return function(auth)
       if response and response.status == 200 and not decode(response).trashed then
         root = known
       elseif response and response.status ~= 404 and response.status ~= 200 then
-        return nil, failure(response, "Opening the EmuDEN folder failed")
+        return nil, failure(response, den.tr("Opening the EmuDEN folder failed"))
       elseif not response then
         return nil, "no connection"
       end
@@ -334,7 +334,7 @@ return function(auth)
       files[path] = nil
       return nil, "not found"
     end
-    if response.status ~= 200 then return nil, failure(response, "Download failed") end
+    if response.status ~= 200 then return nil, failure(response, den.tr("Download failed")) end
     return true
   end
 
@@ -489,7 +489,7 @@ return function(auth)
     end
     if not response then return nil, why end
     if response.status ~= 200 and response.status ~= 201 then
-      return nil, failure(response, "Upload failed")
+      return nil, failure(response, den.tr("Upload failed"))
     end
     local file = decode(response)
     if not file.id then return nil, "Upload failed: Google Drive sent no file" end
@@ -507,7 +507,7 @@ return function(auth)
     if not response then return nil, why end
     files[path] = nil
     if response.status == 200 or response.status == 404 then return true end
-    return nil, failure(response, "Delete failed")
+    return nil, failure(response, den.tr("Delete failed"))
   end
 
   -- { account, name, used, total, free } (total and free nil for unlimited storage)
@@ -515,7 +515,7 @@ return function(auth)
     local response, err = call{ url = API .. "/about" .. util.query{
       fields = "user(displayName,emailAddress),storageQuota(limit,usage)" } }
     if not response then return nil, err end
-    if response.status ~= 200 then return nil, failure(response, "Account check failed") end
+    if response.status ~= 200 then return nil, failure(response, den.tr("Account check failed")) end
     local body = decode(response)
     local user, quota = body.user or {}, body.storageQuota or {}
     local used, total = tonumber(quota.usage), tonumber(quota.limit)

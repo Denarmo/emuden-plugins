@@ -220,6 +220,17 @@ den = {
   api = 1, plugin = { id = "emuden.sync.romm", version = "1.0.0" },
   log = function(text) log[#log + 1] = text end,
   now = function() return now end,
+  language = function() return "en" end,
+  tr = function(text, ...)
+    local values, out, i, n = table.pack(...), {}, 1, 0
+    while i <= #text do
+      local two = text:sub(i, i + 1)
+      if two == "{{" or two == "}}" then out[#out + 1] = two:sub(1, 1); i = i + 2
+      elseif two == "{}" then n = n + 1; out[#out + 1] = tostring(values[n]); i = i + 2
+      else out[#out + 1] = text:sub(i, i); i = i + 1 end
+    end
+    return table.concat(out)
+  end,
   sleep = function(ms) now = now + ms / 1000 end,
   json = { encode = json.encode, decode = json.decode, null = json.null },
   storage = { get = function(k) return storage[k] end, set = function(k, v) storage[k] = v end,

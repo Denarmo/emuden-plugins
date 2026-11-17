@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ngpc",
   "name": "Neo Geo Pocket Color",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -104,5 +104,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Neo Geo Pocket Color games with Beetle NeoPop.": "Juegos de Neo Geo Pocket Color con Beetle NeoPop."
+    }
   }
 }

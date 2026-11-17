@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.saturn",
   "name": "Sega Saturn",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -105,5 +105,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Saturn games with Beetle Saturn.": "Juegos de Saturn con Beetle Saturn."
+    }
   }
 }

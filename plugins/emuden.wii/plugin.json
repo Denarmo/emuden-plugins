@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.wii",
   "name": "Nintendo Wii",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -170,5 +170,11 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Dolphin system files": "Archivos de sistema de Dolphin",
+      "Wii games with Dolphin.": "Juegos de Wii con Dolphin."
+    }
   }
 }

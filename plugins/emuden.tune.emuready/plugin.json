@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.emuready",
   "name": "Tune: EmuReady",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -11,7 +11,8 @@
   "needs": [
     "kind.feature",
     "feature.lua.1",
-    "feature.tune.1"
+    "feature.tune.1",
+    "feature.tr.1"
   ],
   "platforms": [
     "any"
@@ -44,6 +45,63 @@
     ],
     "limits": {
       "memory_mb": 32
+    }
+  },
+  "translations": {
+    "es": {
+      "Sets a game up from EmuReady listings of devices like yours (the same device, the same chip, then similar graphics): resolution, renderer and frame skip for the core EmuDEN uses, for that game only, after you agree. Undo puts them back.": "Ajusta un juego con los listados de EmuReady de dispositivos como el tuyo (el mismo dispositivo, el mismo chip y luego gráficos parecidos): resolución, renderizador y salto de fotogramas del núcleo que usa EmuDEN, solo para ese juego y después de que aceptes. Deshacer los devuelve a como estaban.",
+      "EmuReady asks to wait a little; try again in a few minutes.": "EmuReady pide esperar un poco; inténtalo de nuevo en unos minutos.",
+      "EmuReady answered {}": "EmuReady respondió {}",
+      "EmuReady's answer could not be read": "No se pudo leer la respuesta de EmuReady",
+      "{} days ago": "hace {} días",
+      "{} months ago": "hace {} meses",
+      "{} years ago": "hace {} años",
+      "EmuReady has no entry for this device; listings of devices with similar graphics are used.": "EmuReady no tiene una entrada para este dispositivo; se usan listados de dispositivos con gráficos parecidos.",
+      "No games to tune": "No hay juegos que ajustar",
+      "Add PlayStation, PSP, DS, N64, GameCube, Wii, Dreamcast or Saturn games to the library.": "Añade juegos de PlayStation, PSP, DS, N64, GameCube, Wii, Dreamcast o Saturn a la biblioteca.",
+      "Listings: EmuReady (emuready.com) community reports.": "Listados: informes de la comunidad de EmuReady (emuready.com).",
+      "Settings from players with devices like yours": "Ajustes de jugadores con dispositivos como el tuyo",
+      "Find a game": "Buscar un juego",
+      "default": "predeterminado",
+      "Resolution": "Resolución",
+      "Renderer": "Renderizador",
+      "Frame skip": "Salto de fotogramas",
+      "EE cycle rate": "Velocidad de ciclos del EE",
+      "EE cycle skip": "Salto de ciclos del EE",
+      "Threaded rendering": "Renderizado en hilos",
+      "From {} (match {}%)": "De {} (coincidencia del {}%)",
+      "It used {}": "Usaba {}",
+      "EmuReady has no listings for this game yet.": "EmuReady aún no tiene listados de este juego.",
+      "Nothing to change: the listing's settings are what {} uses already, or it gives none EmuDEN's core has.": "Nada que cambiar: los ajustes del listado son los que {} ya usa, o no da ninguno que tenga el núcleo de EmuDEN.",
+      "the core": "el núcleo",
+      "Apply": "Aplicar",
+      "Undo": "Deshacer",
+      "Best match": "Mejor coincidencia",
+      "Another EmuReady game": "Otro juego de EmuReady",
+      "Suggested for {}": "Sugerido para {}",
+      "Core": "Núcleo",
+      "None": "Ninguno",
+      "EmuReady game": "Juego de EmuReady",
+      "Listings": "Listados",
+      "Start {} once, so EmuDEN learns the options of {}; then come back to apply these.": "Inicia {} una vez para que EmuDEN conozca las opciones de {}; luego vuelve para aplicar estos ajustes.",
+      "its core": "su núcleo",
+      "Closest listings": "Listados más parecidos",
+      "Close by: {}": "Parecidos: {}",
+      "same device": "mismo dispositivo",
+      "same chip": "mismo chip",
+      "similar graphics": "gráficos parecidos",
+      "near graphics": "gráficos cercanos",
+      "same emulator": "mismo emulador",
+      "Choose a listing to use its settings. Listings: EmuReady contributors (emuready.com).": "Elige un listado para usar sus ajustes. Listados: colaboradores de EmuReady (emuready.com).",
+      "Which EmuReady game is {}?": "¿Qué juego de EmuReady es {}?",
+      "{} listings": "{} listados",
+      "EmuReady has no game of this name": "EmuReady no tiene ningún juego con este nombre",
+      "Search EmuReady for": "Buscar en EmuReady",
+      "Reading EmuReady": "Leyendo EmuReady",
+      "EmuReady could not be read": "No se pudo leer EmuReady",
+      "Finding the game": "Buscando el juego",
+      "Set for {}. It takes effect the next time it starts.": "Aplicado a {}. Surte efecto la próxima vez que se inicie.",
+      "{} has its earlier settings again.": "{} vuelve a tener sus ajustes anteriores."
     }
   }
 }

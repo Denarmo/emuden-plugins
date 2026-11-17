@@ -80,6 +80,8 @@ only in `plugin.actions.*`.
 | `den.device.platform` | - | the app's platform name | - | - |
 | `den.log(text)` | any value (shown with `tostring`) | - ; to the app log, the last 200 lines shown for developer plugins, cut at 4000 bytes | - | - |
 | `den.now()` | - | Unix seconds | - | - |
+| `den.language()` | - | the app's language code: `en`, `es`, `pt-BR` | - | `feature.tr.1` |
+| `den.tr(text, ...)` | English text, then values for its `{}` fields | the plugin's own translation of `text` in the app's language ([translations](manifest.md#translations)), else `text`, with each `{}` replaced by the next value (`{{` and `}}` are braces) | - | `feature.tr.1` |
 | `den.sleep(ms)` *(wait)* | 0 to 600000 | - | - | - |
 | `den.include(name)` | a `.lua` file of the package (`"lib/util.lua"`) | the value the script returns. It runs anew on every call (no cache), in the same environment, and may wait | - | - |
 | `den.download{url, name, sha256?, on_progress?}` *(wait)* | https URL of `http.hosts`; a plain file name; a hex SHA-256 to check; `on_progress(fraction)` | `"downloads/<name>"`; at most 256 MiB (512 MiB for a plugin with `game.files`) and the folder's quota | `download` | - |

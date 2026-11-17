@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.retroachievements",
   "name": "RetroAchievements",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -11,7 +11,8 @@
   "needs": [
     "kind.feature",
     "feature.lua.1",
-    "feature.achievements.1"
+    "feature.achievements.1",
+    "feature.tr.1"
   ],
   "platforms": [
     "any"
@@ -37,6 +38,63 @@
     ],
     "limits": {
       "memory_mb": 32
+    }
+  },
+  "translations": {
+    "es": {
+      "Earn RetroAchievements while you play Game Boy, GBA, DS, PlayStation and more: pop-ups for unlocks, progress and leaderboard attempts, each game's progress and your profile. Sign in with your own RetroAchievements account; hardcore mode is an option.": "Consigue logros de RetroAchievements mientras juegas a Game Boy, GBA, DS, PlayStation y más: avisos de logros, progreso e intentos de tablas de clasificación, el progreso de cada juego y tu perfil. Inicia sesión con tu propia cuenta de RetroAchievements; el modo hardcore es opcional.",
+      "On": "Activado",
+      "Off": "Desactivado",
+      "Signing in": "Iniciando sesión",
+      "Earn achievements in your games while you play. Sign in with your RetroAchievements account: EmuDEN keeps the sign-in token RetroAchievements gives it, never your password.": "Consigue logros en tus juegos mientras juegas. Inicia sesión con tu cuenta de RetroAchievements: EmuDEN guarda el token de sesión que le da RetroAchievements, nunca tu contraseña.",
+      "User name": "Nombre de usuario",
+      "Password": "Contraseña",
+      "Sign in": "Iniciar sesión",
+      "No account yet? Make one on retroachievements.org, then sign in here.": "¿Aún no tienes cuenta? Crea una en retroachievements.org y luego inicia sesión aquí.",
+      "About": "Acerca de",
+      "Not signed in": "Sin sesión iniciada",
+      "Hardcore points": "Puntos hardcore",
+      "Softcore points": "Puntos softcore",
+      "Unread messages": "Mensajes sin leer",
+      "Your games": "Tus juegos",
+      "Now playing": "Jugando ahora",
+      "Progress": "Progreso",
+      "While you play": "Mientras juegas",
+      "Hardcore mode": "Modo hardcore",
+      "Hardcore counts unlocks as hardcore on your profile. As RetroAchievements requires, loading save states, rewind, cheats and slow motion are off then, and a game that is running starts again when you turn it on.": "Hardcore cuenta los logros como hardcore en tu perfil. Como exige RetroAchievements, cargar estados guardados, rebobinar, los trucos y la cámara lenta se desactivan, y un juego en curso empieza de nuevo cuando lo activas.",
+      "Sound on unlock": "Sonido al desbloquear",
+      "Screenshot on unlock": "Captura al desbloquear",
+      "Your progress is kept by RetroAchievements, so every device you sign in on shows it.": "RetroAchievements guarda tu progreso, así que se ve en cada dispositivo en el que inicies sesión.",
+      "Sign out": "Cerrar sesión",
+      "Signed in as {}": "Sesión iniciada como {}",
+      "No games of these consoles": "No hay juegos de estas consolas",
+      "Add games of a console RetroAchievements covers to your library.": "Añade a tu biblioteca juegos de una consola que RetroAchievements admita.",
+      "Unlocked": "Desbloqueado",
+      "{} of {}": "{} de {}",
+      "Points": "Puntos",
+      "Mode": "Modo",
+      "Hardcore": "Hardcore",
+      "Softcore": "Softcore",
+      "Mastered": "Dominado",
+      "{} points, unlocked": "{} puntos, desbloqueado",
+      "{} points, {}": "{} puntos, {}",
+      "{} points": "{} puntos",
+      "Playing now": "Jugando ahora",
+      "Enter your user name and password.": "Escribe tu nombre de usuario y contraseña.",
+      "Signed in to RetroAchievements": "Sesión iniciada en RetroAchievements",
+      "Sign out?": "¿Cerrar sesión?",
+      "EmuDEN forgets the sign-in on this device. Your achievements stay on RetroAchievements.": "EmuDEN olvida la sesión en este dispositivo. Tus logros se quedan en RetroAchievements.",
+      "Turn hardcore on?": "¿Activar hardcore?",
+      "The game that is running starts again from the beginning. Progress that is not saved is lost.": "El juego en curso empieza de nuevo desde el principio. El progreso sin guardar se pierde.",
+      "Turn on": "Activar",
+      "Asking RetroAchievements": "Consultando a RetroAchievements",
+      "Players who have it": "Jugadores que lo tienen",
+      "State": "Estado",
+      "Locked": "Bloqueado",
+      "Achievements come from RetroAchievements.org, made by its community. EmuDEN identifies the game you start by the same hash RetroAchievements uses, checks the achievements against the game's memory while it runs, and sends unlocks to RetroAchievements with your sign-in token.": "Los logros vienen de RetroAchievements.org, hechos por su comunidad. EmuDEN identifica el juego que inicias con el mismo hash que usa RetroAchievements, comprueba los logros en la memoria del juego mientras se ejecuta y envía los desbloqueos a RetroAchievements con tu token de sesión.",
+      "Achievements are made for particular dumps of a game: a different version (a hack, a translation, another region) may have none. Games that run in an emulator app outside EmuDEN, and consoles RetroAchievements does not cover, have no achievements here.": "Los logros se hacen para volcados concretos de un juego: otra versión (un hack, una traducción, otra región) puede no tener ninguno. Los juegos que se ejecutan en una app de emulador fuera de EmuDEN, y las consolas que RetroAchievements no admite, no tienen logros aquí.",
+      "Your password is sent to RetroAchievements once, over https, and is not kept. Signing out, or removing this plugin with its data, deletes the token.": "Tu contraseña se envía a RetroAchievements una sola vez, por https, y no se guarda. Cerrar sesión, o quitar este plugin con sus datos, borra el token.",
+      "Not affiliated with RetroAchievements.org.": "Sin relación con RetroAchievements.org."
     }
   }
 }

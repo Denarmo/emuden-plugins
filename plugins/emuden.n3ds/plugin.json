@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.n3ds",
   "name": "Nintendo 3DS",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -165,5 +165,10 @@
     "states": true,
     "settings": true,
     "cheats": false
+  },
+  "translations": {
+    "es": {
+      "Nintendo 3DS games with Azahar. No BIOS or keys needed for games that run on the built-in system.": "Juegos de Nintendo 3DS con Azahar. Los juegos que funcionan con el sistema incluido no necesitan BIOS ni claves."
+    }
   }
 }

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pce",
   "name": "PC Engine / TurboGrafx-16",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -143,5 +143,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "PC Engine and TurboGrafx-16 games with Beetle PCE FAST.": "Juegos de PC Engine y TurboGrafx-16 con Beetle PCE FAST."
+    }
   }
 }

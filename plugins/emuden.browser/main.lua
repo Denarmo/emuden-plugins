@@ -84,7 +84,7 @@ local function set_up(name, title, host, base)
     remember(name, { title = title or "", host = host or "" })
     asked = true
     if browsing then
-      den.ui.toast(done.message .. " Choose the game on the Browser's Downloads page.")
+      den.ui.toast(den.tr("{} Choose the game on the Browser's Downloads page.", done.message))
     end
   else
     if stored("pending")[name] then

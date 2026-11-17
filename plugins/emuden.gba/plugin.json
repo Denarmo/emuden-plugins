@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gba",
   "name": "Game Boy Advance",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -427,5 +427,11 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "A link cable or wireless adapter between two Game Boy Advance, played with gpSP. Each device plays its own game and save; in Pokemon go to a Pokemon Center's upper floor.": "Un cable link o adaptador inalámbrico entre dos Game Boy Advance, con gpSP. Cada dispositivo juega su propio juego y partida; en Pokémon, sube a la planta de arriba de un Centro Pokémon.",
+      "Game Boy Advance games with mGBA.": "Juegos de Game Boy Advance con mGBA."
+    }
   }
 }

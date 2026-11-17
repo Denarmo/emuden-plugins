@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.pico8",
   "name": "PICO-8",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -107,5 +107,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "PICO-8 carts. Bring your own core: fake08 or retro8.": "Cartuchos de PICO-8. Pon tú el núcleo: fake08 o retro8."
+    }
   }
 }

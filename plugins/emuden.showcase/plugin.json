@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.showcase",
   "name": "Showcase",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -77,6 +77,11 @@
       "psx": { "color": "#6b7280", "label": "PS1" },
       "ps2": { "color": "#24366e", "label": "PS2" },
       "psp": { "color": "#3a3a48", "label": "PSP" }
+    }
+  },
+  "translations": {
+    "es": {
+      "A Home made for a controller: consoles as coloured tabs you flip through with the shoulder buttons, and one gliding row of large covers.": "Un Inicio pensado para el mando: las consolas como pestañas de colores que pasas con los botones superiores y una fila deslizante de portadas grandes."
     }
   }
 }

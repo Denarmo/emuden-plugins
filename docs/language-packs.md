@@ -46,6 +46,27 @@ match is ignored by the app and refused by `validate`. `python -I tools/plugin_t
 checks that, and `python tools/extract_strings.py --missing strings.json` in the EmuDEN repository
 lists the English texts a pack has not translated yet.
 
+## plugin_strings.json
+
+Optional: texts for other plugins, by plugin id, so a pack can translate a plugin that has no
+translation of its own in that language (or reword one it has):
+
+```json
+{
+  "emuden.sync.gdrive": { "Sign in with Google": "Entrar con Google" },
+  "jdoe.hello-feature": { "Say hello": "Saludar", "{} saves": "{} partidas" }
+}
+```
+
+Keys are the plugin's English texts (its manifest's names, labels and descriptions, and what its
+script passes to `den.tr`). A pack's text wins over the plugin's own; the same `{}` rule applies.
+
+## Plugins' own translations
+
+Every plugin can carry its texts in other languages itself, without a pack: see
+[translations](manifest.md#translations). Those apply whenever the app is in that language,
+whichever pack is installed.
+
 ## Games
 
 The app's language also reaches the games:

@@ -51,7 +51,7 @@ local function refresh()
     if status == 401 or status == 403 then
       den.secrets.remove(KEY)
       state.has_key, client = false, nil
-      err = err .. " Copy the key again from Syncthing's settings."
+      err = den.tr("{} Copy the key again from Syncthing's settings.", err)
     end
     return disconnected(err)
   end

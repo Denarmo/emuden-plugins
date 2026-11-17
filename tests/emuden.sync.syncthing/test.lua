@@ -120,6 +120,17 @@ local function make_env(platform)
     api = 1, plugin = { id = "emuden.sync.syncthing", version = "1.0.0" },
     device = { platform = platform }, json = json, log = function() end,
     now = function() return 1763200000 end,
+    language = function() return "en" end,
+    tr = function(text, ...)
+      local values, out, i, n = table.pack(...), {}, 1, 0
+      while i <= #text do
+        local two = text:sub(i, i + 1)
+        if two == "{{" or two == "}}" then out[#out + 1] = two:sub(1, 1); i = i + 2
+        elseif two == "{}" then n = n + 1; out[#out + 1] = tostring(values[n]); i = i + 2
+        else out[#out + 1] = text:sub(i, i); i = i + 1 end
+      end
+      return table.concat(out)
+    end,
     sleep = function() end,
     storage = { get = function(k) return copy(storage[k]) end,
                 set = function(k, v) storage[k] = copy(v) end,

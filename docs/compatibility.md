@@ -30,6 +30,7 @@ The names `needs` may hold are listed, with what each means, in
 | `feature.achievements.1` | `achievements` (EmuDEN's own plugins only) |
 | `feature.browser.1` | `browse.any`, `downloads.setup` (EmuDEN's own plugins only) |
 | `feature.mods.1` | `game.files` (EmuDEN's own plugins only) |
+| `feature.tr.1` | a script that calls `den.tr` or `den.language` |
 | `kind.interface`, `interface.1` | every interface plugin |
 
 A plugin must list the engine it uses, `settings.v1` when it has settings, the `content.` name

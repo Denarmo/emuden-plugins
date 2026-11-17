@@ -4,14 +4,14 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 82,
-  "generated": "2026-11-17T19:56:20Z",
-  "expires": "2027-03-17T19:56:20Z",
+  "sequence": 83,
+  "generated": "2026-11-17T20:18:50Z",
+  "expires": "2027-03-17T20:18:50Z",
   "plugins": [
     {
       "id": "emuden.32x",
       "name": "Sega 32X",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -38,9 +38,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.32x-1.0.1.emuplugin",
-        "sha256": "eb83819440f7f55314102838766384583c982efe08675bcda91ee96dc2145761",
-        "size": 1078
+        "url": "packages/emuden.32x-1.0.2.emuplugin",
+        "sha256": "ec57b28a4d34a1ba224ffeaca5bbb37097c58dfc62d04efdc7333fa46c2613f9",
+        "size": 1113
       },
       "download_size": {
         "linux-x86_64": 864823,
@@ -53,7 +53,7 @@
     {
       "id": "emuden.arcade",
       "name": "Arcade",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -84,9 +84,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.arcade-1.0.1.emuplugin",
-        "sha256": "c74373e3e9e7df53241abbbe531757ae2e0afe5cdfec77471051385473121006",
-        "size": 1366
+        "url": "packages/emuden.arcade-1.0.2.emuplugin",
+        "sha256": "e6b06680ab3cfd107431e821b44852797923d25c23216c73538a6d2c5204785c",
+        "size": 1406
       },
       "download_size": {
         "windows-x86_64": 27903405,
@@ -100,7 +100,7 @@
     {
       "id": "emuden.atari2600",
       "name": "Atari 2600",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -129,9 +129,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.atari2600-1.0.1.emuplugin",
-        "sha256": "83d5538f1f381901e69b2bb44886d13f60b08c1524f307100f5eaea87790ebdd",
-        "size": 1105
+        "url": "packages/emuden.atari2600-1.0.2.emuplugin",
+        "sha256": "1e06d1b54243d7cac1ea812252bc47837e4c12be08b2f93027d2d326d14deff3",
+        "size": 1139
       },
       "download_size": {
         "windows-x86_64": 1902142,
@@ -145,7 +145,7 @@
     {
       "id": "emuden.atari5200",
       "name": "Atari 5200",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -172,9 +172,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.atari5200-1.0.2.emuplugin",
-        "sha256": "5294ece381feaa392bdc6d1c361fb74fca65439545fff7d6ac3f6d4a3f908794",
-        "size": 1079
+        "url": "packages/emuden.atari5200-1.0.3.emuplugin",
+        "sha256": "54f27a1361400a0a6fdcb182ff1922701c0c86eb5f566a682f0509f925e35550",
+        "size": 1114
       },
       "download_size": {
         "windows-x86_64": 137251,
@@ -188,7 +188,7 @@
     {
       "id": "emuden.atari7800",
       "name": "Atari 7800",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -216,9 +216,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.atari7800-1.0.2.emuplugin",
-        "sha256": "dcd1adac425fc548ca80d1e0c1fbf16d59388c4b1cefc4ed5835f0291f62ad33",
-        "size": 1150
+        "url": "packages/emuden.atari7800-1.0.3.emuplugin",
+        "sha256": "79a0e27a3efb204c520d0a06b5f11e3133dfa838f897fbad92e794a7c12a63af",
+        "size": 1184
       },
       "download_size": {
         "windows-x86_64": 94185,
@@ -232,7 +232,7 @@
     {
       "id": "emuden.browser",
       "name": "Browser",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -244,7 +244,8 @@
         "kind.feature",
         "feature.lua.1",
         "feature.web.1",
-        "feature.browser.1"
+        "feature.browser.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -255,9 +256,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.browser-1.0.1.emuplugin",
-        "sha256": "49c5417dd2186e1cdb6f463d5b2ae0fd893ec6c04d939a83d3fe0cc6f1a2141f",
-        "size": 15409
+        "url": "packages/emuden.browser-1.0.2.emuplugin",
+        "sha256": "21dab566cb469ff13b1255dd0e6a5f68c46c2f20f2bfdd99c7bdafc976b14493",
+        "size": 17921
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -279,7 +280,7 @@
     {
       "id": "emuden.dreamcast",
       "name": "Sega Dreamcast",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -305,9 +306,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.dreamcast-1.0.4.emuplugin",
-        "sha256": "48bfca781ed1e576b7cb200b4a9cb7050306b5a85d23be954a72b86e9f738cee",
-        "size": 1340
+        "url": "packages/emuden.dreamcast-1.0.5.emuplugin",
+        "sha256": "f0a6ed04233c774cc949906397400039b1c48a45ec0a77881d81821104e14590",
+        "size": 1375
       },
       "download_size": {
         "windows-x86_64": 6479426,
@@ -321,7 +322,7 @@
     {
       "id": "emuden.gamecube",
       "name": "Nintendo GameCube",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -349,9 +350,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gamecube-1.1.0.emuplugin",
-        "sha256": "d4e43c3616354597a14de1967a4e4f3bd6d9159a075d2061b8104780fb287b63",
-        "size": 1636
+        "url": "packages/emuden.gamecube-1.1.1.emuplugin",
+        "sha256": "5fd49574780fdf41a6df542ae28068f0d62344fcb97d8c63f224b831fbc46815",
+        "size": 1686
       },
       "download_size": {
         "windows-x86_64": 13092702,
@@ -365,7 +366,7 @@
     {
       "id": "emuden.gb",
       "name": "Game Boy",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -392,9 +393,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gb-1.1.1.emuplugin",
-        "sha256": "0e0f173cc20e1d52d0ae1194c8c9c702a1da882f0a9090bca629d6a1097988fe",
-        "size": 2178
+        "url": "packages/emuden.gb-1.1.2.emuplugin",
+        "sha256": "24289b31030e37dc815a318193361b6497957ae353f46ac6f67e65d2a6bf6920",
+        "size": 2335
       },
       "download_size": {
         "windows-x86_64": 1266861,
@@ -408,7 +409,7 @@
     {
       "id": "emuden.gba",
       "name": "Game Boy Advance",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -435,9 +436,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gba-1.2.1.emuplugin",
-        "sha256": "07b8a834b4a7d29b48bb7149643092535c25ebb980711f24910125f6775e4030",
-        "size": 2718
+        "url": "packages/emuden.gba-1.2.2.emuplugin",
+        "sha256": "c668f360f3252eaf3650b21aaca788ba1e1493a643d25928c04ca17bbe8691de",
+        "size": 2872
       },
       "download_size": {
         "windows-x86_64": 1783085,
@@ -451,7 +452,7 @@
     {
       "id": "emuden.gbc",
       "name": "Game Boy Color",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -478,9 +479,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gbc-1.1.1.emuplugin",
-        "sha256": "8dcd12de0419d12cccc573b04a9e49f520f0b7c22c5ec0063b4b132f66f87efe",
-        "size": 2186
+        "url": "packages/emuden.gbc-1.1.2.emuplugin",
+        "sha256": "5ca0ba1aa2fc5913e3961d306cc903623bdafb033f1d94f9f6a3b1abb16a0b26",
+        "size": 2345
       },
       "download_size": {
         "windows-x86_64": 1266861,
@@ -494,7 +495,7 @@
     {
       "id": "emuden.genesis",
       "name": "Sega Genesis / Mega Drive",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -523,9 +524,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.genesis-1.0.3.emuplugin",
-        "sha256": "718828256e3c0cab10aa83cad68434d1a05e3b826df13b697e8d10c3089f513f",
-        "size": 1566
+        "url": "packages/emuden.genesis-1.0.4.emuplugin",
+        "sha256": "e9edb72be78da32aadbba43d4a936a87241a3cf6e38355bef4616a1806b4e0e2",
+        "size": 1612
       },
       "download_size": {
         "windows-x86_64": 1855325,
@@ -539,7 +540,7 @@
     {
       "id": "emuden.gg",
       "name": "Sega Game Gear",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -566,9 +567,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.gg-1.0.3.emuplugin",
-        "sha256": "542f11165084628280b4dc69e041aaae83d49c02a134554ad17abccab485c983",
-        "size": 1550
+        "url": "packages/emuden.gg-1.0.4.emuplugin",
+        "sha256": "0a1f4d0148a7159f8265cd82439d83acc8afbd7720e0b94b8d9e5c176badab3a",
+        "size": 1588
       },
       "download_size": {
         "windows-x86_64": 1855325,
@@ -582,7 +583,7 @@
     {
       "id": "emuden.home-layouts",
       "name": "Home Layouts",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -604,9 +605,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.home-layouts-1.0.0.emuplugin",
-        "sha256": "05bfef57353169b1040bac417f43438733ffb63cca9eeb0fd28b685d264fb076",
-        "size": 25604
+        "url": "packages/emuden.home-layouts-1.0.1.emuplugin",
+        "sha256": "ac0ea9fd66952e67255f4467a893fff110587c3a1a6c7455d1b4a56f146c0b73",
+        "size": 25778
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -620,7 +621,7 @@
     {
       "id": "emuden.jaguar",
       "name": "Atari Jaguar",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -647,9 +648,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.jaguar-1.0.1.emuplugin",
-        "sha256": "6c08bcd1a182d0f274b3a85a6c095bbf8c21f4133154d679febdeeef7368a6cb",
-        "size": 1119
+        "url": "packages/emuden.jaguar-1.0.2.emuplugin",
+        "sha256": "7941ebd5e1c731afdc60ee386594e5f213d5797ebf54972801e653eb12dad9f7",
+        "size": 1153
       },
       "download_size": {
         "windows-x86_64": 982121,
@@ -702,7 +703,7 @@
     {
       "id": "emuden.lynx",
       "name": "Atari Lynx",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -730,9 +731,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.lynx-1.0.2.emuplugin",
-        "sha256": "e5bfe2e78895b3d72a406a033faebee2c5a58487f2db634cfcbcaebef8e73b21",
-        "size": 1128
+        "url": "packages/emuden.lynx-1.0.3.emuplugin",
+        "sha256": "f1bf273339a20e38f80fbb298ac6581e2bc25e60408a459ea9bb5e18473f70f6",
+        "size": 1163
       },
       "download_size": {
         "windows-x86_64": 173107,
@@ -746,7 +747,7 @@
     {
       "id": "emuden.msx",
       "name": "MSX",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -774,9 +775,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.msx-1.1.1.emuplugin",
-        "sha256": "bba46d769a90f6331b2786f135de305ab64a4ebd72ae2aa6920e216396dd4265",
-        "size": 1380
+        "url": "packages/emuden.msx-1.1.2.emuplugin",
+        "sha256": "63df9e9ef55653ccf11c003c653e13fd7dee95812cb558e3890e59eaec2f5f73",
+        "size": 1467
       },
       "download_size": {
         "windows-x86_64": 1212347,
@@ -790,7 +791,7 @@
     {
       "id": "emuden.n3ds",
       "name": "Nintendo 3DS",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -819,9 +820,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.n3ds-1.0.0.emuplugin",
-        "sha256": "835e2c9a6e60a47955336281fceb56ff3b213c1e379eaca3be90ac766ed68728",
-        "size": 1410
+        "url": "packages/emuden.n3ds-1.0.1.emuplugin",
+        "sha256": "2d548b86f7a6406f2f03db2d45ed9abd4dc2020d467cf2f3bf6b57f6b8f11cf7",
+        "size": 1487
       },
       "download_size": {
         "windows-x86_64": 8390757,
@@ -835,7 +836,7 @@
     {
       "id": "emuden.n64",
       "name": "Nintendo 64",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -862,9 +863,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.n64-1.0.4.emuplugin",
-        "sha256": "5be397c683a1042587774e27979cabe98d395621a767b19f4c6fa098e51b90ca",
-        "size": 1726
+        "url": "packages/emuden.n64-1.0.5.emuplugin",
+        "sha256": "0d550dc0b2114f1650580894d60d831fdcd962f96dceea34e3a957a3361de22b",
+        "size": 1764
       },
       "download_size": {
         "windows-x86_64": 7002217,
@@ -878,7 +879,7 @@
     {
       "id": "emuden.nds",
       "name": "Nintendo DS",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -907,9 +908,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.nds-1.0.5.emuplugin",
-        "sha256": "64ba949899b8858eaa9601dece56140723f2aa9b323d7e8bf168bce924acb876",
-        "size": 2174
+        "url": "packages/emuden.nds-1.0.6.emuplugin",
+        "sha256": "74d331e7247dad6309389150caa90d7215a96de758c929846418e8c5d98e8e83",
+        "size": 2343
       },
       "download_size": {
         "windows-x86_64": 5195771,
@@ -923,7 +924,7 @@
     {
       "id": "emuden.nes",
       "name": "Nintendo Entertainment System",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -952,9 +953,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.nes-1.0.4.emuplugin",
-        "sha256": "63eef9c769c9e127e118618068218e375e8c9833eaf0b07b232289a74512b259",
-        "size": 1692
+        "url": "packages/emuden.nes-1.0.5.emuplugin",
+        "sha256": "4c70d82f88aa89a7b25af6b90f8d60aad8378a47f9cddc0f214206551620248e",
+        "size": 1730
       },
       "download_size": {
         "windows-x86_64": 3001580,
@@ -968,7 +969,7 @@
     {
       "id": "emuden.ngp",
       "name": "Neo Geo Pocket",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -995,9 +996,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ngp-1.0.1.emuplugin",
-        "sha256": "af13106cb9c9d3d25d2cc8851a1e3994890d72376b13dde931fd36cc727ef8b3",
-        "size": 1113
+        "url": "packages/emuden.ngp-1.0.2.emuplugin",
+        "sha256": "59674939a890675047face993284884331c312d86233117022339ddd2b1119bd",
+        "size": 1147
       },
       "download_size": {
         "windows-x86_64": 200647,
@@ -1011,7 +1012,7 @@
     {
       "id": "emuden.ngpc",
       "name": "Neo Geo Pocket Color",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1038,9 +1039,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ngpc-1.0.1.emuplugin",
-        "sha256": "6c54a4a4b8583dd6d6d525edda060bb831f501599bca11cc1745c9a6bf1174e9",
-        "size": 1126
+        "url": "packages/emuden.ngpc-1.0.2.emuplugin",
+        "sha256": "a4afab35b437036bebd4eec53b244b972f961cdbeb66bcfbf6a9e60e1c2f18b7",
+        "size": 1162
       },
       "download_size": {
         "windows-x86_64": 200647,
@@ -1054,7 +1055,7 @@
     {
       "id": "emuden.pce",
       "name": "PC Engine / TurboGrafx-16",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1087,9 +1088,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.pce-1.0.1.emuplugin",
-        "sha256": "ce88de5e5ebee09eb2233bae71e50934043b37703150a4d1b8d4694959e55497",
-        "size": 1362
+        "url": "packages/emuden.pce-1.0.2.emuplugin",
+        "sha256": "15b7af9c8a3118bcb20107b3e58253ae937dfb44b569d6c374ed9c15a7898e17",
+        "size": 1402
       },
       "download_size": {
         "windows-x86_64": 1253331,
@@ -1103,7 +1104,7 @@
     {
       "id": "emuden.pico8",
       "name": "PICO-8",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1130,9 +1131,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.pico8-1.0.3.emuplugin",
-        "sha256": "a75bd7a9b30c91feb398d326d1fee643f1184808b0ec5e4b0b9b88232de9392c",
-        "size": 1097
+        "url": "packages/emuden.pico8-1.0.4.emuplugin",
+        "sha256": "b5633f30afdd57112b556cd57ef232bdaa691b2cc2d2f90d381af72792c4f920",
+        "size": 1152
       },
       "download_size": {
         "windows-x86_64": 538354,
@@ -1146,7 +1147,7 @@
     {
       "id": "emuden.pokemini",
       "name": "Pokémon mini",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1173,9 +1174,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.pokemini-1.0.2.emuplugin",
-        "sha256": "da47b426d80d271aadd7994898f075832c089e51832a767c421aa504428be91a",
-        "size": 1083
+        "url": "packages/emuden.pokemini-1.0.3.emuplugin",
+        "sha256": "26ca15df4faa8124d015de54651b3207e3da09044f0ac7428d6c98a06729e39d",
+        "size": 1117
       },
       "download_size": {
         "windows-x86_64": 128873,
@@ -1189,7 +1190,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.2.6",
+      "version": "1.2.7",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1215,9 +1216,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.2.6.emuplugin",
-        "sha256": "c47328d2e819c0b848da8f29c9ad54689533fc691712959d470c7a876c15c770",
-        "size": 1655
+        "url": "packages/emuden.ps2-1.2.7.emuplugin",
+        "sha256": "336a6dee5d7ccab82bdcba0e490e5965919fc8aa6f1f6613dcdc162f3a62f1ab",
+        "size": 1733
       },
       "download_size": {
         "windows-x86_64": 1336233,
@@ -1231,7 +1232,7 @@
     {
       "id": "emuden.psp",
       "name": "PlayStation Portable",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1257,9 +1258,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.psp-1.0.2.emuplugin",
-        "sha256": "04e8e44dda86ce91597f4ce561273f191e68ca7b0de80c42f35eeb5a0fdb6362",
-        "size": 1575
+        "url": "packages/emuden.psp-1.0.3.emuplugin",
+        "sha256": "fa666b7801ed62f62fdb3edd2f7742c1bc24518add9cf49a3f53ab111cb37be5",
+        "size": 1624
       },
       "download_size": {
         "windows-x86_64": 17739627,
@@ -1273,7 +1274,7 @@
     {
       "id": "emuden.psx",
       "name": "PlayStation",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1303,9 +1304,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.psx-1.0.5.emuplugin",
-        "sha256": "c9e47e3f6e1c8d6a9a402d1a843e70b49be062ed0ea7910eae1a898ea040c52c",
-        "size": 1423
+        "url": "packages/emuden.psx-1.0.6.emuplugin",
+        "sha256": "2eaf07939313f1fb796b1e147653af8296924fdffcdf7e7ffb1217f82f45ec1a",
+        "size": 1511
       },
       "download_size": {
         "windows-x86_64": 847074,
@@ -1319,7 +1320,7 @@
     {
       "id": "emuden.quick-layouts",
       "name": "Quick Layouts",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1340,9 +1341,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.quick-layouts-1.0.0.emuplugin",
-        "sha256": "8cb7450b17a05c48ec3a2607f05be1431c83307eacc0ecd9d59f2f87fa3d817d",
-        "size": 3709
+        "url": "packages/emuden.quick-layouts-1.0.1.emuplugin",
+        "sha256": "6982178d1caad72a108cb8c0f3ad632313f493934d66ace243d21b3813bc706f",
+        "size": 3888
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1356,7 +1357,7 @@
     {
       "id": "emuden.retroachievements",
       "name": "RetroAchievements",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1367,7 +1368,8 @@
       "needs": [
         "kind.feature",
         "feature.lua.1",
-        "feature.achievements.1"
+        "feature.achievements.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1378,9 +1380,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.retroachievements-1.0.0.emuplugin",
-        "sha256": "320ec616ec085ff98b3fd93433743a0fe189306defd980a20a8cdd5a1794f2d0",
-        "size": 8638
+        "url": "packages/emuden.retroachievements-1.0.1.emuplugin",
+        "sha256": "a99553112fabc1398b10177ad0a5c07ce039e7ab632510b21ead44e057421ae5",
+        "size": 10541
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1440,7 +1442,7 @@
     {
       "id": "emuden.saturn",
       "name": "Sega Saturn",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1467,9 +1469,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.saturn-1.0.4.emuplugin",
-        "sha256": "9f28d11636c0b309af3a8a860a179cde97d2a1138d449097707942f7d4a7f462",
-        "size": 1102
+        "url": "packages/emuden.saturn-1.0.5.emuplugin",
+        "sha256": "5398b76f0d1b7dc1cbb9ad9a34320a4042267063696dd0f592dfa73a22a0fda8",
+        "size": 1135
       },
       "download_size": {
         "windows-x86_64": 570093,
@@ -1483,7 +1485,7 @@
     {
       "id": "emuden.sg1000",
       "name": "SG-1000",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1511,9 +1513,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.sg1000-1.0.1.emuplugin",
-        "sha256": "c00a0b3acc8e8b974ed2c7756b9341d2c20e689962b1ec77924202269b5e52af",
-        "size": 1118
+        "url": "packages/emuden.sg1000-1.0.2.emuplugin",
+        "sha256": "2dd4051b9cbe1df35f72408d56921b8b0a78919d6e943ff8a634cf2d04ee296c",
+        "size": 1152
       },
       "download_size": {
         "windows-x86_64": 944681,
@@ -1527,7 +1529,7 @@
     {
       "id": "emuden.shelf",
       "name": "Shelf",
-      "version": "1.8.0",
+      "version": "1.8.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1548,9 +1550,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.shelf-1.8.0.emuplugin",
-        "sha256": "89fb7782874b956f47d98f23a5341fb5156b5ab16596f6e7e9978d01379a192a",
-        "size": 6926
+        "url": "packages/emuden.shelf-1.8.1.emuplugin",
+        "sha256": "7fe9395f9bf0ce0d4ae5200cb37d7655cc44026fd1fefe6bd332c04fb2db93e7",
+        "size": 7054
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1564,7 +1566,7 @@
     {
       "id": "emuden.showcase",
       "name": "Showcase",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1585,9 +1587,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.showcase-1.0.0.emuplugin",
-        "sha256": "19853d47f972e1cfc7464fa70304a07c46f8a7fd7406e6a6c24de822de6ccad5",
-        "size": 4029
+        "url": "packages/emuden.showcase-1.0.1.emuplugin",
+        "sha256": "5588712d99a766985ba8d6ea255da4ddd87eb5753a58caf7433c883e7a266676",
+        "size": 4145
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1601,7 +1603,7 @@
     {
       "id": "emuden.sms",
       "name": "Sega Master System",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1628,9 +1630,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.sms-1.0.3.emuplugin",
-        "sha256": "10823ae09c47c6c437d75bfbd70efdf54297e0e79d4cd701c4d1f2494db717ae",
-        "size": 1551
+        "url": "packages/emuden.sms-1.0.4.emuplugin",
+        "sha256": "0dd7c334ed247d594c74e6e8ff1b4a043ee5b1cb0246df461469104e5a8a16a7",
+        "size": 1586
       },
       "download_size": {
         "windows-x86_64": 1855325,
@@ -1644,7 +1646,7 @@
     {
       "id": "emuden.snes",
       "name": "Super Nintendo Entertainment System",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1672,9 +1674,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.snes-1.0.3.emuplugin",
-        "sha256": "f72bd9256d5e207afa603b9c78b7305aa768ecb2600cdadd5d336dc5d4390253",
-        "size": 1348
+        "url": "packages/emuden.snes-1.0.4.emuplugin",
+        "sha256": "77f6d0216d9499f49bf5339c954797df11f3e41b9f4fb266aa5fd721437ad04f",
+        "size": 1382
       },
       "download_size": {
         "windows-x86_64": 2437609,
@@ -1688,7 +1690,7 @@
     {
       "id": "emuden.steam",
       "name": "Steam (DroidDeck)",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1712,9 +1714,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.steam-1.0.1.emuplugin",
-        "sha256": "ac44ac8b5b41a08b6937a2eff959ab229585d37309c47ca6e2a18779a15b7c65",
-        "size": 1053
+        "url": "packages/emuden.steam-1.0.2.emuplugin",
+        "sha256": "7381eb159b0d2c5bba7b3db3975e44f35f13a767aabcb942389c46ec926cc0a4",
+        "size": 1149
       },
       "download_size": {
         "android-arm64": 0
@@ -1724,7 +1726,7 @@
     {
       "id": "emuden.sync.gdrive",
       "name": "Sync: Google Drive",
-      "version": "1.0.7",
+      "version": "1.0.8",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1734,7 +1736,8 @@
       "api": 1,
       "needs": [
         "kind.feature",
-        "feature.lua.1"
+        "feature.lua.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1745,9 +1748,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.sync.gdrive-1.0.7.emuplugin",
-        "sha256": "0c38320c6716b7f16b61c76d30548315acf7983d4dd38b45b72ca11215191570",
-        "size": 18014
+        "url": "packages/emuden.sync.gdrive-1.0.8.emuplugin",
+        "sha256": "0cbab84f18eba93f94e5bae5dc1f9c9eb58fa6a748b924e0c6f6c28a02f259f5",
+        "size": 19736
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1772,7 +1775,7 @@
     {
       "id": "emuden.sync.romm",
       "name": "Sync: RomM",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1782,7 +1785,8 @@
       "api": 1,
       "needs": [
         "kind.feature",
-        "feature.lua.1"
+        "feature.lua.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1793,9 +1797,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.sync.romm-1.0.1.emuplugin",
-        "sha256": "2134a5d08aa90866d295b24dc1ea2d99aaddd72a9917bea5f98e81a358f20880",
-        "size": 15913
+        "url": "packages/emuden.sync.romm-1.0.2.emuplugin",
+        "sha256": "1ecc0d3497995507264d7de10e17c1ba6218093a6fcfd41d2158ccb088484596",
+        "size": 18199
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1817,7 +1821,7 @@
     {
       "id": "emuden.sync.syncthing",
       "name": "Sync: Syncthing",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1827,7 +1831,8 @@
       "api": 1,
       "needs": [
         "kind.feature",
-        "feature.lua.1"
+        "feature.lua.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1838,9 +1843,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.sync.syncthing-1.0.0.emuplugin",
-        "sha256": "dc44eb0f08b7974393d8c9dabb17c4e8b115220fd76d66bf2428ed1928342295",
-        "size": 11434
+        "url": "packages/emuden.sync.syncthing-1.0.1.emuplugin",
+        "sha256": "f23234d2799aeaaa0ce946199f5f60b841e47fc33b20a9c588f1356e0b52b461",
+        "size": 13775
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1862,7 +1867,7 @@
     {
       "id": "emuden.themes",
       "name": "Themes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1883,9 +1888,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.themes-1.0.0.emuplugin",
-        "sha256": "47149c8d88315cac3d72d21739f92e1c7fa542e88915e50b5cc51817347fe7e8",
-        "size": 106158
+        "url": "packages/emuden.themes-1.0.1.emuplugin",
+        "sha256": "644ea78de95e0036ec47f652a3715780d4b42ae9f7c09aa309e8eab7b284dbbc",
+        "size": 106431
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1899,7 +1904,7 @@
     {
       "id": "emuden.tune.emuready",
       "name": "Tune: EmuReady",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1910,7 +1915,8 @@
       "needs": [
         "kind.feature",
         "feature.lua.1",
-        "feature.tune.1"
+        "feature.tune.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1921,9 +1927,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.emuready-1.0.5.emuplugin",
-        "sha256": "b5291584292d77c94e058d1bbc41d73aee7af060f672f1efb191ff07ee568632",
-        "size": 13989
+        "url": "packages/emuden.tune.emuready-1.0.6.emuplugin",
+        "sha256": "6102bf18b21cba1b78588cf61dd0602c76c3b8d8653c874bd5f39edbd14643e2",
+        "size": 15550
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1959,7 +1965,7 @@
     {
       "id": "emuden.tune.helixsr",
       "name": "Tune: Helix SR",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1971,7 +1977,8 @@
         "kind.feature",
         "feature.lua.1",
         "feature.tune.1",
-        "feature.mods.1"
+        "feature.mods.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -1979,9 +1986,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.helixsr-1.0.0.emuplugin",
-        "sha256": "c487049d9122e90aa38d3689ec4aea7fd836fde8125a2a48fd2d319e417ee537",
-        "size": 11075
+        "url": "packages/emuden.tune.helixsr-1.0.1.emuplugin",
+        "sha256": "828dc040336b8abb317a993ae2c4ae9d556c34e08f17c2ee9a1787d72f46f2b7",
+        "size": 12961
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -2006,7 +2013,7 @@
     {
       "id": "emuden.tune.lsfg",
       "name": "Tune: LSFG",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -2018,16 +2025,17 @@
         "kind.feature",
         "feature.lua.1",
         "feature.tune.1",
-        "feature.mods.1"
+        "feature.mods.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "linux-x86_64"
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.lsfg-1.0.1.emuplugin",
-        "sha256": "495a00867368f44238e1bf0281519e075bbfce42336cf7480c457b604ca87a1d",
-        "size": 13832
+        "url": "packages/emuden.tune.lsfg-1.0.2.emuplugin",
+        "sha256": "80f4f48a95a46e1b38438ae44e54b6d919c5dd02a0e00d1a5c6906b9b24be71e",
+        "size": 16756
       },
       "download_size": {
         "linux-x86_64": 0
@@ -2051,7 +2059,7 @@
     {
       "id": "emuden.tune.protondb",
       "name": "Tune: ProtonDB",
-      "version": "1.0.6",
+      "version": "1.0.7",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -2062,16 +2070,17 @@
       "needs": [
         "kind.feature",
         "feature.lua.1",
-        "feature.tune.1"
+        "feature.tune.1",
+        "feature.tr.1"
       ],
       "platforms": [
         "linux-x86_64"
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.protondb-1.0.6.emuplugin",
-        "sha256": "9de7a6e7b84f045b469c2b176e07dcd24f1688bfe6af24d6b9a5ce9d77e43655",
-        "size": 12719
+        "url": "packages/emuden.tune.protondb-1.0.7.emuplugin",
+        "sha256": "ca77404594401b085451c48b50e3b753a3bfd5509bb61de1e18d02292930338c",
+        "size": 14276
       },
       "download_size": {
         "linux-x86_64": 0
@@ -2094,7 +2103,7 @@
     {
       "id": "emuden.vectrex",
       "name": "Vectrex",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -2121,9 +2130,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.vectrex-1.0.1.emuplugin",
-        "sha256": "58cc3869fa5efdaaa611a8da7d1b096178adefd315417d224e48f7a6324cbb1f",
-        "size": 1132
+        "url": "packages/emuden.vectrex-1.0.2.emuplugin",
+        "sha256": "ac921217928ce6ed08eaad88edaa823535558198f43915c76a34520c13fb8c4c",
+        "size": 1167
       },
       "download_size": {
         "windows-x86_64": 68412,
@@ -2137,7 +2146,7 @@
     {
       "id": "emuden.virtualboy",
       "name": "Virtual Boy",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -2164,9 +2173,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.virtualboy-1.0.1.emuplugin",
-        "sha256": "6417314e529da65a05460b84fa1281415492dd8cd40e9f1974b324f783413b24",
-        "size": 1120
+        "url": "packages/emuden.virtualboy-1.0.2.emuplugin",
+        "sha256": "68680af4035722fe6793c505598e72484c45a7c16795be643f6a7faff6bc6e1b",
+        "size": 1155
       },
       "download_size": {
         "windows-x86_64": 172825,
@@ -2180,7 +2189,7 @@
     {
       "id": "emuden.wii",
       "name": "Nintendo Wii",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -2205,9 +2214,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.wii-1.1.0.emuplugin",
-        "sha256": "66671a74d416679ab95004aa3a4691fa5511122a7eb797ae30bb46e914c1bc38",
-        "size": 1486
+        "url": "packages/emuden.wii-1.1.1.emuplugin",
+        "sha256": "ba7fae481ef929e80f680b937c75f0b6bea59d5380b70205f4d9a70f61d487bb",
+        "size": 1539
       },
       "download_size": {
         "windows-x86_64": 13092702,
@@ -2221,7 +2230,7 @@
     {
       "id": "emuden.wonderswan",
       "name": "WonderSwan",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -2248,9 +2257,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.wonderswan-1.0.1.emuplugin",
-        "sha256": "135830ca13915f1c13e9a9493df3858338d63500c7016111662df763d1b4de52",
-        "size": 1105
+        "url": "packages/emuden.wonderswan-1.0.2.emuplugin",
+        "sha256": "86ef0f7992e86ab555880cc398a50274376f0dbbb0b2e8cb98ca0d17c37a6466",
+        "size": 1140
       },
       "download_size": {
         "windows-x86_64": 121646,
@@ -2264,7 +2273,7 @@
     {
       "id": "emuden.wsc",
       "name": "WonderSwan Color",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -2292,9 +2301,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.wsc-1.0.1.emuplugin",
-        "sha256": "ca929c13110a039a38718b130b0f6856206d8b5292d6eaa4b9bc93d18138a3d1",
-        "size": 1119
+        "url": "packages/emuden.wsc-1.0.2.emuplugin",
+        "sha256": "8104744b37d0afa74e0c2e42d5cbfdd1277664b2040d52c2e2853ee2b11ac73e",
+        "size": 1155
       },
       "download_size": {
         "windows-x86_64": 121646,

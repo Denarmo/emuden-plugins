@@ -8,6 +8,14 @@
 
 local M = {}
 
+-- The plugin's translation through den.tr when it runs in EmuDEN; English with {} filled in
+-- order when the tests load this file alone.
+local function tr(text, ...)
+  if den and den.tr then return den.tr(text, ...) end
+  local values, n = table.pack(...), 0
+  return (text:gsub("{}", function() n = n + 1 return tostring(values[n]) end))
+end
+
 M.MAX = 1000 -- EmuDEN refuses longer launch options
 M.WSI = "ENABLE_GAMESCOPE_WSI"
 local OURS = { LSFGVK_ENV = true, LSFGVK_MULTIPLIER = true, LSFGVK_FLOW_SCALE = true, LSFGVK_PERFORMANCE_MODE = true }
@@ -90,15 +98,15 @@ function M.merge(text, settings, opts)
   text = tostring(text or "")
   local ok, bad = M.safe(text)
   if not ok then
-    return nil, "The game's launch options hold a character EmuDEN does not set (" .. (bad == "\"" and "a quote" or bad)
-        .. "). Change them in Steam's Properties first."
+    return nil, tr("The game's launch options hold a character EmuDEN does not set ({}). Change them in Steam's Properties first.",
+                   bad == "\"" and tr("a quote") or bad)
   end
   local on = settings ~= nil and settings.on == true
   if on then
     local n = math.tointeger(settings.multiplier)
-    if not n or n < 2 or n > 10 then return nil, "The multiplier is 2 to 10." end
+    if not n or n < 2 or n > 10 then return nil, tr("The multiplier is 2 to 10.") end
     local f = tonumber(settings.flow_scale)
-    if not f or f < 0.25 or f > 1.0 then return nil, "The flow scale is 25 % to 100 %." end
+    if not f or f < 0.25 or f > 1.0 then return nil, tr("The flow scale is 25 % to 100 %.") end
   end
 
   local head, rest, command = split(text)
@@ -128,17 +136,21 @@ function M.merge(text, settings, opts)
   -- %command% alone says nothing.
   if #out == 1 and out[1] == "%command%" then out = {} end
   local result = table.concat(out, " ")
-  if #result > M.MAX then return nil, "The launch options would be longer than Steam's " .. M.MAX .. " characters here." end
+  if #result > M.MAX then return nil, tr("The launch options would be longer than Steam's {} characters here.", M.MAX) end
   return result, added
 end
 
 -- "Off", "2x", "3x at 75 %, performance mode".
 function M.describe(settings)
-  if not settings or not settings.on then return "Off" end
-  local text = settings.multiplier .. "x"
-  if settings.flow_scale < 1.0 then text = text .. string.format(" at %d %%", math.floor(settings.flow_scale * 100 + 0.5)) end
-  if settings.performance then text = text .. ", performance mode" end
-  return text
+  if not settings or not settings.on then return tr("Off") end
+  local multiplier = tostring(settings.multiplier)
+  if settings.flow_scale < 1.0 then
+    local flow = string.format("%d", math.floor(settings.flow_scale * 100 + 0.5))
+    if settings.performance then return tr("{}x at {} %, performance mode", multiplier, flow) end
+    return tr("{}x at {} %", multiplier, flow)
+  end
+  if settings.performance then return tr("{}x, performance mode", multiplier) end
+  return multiplier .. "x"
 end
 
 return M

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.n64",
   "name": "Nintendo 64",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -231,5 +231,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Nintendo 64 games with Mupen64Plus-Next.": "Juegos de Nintendo 64 con Mupen64Plus-Next."
+    }
   }
 }

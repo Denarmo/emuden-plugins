@@ -105,7 +105,7 @@ local function home_page()
       "Your progress is kept by RetroAchievements, so every device you sign in on shows it." }
   body[#body + 1] = { type = "button", id = "sign_out", label = "Sign out", action = "sign_out" }
   body[#body + 1] = { type = "row", id = "about", label = "About", action = "about" }
-  return { title = "RetroAchievements", subtitle = "Signed in as " .. user.name, body = body }
+  return { title = "RetroAchievements", subtitle = den.tr("Signed in as {}", user.name), body = body }
 end
 
 local function show_home()
@@ -163,8 +163,8 @@ local function game_page(game)
     body[#body + 1] = { type = "detail", id = "game", title = game.title,
       image = game.image ~= "" and game.image or "game:" .. game.id, aspect = 1,
       facts = {
-        { label = "Unlocked", value = string.format("%d of %d", game.unlocked, game.total) },
-        { label = "Points", value = string.format("%s of %s", number(game.points_unlocked), number(game.points_total)) },
+        { label = "Unlocked", value = den.tr("{} of {}", string.format("%d", game.unlocked), string.format("%d", game.total)) },
+        { label = "Points", value = den.tr("{} of {}", number(game.points_unlocked), number(game.points_total)) },
         { label = "Mode", value = game.hardcore and "Hardcore" or "Softcore" },
       },
       buttons = {} }
@@ -175,11 +175,11 @@ local function game_page(game)
     for _, a in ipairs(game.achievements) do
       local state
       if a.unlocked then
-        state = string.format("%d points, unlocked", a.points)
+        state = den.tr("{} points, unlocked", string.format("%d", a.points))
       elseif a.progress ~= "" then
-        state = string.format("%d points, %s", a.points, a.progress)
+        state = den.tr("{} points, {}", string.format("%d", a.points), a.progress)
       else
-        state = string.format("%d points", a.points)
+        state = den.tr("{} points", string.format("%d", a.points))
       end
       body[#body + 1] = { type = "row", id = "a." .. a.id, label = a.title, value = state,
                           image = a.badge ~= "" and a.badge or nil, action = "achievement", arg = a.id }

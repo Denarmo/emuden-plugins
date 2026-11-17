@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.protondb",
   "name": "Tune: ProtonDB",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -11,7 +11,8 @@
   "needs": [
     "kind.feature",
     "feature.lua.1",
-    "feature.tune.1"
+    "feature.tune.1",
+    "feature.tr.1"
   ],
   "platforms": [
     "linux-x86_64"
@@ -33,6 +34,64 @@
     },
     "limits": {
       "memory_mb": 32
+    }
+  },
+  "translations": {
+    "es": {
+      "Sets your Steam games up from ProtonDB reports of machines like yours: the Proton version and launch options that worked, applied on SteamOS after you agree. On Windows it shows what the reports say.": "Ajusta tus juegos de Steam con informes de ProtonDB de equipos como el tuyo: la versión de Proton y las opciones de inicio que funcionaron, aplicadas en SteamOS después de que aceptes. En Windows muestra lo que dicen los informes.",
+      "{} days ago": "hace {} días",
+      "{} months ago": "hace {} meses",
+      "{} years ago": "hace {} años",
+      "This device": "Este dispositivo",
+      "No Steam here": "Aquí no hay Steam",
+      "No Steam games": "No hay juegos de Steam",
+      "Install a game in Steam, then open this page again.": "Instala un juego en Steam y vuelve a abrir esta página.",
+      "Find a game": "Buscar un juego",
+      "On Windows games run without Proton: this page shows what the reports say, and only the game's own launch arguments apply here.": "En Windows los juegos funcionan sin Proton: esta página muestra lo que dicen los informes, y aquí solo se aplican los argumentos de inicio propios del juego.",
+      "Reports": "Informes",
+      "Reports: ProtonDB (protondb.com) community data, under the Open Database License.": "Informes: datos de la comunidad de ProtonDB (protondb.com), bajo la Open Database License.",
+      "Settings from players with machines like yours": "Ajustes de jugadores con equipos como el tuyo",
+      "the report data answered {}": "los datos de informes respondieron {}",
+      "Launch options: {}": "Opciones de inicio: {}",
+      "Problems: {}": "Problemas: {}",
+      "ProtonDB rating": "Valoración de ProtonDB",
+      "Not rated": "Sin valorar",
+      "{} ({} kept, closest first)": "{} ({} guardados, los más parecidos primero)",
+      "Proton now": "Proton ahora",
+      "Steam's choice": "Elección de Steam",
+      "Launch options now": "Opciones de inicio ahora",
+      "None": "Ninguna",
+      "Reports used {}": "Los informes usaron {}",
+      "Proton: {} (Steam downloads it)": "Proton: {} (Steam lo descarga)",
+      "Proton: {} (not installed)": "Proton: {} (no instalado)",
+      "From {}, {} (match {}%)": "De {}, {} (coincidencia del {}%)",
+      "There are no reports for this game yet.": "Aún no hay informes de este juego.",
+      "The closest working reports change nothing: the game runs with Steam's default.": "Los informes más parecidos que funcionan no cambian nada: el juego funciona con lo predeterminado de Steam.",
+      "Apply": "Aplicar",
+      "Undo": "Deshacer",
+      "Best match": "Mejor coincidencia",
+      "Suggested for {}": "Sugerido para {}",
+      "Steam already has these settings.": "Steam ya tiene estos ajustes.",
+      "Enter them in Steam: the game's Properties > General > Launch options.": "Escríbelas en Steam: Propiedades > General > Opciones de inicio del juego.",
+      "{} is not installed. Install it (ProtonUp-Qt, or Decky's Wine Cellar), then open this game again.": "{} no está instalado. Instálalo (ProtonUp-Qt, o Wine Cellar de Decky) y vuelve a abrir este juego.",
+      "Closest reports": "Informes más parecidos",
+      "Works": "Funciona",
+      "Does not work": "No funciona",
+      "Close by: {}": "Parecidos: {}",
+      "same handheld": "misma portátil",
+      "a handheld": "una portátil",
+      "same graphics": "mismos gráficos",
+      "same graphics maker": "mismo fabricante de gráficos",
+      "same processor": "mismo procesador",
+      "Z2 Extreme handheld": "Portátil Z2 Extreme",
+      "Z2 handheld": "Portátil Z2",
+      "a PC": "un PC",
+      "Reports with settings": "Informes con ajustes",
+      "Choose a report to use its settings. Data: ProtonDB contributors, Open Database License.": "Elige un informe para usar sus ajustes. Datos: colaboradores de ProtonDB, Open Database License.",
+      "Reading reports": "Leyendo informes",
+      "The reports could not be read": "No se pudieron leer los informes",
+      "Set in Steam. Start the game from Steam to use it.": "Configurado en Steam. Inicia el juego desde Steam para usarlo.",
+      "Steam has the game's earlier settings again.": "Steam vuelve a tener los ajustes anteriores del juego."
     }
   }
 }

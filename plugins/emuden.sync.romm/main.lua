@@ -44,11 +44,11 @@ local function when(seconds)
   if ago < 90 then
     return "Just now"
   elseif ago < 5400 then
-    return string.format("%d minutes ago", ago // 60)
+    return den.tr("{} minutes ago", math.floor(ago // 60))
   elseif ago < 129600 then
-    return string.format("%d hours ago", ago // 3600)
+    return den.tr("{} hours ago", math.floor(ago // 3600))
   end
-  return string.format("%d days ago", ago // 86400)
+  return den.tr("{} days ago", math.floor(ago // 86400))
 end
 
 -- "romm.local:8080" -> "http://romm.local:8080"; nil for what is no server address.
@@ -85,13 +85,13 @@ local function sync_rows(body)
   end
   local conflicts = tonumber(status.conflicts) or 0
   if conflicts > 0 then
-    body[#body + 1] = { type = "text", style = "warning", text = string.format(
-        "%d conflicts. Settings > Sync lists them.", conflicts) }
+    body[#body + 1] = { type = "text", style = "warning", text = den.tr(
+        "{} conflicts. Settings > Sync lists them.", math.floor(conflicts)) }
   end
   local errors = type(status.errors) == "table" and #status.errors or 0
   if errors > 0 then
-    body[#body + 1] = { type = "text", style = "warning", text = string.format(
-        "%d files could not be synced; they are tried again on the next sync. %s",
+    body[#body + 1] = { type = "text", style = "warning", text = den.tr(
+        "{} files could not be synced; they are tried again on the next sync. {}",
         errors, tostring(status.error or status.errors[1])) }
   end
 end
@@ -108,10 +108,9 @@ local function home_page()
         "into your library. Enter the server's address, as you open it in a browser." }
     body[#body + 1] = { type = "input", id = "server", label = "Server address",
                         value = "", action = "set_server" }
-    body[#body + 1] = { type = "text", style = "caption", text =
+    body[#body + 1] = { type = "text", style = "caption", text = den.tr(
         "For example http://192.168.1.20:8080. A server on your home network is usually " ..
-        "plain http: what is sent to it is not encrypted. RomM " .. romm.TESTED ..
-        " or newer." }
+        "plain http: what is sent to it is not encrypted. RomM {} or newer.", romm.TESTED) }
     return { title = "RomM", subtitle = "Not set up", body = body }
   end
   body[#body + 1] = { type = "row", label = "Server", value = server, action = "change_server" }
@@ -139,7 +138,7 @@ local function home_page()
       "Settings and BIOS files are not synced to RomM. Which of these sync is chosen in " ..
       "Settings > Sync." }
   body[#body + 1] = { type = "button", id = "sign_out", label = "Sign out", action = "sign_out" }
-  return { title = "RomM", subtitle = status.user and (status.user .. " on " .. server) or server,
+  return { title = "RomM", subtitle = status.user and den.tr("{} on {}", status.user, server) or server,
            body = body }
 end
 
@@ -161,7 +160,7 @@ end
 local function platforms_page(platforms)
   local body = {}
   for _, p in ipairs(platforms) do
-    body[#body + 1] = { type = "row", label = p.name, value = string.format("%d games", p.rom_count),
+    body[#body + 1] = { type = "row", label = p.name, value = den.tr("{} games", math.floor(p.rom_count)),
                         action = "platform", arg = p.id }
   end
   if #body == 0 then
@@ -176,9 +175,10 @@ local function roms_page()
   local body = {}
   for i = 1, math.min(#p.roms, p.shown) do
     local rom = p.roms[i]
-    local files = #rom.files > 1 and string.format(", %d files", #rom.files) or ""
+    local size = megabytes(rom.size)
     body[#body + 1] = { type = "row", id = "rom" .. rom.id, label = rom.name,
-                        value = megabytes(rom.size) .. files, action = "download", arg = rom.id }
+                        value = #rom.files > 1 and den.tr("{}, {} files", size, #rom.files) or size,
+                        action = "download", arg = rom.id }
   end
   if p.shown < #p.roms then
     body[#body + 1] = { type = "button", id = "more", label = "Show more", action = "more" }
@@ -187,8 +187,8 @@ local function roms_page()
     body[1] = { type = "empty", title = "No games", text = "RomM lists no games here." }
   end
   return { title = p.platform.name,
-           subtitle = (SYSTEM_NAMES[p.platform.system] or p.platform.system) ..
-               string.format(" - %d games", #p.roms),
+           subtitle = den.tr("{} - {} games", SYSTEM_NAMES[p.platform.system] or p.platform.system,
+                             #p.roms),
            body = body }
 end
 
@@ -231,7 +231,7 @@ end
 
 function plugin.actions.change_server()
   local yes = den.ui.confirm{ title = "Change server",
-                              message = "Sign out of " .. romm.server() .. " and enter another server?",
+                              message = den.tr("Sign out of {} and enter another server?", romm.server()),
                               yes = "Change" }
   if yes then
     romm.sign_out()
@@ -343,10 +343,10 @@ function plugin.actions.download(id)
   end
   -- download_game waits until every file is in; the row says so meanwhile.
   den.ui.patch("rom" .. rom.id, { value = "Downloading...", enabled = false })
-  den.ui.toast("Downloading " .. rom.name)
+  den.ui.toast(den.tr("Downloading {}", rom.name))
   local ok, why = den.sync.download_game(paths)
-  den.ui.toast(ok and (rom.name .. " is in your library.")
-               or ("The download of " .. rom.name .. " failed: " .. tostring(why)))
+  den.ui.toast(ok and den.tr("{} is in your library.", rom.name)
+               or den.tr("The download of {} failed: {}", rom.name, tostring(why)))
   if platform_page and den.ui.depth() > 1 then
     den.ui.set(roms_page())
   end

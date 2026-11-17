@@ -56,9 +56,9 @@ plugin.provider = {
 local function ago(seconds)
   local d = den.now() - seconds
   if d < 60 then return "just now" end
-  if d < 3600 then return string.format("%d min ago", d // 60) end
-  if d < 86400 then return string.format("%d h ago", d // 3600) end
-  return string.format("%d days ago", d // 86400)
+  if d < 3600 then return den.tr("{} min ago", math.floor(d // 60)) end
+  if d < 86400 then return den.tr("{} h ago", math.floor(d // 3600)) end
+  return den.tr("{} days ago", math.floor(d // 86400))
 end
 
 -- den.sync.status() (docs/sync.md section 5).
@@ -74,12 +74,12 @@ local function sync_rows(body)
                       value = status.running and "Syncing now" or last > 0 and ago(last) or "Never" }
   local up, down = tonumber(status.uploaded) or 0, tonumber(status.downloaded) or 0
   if up > 0 or down > 0 then
-    body[#body + 1] = { type = "row", label = "Files", value = string.format("%d up, %d down", up, down) }
+    body[#body + 1] = { type = "row", label = "Files", value = den.tr("{} up, {} down", math.floor(up), math.floor(down)) }
   end
   local conflicts = tonumber(status.conflicts) or 0
   if conflicts > 0 then
     body[#body + 1] = { type = "row", label = "Conflicts",
-                        value = string.format("%d (Settings > Sync lists them)", conflicts) }
+                        value = den.tr("{} (Settings > Sync lists them)", math.floor(conflicts)) }
   end
   if (tonumber(status.waiting) or 0) > 0 then
     body[#body + 1] = { type = "row", label = "Waiting for a game to end",
@@ -87,7 +87,7 @@ local function sync_rows(body)
   end
   if type(status.error) == "string" then
     local more = type(status.errors) == "table" and #status.errors > 1
-                 and string.format(" (and %d more)", #status.errors - 1) or ""
+                 and den.tr(" (and {} more)", #status.errors - 1) or ""
     body[#body + 1] = { type = "text", style = "warning", text = status.error .. more }
   end
   local current = status.current
@@ -101,7 +101,7 @@ local function categories_row(body)
   local enabled = den.sync.enabled_categories()
   if type(enabled) ~= "table" then return end
   local names = {}
-  for _, id in ipairs(enabled) do names[#names + 1] = CATEGORY_LABEL[id] or id end
+  for _, id in ipairs(enabled) do names[#names + 1] = CATEGORY_LABEL[id] and den.tr(CATEGORY_LABEL[id]) or id end
   body[#body + 1] = { type = "row", label = "What syncs",
                       value = #names > 0 and table.concat(names, ", ") or "Nothing yet" }
 end
@@ -141,7 +141,7 @@ local function signing_page()
     { type = "text", id = "code", style = "heading", text = signing.user_code },
     { type = "progress", id = "wait", label = "Waiting for Google", fraction = -1 },
     { type = "text", style = "caption",
-      text = string.format("The code works for %d more minutes.", minutes) },
+      text = den.tr("The code works for {} more minutes.", math.floor(minutes)) },
     { type = "button", id = "cancel", label = "Cancel", action = "cancel" },
   } }
 end
@@ -153,8 +153,8 @@ local function signed_in_page()
                         value = account.account or account.name or "Google account" }
     if account.used then
       body[#body + 1] = { type = "row", label = "Storage", value = account.total
-          and (util.bytes(account.used) .. " of " .. util.bytes(account.total) .. " used")
-          or (util.bytes(account.used) .. " used") }
+          and den.tr("{} of {} used", util.bytes(account.used), util.bytes(account.total))
+          or den.tr("{} used", util.bytes(account.used)) }
     end
   end
   categories_row(body)

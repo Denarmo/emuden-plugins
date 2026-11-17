@@ -175,6 +175,50 @@ def placeholders(text):
     return count
 
 
+def check_texts(texts, where, err):
+    """Texts keyed by their English text: each translation keeps the English text's {} fields."""
+    for key, text in texts.items():
+        if not isinstance(text, str):
+            err(f"{where}.{key}", "must be a text")
+        elif placeholders(key) is not None and placeholders(text) != placeholders(key):
+            err(f"{where}.{key}", "must keep the {} fields of the English text")
+
+
+def validate_translations(manifest, err):
+    """A plugin's own texts in other languages ("translations": {"es": {"English": "Español"}}),
+    for its manifest and its script's den.tr."""
+    translations = manifest.get("translations")
+    if translations is None:
+        return
+    for code, texts in translations.items():
+        if not re.match(r"^[a-z]{2,3}(-[A-Z]{2}|-[0-9]{3})?$", code):
+            err(f"translations.{code}", "a language code like es, pt-BR or zh-TW")
+        elif code.split("-")[0] == "en":
+            err(f"translations.{code}", "English is the plugin's own text")
+        elif isinstance(texts, dict):
+            check_texts(texts, f"translations.{code}", err)
+
+
+def validate_plugin_strings(folder, err):
+    """plugin_strings.json of a language pack: texts for other plugins, by plugin id."""
+    path = folder / "plugin_strings.json"
+    if not path.is_file():
+        return
+    try:
+        by_plugin = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as e:
+        err("plugin_strings.json", f"is not JSON: {e}")
+        return
+    if not isinstance(by_plugin, dict):
+        err("plugin_strings.json", "must be an object of texts by plugin id")
+        return
+    for plugin_id, texts in by_plugin.items():
+        if not isinstance(texts, dict):
+            err(f"plugin_strings.json.{plugin_id}", "must be an object of texts")
+        else:
+            check_texts(texts, f"plugin_strings.json.{plugin_id}", err)
+
+
 def validate_language(language, folder, err):
     """A language pack (docs/language-packs.md): its code and own name, and strings.json, the
     app's texts in that language. A text's {} fields must be those of the English one (its key,
@@ -204,6 +248,7 @@ def validate_language(language, folder, err):
         elif "." not in key.split(" ")[0] or " " in key:
             if placeholders(key) is not None and placeholders(text) != placeholders(key):
                 err(f"strings.json.{key}", "must keep the {} fields of the English text")
+    validate_plugin_strings(folder, err)
 
 
 def validate_interface(manifest, folder, err):
@@ -289,6 +334,11 @@ def validate_feature(manifest, trust, folder, err):
         err("feature.entry", "must be a script of the package (a relative path ending in .lua)")
     elif folder is not None and not in_package(folder, entry):
         err("feature.entry", "there is no such file in the plugin folder")
+    if folder is not None and "feature.tr.1" not in manifest["needs"]:
+        for script in sorted(pathlib.Path(folder).rglob("*.lua")):
+            if re.search(r"\bden\.(tr|language)\s*\(", script.read_text(encoding="utf-8", errors="replace")):
+                err("needs", f"must list feature.tr.1 ({script.name} calls den.tr or den.language)")
+                break
     icon = feature.get("icon")
     if icon and (not safe_relative(icon) or not icon.endswith(".png")):
         err("feature.icon", "must be a PNG of the package")

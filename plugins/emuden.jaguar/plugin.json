@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.jaguar",
   "name": "Atari Jaguar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -113,5 +113,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Atari Jaguar games with Virtual Jaguar.": "Juegos de Atari Jaguar con Virtual Jaguar."
+    }
   }
 }

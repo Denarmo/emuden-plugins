@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.steam",
   "name": "Steam (DroidDeck)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -89,5 +89,10 @@
     "cheats": false,
     "netplay": false,
     "achievements": false
+  },
+  "translations": {
+    "es": {
+      "Your Steam games on Android, started in DroidDeck. Turn on DroidDeck's game files sync and add its folder to EmuDEN.": "Tus juegos de Steam en Android, abiertos en DroidDeck. Activa la sincronización de archivos de juego de DroidDeck y añade su carpeta a EmuDEN."
+    }
   }
 }

@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.gg",
   "name": "Sega Game Gear",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -250,5 +250,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Game Gear games with Genesis Plus GX.": "Juegos de Game Gear con Genesis Plus GX."
+    }
   }
 }

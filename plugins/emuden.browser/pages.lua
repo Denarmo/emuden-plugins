@@ -11,6 +11,12 @@ local STATUS = {
   unknown = "Left in Downloads", failed = "Failed",
 }
 
+-- The status of an outcome in the app's language; an outcome without a name as it is.
+local function status_text(outcome)
+  local text = STATUS[outcome]
+  return text and den.tr(text) or outcome
+end
+
 local function date_text(seconds)
   local z = seconds // 86400 + 719468
   local era = z // 146097
@@ -79,7 +85,7 @@ function pages.downloads_tab(history, files)
                         text = "What you download in the browser is listed here." }
   end
   for _, record in ipairs(history) do
-    local status = record.undone and "Undone" or (STATUS[record.outcome] or record.outcome)
+    local status = record.undone and den.tr("Undone") or status_text(record.outcome)
     body[#body + 1] = { type = "row", id = "record-" .. record.id, label = record.message,
                         value = status .. ", " .. date_text(record.time), action = "record", arg = record.id }
   end
@@ -97,7 +103,7 @@ function pages.downloads_tab(history, files)
   if #loose > 0 then
     body[#body + 1] = { type = "text", style = "heading", text = "Also in Downloads" }
     for i, file in ipairs(loose) do
-      body[#body + 1] = { type = "row", id = "file-" .. i, label = file.name, value = size_text(file.size) .. ", set up",
+      body[#body + 1] = { type = "row", id = "file-" .. i, label = file.name, value = den.tr("{}, set up", size_text(file.size)),
                           action = "again", arg = file.name }
     end
   end
@@ -107,7 +113,7 @@ end
 function pages.record_page(record)
   local body = {
     { type = "text", style = "body", text = record.message },
-    { type = "text", style = "caption", text = "File: " .. record.download .. ", " .. date_text(record.time) },
+    { type = "text", style = "caption", text = den.tr("File: {}, {}", record.download, date_text(record.time)) },
   }
   for i, game in ipairs(record.games or {}) do
     body[#body + 1] = { type = "row", id = "game-" .. i, label = game.name, value = "Play", image = game.cover,
@@ -127,18 +133,22 @@ end
 
 function pages.undo_question(record)
   if record.outcome == "hack_added" then
-    return "Remove " .. ((record.games[1] or {}).name or "the hack") .. " from your library? Its saves stay; " ..
-        "the patch stays in Downloads." .. (record.replaced and " The earlier version it replaced is not brought back." or "")
+    local text = den.tr("Remove {} from your library? Its saves stay; the patch stays in Downloads.",
+                        (record.games[1] or {}).name or den.tr("the hack"))
+    if record.replaced then
+      text = text .. " " .. den.tr("The earlier version it replaced is not brought back.")
+    end
+    return text
   end
-  return "Take " .. ((record.games[1] or {}).name or record.download) .. " out of your library and put its files " ..
-      "back in Downloads? Its saves stay."
+  return den.tr("Take {} out of your library and put its files back in Downloads? Its saves stay.",
+                (record.games[1] or {}).name or record.download)
 end
 
 function pages.choose_page(done)
   local body = {
-    { type = "text", style = "body", text = done.message ..
-        " The patch does not say which game it was made for. Choose your copy of it; the " ..
-        "original stays as it is." },
+    { type = "text", style = "body", text = den.tr(
+        "{} The patch does not say which game it was made for. Choose your copy of it; the " ..
+        "original stays as it is.", done.message) },
     { type = "progress", id = "status", label = "", fraction = 0 },
   }
   for i, game in ipairs(done.choices or {}) do
@@ -153,9 +163,9 @@ end
 
 function pages.about_tab(version, folder)
   return home("about", {
-    { type = "text", style = "body", text =
-        "Browser " .. version .. ". One browser for every site: EmuDEN looks at the files you " ..
-        "download, not at the pages, so it needs nothing made for a particular site." },
+    { type = "text", style = "body", text = den.tr(
+        "Browser {}. One browser for every site: EmuDEN looks at the files you " ..
+        "download, not at the pages, so it needs nothing made for a particular site.", version) },
     { type = "text", style = "body", text =
         "Games: the console comes from the file's extension, its first bytes or the folders it " ..
         "came in. Zip and 7z archives are unpacked; a cue sheet stays with its tracks and the " ..
@@ -166,7 +176,7 @@ function pages.about_tab(version, folder)
     { type = "text", style = "body", text =
         "Left in Downloads: files EmuDEN does not know, rar archives, and BIOS files (EmuDEN " ..
         "doesn't use BIOS files)." },
-    { type = "text", style = "caption", text = "Downloads folder: " .. folder },
+    { type = "text", style = "caption", text = den.tr("Downloads folder: {}", folder) },
     { type = "text", style = "caption", text =
         "Download only games and patches you have the right to. Sign-ins, passwords and " ..
         "cookies stay in the device's web engine; the plugin never sees a page." },

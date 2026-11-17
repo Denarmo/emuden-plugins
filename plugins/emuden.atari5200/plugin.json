@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.atari5200",
   "name": "Atari 5200",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -107,5 +107,10 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "Atari 5200 games with a5200.": "Juegos de Atari 5200 con a5200."
+    }
   }
 }

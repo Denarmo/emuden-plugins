@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -172,5 +172,12 @@
     "states": true,
     "settings": true,
     "cheats": true
+  },
+  "translations": {
+    "es": {
+      "PSX2 (needs your PS2 BIOS)": "PSX2 (necesita tu BIOS de PS2)",
+      "PlayStation 2 BIOS": "BIOS de PlayStation 2",
+      "PlayStation 2 games with DenSX2, which needs no BIOS. DenSX2 is based on Play! (BSD-2-Clause).": "Juegos de PlayStation 2 con DenSX2, que no necesita BIOS. DenSX2 se basa en Play! (BSD-2-Clause)."
+    }
   }
 }

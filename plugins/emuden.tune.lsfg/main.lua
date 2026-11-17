@@ -71,9 +71,9 @@ local function home_page(progress)
   elseif setup.owned and setup.library and not setup.ready then
     if release.sha256 == "" then
       body[#body + 1] = { type = "text", style = "warning", text =
-          "This version of the plugin has no checksum for lsfg-vk " .. release.version .. " yet, so it does not download it. Update the plugin." }
+          den.tr("This version of the plugin has no checksum for lsfg-vk {} yet, so it does not download it. Update the plugin.", release.version) }
     else
-      body[#body + 1] = { type = "button", id = "install", label = "Install lsfg-vk " .. release.version, action = "install" }
+      body[#body + 1] = { type = "button", id = "install", label = den.tr("Install lsfg-vk {}", release.version), action = "install" }
       body[#body + 1] = { type = "text", style = "caption", text =
           "Downloaded from builds.lsfg-vk.dev, the project's own build server, and checked against a pinned SHA-256. EmuDEN installs it as a Vulkan layer for your user; it does nothing in a game until it is switched on below." }
     end
@@ -134,7 +134,7 @@ local function game_page()
   local body = {
     { type = "detail", id = "game", title = game.name, subtitle = "lsfg-vk " .. release.version,
       image = string.format(COVER, game.appid), aspect = 0.667, facts = facts,
-      text = choice.on and (choice.multiplier .. "x: " .. (choice.multiplier - 1) .. " generated for every frame the game draws.")
+      text = choice.on and den.tr("{}x: {} generated for every frame the game draws.", choice.multiplier, choice.multiplier - 1)
           or "Off: the game runs without frame generation.",
       buttons = buttons },
   }
@@ -175,20 +175,20 @@ local function unpacked(file, layers)
   local out = {}
   for i, layer in ipairs(layers) do
     out[i] = { manifest = paths[layer.manifest], library = paths[layer.library] }
-    if not out[i].manifest or not out[i].library then return nil, "the build has no " .. layer.library end
+    if not out[i].manifest or not out[i].library then return nil, den.tr("the build has no {}", layer.library) end
   end
   return out
 end
 
 local function install()
   if release.sha256 == "" then return "lsfg-vk is not downloaded without a checksum." end
-  den.ui.set(home_page("Downloading lsfg-vk " .. release.version))
+  den.ui.set(home_page(den.tr("Downloading lsfg-vk {}", release.version)))
   local file, why = den.download{ url = release.url, name = release.name, sha256 = release.sha256,
                                   on_progress = function(fraction) den.ui.patch("progress", { fraction = fraction }) end }
-  if not file then return "lsfg-vk could not be downloaded: " .. tostring(why) end
+  if not file then return den.tr("lsfg-vk could not be downloaded: {}", tostring(why)) end
   if den.files.size(file) ~= release.size then
     den.files.remove(file)
-    return "The download is not the lsfg-vk " .. release.version .. " this plugin knows (another size). Nothing was installed."
+    return den.tr("The download is not the lsfg-vk {} this plugin knows (another size). Nothing was installed.", release.version)
   end
   local layers, unpack_why = unpacked(file, release.layers)
   if not layers then
@@ -200,10 +200,10 @@ local function install()
     if #needed < #release.layers then layers = unpacked(file, needed) end
   end
   den.files.remove(file)
-  if not layers then return "lsfg-vk could not be unpacked: " .. tostring(unpack_why) end
+  if not layers then return den.tr("lsfg-vk could not be unpacked: {}", tostring(unpack_why)) end
   den.ui.patch("progress", { label = "Waiting for your answer" })
   local ok, layer_why = den.mods.layer{ name = LAYER, layers = layers }
-  if not ok then return layer_why ~= "cancelled" and ("lsfg-vk could not be installed: " .. tostring(layer_why)) or nil end
+  if not ok then return layer_why ~= "cancelled" and den.tr("lsfg-vk could not be installed: {}", tostring(layer_why)) or nil end
   den.ui.toast("lsfg-vk is installed. Switch it on for a game below.")
 end
 
