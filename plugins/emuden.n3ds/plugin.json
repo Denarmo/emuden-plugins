@@ -1,0 +1,169 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.n3ds",
+  "name": "Nintendo 3DS",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Nintendo 3DS games with Azahar. No BIOS or keys needed for games that run on the built-in system.",
+  "api": 1,
+  "needs": [
+    "engine.libretro",
+    "settings.v1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "systems": [
+    {
+      "id": "3ds",
+      "name": "Nintendo 3DS",
+      "group": "nintendo",
+      "order": 850,
+      "content": {
+        "extensions": [
+          "3ds",
+          "cci",
+          "cxi",
+          "cia",
+          "3dsx"
+        ],
+        "folder_aliases": [
+          "n3ds",
+          "nintendo3ds",
+          "nintendo 3ds"
+        ],
+        "zip": "unpack"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": true,
+        "right_stick_holds": false,
+        "layout": "nintendo",
+        "digital_only": false,
+        "media": {
+          "shape": "card",
+          "aspect": 1.05
+        },
+        "screens": [
+          {
+            "frame": [
+              400,
+              480
+            ],
+            "screens": [
+              {
+                "rect": [
+                  0,
+                  0,
+                  1,
+                  0.5
+                ]
+              },
+              {
+                "rect": [
+                  0.1,
+                  0.5,
+                  0.8,
+                  0.5
+                ],
+                "touch": true
+              }
+            ]
+          }
+        ]
+      },
+      "artwork": {
+        "libretro_thumbnails": "Nintendo - Nintendo 3DS",
+        "rdb": "Nintendo - Nintendo 3DS"
+      },
+      "achievements": {
+        "rcheevos_console": 62
+      },
+      "cores": [
+        "azahar"
+      ],
+      "default_core": "azahar"
+    }
+  ],
+  "components": [
+    {
+      "id": "azahar",
+      "type": "libretro-core",
+      "name": "Azahar",
+      "license": "GPL-2.0-or-later",
+      "gpu": "opengl",
+      "version": "2026-11-17",
+      "options_name": "Azahar",
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-windows-x86_64-2026-11-17.zip",
+          "sha256": "6274424dd0b45092be9f4739b2f117fd55928394dd5c4bcc8654ef465357e1b9",
+          "size": 8390757,
+          "archive": "zip",
+          "entry": "azahar_libretro.dll"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-linux-x86_64-2026-11-17.zip",
+          "sha256": "c70779ebc4232f79da55450f2a945b6c776f5102bf6e6fce4efdb0ec3576fc69",
+          "size": 15413740,
+          "archive": "zip",
+          "entry": "azahar_libretro.so"
+        },
+        "android-arm64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-azahar-2026-11-17/azahar-android-arm64-2026-11-17.zip",
+          "sha256": "0b433890333870f89c06dc8405efb280a35263985abf1797ae3678e46132031c",
+          "size": 11986976,
+          "archive": "zip",
+          "entry": "azahar_libretro_android.so"
+        }
+      },
+      "option_hints": {
+        "citra_layout_option": "default",
+        "citra_swap_screen": "Top",
+        "citra_render_3d": "off"
+      },
+      "tuning": {
+        "citra_resolution_factor": [
+          {
+            "min_tier": "very_high",
+            "min_screen_height": 1080,
+            "value": "4",
+            "describe": "3DS 4x"
+          },
+          {
+            "min_tier": "high",
+            "value": "3",
+            "describe": "3DS 3x"
+          },
+          {
+            "min_tier": "mid",
+            "value": "2",
+            "describe": "3DS 2x"
+          },
+          {
+            "value": "1",
+            "describe": "3DS 1x"
+          }
+        ]
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": true,
+    "rewind": false,
+    "fast_forward": true,
+    "run_ahead": false,
+    "cheats": false,
+    "netplay": false,
+    "achievements": false
+  },
+  "sync": {
+    "saves": true,
+    "states": true,
+    "settings": true,
+    "cheats": false
+  }
+}

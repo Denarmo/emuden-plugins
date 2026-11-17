@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 79,
-  "generated": "2026-11-17T19:29:35Z",
-  "expires": "2027-03-17T19:29:35Z",
+  "sequence": 80,
+  "generated": "2026-11-17T19:30:11Z",
+  "expires": "2027-03-17T19:30:11Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -782,6 +782,51 @@
         "windows-x86_64": 1212347,
         "linux-x86_64": 1146757,
         "android-arm64": 1154910
+      },
+      "download_hosts": [
+        "github.com"
+      ]
+    },
+    {
+      "id": "emuden.n3ds",
+      "name": "Nintendo 3DS",
+      "version": "1.0.0",
+      "kind": "console",
+      "engine": "libretro",
+      "publisher": "EmuDEN",
+      "summary": "Nintendo 3DS games with Azahar. No BIOS or keys needed for games that run on the built-in system.",
+      "group": "nintendo",
+      "systems": [
+        {
+          "id": "3ds",
+          "name": "Nintendo 3DS",
+          "folder_aliases": [
+            "n3ds",
+            "nintendo3ds",
+            "nintendo 3ds"
+          ]
+        }
+      ],
+      "api": 1,
+      "needs": [
+        "engine.libretro",
+        "settings.v1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "android-arm64"
+      ],
+      "code": "cores",
+      "package": {
+        "url": "packages/emuden.n3ds-1.0.0.emuplugin",
+        "sha256": "835e2c9a6e60a47955336281fceb56ff3b213c1e379eaca3be90ac766ed68728",
+        "size": 1410
+      },
+      "download_size": {
+        "windows-x86_64": 8390757,
+        "linux-x86_64": 15413740,
+        "android-arm64": 11986976
       },
       "download_hosts": [
         "github.com"
@@ -2274,6 +2319,7 @@
     "068d80d5165d251a647fcd56899b4a54b15d36cf56e3efcbadf5dee5fe3e1760",
     "09095b5a15d6463a7d8e4bb56dcf25282290542fa8b5f209c1aca9b370f93363",
     "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
+    "0b433890333870f89c06dc8405efb280a35263985abf1797ae3678e46132031c",
     "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
@@ -2314,6 +2360,7 @@
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
+    "6274424dd0b45092be9f4739b2f117fd55928394dd5c4bcc8654ef465357e1b9",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
     "6af0529ff50fdd2314d49332d19f96fae571d9ae18e813daf40047442a4e659b",
@@ -2368,6 +2415,7 @@
     "bf2075fa46a526e889999acc438ac85123ab62731d4aaeb787b0446d2fcfbd0d",
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
+    "c70779ebc4232f79da55450f2a945b6c776f5102bf6e6fce4efdb0ec3576fc69",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",
     "ce396dd57fc4d4183f64a2d5f352fc2e4aa8bcc829bc48e280a0601fa46c6b9d",
     "cf9ba013a2dc47ccef4448395025ade313277bcc6c30ea1d33064a25835dd1da",
