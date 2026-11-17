@@ -60,28 +60,6 @@ fakes storage, secrets, HTTP, the UI and the other namespaces ([lua-api.md](lua-
 before any download. The entry's `systems` stays an empty list of console objects for older
 readers, which refuse the entry by its `needs` and keep the rest of the list.
 
-## ROM Hacks, one plugin per site
-
-| Plugin | Site | Start page |
-|---|---|---|
-| `emuden.romhacks` ("ROM Hacks: hackdex.app") | hackdex.app | `https://www.hackdex.app/discover` |
-| `emuden.romhacks-whackahack` | whackahack.com | `https://whackahack.com/foro/` |
-| `emuden.romhacks-pokeharbor` | pokeharbor.com | `https://www.pokeharbor.com/` |
-| `emuden.romhacks-romhacking` | romhacking.net | `https://www.romhacking.net/` |
-
-All four are `shared/romhacks/` (`main.lua`, `pages.lua`) plus a `site.lua` and a README that
-records what was found about the site. The player browses the real site in EmuDEN's browser
-page and presses its download button; the plugin is handed the patch file, finds the base
-game in the library (by the patch's checksum, or the player chooses), patches a copy and adds
-the hack to the library. The plugins have no `http` permission: they never read, search or
-fetch a site, and they take patch files only (`bps ips ups xdelta vcdiff aps ppf`, or a `zip`
-or `7z` holding one; `rar` is not opened by the app). A ROM image is always refused, also
-inside an archive and also when it is pre-patched. A link that leaves the site's hosts (a file
-host, for instance) is opened only after the app asked the player. None of the plugins is
-affiliated with its site; "Hackdex" is a name its project reserves, so that plugin is named by
-the domain. `bases.json` of `emuden.romhacks` comes from the Hackdex website's source under the
-MIT licence (`NOTICE.txt`).
-
 ## RetroAchievements
 
 `emuden.retroachievements` is the switch, sign-in, settings and pages of RetroAchievements;
