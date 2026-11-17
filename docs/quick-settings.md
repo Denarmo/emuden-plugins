@@ -75,7 +75,7 @@ missing or out of range takes the default.
 | `bfi` | Black frame insertion, or why it cannot be had. |
 | `controls` | Controls and core: a section with Core options and Buttons. |
 | `options`, `buttons` | Those pages of the pause menu, directly. |
-| `cheats` | The game's cheats, in EmuDEN versions that have them. |
+| `cheats` | The game's cheats page: turn cheats on and off, add or import them; with how many are on. Only for a game whose core takes cheats. |
 | `apps` | Other apps, beside the game. |
 | `volume` | The game's volume (and the system's while an app plays beside it). Sliders in a list; a tile opens them. |
 
