@@ -72,7 +72,7 @@ source is called by its address (`owner/repo`), not by the name your list gives 
 | | Rule |
 |---|---|
 | Ids | Start with the source's namespace: the owner's GitHub name in lower case (`jdoe/consoles` publishes `jdoe.*`), or the host name of an https source. `emuden.*` belongs to EmuDEN |
-| Consoles | The `libretro` engine only, no `scanner`, no `@firmware`/`@keys` BIOS entries; engine apps in the source's namespace ([engines.md](engines.md#the-namespace-rule)). A console that an official plugin already offers stays the official one |
+| Consoles | The `libretro` engine only, no `scanner`, no `@firmware` BIOS entries; engine apps in the source's namespace ([engines.md](engines.md#the-namespace-rule)). A console that an official plugin already offers stays the official one |
 | Feature plugins | Any permission except `downloads.watch`, `browse.any`, `downloads.setup` and `achievements`, and named `systems` only (not `["*"]`): those are EmuDEN's own. The player agrees to the permissions before install and again when an update asks for more |
 | Interface plugins | Anything the format has: they hold no code and ask for nothing |
 

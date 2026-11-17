@@ -220,7 +220,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         for j, bios in enumerate(system.get("bios", [])):
             for k, entry in enumerate(bios["files"]):
                 name = entry["path"]
-                if name in ("@firmware", "@keys"):
+                if name == "@firmware":
                     if engine != "switch2":
                         err(f"{path}.bios[{j}].files[{k}].path", "only the Switch 2 engine answers this")
                 elif not safe_relative(name.rstrip("/")):
