@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 80,
-  "generated": "2026-11-17T19:30:11Z",
-  "expires": "2027-03-17T19:30:11Z",
+  "sequence": 81,
+  "generated": "2026-11-17T19:43:29Z",
+  "expires": "2027-03-17T19:43:29Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -663,7 +663,7 @@
     {
       "id": "emuden.lang-es",
       "name": "Español",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -684,9 +684,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.lang-es-1.0.0.emuplugin",
-        "sha256": "13c8103f0fcd21bae1402fba305a804eadf13b448f0a1dd01fb6579b2c216388",
-        "size": 25284
+        "url": "packages/emuden.lang-es-1.0.1.emuplugin",
+        "sha256": "4132b539b4171be01850fff75cc144ac2b195b27cc5b66172f55c859fca620cb",
+        "size": 25994
       },
       "download_size": {
         "windows-x86_64": 0,

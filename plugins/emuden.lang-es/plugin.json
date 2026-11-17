@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.lang-es",
   "name": "Español",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
