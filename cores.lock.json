@@ -1271,11 +1271,11 @@
   "densx2:android-arm64": {
     "core": "densx2",
     "platform": "android-arm64",
-    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-60-gff1779c8",
+    "upstream": "https://github.com/Denarmo/Play-/tree/emuden-0.77-61-g3a0a94a8",
     "license": "BSD-2-Clause",
-    "fetched": "2026-11-16",
-    "sha256": "e123b998e31dfbf1b96327007996c133565923e80a14070c77996bf6ee748485",
-    "size": 1886185
+    "fetched": "2026-11-17",
+    "sha256": "254e8229e4ab6ecd6ce5483b7c45cac19fd57188b69389da6238704904a23c3d",
+    "size": 1886279
   },
   "bluemsx:windows-x86_64": {
     "core": "bluemsx",

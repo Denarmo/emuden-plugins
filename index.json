@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 83,
-  "generated": "2026-11-17T20:18:50Z",
-  "expires": "2027-03-17T20:18:50Z",
+  "sequence": 84,
+  "generated": "2026-11-17T20:48:54Z",
+  "expires": "2027-03-17T20:48:54Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1190,7 +1190,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.2.7",
+      "version": "1.2.8",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1216,14 +1216,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.2.7.emuplugin",
-        "sha256": "336a6dee5d7ccab82bdcba0e490e5965919fc8aa6f1f6613dcdc162f3a62f1ab",
-        "size": 1733
+        "url": "packages/emuden.ps2-1.2.8.emuplugin",
+        "sha256": "06d699e10331c74e4d4c2ce2113f931aa0971c3b27b09262eb209a524ee6b1ef",
+        "size": 1746
       },
       "download_size": {
         "windows-x86_64": 1336233,
         "linux-x86_64": 2348275,
-        "android-arm64": 1886185
+        "android-arm64": 1886279
       },
       "download_hosts": [
         "github.com"
@@ -2339,6 +2339,7 @@
     "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
     "246853dd2deddb673b9fdee84fa4e7fa2d8e6aa71fb5be62af6df569485a81c1",
     "249eeea9e75e63461a631583ed55eca4b9e60ae4f2720bbf044a8e0ddffbb8be",
+    "254e8229e4ab6ecd6ce5483b7c45cac19fd57188b69389da6238704904a23c3d",
     "27b9538c5a2fed29a204cc20ff3af7118fbc5cd2d1ae9a23d8481613939f2a1d",
     "289c769c92ae4e26884cb430e43e92926a18e54301949aee8bc98dc97dd9ddc8",
     "2d0df9d29d8f7302b9e9cca9ab49715df38cd8ef8149f396d6915f55acb736d9",
@@ -2439,7 +2440,6 @@
     "dc367dd9bd7cd639266f90a1a32b5b3d8b42e465ad537274b398e59eb354754e",
     "dd102732b00ea119a15a7ea1ab859a9e56d7e8d858a6050e1804b146368dc1cc",
     "dde1c05f77ec826fda570a03728d5ab95764a3a9fdf79f5582dddfe7b287994f",
-    "e123b998e31dfbf1b96327007996c133565923e80a14070c77996bf6ee748485",
     "e2a220b62dd9a7b412143db713ebe726c1ee23ad3533b0a00f94e89d75a9ee42",
     "e58f11e98164dbf99b801d93303092f8d524421f00bdafba881faf1e358c2beb",
     "e5aac8cf7b7bd3ed06cf3bbfaf16ebd713f2008b25ee3f5e147fd9ee8c27ae8e",

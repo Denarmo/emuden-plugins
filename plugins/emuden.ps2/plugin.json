@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -85,7 +85,7 @@
       "license": "BSD-2-Clause",
       "homepage": "https://github.com/Denarmo/Play-",
       "gpu": "opengl",
-      "version": "1.0 (based on Play! 0.77-60-gff1779c8)",
+      "version": "1.0 (based on Play! 0.77-61-g3a0a94a8)",
       "widescreen": {
         "options": {
           "densx2_widescreen": "enabled"
@@ -107,9 +107,9 @@
           "entry": "densx2_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-android-arm64-1.0-0.77-60-gff1779c8.zip",
-          "sha256": "e123b998e31dfbf1b96327007996c133565923e80a14070c77996bf6ee748485",
-          "size": 1886185,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-densx2-2026-11-16/densx2-android-arm64-1.0-0.77-61-g3a0a94a8.zip",
+          "sha256": "254e8229e4ab6ecd6ce5483b7c45cac19fd57188b69389da6238704904a23c3d",
+          "size": 1886279,
           "archive": "zip",
           "entry": "densx2_libretro_android.so"
         }
