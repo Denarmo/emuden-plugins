@@ -52,6 +52,7 @@ class Tool(unittest.TestCase):
         changed["sync"] = {"saves": True, "cheats": True}
         changed["systems"][0]["capabilities"]["rewind"] = True
         changed["systems"][0]["capabilities"]["run_ahead"] = True
+        changed["systems"][0]["capabilities"]["cheats"] = False  # read: cheats off for the console
         changed["settings"][0]["scope"] = "game"
         changed["settings"][0]["live"] = True
         paths = [path for path, _ in ignored_fields(changed)]

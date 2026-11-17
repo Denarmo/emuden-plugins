@@ -100,5 +100,6 @@ or ask its authors to publish the plugin from their own source.
 `capabilities` (of the manifest, or of one system, which wins) may switch features off for a
 console. EmuDEN reads `netplay` (false: its games cannot be played together), `achievements`
 (false: no RetroAchievements), `save_states` (false: no states, and no resume state either),
-`rewind` and `fast_forward`. A feature on here is still only offered when the core or the engine
-can do it. `run_ahead` and `cheats` are not read: EmuDEN has neither yet.
+`rewind`, `fast_forward` and `cheats` (false: no cheats page, and no cheats are given to the core
+or the engine). A feature on here is still only offered when the core or the engine can do it
+(an engine needs the ECP `cheats` capability). `run_ahead` is not read: EmuDEN has no run-ahead yet.

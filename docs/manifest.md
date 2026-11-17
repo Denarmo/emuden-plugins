@@ -24,7 +24,7 @@ plugins have their own pages ([feature-plugins.md](feature-plugins.md),
 | `components` | object[] | no | Below |
 | `capabilities` | object | no | [engines.md](engines.md#capabilities) |
 | `settings` | object[] | no | [settings.md](settings.md) |
-| `sync` | object | no | `saves`, `states`, `settings`: false keeps that part of the plugin's consoles off sync (default true). `cheats` is not read yet |
+| `sync` | object | no | `saves`, `states`, `settings`: false keeps that part of the plugin's consoles off sync (default true). `cheats` is not read yet: cheats stay on the device |
 
 ## `systems[]`
 
@@ -177,7 +177,8 @@ nobody relies on them:
 
 | Field | What happens instead |
 |---|---|
-| `sync.cheats`, `capabilities.run_ahead`, `capabilities.cheats` | EmuDEN has neither cheats nor run-ahead yet |
+| `sync.cheats` | Cheats stay on the device |
+| `capabilities.run_ahead` | EmuDEN has no run-ahead yet |
 | `systems[].content.hash_variants` | Games are looked up by their whole file |
 | `systems[].presentation.native_size`, `systems[].romm_slugs` | |
 | `settings[].scope` `"game"`, `live`, `inherit` | Every setting is the console's and shown on its page only ([settings.md](settings.md)) |
