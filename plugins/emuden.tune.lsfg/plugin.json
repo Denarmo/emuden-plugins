@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.tune.lsfg",
   "name": "Tune: LSFG",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "feature",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -15,8 +15,7 @@
     "feature.mods.1"
   ],
   "platforms": [
-    "linux-x86_64",
-    "windows-x86_64"
+    "linux-x86_64"
   ],
   "feature": {
     "entry": "main.lua",

@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 75,
-  "generated": "2026-11-17T14:27:19Z",
-  "expires": "2027-03-17T14:27:19Z",
+  "sequence": 76,
+  "generated": "2026-11-17T14:30:34Z",
+  "expires": "2027-03-17T14:30:34Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1958,7 +1958,7 @@
     {
       "id": "emuden.tune.lsfg",
       "name": "Tune: LSFG",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1973,17 +1973,15 @@
         "feature.mods.1"
       ],
       "platforms": [
-        "windows-x86_64",
         "linux-x86_64"
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.lsfg-1.0.0.emuplugin",
-        "sha256": "53c405259f754f4dc9a1743c42aaf96fd78ae0317c4a6db28734ea7f1ced3c58",
-        "size": 13839
+        "url": "packages/emuden.tune.lsfg-1.0.1.emuplugin",
+        "sha256": "495a00867368f44238e1bf0281519e075bbfce42336cf7480c457b604ca87a1d",
+        "size": 13832
       },
       "download_size": {
-        "windows-x86_64": 0,
         "linux-x86_64": 0
       },
       "download_hosts": [],
@@ -2005,7 +2003,7 @@
     {
       "id": "emuden.tune.protondb",
       "name": "Tune: ProtonDB",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "kind": "feature",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -2019,17 +2017,15 @@
         "feature.tune.1"
       ],
       "platforms": [
-        "windows-x86_64",
         "linux-x86_64"
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.tune.protondb-1.0.5.emuplugin",
-        "sha256": "27efb18803e79352d1b37404349e281c12cdc7ac72100115e14c950745766fb5",
-        "size": 12725
+        "url": "packages/emuden.tune.protondb-1.0.6.emuplugin",
+        "sha256": "9de7a6e7b84f045b469c2b176e07dcd24f1688bfe6af24d6b9a5ce9d77e43655",
+        "size": 12719
       },
       "download_size": {
-        "windows-x86_64": 0,
         "linux-x86_64": 0
       },
       "download_hosts": [],
