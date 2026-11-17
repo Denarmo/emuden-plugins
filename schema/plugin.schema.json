@@ -13,7 +13,7 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "layout": { "enum": ["carousel", "shelf3d"] },
+        "layout": { "enum": ["carousel", "shelf3d", "grid", "list", "wheel", "hero"] },
         "icon": { "type": "string" },
         "colors": {
           "type": "object",
@@ -54,6 +54,41 @@
           "properties": {
             "side_angle": { "type": "number", "minimum": 0, "maximum": 80 },
             "sway": { "type": "number", "minimum": 0, "maximum": 30 }
+          }
+        },
+        "grid": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "columns": { "type": "integer", "minimum": 0, "maximum": 12 },
+            "panel": { "type": "boolean" },
+            "titles": { "type": "boolean" }
+          }
+        },
+        "list": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "rows": { "type": "integer", "minimum": 5, "maximum": 16 },
+            "art": { "type": "boolean" },
+            "art_side": { "enum": ["left", "right"] },
+            "thumbnails": { "type": "boolean" }
+          }
+        },
+        "wheel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "side": { "enum": ["left", "right"] },
+            "names": { "type": "integer", "minimum": 5, "maximum": 15 },
+            "curve": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        },
+        "hero": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "strip": { "type": "number", "minimum": 0.14, "maximum": 0.4 }
           }
         },
         "tabs": {
