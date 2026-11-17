@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 76,
-  "generated": "2026-11-17T14:30:34Z",
-  "expires": "2027-03-17T14:30:34Z",
+  "sequence": 77,
+  "generated": "2026-11-17T14:47:41Z",
+  "expires": "2027-03-17T14:47:41Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -580,19 +580,20 @@
       ]
     },
     {
-      "id": "emuden.grid",
-      "name": "Grid",
+      "id": "emuden.home-layouts",
+      "name": "Home Layouts",
       "version": "1.0.0",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
-      "summary": "Many covers at once in a scrolling grid, the chosen game's cover, name and records in a panel beside it. Made for big libraries.",
+      "summary": "Four other ways to show your games on Home: a grid of covers, a list of names, an arcade-style wheel, or one game large with a row of covers under it.",
       "group": "",
       "systems": [],
       "api": 1,
       "needs": [
         "kind.interface",
-        "interface.1"
+        "interface.1",
+        "interfaces.1"
       ],
       "platforms": [
         "windows-x86_64",
@@ -603,46 +604,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.grid-1.0.0.emuplugin",
-        "sha256": "755830f633337510af2b45f9f3f89ad0b3f1c30aa095bdba1d17933f11c14782",
-        "size": 4286
-      },
-      "download_size": {
-        "windows-x86_64": 0,
-        "linux-x86_64": 0,
-        "linux-aarch64": 0,
-        "macos-arm64": 0,
-        "android-arm64": 0
-      },
-      "download_hosts": []
-    },
-    {
-      "id": "emuden.hero",
-      "name": "Hero",
-      "version": "1.0.0",
-      "kind": "interface",
-      "engine": "none",
-      "publisher": "EmuDEN",
-      "summary": "One game at a time, large across the screen with its name and records, and a thin row of covers along the bottom to pick the next.",
-      "group": "",
-      "systems": [],
-      "api": 1,
-      "needs": [
-        "kind.interface",
-        "interface.1"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "linux-aarch64",
-        "macos-arm64",
-        "android-arm64"
-      ],
-      "code": "none",
-      "package": {
-        "url": "packages/emuden.hero-1.0.0.emuplugin",
-        "sha256": "b5a303fca009f572a0be26be8d9a9afba6fedac6facdd451de22c772b5d21e9b",
-        "size": 3725
+        "url": "packages/emuden.home-layouts-1.0.0.emuplugin",
+        "sha256": "05bfef57353169b1040bac417f43438733ffb63cca9eeb0fd28b685d264fb076",
+        "size": 25604
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -695,43 +659,6 @@
       "download_hosts": [
         "github.com"
       ]
-    },
-    {
-      "id": "emuden.list",
-      "name": "List",
-      "version": "1.0.0",
-      "kind": "interface",
-      "engine": "none",
-      "publisher": "EmuDEN",
-      "summary": "Your games as a clear list of names with their console, when you last played and for how long, and the chosen game's cover large beside it.",
-      "group": "",
-      "systems": [],
-      "api": 1,
-      "needs": [
-        "kind.interface",
-        "interface.1"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "linux-aarch64",
-        "macos-arm64",
-        "android-arm64"
-      ],
-      "code": "none",
-      "package": {
-        "url": "packages/emuden.list-1.0.0.emuplugin",
-        "sha256": "deada4d034e60029b791e03b50e3851b5981145daf2f1eb6213294feebc0c12c",
-        "size": 4517
-      },
-      "download_size": {
-        "windows-x86_64": 0,
-        "linux-x86_64": 0,
-        "linux-aarch64": 0,
-        "macos-arm64": 0,
-        "android-arm64": 0
-      },
-      "download_hosts": []
     },
     {
       "id": "emuden.lynx",
@@ -1849,6 +1776,43 @@
       "feature_systems": []
     },
     {
+      "id": "emuden.themes",
+      "name": "Themes",
+      "version": "1.0.0",
+      "kind": "interface",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "Ten more colour themes for the whole app, dark and light: pure black, deep blue, forest, warm dusk, lavender, cool grey, a bold high-contrast one, paper, a soft light one and a retro handheld green.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.interface",
+        "themes.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.themes-1.0.0.emuplugin",
+        "sha256": "47149c8d88315cac3d72d21739f92e1c7fa542e88915e50b5cc51817347fe7e8",
+        "size": 106158
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": []
+    },
+    {
       "id": "emuden.tune.emuready",
       "name": "Tune: EmuReady",
       "version": "1.0.5",
@@ -2128,43 +2092,6 @@
       "download_hosts": [
         "github.com"
       ]
-    },
-    {
-      "id": "emuden.wheel",
-      "name": "Wheel",
-      "version": "1.0.0",
-      "kind": "interface",
-      "engine": "none",
-      "publisher": "EmuDEN",
-      "summary": "Game names on a turning wheel at the side, in the style of an arcade cabinet, with the chosen game's art filling the rest of the screen.",
-      "group": "",
-      "systems": [],
-      "api": 1,
-      "needs": [
-        "kind.interface",
-        "interface.1"
-      ],
-      "platforms": [
-        "windows-x86_64",
-        "linux-x86_64",
-        "linux-aarch64",
-        "macos-arm64",
-        "android-arm64"
-      ],
-      "code": "none",
-      "package": {
-        "url": "packages/emuden.wheel-1.0.0.emuplugin",
-        "sha256": "7a1b4e307201fb649c85383bb665f588445cc626d14958132836bf69d527c6ef",
-        "size": 4357
-      },
-      "download_size": {
-        "windows-x86_64": 0,
-        "linux-x86_64": 0,
-        "linux-aarch64": 0,
-        "macos-arm64": 0,
-        "android-arm64": 0
-      },
-      "download_hosts": []
     },
     {
       "id": "emuden.wii",
