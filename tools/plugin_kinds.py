@@ -152,6 +152,60 @@ def validate_themes(themes, err):
                 err(f"themes[{i}].colors.{key}", f"contrast {ratio:.2f}:1 on the page; text needs 4.5:1")
 
 
+def placeholders(text):
+    """How many {} fields a text has; None when std::format would refuse it (a lone brace, an
+    argument index like {0})."""
+    count, i = 0, 0
+    while i < len(text):
+        c = text[i]
+        if c == "{":
+            if text[i + 1:i + 2] == "{":
+                i += 2
+                continue
+            close = text.find("}", i)
+            if close < 0 or (close > i + 1 and text[i + 1] != ":"):
+                return None
+            count, i = count + 1, close + 1
+        elif c == "}":
+            if text[i + 1:i + 2] != "}":
+                return None
+            i += 2
+        else:
+            i += 1
+    return count
+
+
+def validate_language(language, folder, err):
+    """A language pack (docs/language-packs.md): its code and own name, and strings.json, the
+    app's texts in that language. A text's {} fields must be those of the English one (its key,
+    or the app's en.json text for a dotted key)."""
+    code = language.get("code", "")
+    if not re.match(r"^[a-z]{2,3}(-[A-Z]{2}|-[0-9]{3})?$", code) or code.split("-")[0] == "en":
+        err("language.code", "a code like es, pt-BR or zh-TW; English is built into the app")
+    if not isinstance(language.get("name"), str) or not 1 <= len(language["name"]) <= 64:
+        err("language.name", "the language's own name, like Español")
+    if folder is None:
+        return
+    path = folder / "strings.json"
+    if not path.is_file():
+        err("language", "the package has no strings.json")
+        return
+    try:
+        texts = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as e:
+        err("strings.json", f"is not JSON: {e}")
+        return
+    if not isinstance(texts, dict) or not texts:
+        err("strings.json", "must be an object of texts by key")
+        return
+    for key, text in texts.items():
+        if not isinstance(text, str):
+            err(f"strings.json.{key}", "must be a text")
+        elif "." not in key.split(" ")[0] or " " in key:
+            if placeholders(key) is not None and placeholders(text) != placeholders(key):
+                err(f"strings.json.{key}", "must keep the {} fields of the English text")
+
+
 def validate_interface(manifest, folder, err):
     """The rules of an interface plugin: data the app's layouts draw, and its pictures. It has
     looks for Home ("interface", or several in "interfaces"), layouts of the quick settings
@@ -163,6 +217,7 @@ def validate_interface(manifest, folder, err):
     looks = manifest.get("interfaces")
     quick = manifest.get("quick_settings")
     themes = manifest.get("themes")
+    language = manifest.get("language")
     needs = ["kind.interface"]
     if look is not None:
         needs.append("interface.1")
@@ -172,12 +227,16 @@ def validate_interface(manifest, folder, err):
         needs.append("quick_settings.1")
     if themes is not None:
         needs.append("themes.1")
+    if language is not None:
+        needs.append("languages.1")
     for need in dict.fromkeys(needs):
         if need not in manifest["needs"]:
             err("needs", f"must list {need}")
-    if not any(isinstance(part, (dict, list)) for part in (look, looks, quick, themes)):
-        err("interface", "missing (or interfaces, quick_settings, themes)")
+    if not any(isinstance(part, (dict, list)) for part in (look, looks, quick, themes, language)):
+        err("interface", "missing (or interfaces, quick_settings, themes, language)")
         return
+    if isinstance(language, dict):
+        validate_language(language, folder, err)
     if isinstance(look, dict) and isinstance(looks, list):
         err("interfaces", "a plugin has one interface or several interfaces, not both")
     if isinstance(look, dict):

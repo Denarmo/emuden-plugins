@@ -22,7 +22,8 @@
     {"name": "interface.1", "kind": "interface", "meaning": "The interface format, version 1"},
     {"name": "quick_settings.1", "kind": "interface", "meaning": "quick_settings: layouts of the second screen's quick settings, version 1"},
     {"name": "interfaces.1", "kind": "interface", "meaning": "interfaces: several looks for Home in one plugin, version 1"},
-    {"name": "themes.1", "kind": "interface", "meaning": "themes: colour themes for the whole app, version 1"}
+    {"name": "themes.1", "kind": "interface", "meaning": "themes: colour themes for the whole app, version 1"},
+    {"name": "languages.1", "kind": "interface", "meaning": "language: a translation of the app's texts (a language pack), version 1"}
   ],
   "permissions": [
     {"name": "http", "needs": null, "official_only": false},

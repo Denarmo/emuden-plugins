@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 78,
-  "generated": "2026-11-17T15:12:24Z",
-  "expires": "2027-03-17T15:12:24Z",
+  "sequence": 79,
+  "generated": "2026-11-17T19:29:35Z",
+  "expires": "2027-03-17T19:29:35Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -661,6 +661,45 @@
       ]
     },
     {
+      "id": "emuden.lang-es",
+      "name": "Español",
+      "version": "1.0.0",
+      "kind": "interface",
+      "engine": "none",
+      "publisher": "EmuDEN",
+      "summary": "EmuDEN en español: todos los textos de la aplicación, y los juegos con idioma propio (DS y otros) se inician en español.",
+      "group": "",
+      "systems": [],
+      "api": 1,
+      "needs": [
+        "kind.interface",
+        "languages.1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "linux-aarch64",
+        "macos-arm64",
+        "android-arm64"
+      ],
+      "code": "none",
+      "package": {
+        "url": "packages/emuden.lang-es-1.0.0.emuplugin",
+        "sha256": "13c8103f0fcd21bae1402fba305a804eadf13b448f0a1dd01fb6579b2c216388",
+        "size": 25284
+      },
+      "download_size": {
+        "windows-x86_64": 0,
+        "linux-x86_64": 0,
+        "linux-aarch64": 0,
+        "macos-arm64": 0,
+        "android-arm64": 0
+      },
+      "download_hosts": [],
+      "language": "es",
+      "language_name": "Español"
+    },
+    {
       "id": "emuden.lynx",
       "name": "Atari Lynx",
       "version": "1.0.2",
@@ -794,7 +833,7 @@
     {
       "id": "emuden.nds",
       "name": "Nintendo DS",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -823,9 +862,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.nds-1.0.4.emuplugin",
-        "sha256": "de4e2e86ef7bbae9e851bd0b6698cae41c4b3490543a89e8ffbd131aade02c89",
-        "size": 2084
+        "url": "packages/emuden.nds-1.0.5.emuplugin",
+        "sha256": "64ba949899b8858eaa9601dece56140723f2aa9b323d7e8bf168bce924acb876",
+        "size": 2174
       },
       "download_size": {
         "windows-x86_64": 5195771,

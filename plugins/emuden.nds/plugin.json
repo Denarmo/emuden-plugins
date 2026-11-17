@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.nds",
   "name": "Nintendo DS",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -108,6 +108,18 @@
       "gpu": "none",
       "forced_core_options": {
         "melonds_touch_mode": "Touch"
+      },
+      "language": {
+        "option": "melonds_language",
+        "values": {
+          "en": "English",
+          "es": "Spanish",
+          "fr": "French",
+          "de": "German",
+          "it": "Italian",
+          "ja": "Japanese",
+          "*": "English"
+        }
       },
       "version": "2026-11-12",
       "downloads": {

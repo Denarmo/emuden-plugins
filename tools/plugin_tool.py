@@ -103,7 +103,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
     if kind == "interface":
         validate_interface(manifest, folder, err)
     else:
-        for field in ("icon", "interface", "interfaces", "quick_settings", "themes"):
+        for field in ("icon", "interface", "interfaces", "quick_settings", "themes", "language"):
             if field in manifest:
                 err(field, "only for a plugin of kind interface")
     if kind == "console" and not engine:
@@ -409,6 +409,10 @@ def build_index(repo, args):
                         "size": package.stat().st_size},
             "download_size": sizes, "download_hosts": sorted(hosts),
         })
+        if manifest["kind"] == "interface" and manifest.get("language"):
+            # A language pack: what the first-start offer matches the system's language against.
+            plugins[-1].update({"language": manifest["language"]["code"],
+                                "language_name": manifest["language"]["name"]})
         if manifest["kind"] == "feature":
             # What the package will ask for, shown before any download. "systems" stays the
             # list of console objects readers older than feature plugins expect (none here);

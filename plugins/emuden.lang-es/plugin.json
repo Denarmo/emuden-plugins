@@ -1,0 +1,23 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.lang-es",
+  "name": "Español",
+  "version": "1.0.0",
+  "kind": "interface",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "EmuDEN en español: todos los textos de la aplicación, y los juegos con idioma propio (DS y otros) se inician en español.",
+  "api": 1,
+  "needs": [
+    "kind.interface",
+    "languages.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "icon": "icon.png",
+  "language": {
+    "code": "es",
+    "name": "Español"
+  }
+}

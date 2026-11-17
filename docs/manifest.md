@@ -86,6 +86,7 @@ the core options that make the core draw that shape as the core's `option_hints`
 | `version`, `license`, `homepage` | no | |
 | `gpu` | no | `none` (default) or `opengl`: the core draws with the graphics card |
 | `forced_core_options` | no | Core option to value, always applied unless the player chose otherwise |
+| `language` | no | The core option that sets the language of a game and its value for each app language code: `{"option": "melonds_language", "values": {"en": "English", "es": "Spanish", "*": "English"}}`. The player gives it the app's language (`es-MX` tries `es-MX`, then `es`, then `*`) before `option_hints`, `forced_core_options` and the player's own values, so any of those wins. Cores that ask the frontend's language (libretro's GET_LANGUAGE) are told it without this |
 | `option_hints` | no | Core option to value, applied before `forced_core_options` and the player's own values: what makes the core draw the shape its `screens` describe |
 | `presentation` | no | `{"screens": [...]}`: the screens of this core's picture, as the system's `presentation.screens` |
 | `netplay` | no | How the core plays a game together with another device (below) |

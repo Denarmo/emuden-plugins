@@ -13,6 +13,15 @@
     "interface": { "$ref": "#/$defs/home_look" },
     "interfaces": { "type": "array", "minItems": 1, "maxItems": 16, "items": { "$ref": "#/$defs/home_look" } },
     "themes": { "type": "array", "minItems": 1, "maxItems": 24, "items": { "$ref": "#/$defs/theme" } },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "name"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z]{2,3}(-[A-Z]{2}|-[0-9]{3})?$" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 64 }
+      }
+    },
     "quick_settings": {
       "type": "object",
       "additionalProperties": false,
@@ -478,6 +487,15 @@
         "gpu": { "enum": ["none", "opengl"] },
         "forced_core_options": { "type": "object", "additionalProperties": { "type": "string" } },
         "option_hints": { "type": "object", "additionalProperties": { "type": "string" } },
+        "language": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["option", "values"],
+          "properties": {
+            "option": { "type": "string" },
+            "values": { "type": "object", "additionalProperties": { "type": "string" } }
+          }
+        },
         "presentation": { "type": "object", "properties": { "screens": { "$ref": "#/$defs/screens" } } },
         "netplay": { "type": "object", "required": ["mode"],
           "properties": { "mode": { "enum": ["link", "lockstep"] }, "subsystem": { "type": "integer", "minimum": 0, "maximum": 65535 },
