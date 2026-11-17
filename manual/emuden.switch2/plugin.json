@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
@@ -29,9 +29,7 @@
       "order": 0,
       "content": {
         "extensions": [
-          "nup",
-          "nsp",
-          "xci"
+          "nup"
         ],
         "scanner": "switch2",
         "folder_aliases": [
@@ -59,16 +57,12 @@
       },
       "bios": [
         {
-          "label": "Firmware, and keys for encrypted games",
+          "label": "Firmware",
           "any_one": false,
           "files": [
             {
               "path": "@firmware",
               "optional": false
-            },
-            {
-              "path": "@keys",
-              "optional": true
             }
           ]
         }

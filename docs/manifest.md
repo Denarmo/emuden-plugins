@@ -186,8 +186,7 @@ component type leaves the component alone, and the console still plays.
 
 Paths are relative to the BIOS folder ([glossary.md](glossary.md)); a trailing slash means a
 folder that must hold something. `cores` limits the set to those cores. BIOS files are never
-downloaded: a `url` here is an error. `@firmware` and `@keys` are answered by the Switch 2 engine
-only.
+downloaded: a `url` here is an error. `@firmware` is answered by the Switch 2 engine only.
 
 ## Fields not read yet
 
