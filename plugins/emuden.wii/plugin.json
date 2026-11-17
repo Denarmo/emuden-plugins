@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.wii",
   "name": "Nintendo Wii",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -70,12 +70,12 @@
       ],
       "bios": [
         {
-          "label": "Dolphin Sys folder",
+          "label": "Dolphin system files",
           "any_one": false,
           "files": [
             {
-              "path": "dolphin-emu/Sys/",
-              "optional": false
+              "path": "dolphin-emu/Sys/GameSettings/",
+              "optional": true
             }
           ]
         }
@@ -90,26 +90,26 @@
       "name": "Dolphin",
       "license": "GPL-2.0-or-later",
       "gpu": "opengl",
-      "version": "2026-11-12",
+      "version": "2026-11-17",
       "downloads": {
         "windows-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/dolphin-windows-x86_64-2026-11-12.zip",
-          "sha256": "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
-          "size": 7593543,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-dolphin-2026-11-17/dolphin-windows-x86_64-2026-11-17.zip",
+          "sha256": "d7b1d3e29e2053ef458b94e280f26ceb016db5beb05881227411056f5d25a3fa",
+          "size": 9966378,
           "archive": "zip",
           "entry": "dolphin_libretro.dll"
         },
         "linux-x86_64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-2026-11-12/dolphin-linux-x86_64-2026-11-12.zip",
-          "sha256": "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
-          "size": 6192667,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-dolphin-2026-11-17/dolphin-linux-x86_64-2026-11-17.zip",
+          "sha256": "403c59e1cfdfa04a3e8a771d66beeed9f646a1d92eee7ca2b890b3875fea0b36",
+          "size": 10041947,
           "archive": "zip",
           "entry": "dolphin_libretro.so"
         },
         "android-arm64": {
-          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-android-2026-11-13/dolphin-android-arm64-2026-11-12.zip",
-          "sha256": "ae3e6eda123d2989bb729f834da6db4d05a96008e656478c482337c7842856c6",
-          "size": 6421198,
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-dolphin-2026-11-17/dolphin-android-arm64-2026-11-17.zip",
+          "sha256": "55367ec5b67a9af10759cfec49ebccb75e0930549e8f2901b3541b18a9a34d26",
+          "size": 6036910,
           "archive": "zip",
           "entry": "dolphin_libretro_android.so"
         }
@@ -120,16 +120,39 @@
           {
             "min_tier": "very_high",
             "min_screen_height": 1080,
-            "value": "x3 (1920 x 1584)"
+            "value": "3",
+            "describe": "Wii 3x"
           },
           {
             "min_tier": "high",
-            "value": "x2 (1280 x 1056)"
+            "value": "2",
+            "describe": "Wii 2x"
           },
           {
-            "value": "x1 (640 x 528)"
+            "value": "1",
+            "describe": "Wii 1x"
           }
         ]
+      }
+    },
+    {
+      "id": "dolphin-sys",
+      "type": "system-files",
+      "name": "Dolphin system files",
+      "license": "GPL-2.0-or-later",
+      "homepage": "https://github.com/libretro/dolphin",
+      "version": "2026-11-12",
+      "cores": [
+        "dolphin"
+      ],
+      "downloads": {
+        "any": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/cores-dolphin-2026-11-17/dolphin-sys-2026-11-12.zip",
+          "sha256": "9e3be34a6fd8ab5081ad33ed9b4a3cdb393025204246f98a1157bb43abe3e2a1",
+          "size": 3126324,
+          "archive": "zip",
+          "entry": "dolphin-emu/"
+        }
       }
     }
   ],
