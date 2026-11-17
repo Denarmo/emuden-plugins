@@ -115,34 +115,94 @@ def validate_quick_settings(quick, err):
         seen.add(choice)
 
 
+def contrast(fg, bg):
+    """The WCAG contrast ratio of colour `fg` ("#rrggbb" or "#rrggbbaa", blended by its alpha)
+    on the opaque `bg`, as EmuDEN computes it."""
+    def parts(color):
+        color = color.lstrip("#")
+        return [int(color[i:i + 2], 16) / 255 for i in range(0, len(color), 2)] + [1.0]
+
+    def luminance(rgb):
+        linear = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in rgb]
+        return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+
+    f, b = parts(fg), parts(bg)
+    alpha = f[3]
+    front = luminance([f[i] * alpha + b[i] * (1 - alpha) for i in range(3)])
+    back = luminance(b[:3])
+    return (max(front, back) + 0.05) / (min(front, back) + 0.05)
+
+
+def validate_themes(themes, err):
+    """Themes for the whole app (docs/themes.md): each id once, text readable on the page.
+    EmuDEN leaves out a theme whose fg or text_dim is under 4.5:1 on its page."""
+    seen = set()
+    for i, theme in enumerate(themes):
+        if theme["id"] in seen:
+            err(f"themes[{i}].id", f"{theme['id']} is already a theme of this plugin")
+        seen.add(theme["id"])
+        colors = theme["colors"]
+        page = colors["page"][:7]
+        fg = colors["fg"]
+        # As the app reads it: text_dim defaults to fg at 62 %.
+        dim = colors.get("text_dim", fg[:7] + "9e")
+        for key, color in (("fg", fg), ("text_dim", dim)):
+            ratio = contrast(color, page)
+            if ratio < 4.5:
+                err(f"themes[{i}].colors.{key}", f"contrast {ratio:.2f}:1 on the page; text needs 4.5:1")
+
+
 def validate_interface(manifest, folder, err):
     """The rules of an interface plugin: data the app's layouts draw, and its pictures. It has
-    a look for Home ("interface"), layouts of the quick settings ("quick_settings"), or both."""
+    looks for Home ("interface", or several in "interfaces"), layouts of the quick settings
+    ("quick_settings"), themes ("themes"), or several of these."""
     for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
         if manifest.get(field):
             err(field, "an interface plugin has none")
     look = manifest.get("interface")
+    looks = manifest.get("interfaces")
     quick = manifest.get("quick_settings")
+    themes = manifest.get("themes")
     needs = ["kind.interface"]
     if look is not None:
         needs.append("interface.1")
+    if looks is not None:
+        needs += ["interface.1", "interfaces.1"]
     if quick is not None:
         needs.append("quick_settings.1")
-    for need in needs:
+    if themes is not None:
+        needs.append("themes.1")
+    for need in dict.fromkeys(needs):
         if need not in manifest["needs"]:
             err("needs", f"must list {need}")
-    if not isinstance(look, dict) and not isinstance(quick, dict):
-        err("interface", "missing (or quick_settings)")
+    if not any(isinstance(part, (dict, list)) for part in (look, looks, quick, themes)):
+        err("interface", "missing (or interfaces, quick_settings, themes)")
         return
-    pictures = []
+    if isinstance(look, dict) and isinstance(looks, list):
+        err("interfaces", "a plugin has one interface or several interfaces, not both")
+    if isinstance(look, dict):
+        for field in ("id", "name"):
+            if field in look:
+                err(f"interface.{field}", "only for each entry of interfaces")
+    pictures = [("icon", manifest.get("icon"))]
     if isinstance(quick, dict):
         validate_quick_settings(quick, err)
         pictures.append(("quick_settings.icon", quick.get("icon")))
-    look = look if isinstance(look, dict) else {}
-    pictures += [("interface.icon", look.get("icon")),
-                 ("interface.backdrop.wallpaper", look.get("backdrop", {}).get("wallpaper"))]
-    for key, console in look.get("consoles", {}).items():
-        pictures.append((f"interface.consoles.{key}.wallpaper", console.get("wallpaper")))
+    if isinstance(themes, list):
+        validate_themes(themes, err)
+    named = [("interface", look)] if isinstance(look, dict) else []
+    seen = set()
+    for i, entry in enumerate(looks if isinstance(looks, list) else []):
+        choice = entry.get("id", entry.get("layout", "carousel"))
+        if choice in seen:
+            err(f"interfaces[{i}].id", f"{choice} is already a look of this plugin")
+        seen.add(choice)
+        named.append((f"interfaces[{i}]", entry))
+    for path, entry in named:
+        pictures += [(f"{path}.icon", entry.get("icon")),
+                     (f"{path}.backdrop.wallpaper", entry.get("backdrop", {}).get("wallpaper"))]
+        for key, console in entry.get("consoles", {}).items():
+            pictures.append((f"{path}.consoles.{key}.wallpaper", console.get("wallpaper")))
     for path, name in pictures:
         if not name:
             continue

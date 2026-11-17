@@ -1,0 +1,133 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.themes",
+  "name": "Themes",
+  "version": "1.0.0",
+  "kind": "interface",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Ten more colour themes for the whole app, dark and light: pure black, deep blue, forest, warm dusk, lavender, cool grey, a bold high-contrast one, paper, a soft light one and a retro handheld green.",
+  "api": 1,
+  "needs": [
+    "kind.interface",
+    "themes.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "icon": "icon.png",
+  "themes": [
+    {
+      "id": "void",
+      "name": "Void",
+      "colors": {
+        "page": "#000000",
+        "fg": "#e8e8ec",
+        "text_dim": "#a3a3ad",
+        "dialog": "#141417",
+        "accent": "#00e0a0"
+      }
+    },
+    {
+      "id": "deep-harbor",
+      "name": "Deep Harbor",
+      "colors": {
+        "page": "#0b1426",
+        "fg": "#dbe6ff",
+        "text_dim": "#9fb2d6",
+        "dialog": "#17233c",
+        "accent": "#5cc8ff"
+      }
+    },
+    {
+      "id": "fernwood",
+      "name": "Fernwood",
+      "colors": {
+        "page": "#0f1a14",
+        "fg": "#ddf0e3",
+        "text_dim": "#9dc2aa",
+        "dialog": "#1b2b21",
+        "accent": "#8fdc6a"
+      }
+    },
+    {
+      "id": "ember-dusk",
+      "name": "Ember Dusk",
+      "colors": {
+        "page": "#1f1015",
+        "fg": "#ffe8d9",
+        "text_dim": "#dba996",
+        "dialog": "#2e1920",
+        "accent": "#ff8a4c"
+      }
+    },
+    {
+      "id": "lavender-night",
+      "name": "Lavender Night",
+      "colors": {
+        "page": "#1a1626",
+        "fg": "#eee8ff",
+        "text_dim": "#b6abd8",
+        "dialog": "#262037",
+        "accent": "#c49bff"
+      }
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "colors": {
+        "page": "#2b303b",
+        "fg": "#eceff4",
+        "text_dim": "#c3cbd8",
+        "dialog": "#363c49",
+        "accent": "#88c0d0"
+      }
+    },
+    {
+      "id": "signal",
+      "name": "Signal",
+      "colors": {
+        "page": "#000000",
+        "fg": "#ffe600",
+        "text_dim": "#ffffff",
+        "dialog": "#000000",
+        "accent": "#00e5ff",
+        "panel": "#ffe60024",
+        "panel_strong": "#ffe60057"
+      }
+    },
+    {
+      "id": "parchment",
+      "name": "Parchment",
+      "colors": {
+        "page": "#f3ead5",
+        "fg": "#3a2e21",
+        "text_dim": "#6b5945",
+        "dialog": "#eadfc4",
+        "accent": "#b04e17"
+      }
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud",
+      "colors": {
+        "page": "#f5f7fa",
+        "fg": "#1c2632",
+        "text_dim": "#4d5b6c",
+        "dialog": "#e7ecf2",
+        "accent": "#2462d6"
+      }
+    },
+    {
+      "id": "pocket-green",
+      "name": "Pocket Green",
+      "colors": {
+        "page": "#c5d19a",
+        "fg": "#172612",
+        "text_dim": "#34481f",
+        "dialog": "#b7c58a",
+        "accent": "#3b5d22"
+      }
+    }
+  ]
+}

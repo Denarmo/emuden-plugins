@@ -6,7 +6,8 @@ plugin picks the layout and sets its colours, art and motion. It runs nothing an
 permission, so installing one from any source you added is safe in the same way as a theme.
 
 The same kind of plugin can also lay out the quick settings of the second screen
-([quick-settings.md](quick-settings.md)); a plugin with only those has no `interface` object.
+([quick-settings.md](quick-settings.md)) and bring themes for the whole app
+([themes.md](themes.md)); a plugin with only those has no `interface` object.
 
 The user picks it under Settings > Interface ("Home interface"). Try one first from the developer folder ([getting-started.md](getting-started.md#an-interface-plugin)); `examples/jdoe.neon-shelf` is a template. EmuDEN's standard Home stays the
 default and is always one choice away. An interface listed by a source can be picked before it
@@ -63,6 +64,29 @@ Every field of `interface` is optional; anything missing or out of range takes t
 | `tabs` | `continue`: a Continue tab first with the games last played on any of the player's devices, each with the picture of the moment it was left, the device and how long ago; choosing one picks up there (on by default; EmuDEN versions without it ignore it). `recent`: a Recent tab when something was played. `all`: an All tab with every game. |
 | `launch` | `animation`: `zoom` (the cover grows into the console's colour before the game starts) or `none`; `seconds` 0.1 to 1. Only when the player turned EmuDEN's launch animation off: with it on, EmuDEN lifts the game's object off the shelf and drops it into a slot before its start-up screen. |
 | `consoles` | By system id (`gba`), by group (`group:nintendo`), or `*`. `color`, `label` (up to 16 characters on the tab; else the console's short name) and `wallpaper` (a PNG or JPEG of the package). The tabs Continue, Recent and All are looked up as `continue` (else `recent`), `recent` and `all`; in them each game takes its own console's look. `object` (`shelf3d`): `shape` (`cartridge`, `card`, `case`, `jewel`, `disc`), `aspect` (front width over height), `depth` (thickness over height), `shell` (its colour; a cartridge or card whose colour has an alpha below `ff` is see-through, its board showing inside), `label` (`[x, y, w, h]`, 0 to 1: where the cover goes on the front; carts and cards default to a label, cases to the whole front) `disc` (a case or jewel case whose disc slides out), `umd` (that disc is a UMD: it slides out in its shell, and only the disc turns inside it), `radius` (0 to 0.45: how round the top corners are), `notch` (0 to 0.4: the top-right corner cut off at 45 degrees) `grip` (0 to 8 ridges under a cartridge's label, or on a pocket cartridge's top corners), `style` (a cartridge's mould: `plain`; `pocket`, a handheld's with stepped top corners, a sunk panel along the top, a label well and an arrow; `pocket_wide`, a wide handheld's with deep shoulders; or a console's own mould, shaped after the real ones, with its proportions, label and plastic unless set: `nes`, `snes`, `n64`, `megadrive`, `32x`, `gamegear`, `mastersystem`, `atari` (2600 and 7800), `atari5200`, `jaguar`, `lynx`, `vectrex`, `colecovision`, `intellivision`, `neogeopocket`, `wonderswan`, `pokemini`, `virtualboy`, and the cards `hucard` and `mycard`; EmuDEN versions without moulds draw a plain cartridge) `label_edge` (`none`, `paper` or `foil`: a border round the cover on the sticker; `pocket` has foil), `box` (a cartridge's or card's cardboard box stands behind it, its cover on the front; a ROM hack's box is printed on foil, while its cartridge or disc is the original game's with a small HACK sticker), `box_aspect` (the box's width over height until its cover is loaded), and, for EmuDEN versions before the slot drop (newer ones ignore them), `player` (`portrait`, `landscape`, `clamshell` or `home`: the console the cartridge goes into when its game starts, with `player_color` its plastic; the player can turn this animation off in Settings > Interface), `player_model` (a handheld modelled on the real one at its real size, in place of `player` and `player_photo` on EmuDEN versions that have it: `dmg` Game Boy, `cgb` Game Boy Color, `agb` Game Boy Advance, `ds_lite` Nintendo DS Lite, `switch2` Nintendo Switch 2), `player_colors` (the console's other colours: each start picks one of these or `player_color` at random), `player_photo` (a photograph of the console's front on a clear or plain ground to shape it from: `launchbox` for the LaunchBox Games Database's device picture of the platform, or an https address; portrait and landscape handhelds only; its plastic is recoloured for each colour) and `player_screen` (`[x, y, w, h]`, 0 to 1 of the console in the photograph: where its screen is). Missing fields take the shape's own. |
+
+## Several looks in one plugin
+
+A plugin can hold several Home looks, as `emuden.home-layouts` does: an `interfaces` array in
+place of `interface`, with `interfaces.1` in `needs` beside `interface.1`. Each entry has the
+fields of `interface` and also `id` (`a-z`, `0-9`, `-`, `_`, up to 32; else the layout's name)
+and `name` (up to 40 characters: what Settings > Interface lists). An id is used once; at most
+16 looks. A top-level `icon` is the plugin's picture (else the first look's `icon`).
+
+```json
+"needs": ["kind.interface", "interface.1", "interfaces.1"],
+"icon": "icon.png",
+"interfaces": [
+  { "id": "grid", "name": "Grid", "layout": "grid", "grid": { "columns": 0 } },
+  { "id": "list", "name": "List", "layout": "list", "colors": { "accent": "#f2b84b" } }
+]
+```
+
+Settings > Interface lists every look of every installed plugin; the setting
+`ui.home.interface` holds `<plugin>/<look>` (a plugin's id alone, as a one-look plugin is
+stored, picks its first look). Tapping such a plugin on the Plugins screen opens that setting,
+while a one-look plugin is used as Home at once. Looks whose layout this EmuDEN lacks are left
+out; an EmuDEN older than `interfaces.1` refuses the plugin.
 
 Pictures are paths inside the package: no `..`, no leading slash. A package holds `.json`,
 `.png`, `.jpg`, `.txt` and `.md` files only, at most 200 files and 8 MiB.

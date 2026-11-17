@@ -57,7 +57,7 @@ MAX_EXPIRY_DAYS = 120
 
 FEATURE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
                                    r"\.(json|lua|png|jpg|txt|md)$")
-# Interface plugins (kind "interface"): data only, a look for EmuDEN's Home screen.
+# Interface plugins (kind "interface"): data only, looks for Home, quick settings layouts, themes.
 INTERFACE_PACKAGE_FILES = re.compile(r"^[A-Za-z0-9_][A-Za-z0-9_.-]*(/[A-Za-z0-9_][A-Za-z0-9_.-]*)*"
                                      r"\.(json|png|jpg|txt|md)$")
 MAX_FEATURE_FILES = 200
@@ -103,7 +103,7 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
     if kind == "interface":
         validate_interface(manifest, folder, err)
     else:
-        for field in ("interface", "quick_settings"):
+        for field in ("icon", "interface", "interfaces", "quick_settings", "themes"):
             if field in manifest:
                 err(field, "only for a plugin of kind interface")
     if kind == "console" and not engine:

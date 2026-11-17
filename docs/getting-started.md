@@ -6,7 +6,7 @@ EmuDEN has three kinds of plugin you can publish:
 |---|---|---|
 | `console` | Data: which files are a console's games, how they look, which core plays them | `examples/jdoe.wiiu-cemu` (an engine app), `plugins/emuden.nes` (libretro cores) |
 | `feature` | A Lua script with a page of its own, run in a sandbox ([feature-plugins.md](feature-plugins.md), [lua-api.md](lua-api.md)) | `examples/jdoe.hello-feature`, `examples/jdoe.sync.webdav` (a sync provider) |
-| `interface` | Data: a look for the Home screen ([interface-plugins.md](interface-plugins.md)) and/or layouts of the second screen's quick settings ([quick-settings.md](quick-settings.md)) | `examples/jdoe.neon-shelf`, `plugins/emuden.quick-layouts` |
+| `interface` | Data: looks for the Home screen ([interface-plugins.md](interface-plugins.md)), layouts of the second screen's quick settings ([quick-settings.md](quick-settings.md)) and/or themes for the whole app ([themes.md](themes.md)) | `examples/jdoe.neon-shelf`, `plugins/emuden.home-layouts`, `plugins/emuden.quick-layouts`, `plugins/emuden.themes` |
 
 Paths and menu names used below are listed in [glossary.md](glossary.md).
 
@@ -129,7 +129,8 @@ appears under Plugins marked "Developer", and its page has **Reload the script**
 Copy `examples/jdoe.neon-shelf` into the developer folder the same way and pick it under
 Settings > Interface. An interface whose `layout` this EmuDEN does not have installs, but picking
 it says so and the standard Home stays. Quick settings layouts (`quick_settings`) are picked on
-the same page, under "Quick settings layout" ([quick-settings.md](quick-settings.md)).
+the same page, under "Quick settings layout" ([quick-settings.md](quick-settings.md)); themes
+under Settings > Display ([themes.md](themes.md)).
 
 ## Publish it
 

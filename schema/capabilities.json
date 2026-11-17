@@ -18,9 +18,11 @@
     {"name": "feature.achievements.1", "kind": "feature", "meaning": "den.achievements"},
     {"name": "feature.browser.1", "kind": "feature", "meaning": "The browser for any site and the setup of its downloads"},
     {"name": "feature.mods.1", "kind": "feature", "meaning": "den.mods: files in the folders of Steam games and Vulkan layers; EmuDEN's own plugins only"},
-    {"name": "kind.interface", "kind": "interface", "meaning": "An interface plugin (a look for Home)"},
+    {"name": "kind.interface", "kind": "interface", "meaning": "An interface plugin: data only (looks for Home, quick settings layouts, themes)"},
     {"name": "interface.1", "kind": "interface", "meaning": "The interface format, version 1"},
-    {"name": "quick_settings.1", "kind": "interface", "meaning": "quick_settings: layouts of the second screen's quick settings, version 1"}
+    {"name": "quick_settings.1", "kind": "interface", "meaning": "quick_settings: layouts of the second screen's quick settings, version 1"},
+    {"name": "interfaces.1", "kind": "interface", "meaning": "interfaces: several looks for Home in one plugin, version 1"},
+    {"name": "themes.1", "kind": "interface", "meaning": "themes: colour themes for the whole app, version 1"}
   ],
   "permissions": [
     {"name": "http", "needs": null, "official_only": false},

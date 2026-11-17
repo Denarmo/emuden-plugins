@@ -84,6 +84,40 @@ class Tool(unittest.TestCase):
         feature_kind["quick_settings"] = {"layout": "grid"}
         self.assertTrue(any("only for a plugin of kind interface" in p for p in problems(feature_kind)))
 
+    def test_several_home_looks_and_themes(self):
+        def interface(**fields):
+            base = {"manifest_version": 1, "id": "jdoe.looks", "name": "Looks", "version": "1.0.0",
+                    "kind": "interface", "publisher": "J. Doe", "license": "MIT", "api": 1,
+                    "needs": ["kind.interface", "interface.1", "interfaces.1", "themes.1"]}
+            base.update(fields)
+            return base
+
+        looks = interface(interfaces=[{"id": "grid", "name": "Grid", "layout": "grid"},
+                                      {"id": "list", "name": "List", "layout": "list"}])
+        self.assertEqual(problems(looks), [])
+        looks["interfaces"][1]["id"] = "grid"
+        self.assertTrue(any("already a look" in p for p in problems(looks)))
+        looks["needs"].remove("interfaces.1")
+        self.assertTrue(any("interfaces.1" in p for p in problems(looks)))
+
+        themes = interface(themes=[{"id": "night", "name": "Night", "colors": {"page": "#000000", "fg": "#ffffff"}}])
+        self.assertEqual(problems(themes), [])
+        themes["themes"][0]["colors"]["text_dim"] = "#444444"
+        self.assertTrue(any("contrast" in p for p in problems(themes)))
+        themes["themes"][0]["colors"] = {"page": "#ffffff", "fg": "#999999"}
+        self.assertTrue(any("colors.fg" in p for p in problems(themes)))
+
+    def test_official_themes_are_readable(self):
+        from plugin_kinds import contrast
+        manifest = plugin_tool.load_json(REPO / "plugins" / "emuden.themes" / "plugin.json")
+        self.assertGreaterEqual(len(manifest["themes"]), 8)
+        for theme in manifest["themes"]:
+            colors = theme["colors"]
+            with self.subTest(theme["id"]):
+                self.assertGreaterEqual(contrast(colors["fg"], colors["page"]), 4.5)
+                self.assertGreaterEqual(contrast(colors["text_dim"], colors["page"]), 4.5)
+                self.assertGreaterEqual(contrast(colors["fg"], colors["dialog"]), 4.5)
+
     def test_manual_plugins_are_in_no_list(self):
         import plugin_manual
         manual = [f.name for f in plugin_manual.manual_folders(REPO)]

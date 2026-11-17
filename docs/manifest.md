@@ -3,7 +3,8 @@
 UTF-8 JSON, at most 1 MiB. Paths use `/`, are relative and never contain `..`.
 `schema/plugin.schema.json` describes the same format for editors. Feature and interface
 plugins have their own pages ([feature-plugins.md](feature-plugins.md),
-[interface-plugins.md](interface-plugins.md), [quick-settings.md](quick-settings.md)).
+[interface-plugins.md](interface-plugins.md), [quick-settings.md](quick-settings.md),
+[themes.md](themes.md)).
 
 ## Top level
 
