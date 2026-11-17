@@ -77,7 +77,7 @@ filled from EmuDEN's own tables for the consoles it knows, and otherwise as the 
 |---|---|---|
 | `layout` | `other` | `nintendo`: the console's own pad has A on the right and B below it, so a pad lettered the other way round (Xbox) presses the button of the same letter |
 | `digital_only` | false | The console has no stick: the left stick works as the D-pad too |
-| `media` | a plain cartridge | How the standard Home and the boot screen draw a game: `{"shape": "card", "style": "hucard", "aspect": 0.64, "disc": false, "umd": false}`. `shape` is `cartridge`, `card`, `case`, `jewel` or `disc`; `style` one of EmuDEN's moulds (`pocket`, `pocket_wide`, `nes`, `snes`, `n64`, `megadrive`, `mastersystem`, `gamegear`, `32x`, `mycard`, `hucard`, `lynx`, `neogeopocket`, `wonderswan`, `virtualboy`, `pokemini`, `atari`, `atari5200`, `jaguar`, `vectrex`, `colecovision`, `intellivision`); `aspect` is width over height; `disc` puts a disc in a case or jewel case, `umd` a UMD |
+| `media` | a plain cartridge | How the standard Home and the boot screen draw a game: `{"shape": "card", "style": "hucard", "aspect": 0.64, "disc": false, "umd": false}`. `shape` is `cartridge`, `card`, `case`, `jewel` or `disc`; `style` one of EmuDEN's moulds (`pocket`, `pocket_wide`, `nds`, `n3ds`, `nes`, `snes`, `n64`, `megadrive`, `mastersystem`, `gamegear`, `32x`, `mycard`, `hucard`, `lynx`, `neogeopocket`, `wonderswan`, `virtualboy`, `pokemini`, `atari`, `atari5200`, `jaguar`, `vectrex`, `colecovision`, `intellivision`); `aspect` is width over height; `disc` puts a disc in a case or jewel case, `umd` a UMD |
 | `screens` | one screen | A picture of several screens, below |
 
 `screens` lists the shapes a core's picture may have and which part of it each screen is. A

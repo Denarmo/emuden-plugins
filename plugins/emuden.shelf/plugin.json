@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -183,19 +183,27 @@
         "color": "#7d8492",
         "label": "DS",
         "object": {
-          "shape": "card",
-          "aspect": 1.05,
-          "depth": 0.1,
-          "shell": "#3b3c44",
-          "label": [0.08, 0.16, 0.84, 0.74],
-          "notch": 0.09,
-          "radius": 0.05,
+          "shape": "cartridge",
+          "style": "nds",
           "box": true,
           "box_aspect": 0.88,
           "player": "clamshell",
           "player_model": "ds_lite",
           "player_color": "#f1f1f3",
           "player_colors": ["#1f1f23", "#a9cdea", "#f0a8bf", "#2c3a66", "#b8232c"]
+        }
+      },
+      "3ds": {
+        "color": "#c8323c",
+        "label": "3DS",
+        "object": {
+          "shape": "cartridge",
+          "style": "n3ds",
+          "box": true,
+          "box_aspect": 0.88,
+          "player": "clamshell",
+          "player_model": "ds_lite",
+          "player_color": "#e8e8ec"
         }
       },
       "nes": {
