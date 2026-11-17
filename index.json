@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 77,
-  "generated": "2026-11-17T14:47:41Z",
-  "expires": "2027-03-17T14:47:41Z",
+  "sequence": 78,
+  "generated": "2026-11-17T15:12:24Z",
+  "expires": "2027-03-17T15:12:24Z",
   "plugins": [
     {
       "id": "emuden.32x",

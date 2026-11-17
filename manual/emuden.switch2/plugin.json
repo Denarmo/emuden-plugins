@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
@@ -59,7 +59,7 @@
       },
       "bios": [
         {
-          "label": "Firmware and keys",
+          "label": "Firmware, and keys for encrypted games",
           "any_one": false,
           "files": [
             {
@@ -68,7 +68,7 @@
             },
             {
               "path": "@keys",
-              "optional": false
+              "optional": true
             }
           ]
         }
