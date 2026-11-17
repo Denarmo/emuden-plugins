@@ -20,20 +20,20 @@
   "dolphin:windows-x86_64": {
     "core": "dolphin",
     "platform": "windows-x86_64",
-    "upstream": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/dolphin_libretro.dll.zip",
+    "upstream": "https://github.com/libretro/dolphin/tree/0863ee3700978e826b0d95b72d4742e537a7325b + patches/dolphin/emuden-0863ee3700.patch",
     "license": "GPL-2.0-or-later",
-    "fetched": "2026-11-12",
-    "sha256": "608399026d6b13fa824c40b071c281ace6a661ec02a12ddeff57b77684f23ce8",
-    "size": 7593543
+    "fetched": "2026-11-17",
+    "sha256": "d7b1d3e29e2053ef458b94e280f26ceb016db5beb05881227411056f5d25a3fa",
+    "size": 9966378
   },
   "dolphin:linux-x86_64": {
     "core": "dolphin",
     "platform": "linux-x86_64",
-    "upstream": "https://buildbot.libretro.com/nightly/linux/x86_64/latest/dolphin_libretro.so.zip",
+    "upstream": "https://github.com/libretro/dolphin/tree/0863ee3700978e826b0d95b72d4742e537a7325b + patches/dolphin/emuden-0863ee3700.patch",
     "license": "GPL-2.0-or-later",
-    "fetched": "2026-11-12",
-    "sha256": "fb98c63f10425f8d5c575628552fa860022dda23da14c37eb6004697ac9eb8af",
-    "size": 6192667
+    "fetched": "2026-11-17",
+    "sha256": "403c59e1cfdfa04a3e8a771d66beeed9f646a1d92eee7ca2b890b3875fea0b36",
+    "size": 10041947
   },
   "mgba:windows-x86_64": {
     "core": "mgba",
@@ -227,11 +227,11 @@
   "dolphin:android-arm64": {
     "core": "dolphin",
     "platform": "android-arm64",
-    "upstream": "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/dolphin_libretro_android.so.zip",
+    "upstream": "https://github.com/libretro/dolphin/tree/0863ee3700978e826b0d95b72d4742e537a7325b + patches/dolphin/emuden-0863ee3700.patch",
     "license": "GPL-2.0-or-later",
-    "fetched": "2026-11-12",
-    "sha256": "ae3e6eda123d2989bb729f834da6db4d05a96008e656478c482337c7842856c6",
-    "size": 6421198
+    "fetched": "2026-11-17",
+    "sha256": "55367ec5b67a9af10759cfec49ebccb75e0930549e8f2901b3541b18a9a34d26",
+    "size": 6036910
   },
   "mgba:android-arm64": {
     "core": "mgba",
@@ -1384,5 +1384,14 @@
     "fetched": "2026-11-15",
     "sha256": "92e8cdb6f394ce269b3944ea84521ec7ccddd0e63520514c063090215036e8d1",
     "size": 106053
+  },
+  "dolphin-sys:any": {
+    "core": "dolphin-sys",
+    "platform": "any",
+    "upstream": "https://github.com/libretro/dolphin/tree/0863ee3700978e826b0d95b72d4742e537a7325b/Data/Sys",
+    "license": "GPL-2.0-or-later",
+    "fetched": "2026-11-17",
+    "sha256": "9e3be34a6fd8ab5081ad33ed9b4a3cdb393025204246f98a1157bb43abe3e2a1",
+    "size": 3126324
   }
 }

@@ -1,7 +1,7 @@
 # Mirrored cores
 
 The emulator cores this source installs are unmodified nightly builds from the libretro buildbot
-(https://buildbot.libretro.com/nightly/), except DenSX2 (see below), copied into this repository's releases so each download has a fixed
+(https://buildbot.libretro.com/nightly/), except DenSX2 and Dolphin (see below), copied into this repository's releases so each download has a fixed
 checksum. `cores.lock.json` records where each file came from, when, and its checksum.
 
 Only cores that need no console BIOS are offered: each either needs none or carries its own
@@ -83,6 +83,28 @@ https://docs.libretro.com/.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
 - `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored
   unmodified and free of charge.
+
+## Dolphin
+
+From release `cores-dolphin-2026-11-17` on, `dolphin` is built from https://github.com/libretro/dolphin at commit
+`0863ee3700978e826b0d95b72d4742e537a7325b` (the buildbot's 2026-11-12 nightly) with
+`patches/dolphin/emuden-0863ee3700.patch`, not taken from the buildbot:
+
+- The core told the frontend 119.88 fps, the refresh rate of Dolphin's boot preset of the video interface (NTSC
+  timing at the 54 MHz clock), and when the game set its own 59.94 Hz it said so only with SET_GEOMETRY, which carries
+  no frame rate. A frontend that runs the core at the rate it reports (EmuDEN) ran every NTSC game at double speed.
+  The patch reports the region's rate until the game programs the video interface, and SET_SYSTEM_AV_INFO whenever
+  the rate changes by more than 1 Hz.
+- On Android the core exported JNI_OnLoad from Dolphin's Android app, which looks up that app's Java classes and
+  aborts a process without them when a frontend calls it. The libretro build leaves it out.
+
+Windows is cross-built with MinGW-w64 (GCC 14, linked statically), Linux on Debian 13 (glibc 2.38 or later), Android
+with NDK r29 (API 26), all from the same tree. The buildbot files stay in `cores-2026-11-12` and `cores-android-2026-11-13`.
+
+`dolphin-sys-2026-11-12.zip` is the unmodified `Data/Sys` folder of the same commit (game settings and patches,
+the free GameCube fonts, the Gecko code handler, shaders) with Dolphin's `COPYING`, zipped under `dolphin-emu/`.
+EmuDEN unpacks it into the BIOS folder, where the core looks for `dolphin-emu/Sys`. It holds no Nintendo
+firmware. Dolphin is GPL-2.0-or-later.
 
 ## PPSSPP assets
 
