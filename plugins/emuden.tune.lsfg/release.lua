@@ -7,14 +7,11 @@ return {
   version = "2.0.0",
   url = "https://builds.lsfg-vk.dev/lsfg-vk-2.0.0.tar.xz",
   name = "lsfg-vk-2.0.0.tar.xz",
-  -- The Content-Length builds.lsfg-vk.dev gave on 2026-11-17 (file dated 2026-09-05).
+  -- Downloaded and read on 2026-11-17 (file dated 2026-09-05): plain LZMA2 with CRC64, the
+  -- four layer files below, and a manifest with DISABLE_LSFGVK as its disable_environment.
+  -- builds.lsfg-vk.dev publishes no checksum of its own.
   size = 561348,
-  -- NOT VERIFIED, EMPTY ON PURPOSE: builds.lsfg-vk.dev publishes no checksum for its builds.
-  -- While this is empty the plugin downloads nothing and its page says so. Fill in the
-  -- SHA-256 (64 hex digits) of the reviewed lsfg-vk-2.0.0.tar.xz before publishing.
-  sha256 = "",
-  -- NOT VERIFIED against the tarball itself: the names follow lsfg-vk 2.0.0's CMake install
-  -- rules (lsfg-vk-layer/CMakeLists.txt), with nothing in front of lib/ and share/.
+  sha256 = "08bdbdf373a111022df87dac7aa87e3b564bb841f961552e3ca85fea12b5aa74",
   layers = {
     { manifest = "share/vulkan/implicit_layer.d/VkLayer_LSFGVK_frame_generation.json",
       library = "lib/liblsfg-vk-layer.so" },
