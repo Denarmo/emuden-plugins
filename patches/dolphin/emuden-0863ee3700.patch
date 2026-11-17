@@ -1,0 +1,95 @@
+diff --git a/Source/Android/jni/AndroidCommon/IDCache.cpp b/Source/Android/jni/AndroidCommon/IDCache.cpp
+index 58cec02..5375a6d 100644
+--- a/Source/Android/jni/AndroidCommon/IDCache.cpp
++++ b/Source/Android/jni/AndroidCommon/IDCache.cpp
+@@ -723,6 +723,9 @@ jmethodID GetAudioUtilsGetFramesPerBuffer()
+ 
+ }  // namespace IDCache
+ 
++// A libretro core is loaded by its frontend, not by Dolphin's Java app: a frontend that calls
++// JNI_OnLoad would abort on the classes looked up here, which only Dolphin's app has.
++#ifndef __LIBRETRO__
+ extern "C" {
+ 
+ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
+@@ -1056,3 +1059,4 @@ JNIEXPORT void JNI_OnUnload(JavaVM* vm, void* reserved)
+   env->DeleteGlobalRef(s_audio_utils_class);
+ }
+ }
++#endif
+diff --git a/Source/Core/DolphinLibretro/Main.cpp b/Source/Core/DolphinLibretro/Main.cpp
+index 97ba667..9fd0b95 100644
+--- a/Source/Core/DolphinLibretro/Main.cpp
++++ b/Source/Core/DolphinLibretro/Main.cpp
+@@ -85,6 +85,9 @@ double g_core_refresh_rate{0};
+ // Reset per game (see retro_run): the first refresh-rate settle after boot must not
+ // trigger a mode-family reinit, only a real in-game 50<->60 switch should.
+ static bool s_refresh_rate_settled = false;
++// The frame rate the frontend paces retro_run by: the last one it got from
++// retro_get_system_av_info or SET_SYSTEM_AV_INFO (SET_GEOMETRY carries none).
++static double s_frontend_fps = 0.0;
+ extern void reload_cheats_from_ini();
+ extern unsigned msg_interface_version;
+ 
+@@ -162,6 +165,7 @@ void retro_init(void)
+ void retro_deinit(void)
+ {
+   Libretro::g_emuthread_launched = false;
++  Libretro::s_refresh_rate_settled = false;
+ #ifdef PERF_TEST
+   perf_cb.perf_log();
+ #endif
+@@ -230,10 +234,15 @@ void retro_get_system_av_info(retro_system_av_info* info)
+     info->geometry.aspect_ratio *= 2.0;
+ 
+   Core::System& system = Core::System::GetInstance();
++  // Until the game first programs the VI, its registers hold Dolphin's boot preset, whose
++  // timing at the 54 MHz clock of an NTSC console is 119.88 fields a second, twice what
++  // any game runs at. The region's rate stands in for it until then.
+   double fps = system.GetVideoInterface().GetTargetRefreshRate();
+-  if (fps <= 0.0)
++  if (fps <= 0.0 || !Libretro::s_refresh_rate_settled)
+     fps = (retro_get_region() == RETRO_REGION_NTSC) ? (60.0 / 1.001) : 50.0;
+   info->timing.fps = fps;
++  if (!Libretro::s_refresh_rate_settled)
++    Libretro::s_frontend_fps = fps;
+   info->timing.sample_rate = Libretro::Audio::GetActiveSampleRate();
+ }
+ 
+@@ -379,6 +388,8 @@ void retro_run(void)
+     retro_system_av_info info;
+     retro_get_system_av_info(&info);
+     Libretro::environ_cb(cmd, &info);
++    if (cmd == RETRO_ENVIRONMENT_SET_SYSTEM_AV_INFO)
++      Libretro::s_frontend_fps = info.timing.fps;
+   }
+ 
+   if (Libretro::Options::IsUpdated(Libretro::Options::gfx_settings::CROP_OVERSCAN))
+@@ -415,9 +426,6 @@ void retro_run(void)
+       Libretro::FrameTiming::target_frame_duration_usec.store(
+           static_cast<retro_usec_t>(lround(1e6 / new_rate)), std::memory_order_relaxed);
+ 
+-    retro_system_av_info info;
+-    retro_get_system_av_info(&info);
+-
+     // 50<->60 switch needs a new CRT mode family: only SET_SYSTEM_AV_INFO carries
+     // the fps switchres uses, then SET_GEOMETRY rebuilds the surface its reinit drops.
+     // First settle after boot keeps the initial mode, so geometry-only (no reinit flash).
+@@ -425,8 +433,16 @@ void retro_run(void)
+       Libretro::s_refresh_rate_settled && ((old_rate > 55.0) != (new_rate > 55.0));
+     Libretro::s_refresh_rate_settled = true;
+ 
+-    if (crosses_50_60)
++    retro_system_av_info info;
++    retro_get_system_av_info(&info);
++
++    // retro_run returns once per field, so a frontend pacing by a rate that is off by
++    // more than a hertz runs the game too fast or too slow: it is told the new rate too.
++    if (crosses_50_60 || std::fabs(info.timing.fps - Libretro::s_frontend_fps) > 1.0)
++    {
+       Libretro::environ_cb(RETRO_ENVIRONMENT_SET_SYSTEM_AV_INFO, &info);
++      Libretro::s_frontend_fps = info.timing.fps;
++    }
+     Libretro::environ_cb(RETRO_ENVIRONMENT_SET_GEOMETRY, &info);
+   }
+ 
