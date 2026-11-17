@@ -2,7 +2,7 @@
 -- SPDX-License-Identifier: GPL-3.0-or-later
 
 -- An offline `den` for feature plugin tests, in plain Lua 5.4. docs/lua-api.md is the API it
--- copies; den_mock_json.lua and den_mock_apis.lua are parts of it. Run a test from the
+-- copies; den_mock_json.lua, den_mock_apis.lua and den_mock_mods.lua are parts of it. Run a test from the
 -- repository root:
 --   LUA_PATH="tests/?.lua;tests/<id>/?.lua;<plugin folder>/?.lua;;" DEN_PLUGIN_DIR=<plugin folder> lua tests/<id>/test.lua
 --
@@ -43,6 +43,11 @@
 --   mock.games, mock.hacks, mock.device_info, mock.game_settings, mock.steam,
 --   mock.achievements, mock.web_files, mock.bookmarks, mock.downloads (device Downloads),
 --   mock.sync_status, mock.sync_folder, mock.user_server, mock.clock
+--   den.mods: mock.game_files[appid] = { ["bin/a.dll"] = content } (a Steam game's folder; the
+--       appid must be a game of mock.steam.apps), mock.archives["downloads/a.zip"] =
+--       { [entry] = content } (what den.mods.unpack finds in a downloaded archive),
+--       mock.mods[appid] and mock.layers[name] (what was applied). Each changing call asks
+--       (mock.answer); the ask of an apply lists its files as {to, replaced}.
 -- Checking: mock.check(cond, what); mock.finish() prints a summary and exits 1 when a check
 -- failed, a plugin call failed (mock.errors), a call lacked its permission (mock.refusals) or a
 -- request had no route (mock.unrouted). Clear those lists after a failure the test expects.
@@ -69,6 +74,7 @@ local function reset()
   M.steam = { installed = false, can_change = false, note = "", apps = {}, tools = {}, config = {} }
   M.achievements = { signed_in = false, hardcore = false, sound = true, screenshot = false, playing = "", games = {} }
   M.web_files, M.bookmarks, M.downloads, M.setups, M.games_downloaded = {}, {}, {}, {}, {}
+  M.game_files, M.archives, M.mods, M.layers = {}, {}, {}, {}
   M.web_in_app, M.sync_folder, M.sync_categories, M.sync_now_calls = true, nil, nil, 0
   M.sync_status = { active = true, running = false, last_sync = 0, done = 0, total = 0, uploaded = 0,
                     downloaded = 0, conflicts = 0, waiting = 0, errors = {} }
@@ -100,13 +106,15 @@ function M.find(id, page) return find_in((page or M.page() or {}).body, id) end
 
 -------------------------------------------------------------------------------- the manifest
 local CAPS = { ["kind.feature"] = 1, ["feature.lua.1"] = 1, ["feature.web.1"] = 1, ["feature.tune.1"] = 1,
-               ["feature.achievements.1"] = 1, ["feature.browser.1"] = 1 }
+               ["feature.achievements.1"] = 1, ["feature.browser.1"] = 1, ["feature.mods.1"] = 1 }
 local PERMS = { http = 0, download = 0, ["open-url"] = 0, browse = "feature.web.1", ["files.import"] = 0,
                 ["downloads.watch"] = 0, ["library.read"] = 0, patch = 0, ["library.write"] = 0, sync = 0,
                 ["http.user_host"] = 0, ["http.local"] = 0, ["device.info"] = "feature.tune.1",
                 ["game.settings"] = "feature.tune.1", steam = "feature.tune.1", achievements = "feature.achievements.1",
-                ["browse.any"] = "feature.browser.1", ["downloads.setup"] = "feature.browser.1" }
-local OFFICIAL_ONLY = { ["downloads.watch"] = 1, ["browse.any"] = 1, ["downloads.setup"] = 1, achievements = 1 }
+                ["browse.any"] = "feature.browser.1", ["downloads.setup"] = "feature.browser.1",
+                ["game.files"] = "feature.mods.1" }
+local OFFICIAL_ONLY = { ["downloads.watch"] = 1, ["browse.any"] = 1, ["downloads.setup"] = 1, achievements = 1,
+                        ["game.files"] = 1 }
 
 local function read_file(path)
   local f = io.open(path, "rb")
@@ -391,7 +399,7 @@ local function build_den(opts)
     if not ok then return refuse(why) end
     if type(o.name) ~= "string" or o.name == "" or o.name:find("[/\\]") or o.name:sub(1, 1) == "." then return refuse("name must be a plain file name") end
     wait()
-    local req = { kind = "download", url = o.url, method = "GET", headers = {}, name = o.name }
+    local req = { kind = "download", url = o.url, method = "GET", headers = {}, name = o.name, sha256 = o.sha256 }
     M.requests[#M.requests + 1] = req
     local resp, err = answer(req)
     if not resp then return refuse(err) end
@@ -450,9 +458,11 @@ local function build_den(opts)
   }
   den.app = { open_game = function(id) M.opened[#M.opened + 1] = "game:" .. id end }
 
-  require("den_mock_apis")(den, { M = M, perms = perms, systems = systems, manifest = manifest, null = NULL,
+  local helpers = { M = M, perms = perms, systems = systems, manifest = manifest, null = NULL,
     wait = wait, refuse = refuse, denied = denied, take_answer = take_answer, copy = copy,
-    check_declared = check_declared, safe_path = safe_path, resolve = resolve, user = function() return from_user end })
+    check_declared = check_declared, safe_path = safe_path, resolve = resolve, user = function() return from_user end }
+  require("den_mock_apis")(den, helpers)
+  require("den_mock_mods")(den, helpers)
   if perms.sync then
     den.sync = {
       status = function() return copy(M.sync_status) end,

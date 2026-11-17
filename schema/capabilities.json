@@ -17,6 +17,7 @@
     {"name": "feature.tune.1", "kind": "feature", "meaning": "den.device, den.game, den.steam"},
     {"name": "feature.achievements.1", "kind": "feature", "meaning": "den.achievements"},
     {"name": "feature.browser.1", "kind": "feature", "meaning": "The browser for any site and the setup of its downloads"},
+    {"name": "feature.mods.1", "kind": "feature", "meaning": "den.mods: files of a Steam game's folder and Vulkan layers, set up by the app after the user agreed"},
     {"name": "kind.interface", "kind": "interface", "meaning": "An interface plugin (a look for Home)"},
     {"name": "interface.1", "kind": "interface", "meaning": "The interface format, version 1"}
   ],
@@ -38,6 +39,7 @@
     {"name": "steam", "needs": "feature.tune.1", "official_only": false},
     {"name": "achievements", "needs": "feature.achievements.1", "official_only": true},
     {"name": "browse.any", "needs": "feature.browser.1", "official_only": true},
-    {"name": "downloads.setup", "needs": "feature.browser.1", "official_only": true}
+    {"name": "downloads.setup", "needs": "feature.browser.1", "official_only": true},
+    {"name": "game.files", "needs": "feature.mods.1", "official_only": true}
   ]
 }

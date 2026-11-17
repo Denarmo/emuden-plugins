@@ -13,14 +13,14 @@ The common fields are those of every plugin. `needs` must list `kind.feature` an
 `feature.lua.1`, and each permission's capability ([compatibility.md](compatibility.md)):
 `feature.web.1` with `browse`, `feature.tune.1` with `device.info`, `game.settings` or `steam`,
 `feature.achievements.1` with `achievements`, `feature.browser.1` with `browse.any` or
-`downloads.setup`. EmuDEN refuses a permission whose capability is missing, and an EmuDEN
+`downloads.setup`, `feature.mods.1` with `game.files`. EmuDEN refuses a permission whose capability is missing, and an EmuDEN
 without feature plugins refuses the plugin and keeps the rest of the list. A feature plugin has no `engine`, `systems`, `components` or `settings`.
 
 | `feature` field | Meaning |
 |---|---|
 | `entry` | The script to run, a relative path ending in `.lua` |
 | `icon` | A square PNG of the package |
-| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam`, `achievements` (`den.achievements`: RetroAchievements sign-in and progress; EmuDEN's own plugins only, since the runtime signs in with `emuden.retroachievements` alone), `browse.any` and `downloads.setup` (with `feature.browser.1`: the browser for any site and the setup of its downloads; EmuDEN's own plugins only) |
+| `permissions` | `http`, `download`, `open-url`, `browse`, `files.import`, `downloads.watch`, `library.read`, `patch`, `library.write`, `sync`, `http.local` (`http://127.0.0.1:<port>`, `localhost`), `http.user_host` (one server the user enters), `device.info`, `game.settings` (with `systems`), `steam`, `achievements` (`den.achievements`: RetroAchievements sign-in and progress; EmuDEN's own plugins only, since the runtime signs in with `emuden.retroachievements` alone), `browse.any` and `downloads.setup` (with `feature.browser.1`: the browser for any site and the setup of its downloads; EmuDEN's own plugins only), `game.files` (with `feature.mods.1`: `den.mods`, files of a Steam game's folder and Vulkan layers, set up by the app after the user agreed; EmuDEN's own plugins only) |
 | `http.hosts` | Exact https hosts, with `http` or `download`; at most 8 |
 | `open_hosts` | Hosts `den.open_url` may show, with `open-url` |
 | `browse_hosts` | Sites `den.web.open` may show in the app's browser page, with `browse`: exact names, at most 8 |
@@ -30,7 +30,7 @@ without feature plugins refuses the plugin and keeps the rest of the list. A fea
 | `limits` | `memory_mb` (8 to 64), `storage_mb` (up to 4096) |
 
 Only EmuDEN's own plugins (`emuden.*` from the official source) may use `downloads.watch`,
-`browse.any`, `downloads.setup`, `achievements` or `systems: ["*"]`; an added source's plugins
+`browse.any`, `downloads.setup`, `achievements`, `game.files` or `systems: ["*"]`; an added source's plugins
 and the developer folder's are refused with them.
 
 ## Package
@@ -104,3 +104,12 @@ question listing every change; both plugins keep the old values for Undo.
 |---|---|---|
 | `emuden.tune.protondb` | [Denarmo/protondb-reports](https://github.com/Denarmo/protondb-reports) (ProtonDB's ODbL dump, one file a game) and ProtonDB's public summary | Steam games: Proton and launch options on SteamOS; shown only on Windows |
 | `emuden.tune.emuready` | EmuReady's public mobile API (100 requests in 3 minutes, cached) | Library games: resolution, renderer, frame skip and similar core options, for that game |
+
+`emuden.tune.helixsr` and `emuden.tune.lsfg` set a mod up for a Steam game with `den.mods`
+(EmuDEN's `docs/game-mods-api.md`). Neither mod may be bundled, so each is downloaded from its
+official release, pinned by SHA-256 in the plugin's `release.lua`.
+
+| Plugin | Mod | Does |
+|---|---|---|
+| `emuden.tune.helixsr` | [Helix SR](https://github.com/lonewolf0622/HelixSR) 3.4.0 (closed freeware) | Replaces a game's FSR 3.1 library with HLX FSR 4; games with anti-cheat files are refused; Windows and Linux |
+| `emuden.tune.lsfg` | [lsfg-vk](https://lsfg-vk.dev) 2.0.0 (CC BY-NC-ND 4.0) | Installs the Vulkan layer and sets `LSFGVK_...` in a game's launch options; needs Lossless Scaling from Steam; Linux (on Windows a page that says so) |

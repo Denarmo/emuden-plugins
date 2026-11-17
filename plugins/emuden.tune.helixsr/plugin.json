@@ -1,0 +1,42 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.tune.helixsr",
+  "name": "Tune: Helix SR",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Puts Helix SR's FSR 4 upscaler (HLX FSR 4) into Steam games that ship FSR 3.1, as a drop-in for the game's own FSR library. Helix SR is downloaded from its official release; EmuDEN lists every file first, keeps the original and puts it back on Remove. Games with anti-cheat are refused.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.tune.1",
+    "feature.mods.1"
+  ],
+  "platforms": [
+    "windows-x86_64",
+    "linux-x86_64"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "http",
+      "download",
+      "steam",
+      "game.files"
+    ],
+    "http": {
+      "hosts": [
+        "github.com",
+        "release-assets.githubusercontent.com",
+        "shared.steamstatic.com"
+      ]
+    },
+    "limits": {
+      "memory_mb": 32,
+      "storage_mb": 1024
+    }
+  }
+}

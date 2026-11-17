@@ -47,7 +47,7 @@ fails with "The script paused outside a den call."
 
 **User calls.** Some calls work only inside `plugin.actions.*`, after something the user
 pressed: `den.open_url`, `den.game.set`, `den.steam.set` and the changing calls of
-`den.achievements`. Elsewhere they return `nil, message`.
+`den.achievements` and of `den.mods`. Elsewhere they return `nil, message`.
 
 **Errors.** A `den` call that is refused returns `nil, message`, and so does a call without
 its permission ("the plugin has no permission to ..."): check the first result. Wrong argument
@@ -82,7 +82,7 @@ only in `plugin.actions.*`.
 | `den.now()` | - | Unix seconds | - | - |
 | `den.sleep(ms)` *(wait)* | 0 to 600000 | - | - | - |
 | `den.include(name)` | a `.lua` file of the package (`"lib/util.lua"`) | the value the script returns. It runs anew on every call (no cache), in the same environment, and may wait | - | - |
-| `den.download{url, name, sha256?, on_progress?}` *(wait)* | https URL of `http.hosts`; a plain file name; a hex SHA-256 to check; `on_progress(fraction)` | `"downloads/<name>"`; at most 256 MiB and the folder's quota | `download` | - |
+| `den.download{url, name, sha256?, on_progress?}` *(wait)* | https URL of `http.hosts`; a plain file name; a hex SHA-256 to check; `on_progress(fraction)` | `"downloads/<name>"`; at most 256 MiB (512 MiB for a plugin with `game.files`) and the folder's quota | `download` | - |
 | `den.open_url(url)` *(user)* | https URL of `open_hosts` | `true`; the user's browser opens it | `open-url` | - |
 
 ### `den.json`
@@ -221,6 +221,26 @@ absent (nil) without `downloads.setup`. `outcome` is one of `added`, `hack_added
 | `den.steam.config(appid)` *(wait)* | text | `{launch_options, compat_tool, compat_tool_display, compat_tool_chosen}` | `steam` | `feature.tune.1` |
 | `den.steam.set{appid, name?, launch_options?, compat_tool?}` *(wait, user)* | `compat_tool = ""` gives the choice back to Steam; launch options must pass the app's check (no shell syntax, no `LD_PRELOAD`) | `true` after the app asked the user; `nil, "cancelled"` on no | `steam` | `feature.tune.1` |
 
+### `den.mods` (files of a PC game)
+
+Steam games only (the apps of `den.steam.status()`, not shortcuts). A plugin cannot write
+outside its own folder: these calls are the app doing it, after the user agreed to a list of
+every file, with the originals kept and an undo the app owns. The design is
+`docs/game-mods-api.md` in the EmuDEN repository. Every call may wait.
+
+| Function | Arguments | Returns | Permission | Needs |
+|---|---|---|---|---|
+| `den.mods.find{appid, names}` *(wait)* | up to 16 file names, each with at most one `*`, compared without case | `{ {path, size, sha256} }`: the files of the game's folder with those names, paths relative with `/`; at most 64, folders at most 8 deep, no links followed; `sha256` for files up to 512 MiB | `game.files` (official only) | `feature.mods.1` |
+| `den.mods.unpack{file, entries}` *(wait)* | an archive under `downloads/` (zip or tar.xz); up to 32 entry paths | `{ [entry] = "cache/mods/<archive stem>/<entry>" }`; an entry at most 512 MiB; a path with `..` or an absolute one is an error | `game.files` | `feature.mods.1` |
+| `den.mods.apply{appid, name, files}` *(wait, user)* | `name`: what the app's question calls the mod; `files = { {from, to} }`, `from` under `cache/` or `downloads/`, `to` relative in the game's folder; at most 64 files and 1 GiB | `true` after the app listed each file as new or replaced and the user agreed; `nil, "cancelled"` on no. An earlier apply of this plugin to the game is undone first | `game.files` | `feature.mods.1` |
+| `den.mods.state(appid)` *(wait)* | text | nil, or `{name, time, files = { {to, intact} }}`; `intact` is false when the file is no longer the one the app wrote (a game update) | `game.files` | `feature.mods.1` |
+| `den.mods.remove(appid)` *(wait, user)* | text | `true`: added files are deleted, replaced ones get their original back where the file is still the one the app wrote | `game.files` | `feature.mods.1` |
+| `den.mods.layer{name, layers}` *(wait, user)* | Linux only. `layers = { {manifest, library} }`: Vulkan implicit layer manifests (JSON) and their libraries, under `cache/` | `true`. A manifest without `disable_environment` is refused; only its `library_path` is changed | `game.files` | `feature.mods.1` |
+| `den.mods.layer_state(name)` *(wait)* | text | nil, or `{time, manifests = {...}, intact}` | `game.files` | `feature.mods.1` |
+| `den.mods.remove_layer(name)` *(wait, user)* | text | `true` | `game.files` | `feature.mods.1` |
+
+A plugin never runs a program: a mod whose setup must run its own installer is out of scope.
+
 ### `den.achievements` (RetroAchievements)
 
 | Function | Arguments | Returns | Permission | Needs |
@@ -258,6 +278,7 @@ Skip fields you do not know; `stopping` is set while a run is being stopped.
 | `device.info`, `steam`, `game.settings` (with `systems`) | `feature.tune.1` | no |
 | `achievements` | `feature.achievements.1` | yes |
 | `browse.any`, `downloads.setup` | `feature.browser.1` | yes |
+| `game.files` | `feature.mods.1` | yes |
 | `downloads.watch` (with `file_types`) | - | yes |
 
 A permission whose capability is missing from `needs` is refused. Official means a plugin of

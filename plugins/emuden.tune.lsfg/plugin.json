@@ -1,0 +1,41 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.tune.lsfg",
+  "name": "Tune: LSFG",
+  "version": "1.0.0",
+  "kind": "feature",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Lossless Scaling frame generation for Steam games on Linux and SteamOS, through lsfg-vk: installs the lsfg-vk layer from its official build and switches 2x, 3x or 4x on per game in the game's launch options, after you agree. You need Lossless Scaling from Steam. On Windows, Lossless Scaling is its own program.",
+  "api": 1,
+  "needs": [
+    "kind.feature",
+    "feature.lua.1",
+    "feature.tune.1",
+    "feature.mods.1"
+  ],
+  "platforms": [
+    "linux-x86_64",
+    "windows-x86_64"
+  ],
+  "feature": {
+    "entry": "main.lua",
+    "icon": "icon.png",
+    "permissions": [
+      "http",
+      "download",
+      "device.info",
+      "steam",
+      "game.files"
+    ],
+    "http": {
+      "hosts": [
+        "builds.lsfg-vk.dev",
+        "shared.steamstatic.com"
+      ]
+    },
+    "limits": {
+      "memory_mb": 32
+    }
+  }
+}
