@@ -1,0 +1,62 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.quick-layouts",
+  "name": "Quick Layouts",
+  "version": "1.0.0",
+  "kind": "interface",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, or controls beside your save states.",
+  "api": 1,
+  "needs": [
+    "kind.interface",
+    "quick_settings.1"
+  ],
+  "platforms": [
+    "any"
+  ],
+  "quick_settings": {
+    "icon": "icon.png",
+    "layouts": [
+      {
+        "id": "grid",
+        "name": "Grid",
+        "layout": "grid",
+        "actions": ["pause", "states", "rewind", "fast_forward", "screen", "swap", "volume", "exit"],
+        "colors": {
+          "background": "#12141b",
+          "text": "#f3f2ee",
+          "dim": "#a9abba",
+          "panel": "#ffffff1a",
+          "accent": "#4f8cff66"
+        }
+      },
+      {
+        "id": "compact",
+        "name": "Compact",
+        "layout": "compact",
+        "tile_size": 0.9
+      },
+      {
+        "id": "dock",
+        "name": "Dock",
+        "layout": "dock",
+        "actions": ["pause", "rewind", "fast_forward", "states", "exit"],
+        "dock": 5,
+        "colors": {
+          "background": "#0d0f14",
+          "text": "#f6f3ec",
+          "dim": "#b3b1ab",
+          "panel": "#ffffff17",
+          "accent": "#ffb03a66"
+        }
+      },
+      {
+        "id": "split",
+        "name": "Split",
+        "layout": "split",
+        "actions": ["pause", "rewind", "fast_forward", "exit"]
+      }
+    ]
+  }
+}

@@ -102,8 +102,10 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
         err("feature", "only for a plugin of kind feature")
     if kind == "interface":
         validate_interface(manifest, folder, err)
-    elif "interface" in manifest:
-        err("interface", "only for a plugin of kind interface")
+    else:
+        for field in ("interface", "quick_settings"):
+            if field in manifest:
+                err(field, "only for a plugin of kind interface")
     if kind == "console" and not engine:
         err("engine", "missing")
     if kind != "console" and engine:

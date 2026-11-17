@@ -5,6 +5,9 @@ of kind `interface` and the pictures it names. EmuDEN draws it with one of its o
 plugin picks the layout and sets its colours, art and motion. It runs nothing and asks for no
 permission, so installing one from any source you added is safe in the same way as a theme.
 
+The same kind of plugin can also lay out the quick settings of the second screen
+([quick-settings.md](quick-settings.md)); a plugin with only those has no `interface` object.
+
 The user picks it under Settings > Interface ("Home interface"). Try one first from the developer folder ([getting-started.md](getting-started.md#an-interface-plugin)); `examples/jdoe.neon-shelf` is a template. EmuDEN's standard Home stays the
 default and is always one choice away. An interface listed by a source can be picked before it
 is installed: EmuDEN downloads it first.

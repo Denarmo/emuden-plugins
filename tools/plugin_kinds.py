@@ -101,20 +101,48 @@ def in_package(folder, name):
     return (folder / name).is_file() or name in shared_files(folder)
 
 
+def validate_quick_settings(quick, err):
+    """Layouts of the quick settings (docs/quick-settings.md): each choice's id once."""
+    layouts = quick.get("layouts")
+    if layouts is None:
+        return
+    for field in ("id", "name", "layout", "colors", "actions", "hidden", "tile_size", "columns", "dock", "cover"):
+        if field in quick:
+            err(f"quick_settings.{field}", "goes in each entry of layouts when there are layouts")
+    seen = set()
+    for i, layout in enumerate(layouts):
+        choice = layout.get("id", layout.get("layout", "standard"))
+        if choice in seen:
+            err(f"quick_settings.layouts[{i}].id", f"{choice} is already a choice of this plugin")
+        seen.add(choice)
+
+
 def validate_interface(manifest, folder, err):
-    """The rules of an interface plugin: data the app's layouts draw, and its pictures."""
+    """The rules of an interface plugin: data the app's layouts draw, and its pictures. It has
+    a look for Home ("interface"), layouts of the quick settings ("quick_settings"), or both."""
     for field in ("engine", "systems", "components", "settings", "sync", "capabilities"):
         if manifest.get(field):
             err(field, "an interface plugin has none")
-    for need in ("kind.interface", "interface.1"):
+    look = manifest.get("interface")
+    quick = manifest.get("quick_settings")
+    needs = ["kind.interface"]
+    if look is not None:
+        needs.append("interface.1")
+    if quick is not None:
+        needs.append("quick_settings.1")
+    for need in needs:
         if need not in manifest["needs"]:
             err("needs", f"must list {need}")
-    look = manifest.get("interface")
-    if not isinstance(look, dict):
-        err("interface", "missing")
+    if not isinstance(look, dict) and not isinstance(quick, dict):
+        err("interface", "missing (or quick_settings)")
         return
-    pictures = [("interface.icon", look.get("icon")),
-                ("interface.backdrop.wallpaper", look.get("backdrop", {}).get("wallpaper"))]
+    pictures = []
+    if isinstance(quick, dict):
+        validate_quick_settings(quick, err)
+        pictures.append(("quick_settings.icon", quick.get("icon")))
+    look = look if isinstance(look, dict) else {}
+    pictures += [("interface.icon", look.get("icon")),
+                 ("interface.backdrop.wallpaper", look.get("backdrop", {}).get("wallpaper"))]
     for key, console in look.get("consoles", {}).items():
         pictures.append((f"interface.consoles.{key}.wallpaper", console.get("wallpaper")))
     for path, name in pictures:

@@ -58,6 +58,31 @@ class Tool(unittest.TestCase):
         self.assertEqual(sorted(paths), ["settings[0].live", "settings[0].scope", "sync.cheats",
                                          "systems[0].capabilities.run_ahead"])
 
+    def test_quick_settings_layouts(self):
+        folder = REPO / "plugins" / "emuden.quick-layouts"
+        manifest = plugin_tool.load_json(folder / "plugin.json")
+        self.assertEqual(plugin_tool.validate_manifest(manifest, REPO, "official", None, folder), [])
+        missing = copy.deepcopy(manifest)
+        missing["needs"].remove("quick_settings.1")
+        self.assertTrue(any("quick_settings.1" in p for p in problems(missing, "official")))
+        twice = copy.deepcopy(manifest)
+        twice["quick_settings"]["layouts"][1]["id"] = "grid"
+        self.assertTrue(any("already a choice" in p for p in problems(twice, "official")))
+        unknown = copy.deepcopy(manifest)
+        unknown["quick_settings"]["layouts"][0]["layout"] = "carousel"
+        self.assertTrue(problems(unknown, "official"))
+        both = copy.deepcopy(manifest)
+        both["interface"] = {"layout": "carousel"}
+        self.assertTrue(any("interface.1" in p for p in problems(both, "official")))
+        both["needs"].append("interface.1")
+        self.assertEqual(problems(both, "official"), [])
+        neither = copy.deepcopy(manifest)
+        del neither["quick_settings"]
+        self.assertTrue(problems(neither, "official"))
+        feature_kind = feature([])
+        feature_kind["quick_settings"] = {"layout": "grid"}
+        self.assertTrue(any("only for a plugin of kind interface" in p for p in problems(feature_kind)))
+
     def test_manual_plugins_are_in_no_list(self):
         import plugin_manual
         manual = [f.name for f in plugin_manual.manual_folders(REPO)]
