@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.ps2",
   "name": "PlayStation 2",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "kind": "console",
   "engine": "libretro",
   "publisher": "EmuDEN",
@@ -83,7 +83,7 @@
       "type": "libretro-core",
       "name": "DenSX2",
       "license": "BSD-2-Clause",
-      "homepage": "https://github.com/Denarmo/Play-",
+      "homepage": "https://github.com/Denarmo/DenSX2",
       "gpu": "opengl",
       "version": "1.0 (based on Play! 0.77-61-g3a0a94a8)",
       "widescreen": {
