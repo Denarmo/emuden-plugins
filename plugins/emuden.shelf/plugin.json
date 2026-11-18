@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.shelf",
   "name": "Shelf",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
@@ -135,7 +135,7 @@
           "style": "pocket",
           "shell": "#a09fa8",
           "box": true,
-          "box_aspect": 0.88,
+          "box_aspect": 1.0,
           "player": "portrait",
           "player_model": "dmg",
           "player_color": "#c6c4cb",
@@ -149,11 +149,11 @@
         "label": "GBC",
         "object": {
           "shape": "cartridge",
-          "style": "pocket",
+          "style": "gbc",
           "shell": "#3a3d44a8",
           "label_edge": "paper",
           "box": true,
-          "box_aspect": 0.88,
+          "box_aspect": 1.0,
           "player": "portrait",
           "player_model": "cgb",
           "player_color": "#5b3d96",
@@ -170,7 +170,7 @@
           "style": "pocket_wide",
           "shell": "#38393f",
           "box": true,
-          "box_aspect": 0.95,
+          "box_aspect": 1.0,
           "player": "landscape",
           "player_model": "agb",
           "player_color": "#4f449e",
@@ -186,7 +186,7 @@
           "shape": "cartridge",
           "style": "nds",
           "box": true,
-          "box_aspect": 0.88,
+          "box_aspect": 1.1,
           "player": "clamshell",
           "player_model": "ds_lite",
           "player_color": "#f1f1f3",
@@ -200,7 +200,7 @@
           "shape": "cartridge",
           "style": "n3ds",
           "box": true,
-          "box_aspect": 0.88,
+          "box_aspect": 1.1,
           "player": "clamshell",
           "player_model": "ds_lite",
           "player_color": "#e8e8ec"
@@ -247,8 +247,9 @@
         "label": "GC",
         "object": {
           "shape": "case",
-          "aspect": 0.72,
-          "depth": 0.08,
+          "aspect": 0.71,
+          "depth": 0.074,
+          "shell": "#24252a",
           "disc": true
         }
       },
@@ -257,8 +258,9 @@
         "label": "Wii",
         "object": {
           "shape": "case",
-          "aspect": 0.7,
-          "shell": "#ececf0",
+          "aspect": 0.71,
+          "depth": 0.074,
+          "shell": "#ededf2",
           "disc": true
         }
       },
@@ -266,14 +268,10 @@
         "color": "#d43a3a",
         "object": {
           "shape": "card",
-          "aspect": 0.68,
-          "depth": 0.1,
-          "shell": "#c8323c",
-          "label": [0.08, 0.06, 0.84, 0.72],
-          "notch": 0.12,
-          "radius": 0.06,
+          "style": "switch",
+          "shell": "#c82832",
           "box": true,
-          "box_aspect": 0.62,
+          "box_aspect": 0.61,
           "player_model": "switch2",
           "player_color": "#3a3c42"
         }
@@ -343,7 +341,9 @@
         "label": "PS2",
         "object": {
           "shape": "case",
-          "aspect": 0.7,
+          "aspect": 0.71,
+          "depth": 0.074,
+          "shell": "#16224a",
           "disc": true
         }
       },
@@ -352,8 +352,9 @@
         "label": "PSP",
         "object": {
           "shape": "case",
-          "aspect": 0.58,
+          "aspect": 0.59,
           "depth": 0.08,
+          "shell": "#cfd4de96",
           "disc": true,
           "umd": true
         }

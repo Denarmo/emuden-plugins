@@ -77,7 +77,7 @@
         "digital_only": true,
         "media": {
           "shape": "cartridge",
-          "style": "pocket"
+          "style": "gbc"
         }
       },
       "artwork": {

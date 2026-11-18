@@ -249,7 +249,7 @@
                   "radius": { "type": "number", "minimum": 0, "maximum": 0.45 },
                   "notch": { "type": "number", "minimum": 0, "maximum": 0.4 },
                   "grip": { "type": "integer", "minimum": 0, "maximum": 8 },
-                  "style": { "enum": ["plain", "pocket", "pocket_wide", "nds", "n3ds", "nes", "snes", "n64", "megadrive", "32x", "gamegear", "mastersystem", "atari", "atari5200", "jaguar", "lynx", "vectrex", "colecovision", "intellivision", "neogeopocket", "wonderswan", "pokemini", "virtualboy", "hucard", "mycard"] },
+                  "style": { "enum": ["plain", "pocket", "pocket_wide", "gbc", "nds", "n3ds", "switch", "nes", "snes", "n64", "megadrive", "32x", "gamegear", "mastersystem", "atari", "atari5200", "jaguar", "lynx", "vectrex", "colecovision", "intellivision", "neogeopocket", "wonderswan", "pokemini", "virtualboy", "hucard", "mycard"] },
                   "label_edge": { "enum": ["none", "paper", "foil"] },
                   "box": { "type": "boolean" },
                   "box_aspect": { "type": "number", "minimum": 0.4, "maximum": 2.0 },

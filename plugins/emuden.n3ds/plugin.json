@@ -43,8 +43,8 @@
         "layout": "nintendo",
         "digital_only": false,
         "media": {
-          "shape": "card",
-          "aspect": 1.05
+          "shape": "cartridge",
+          "style": "n3ds"
         },
         "screens": [
           {
