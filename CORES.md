@@ -131,3 +131,10 @@ DroidDeck (`droiddeck`, plugin `emuden.steam`) runs Steam games on Android: the 
 Droid-Deck/DroidDeck (GPL-3.0), pinned by its signing certificate and APK hash. It speaks no ECP, so it is driven at
 level 0: EmuDEN hands it a game's `.steam` file (the Steam app id DroidDeck's game files sync writes) and the session
 ends when EmuDEN is back in front. Covers come from Steam's public image server by that app id.
+
+Chiaki-NG (`chiaki-ng`, `1.10.1-ecp1`, plugin `emuden.chiaki`) streams PlayStation 4 and PlayStation 5 consoles via
+PlayStation Remote Play on Windows, Linux, and Android from Denarmo/chiaki-ng (`ecp` branch, `AGPL-3.0-only` with OpenSSL
+exception; bundled ECP SDK files are MIT). On Android it runs as a separate app speaking ECP Level 2 directly in the
+player process; on Windows and Linux `chiaki-ecp` discovers and wakes consoles from Rest Mode and supervises the upstream
+`chiaki` GUI / AppImage binary over ECP.
+

@@ -1,0 +1,288 @@
+{
+  "manifest_version": 1,
+  "id": "emuden.chiaki",
+  "name": "PlayStation Remote Play (Chiaki-NG)",
+  "version": "1.0.0",
+  "kind": "console",
+  "engine": "libretro",
+  "publisher": "EmuDEN",
+  "license": "GPL-3.0-or-later",
+  "summary": "Stream your PlayStation 4 and PlayStation 5 games with Chiaki-NG. Register your console once in Chiaki-NG and add a .chiaki file for it.",
+  "api": 1,
+  "needs": [
+    "engine.libretro",
+    "core.engine-app.1",
+    "settings.v1",
+    "presentation.buttons"
+  ],
+  "platforms": [
+    "windows-x86_64",
+    "linux-x86_64",
+    "android-arm64"
+  ],
+  "systems": [
+    {
+      "id": "psremote",
+      "name": "PlayStation Remote Play",
+      "short_name": "PS Remote",
+      "group": "sony",
+      "order": 1950,
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "android-arm64"
+      ],
+      "content": {
+        "extensions": [
+          "chiaki",
+          "psremote"
+        ],
+        "folder_aliases": [
+          "chiaki",
+          "psremote",
+          "remoteplay"
+        ],
+        "zip": "no",
+        "sync": false
+      },
+      "presentation": {
+        "cover_aspect": 0.71,
+        "handheld": false,
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "case",
+          "aspect": 0.71
+        },
+        "buttons": [
+          {
+            "pad": "b",
+            "label": "Cross"
+          },
+          {
+            "pad": "a",
+            "label": "Circle"
+          },
+          {
+            "pad": "y",
+            "label": "Square"
+          },
+          {
+            "pad": "x",
+            "label": "Triangle"
+          },
+          {
+            "pad": "l",
+            "label": "L1"
+          },
+          {
+            "pad": "r",
+            "label": "R1"
+          },
+          {
+            "pad": "l2",
+            "label": "L2"
+          },
+          {
+            "pad": "r2",
+            "label": "R2"
+          },
+          {
+            "pad": "l3",
+            "label": "L3"
+          },
+          {
+            "pad": "r3",
+            "label": "R3"
+          }
+        ]
+      },
+      "cores": [
+        "chiaki-ng"
+      ],
+      "default_core": "chiaki-ng"
+    }
+  ],
+  "components": [
+    {
+      "id": "chiaki-ng",
+      "type": "engine-app",
+      "name": "Chiaki-NG",
+      "license": "AGPL-3.0-only",
+      "homepage": "https://github.com/Denarmo/chiaki-ng/tree/ecp",
+      "version": "1.10.1-ecp1",
+      "ecp": {
+        "id": "io.github.denarmo.chiaki",
+        "level": 2,
+        "capabilities": [
+          "pause",
+          "menu",
+          "settings",
+          "screenshot",
+          "perf",
+          "volume",
+          "configure"
+        ]
+      },
+      "executable": {
+        "windows-x86_64": "chiaki-ng/chiaki-ecp.exe",
+        "linux-x86_64": "chiaki-ng/chiaki-ecp"
+      },
+      "downloads": {
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/chiaki-ng/releases/download/v1.10.1-ecp1/chiaki-ng-ecp-windows-x86_64-1.10.1-ecp1.zip",
+          "sha256": "1183afd1a3103b5ca22163b39a2bc7be3cb373c22cebc30a44600c91623715af",
+          "size": 118536835,
+          "archive": "zip",
+          "entry": "chiaki-ng/"
+        },
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/chiaki-ng/releases/download/v1.10.1-ecp1/chiaki-ng-ecp-linux-x86_64-1.10.1-ecp1.zip",
+          "sha256": "7e205538eaeda4299e9e1db13b9b00280506fbe80fd85d66167f97719b555bb6",
+          "size": 161991874,
+          "archive": "zip",
+          "entry": "chiaki-ng/"
+        }
+      },
+      "android": {
+        "package": "io.github.denarmo.chiaki",
+        "cert_sha256": "87102423073e2dafa4ed6236d62db3b733406ac51aa2dceb8be7db94d252acc9",
+        "min_version_code": 100,
+        "apk": {
+          "url": "https://github.com/Denarmo/chiaki-ng/releases/download/v1.10.1-ecp1/chiaki-ng-ecp-1.10.1-ecp1.apk",
+          "sha256": "d2a6bdc66eb4d9d94a7c1fdfa131c1855d0e14048405590a9525cf33b07ece8f",
+          "size": 8415986,
+          "archive": "none"
+        }
+      }
+    }
+  ],
+  "capabilities": {
+    "save_states": false,
+    "rewind": false,
+    "fast_forward": false,
+    "cheats": false,
+    "netplay": false,
+    "achievements": false
+  },
+  "sync": {
+    "saves": false,
+    "states": false,
+    "settings": true
+  },
+  "settings": [
+    {
+      "key": "resolution",
+      "label": "Stream resolution",
+      "help": "Target video height requested from the PlayStation console.",
+      "section": "Stream",
+      "type": "choice",
+      "choices": [
+        {
+          "value": "360p",
+          "label": "360p"
+        },
+        {
+          "value": "540p",
+          "label": "540p"
+        },
+        {
+          "value": "720p",
+          "label": "720p"
+        },
+        {
+          "value": "1080p",
+          "label": "1080p"
+        }
+      ],
+      "default": "1080p",
+      "scope": "console",
+      "when_core": "chiaki-ng",
+      "apply": {
+        "core_option": "video.resolution"
+      }
+    },
+    {
+      "key": "fps",
+      "label": "Frame rate",
+      "help": "Maximum frames per second requested from the console.",
+      "section": "Stream",
+      "type": "choice",
+      "choices": [
+        {
+          "value": "30",
+          "label": "30 FPS"
+        },
+        {
+          "value": "60",
+          "label": "60 FPS"
+        }
+      ],
+      "default": "60",
+      "scope": "console",
+      "when_core": "chiaki-ng",
+      "apply": {
+        "core_option": "video.fps"
+      }
+    },
+    {
+      "key": "codec",
+      "label": "Video codec",
+      "help": "Video compression format used for Remote Play.",
+      "section": "Stream",
+      "type": "choice",
+      "choices": [
+        {
+          "value": "h264",
+          "label": "H.264"
+        },
+        {
+          "value": "h265",
+          "label": "H.265 (HEVC)"
+        }
+      ],
+      "default": "h265",
+      "scope": "console",
+      "when_core": "chiaki-ng",
+      "apply": {
+        "core_option": "video.codec"
+      }
+    },
+    {
+      "key": "bitrate",
+      "label": "Bitrate (0 = Automatic)",
+      "help": "Target bitrate in kbps, or 0 for automatic bitrate selection.",
+      "section": "Stream",
+      "type": "range",
+      "min": 0,
+      "max": 50000,
+      "step": 1000,
+      "suffix": " kbps",
+      "default": 0,
+      "scope": "console",
+      "when_core": "chiaki-ng",
+      "apply": {
+        "core_option": "video.bitrate"
+      }
+    }
+  ],
+  "translations": {
+    "es": {
+      "Bitrate (0 = Automatic)": "Tasa de bits (0 = Automática)",
+      "Circle": "Círculo",
+      "Cross": "Cruz",
+      "Frame rate": "Tasa de fotogramas",
+      "Maximum frames per second requested from the console.": "Máximo de fotogramas por segundo solicitados a la consola.",
+      "Square": "Cuadrado",
+      "Stream": "Retransmisión",
+      "Stream resolution": "Resolución de retransmisión",
+      "Stream your PlayStation 4 and PlayStation 5 games with Chiaki-NG. Register your console once in Chiaki-NG and add a .chiaki file for it.": "Retransmite tus juegos de PlayStation 4 y PlayStation 5 con Chiaki-NG. Registra tu consola una vez en Chiaki-NG y añade un archivo .chiaki para ella.",
+      "Target bitrate in kbps, or 0 for automatic bitrate selection.": "Tasa de bits en kbps, o 0 para selección automática.",
+      "Target video height requested from the PlayStation console.": "Altura de vídeo solicitada a la consola PlayStation.",
+      "Triangle": "Triángulo",
+      "Video codec": "Códec de vídeo",
+      "Video compression format used for Remote Play.": "Formato de compresión de vídeo usado para Uso a distancia."
+    }
+  }
+}
