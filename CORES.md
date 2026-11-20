@@ -67,8 +67,8 @@ https://docs.libretro.com/.
 - `densx2` (DenSX2, PS2) needs no BIOS: it carries its own implementation of the PS2 kernel and I/O modules. It is
   EmuDEN's fork of Play! (by Jean-Philip Desjardins and contributors, BSD-2-Clause; each zip carries Play!'s
   License.txt and a NOTICE.txt), renamed from `play` in PS2 plugin 1.2.0. It is the one core not taken from
-  the buildbot: it is built from https://github.com/Denarmo/DenSX2 (tag `emuden-0.77-61-g3a0a94a8` for Android;
-  the Windows and Linux zips are from `emuden-0.77-60-gff1779c8`, as 61 changed only the Android renderer; code generator
+  the buildbot: it is built from https://github.com/Denarmo/DenSX2 (tag `emuden-0.77-67-g4b293962` for Android,
+  Windows, and Linux; code generator
   fork https://github.com/Denarmo/Play--CodeGen), which makes the libretro core run on Android, makes its save states load,
   reports 50 Hz for PAL games and streams draw data and texture uploads through persistent buffers, which
   makes its OpenGL renderer several times faster on Android, and fills the frame it reports (the
@@ -79,7 +79,7 @@ https://docs.libretro.com/.
   Rally 3 and Gran Turismo 4, PAL). Where the frontend gives a Vulkan device and the GPU can run it, it renders
   with its Vulkan GS (a frontend that wants OpenGL keeps the OpenGL renderer). Since GitHub Actions is off for
   the fork, its Linux core is built on Debian 13 (glibc 2.38 or later, as EmuDEN's own Linux build). Its builds are in the release
-  `cores-densx2-2026-11-16` (builds from before the rename: `cores-play-2026-11-14`), with the unstripped Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
+  `cores-densx2-2026-11-20` (earlier builds: `cores-densx2-2026-11-16`, and before the rename: `cores-play-2026-11-14`), with the unstripped Android core for crash reports; the buildbot files stay in `cores-2026-11-14`.
 - On Android `mupen64plus_next` is the buildbot's `mupen64plus_next_gles3` build.
 - `fake08` (PICO-8) has no buildbot build for any platform, so it has no download.
 - `fbneo`, `mame2003_plus`, `opera` and `fmsx` are licensed for non-commercial use only. They are mirrored

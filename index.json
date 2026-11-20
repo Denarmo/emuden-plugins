@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 88,
-  "generated": "2026-11-18T20:29:00Z",
-  "expires": "2027-03-18T20:29:00Z",
+  "sequence": 89,
+  "generated": "2026-11-20T00:15:36Z",
+  "expires": "2027-03-20T00:15:36Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -278,6 +278,53 @@
       "feature_systems": []
     },
     {
+      "id": "emuden.chiaki",
+      "name": "PlayStation Remote Play (Chiaki-NG)",
+      "version": "1.0.0",
+      "kind": "console",
+      "engine": "libretro",
+      "publisher": "EmuDEN",
+      "summary": "Stream your PlayStation 4 and PlayStation 5 games with Chiaki-NG. Register your console once in Chiaki-NG and add a .chiaki file for it.",
+      "group": "sony",
+      "systems": [
+        {
+          "id": "psremote",
+          "name": "PlayStation Remote Play",
+          "folder_aliases": [
+            "chiaki",
+            "psremote",
+            "remoteplay"
+          ]
+        }
+      ],
+      "api": 1,
+      "needs": [
+        "engine.libretro",
+        "core.engine-app.1",
+        "settings.v1",
+        "presentation.buttons"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64",
+        "android-arm64"
+      ],
+      "code": "cores",
+      "package": {
+        "url": "packages/emuden.chiaki-1.0.0.emuplugin",
+        "sha256": "41575939a36d08e4f1aa1d7577e6d2a281f3606b5e0c7e309a58345b5ec2da31",
+        "size": 3238
+      },
+      "download_size": {
+        "windows-x86_64": 118536835,
+        "linux-x86_64": 161991874,
+        "android-arm64": 0
+      },
+      "download_hosts": [
+        "github.com"
+      ]
+    },
+    {
       "id": "emuden.dreamcast",
       "name": "Sega Dreamcast",
       "version": "1.0.5",
@@ -480,8 +527,8 @@
       "code": "cores",
       "package": {
         "url": "packages/emuden.gbc-1.1.2.emuplugin",
-        "sha256": "5ca0ba1aa2fc5913e3961d306cc903623bdafb033f1d94f9f6a3b1abb16a0b26",
-        "size": 2345
+        "sha256": "cebd97ec39b6f84b87e229860a2a89f77d143447e6332673dc69a5fa57058a7d",
+        "size": 2341
       },
       "download_size": {
         "windows-x86_64": 1266861,
@@ -821,8 +868,8 @@
       "code": "cores",
       "package": {
         "url": "packages/emuden.n3ds-1.0.2.emuplugin",
-        "sha256": "60adcae125a9a1afb0ac0804879b55168f7627861da11da38d8ec84eb1ac8031",
-        "size": 1517
+        "sha256": "661db9fdac2edb038481156e18253ca48904c0d642815d8ce44ca5ec0982cab0",
+        "size": 1522
       },
       "download_size": {
         "windows-x86_64": 8377135,
@@ -1190,7 +1237,7 @@
     {
       "id": "emuden.ps2",
       "name": "PlayStation 2",
-      "version": "1.2.9",
+      "version": "1.3.0",
       "kind": "console",
       "engine": "libretro",
       "publisher": "EmuDEN",
@@ -1216,14 +1263,14 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.ps2-1.2.9.emuplugin",
-        "sha256": "ad4dd4666152554d12b99b7234850145d7f163de8434eb0b75dcaaa7b4782ad5",
-        "size": 1744
+        "url": "packages/emuden.ps2-1.3.0.emuplugin",
+        "sha256": "b980de2d9bfebdc3df26f2646fb078af4a17912e42827622f4d7d05f7437e965",
+        "size": 1731
       },
       "download_size": {
-        "windows-x86_64": 1336233,
-        "linux-x86_64": 2348275,
-        "android-arm64": 1886279
+        "windows-x86_64": 1439917,
+        "linux-x86_64": 2541989,
+        "android-arm64": 2123712
       },
       "download_hosts": [
         "github.com"
@@ -1529,7 +1576,7 @@
     {
       "id": "emuden.shelf",
       "name": "Shelf",
-      "version": "1.8.2",
+      "version": "1.9.0",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -1550,9 +1597,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.shelf-1.8.2.emuplugin",
-        "sha256": "0f6506b38fbca51514f6195a327c2e24d651fccb349248085c5c6e8ea44e58ed",
-        "size": 7047
+        "url": "packages/emuden.shelf-1.9.0.emuplugin",
+        "sha256": "c734dde42c6df6b8e4b4d76c61237c0027dac8c0d4a8a74e7615ed34e488231a",
+        "size": 7052
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -2329,16 +2376,16 @@
     "09095b5a15d6463a7d8e4bb56dcf25282290542fa8b5f209c1aca9b370f93363",
     "09a913ae8fbb266e6db2bd047795f72f76c2429e63aabd0e79272aa873c3b491",
     "0eb474de7ec5577e302fd31129c5cd4f81c6e86fdfca97b4c1c54c0811fa52d5",
+    "1183afd1a3103b5ca22163b39a2bc7be3cb373c22cebc30a44600c91623715af",
     "14928aa53aeb8dece93e12103f64e88f89a3ff9806c92746813b8b6eacf731df",
     "163ee0f6dc59ff55e1ab9f7d9bef3fdfab3b1f616b599cb27a04c40f650da268",
     "1a450970aa7f99998e51d7ca7a19c7377b427cbe039a096f42bc4dbeceddf269",
+    "1c8c6e813942b3444971af73d86a257d322119df4f8bc475df7dd6bd4e8a985d",
     "1cc2d385177d75ca5cd4302bdb221561252d92bfc0c6abd13790c3d8655ac675",
     "1ee1f6e48ff7679c46cc6af81dedfda33cd67734e392c520fbfa2a73f1a997ec",
     "1f8f93e86ec454924e2b4a3bf9dc6c93a1825713299bea3cb878c13ec0ffc153",
     "20a12d603e6b8cf9b6859bd6a703dad6e98e26c17d86da7972a08efd539c71fb",
-    "246853dd2deddb673b9fdee84fa4e7fa2d8e6aa71fb5be62af6df569485a81c1",
     "249eeea9e75e63461a631583ed55eca4b9e60ae4f2720bbf044a8e0ddffbb8be",
-    "254e8229e4ab6ecd6ce5483b7c45cac19fd57188b69389da6238704904a23c3d",
     "27b9538c5a2fed29a204cc20ff3af7118fbc5cd2d1ae9a23d8481613939f2a1d",
     "289c769c92ae4e26884cb430e43e92926a18e54301949aee8bc98dc97dd9ddc8",
     "2d0df9d29d8f7302b9e9cca9ab49715df38cd8ef8149f396d6915f55acb736d9",
@@ -2346,7 +2393,6 @@
     "32c0d3a19ce2f2cac5b10eb8a71b6e36d9ab243a68b3ebf288443862614bbc8a",
     "341b2ed270bf93729349d73c73bb705d0c65045afa04b95562ce8f6be0ed7ddb",
     "35e442eea45753255870a63d9f7c4a10afd3a50910244247b104f597ada2c24d",
-    "399bf2a4164c4658f7cb257fdec49f14baa7d8bd0e3e9e787c70e61994877743",
     "39f5a4aaa563c14fdb305fc458cdbab50bb7fd1f0df0ed64817c0b8a19a3da79",
     "3bf73a3ced9c9b0aeea232407aaeffed37c482022690be0c312b2b248d3c95d1",
     "3c7471a9d5f8e0bcb01dc54e93ead5d6ba3c4a50c083a07865d12fd7a1f31d3f",
@@ -2369,6 +2415,7 @@
     "5a36e435276acb78146a9b955d1e737f2fb6de1114337943234db96230d4373e",
     "5f2959a06579bb22ed15739e530e27636dc28c882a9628412eb277a2c209799f",
     "5fe836fefaebbf9d399839eefd1d74e0c36987332fff7fa8826e524d90127eb0",
+    "615cf00f77f4ea84a9d471d9719beb83492e1adae72244d39498df1c10223d82",
     "6226861b0f5d67823a1bcbc8f114fa4a47eff095ab1a634064fb1177151b758a",
     "6a913c4087409c11b4f3dbc354f225e40ba64e386d84201681767862c633ac86",
     "6a92d71a6416daf0b5646ee0a6f39c07bd5bb1e89fbaaead1ae8457e0112c474",
@@ -2381,6 +2428,7 @@
     "783ab9147b332f2e2252375575f386b748850f13a7dbfe47e3571e0043b1b9f9",
     "7b3e779d05fcff3959c997488f7e50f956f05d0d591cfb9cc67b9e62fadec86e",
     "7c67ca1a4b3b06569b94e2ee6cca9de7fe541de34a0f9ab791dd358691b4564e",
+    "7e205538eaeda4299e9e1db13b9b00280506fbe80fd85d66167f97719b555bb6",
     "80001b75315b34f3eb5cdf3b6f7d99f300f47bc7c7a9418305e6565633ad8e67",
     "82b930cbe64e5ae057ccc9891cca2d395e4360f36394369f316a94d9c653c232",
     "847a246dc5e093a5c062a36e2dafbf5e7adda05ce0f65b644a7d40ae26975cc4",
@@ -2416,6 +2464,7 @@
     "af9a2b9db75cb183cea380823e96943559608a11c1966b959212eee4c93bade1",
     "b06f13abd1cbd97d00cbf321011cb6a9c1bd7b41676112703466fd3ad3ed81b2",
     "b368509aa3a861ddf9b964f56b96f6ce65917226217d566991cde5a9de0436e8",
+    "b4648381f78bacc996e1039a016ee249829d774fb210ab52002e4e2470aef010",
     "b47dbf5bdf03a34e6b016ef19dbcafa37071de9339a04db070a5d63ebcd9ec33",
     "b80eb0ff41f261efb7b0021fc348eb747def3989083a80ec2f8d700a2f7a77c5",
     "b89c4938ab2493266f879a3c00b1ef43978f362c717797b01155487e40669165",
