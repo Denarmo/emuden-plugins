@@ -27,11 +27,12 @@ The list expires (120 days at most) and must be signed again, with a higher sequ
 - Work without asking. Make the choices yourself, carry on to the next step and report at the end.
   Stop only for something destructive, something outside the owner's accounts, or a decision only
   the owner can make (a password, a purchase, a key).
-- Finish things over re-verifying them. Bundle 5 to 10 changes per build and test round (builds,
-  uploads and benchmarks are slow), keep each one separable so a regression can be bisected, then
-  run one short smoke check of what changed. No screenshot-every-state rounds and no routine
-  review passes unless the change touches user data, sync or security. Report honestly what was
-  not tested.
+- Finish things over re-verifying them. Fully implement all planned code changes first before
+  running builds, unit tests or benchmarks (no intermediate build/test/benchmark rounds unless
+  explicitly requested), keep each change separable so a regression can be bisected, then run one
+  consolidated build, test and error-fixing pass at the end. No screenshot-every-state rounds and
+  no routine review passes unless the change touches user data, sync or security. Report honestly
+  what was not tested.
 - Build, test and package locally, never on GitHub Actions (it costs the owner money): do not
   trigger or re-run workflows and do not add workflows or push triggers. Windows builds run on
   this PC, Linux builds in WSL Debian, Android with the NDK and Gradle on this PC. Releases are
