@@ -2,7 +2,7 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
@@ -133,16 +133,31 @@
       }
     },
     {
-      "key": "dlss",
+      "key": "texture_quality",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "renderer.texture_quality"
+      }
+    },
+    {
+      "key": "fsr_upscaling",
+      "section": "Graphics",
+      "type": "choice",
+      "scope": "game",
+      "apply": {
+        "native_setting": "renderer.fsr_upscaling"
+      }
+    },
+    {
+      "key": "fsr_frame_gen",
       "section": "Graphics",
       "type": "toggle",
       "scope": "game",
       "apply": {
-        "native_setting": "nvidia_dlss"
-      },
-      "platforms": [
-        "windows-x86_64"
-      ]
+        "native_setting": "renderer.fsr_frame_gen"
+      }
     },
     {
       "key": "docked",
