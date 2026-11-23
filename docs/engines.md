@@ -13,24 +13,34 @@ may have its own. `"engine": "switch2"` is EmuDEN's own engine and only for its 
 There is no engine for other programs: an emulator that does not speak ECP cannot be a core, and
 no plugin starts anything else.
 
-## Switch 2: installed by hand
+## Switch 2: DenNX, EmuDEN's own engine
 
-The Switch 2 console (`emuden.switch2`) is neither built into EmuDEN nor in any list, and no
-engine is downloaded for it. It is in `manual/emuden.switch2/` and packed, signed, as
-`manual/emuden.switch2.emuplugin`. A player who has the engine program installs the console:
+The Switch 2 plugin (`emuden.switch2`) is in the official list like every other console. It has
+two consoles, `switch2` (`.nup`) and `switch` (Switch 1, `.nsp` and `.xci`, decrypted dumps only),
+both played by the same engine. Its
+engine, DenNX, built from https://github.com/Denarmo/DenNX, is a pinned download of its `engine`
+component, installed on the console's page (Settings > Consoles > Nintendo Switch 2 > Install) or
+when a game is first started, like a core:
 
-1. Download `manual/emuden.switch2.emuplugin` from this repository.
-2. In EmuDEN choose **Settings > Plugins > Install a console from a file** (also on Settings >
-   Consoles) and pick the file. EmuDEN shows what it is and that EmuDEN signed it; install it.
-3. If EmuDEN does not find the engine program, it asks for it at once (later: Settings >
-   Consoles > Nintendo Switch 2 > Engine program). The path is kept on this device only
-   (`engine.switch2.path`, never synced) and is the first place EmuDEN looks.
+```json
+{ "id": "nx2", "type": "engine", "name": "DenNX", "version": "2026.11.23",
+  "delivery": { "windows-x86_64": "download", "linux-x86_64": "download" },
+  "downloads": { "windows-x86_64": { "url": "https://github.com/Denarmo/emuden-plugins/releases/download/...",
+                                     "sha256": "...", "size": 1234567, "archive": "zip" } },
+  "executable": { "windows-x86_64": "bin/emuden-switch2.exe", "linux-x86_64": "bin/emuden-switch2" } }
+```
 
-Until then Switch 2 shows nowhere: no console, no Home tab, and a `SWITCH 2` folder is no
-console's folder. Its engine component says `"delivery": {"<platform>": "manual"}`: the player
-brings it. A device that had Switch 2 before EmuDEN stopped building it in keeps it when its
-library has Switch 2 games (the app fetches the signed `manual/` package once); a new install
-never gets it. Removing the console on its page removes the plugin; games and the engine stay.
+- `delivery` says per platform how the engine comes: `download` (then `downloads` and
+  `executable` are required for that platform) or `manual` (the player brings it). A platform
+  with neither is not offered. Android has no download: EmuDEN starts no engine program there.
+- A zip without an `entry` is unpacked whole into the app's `engines/switch2/` folder (unpacked
+  over, so the player's own files there stay); `entry: "Name/"` unpacks one folder of it.
+  EmuDEN records the executable's checksum and offers an update when the list pins another download.
+- The program the player chose (Settings > Consoles > Nintendo Switch 2 > Engine program,
+  `engine.switch2.path`, never synced) still comes first, so a build of their own keeps working.
+- The downloads are built and packed in the engine's repository (`tools/package.py`), uploaded to a
+  release of this repository (`engines-switch2-<date>`) and written into the manifest by
+  `tools/publish_plugin.py` there; then `index` and `sign` as for any release.
 
 ## `libretro-core`
 

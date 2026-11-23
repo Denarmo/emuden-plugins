@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 90,
-  "generated": "2026-11-23T01:53:28Z",
-  "expires": "2027-03-23T01:53:28Z",
+  "sequence": 92,
+  "generated": "2026-11-23T02:34:47Z",
+  "expires": "2027-03-23T02:34:47Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1771,6 +1771,62 @@
       "download_hosts": []
     },
     {
+      "id": "emuden.switch2",
+      "name": "Nintendo Switch 2 and Switch",
+      "version": "1.1.0",
+      "kind": "console",
+      "engine": "switch2",
+      "publisher": "EmuDEN",
+      "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted dumps only; no firmware or keys.",
+      "group": "nintendo",
+      "systems": [
+        {
+          "id": "switch2",
+          "name": "Nintendo Switch 2",
+          "folder_aliases": [
+            "switch 2",
+            "ns2",
+            "nx2",
+            "nintendo switch 2",
+            "nintendoswitch2"
+          ]
+        },
+        {
+          "id": "switch",
+          "name": "Nintendo Switch",
+          "folder_aliases": [
+            "switch",
+            "ns",
+            "nx",
+            "nintendo switch",
+            "nintendoswitch"
+          ]
+        }
+      ],
+      "api": 1,
+      "needs": [
+        "engine.switch2",
+        "settings.v1"
+      ],
+      "platforms": [
+        "windows-x86_64",
+        "linux-x86_64"
+      ],
+      "code": "cores",
+      "package": {
+        "url": "packages/emuden.switch2-1.1.0.emuplugin",
+        "sha256": "47c7d03c467c2ab77db849a9a22c8d9e705e4e40df1c109a69aac18c24353136",
+        "size": 1349
+      },
+      "download_size": {
+        "windows-x86_64": 51773945,
+        "linux-x86_64": 6307866
+      },
+      "download_hosts": [
+        "github.com"
+      ]
+    },
+    {
       "id": "emuden.sync.gdrive",
       "name": "Sync: Google Drive",
       "version": "1.0.8",
@@ -2401,6 +2457,7 @@
     "403c59e1cfdfa04a3e8a771d66beeed9f646a1d92eee7ca2b890b3875fea0b36",
     "405b6ac5d760b280a7537ba0496007ad9807c86f7a6eb9f471bcbe15ac0fad85",
     "405e33556dcf4300a30cd6ad8b0ff49e87eae0a1ea1b4f372ada7a89212f2302",
+    "4086c12e504d493d173ab7f3c68d012397217691d0c19c0e1a9d43737cde6813",
     "4328c576cc3ca04bf25b72a9a530bfe7bc13a8094a1094d7a38ee94b51792661",
     "44d32a74d9fcafc37c6f77a05217cfa885db7701baf62b228b0be0d84aed4c12",
     "44e8e00cbfa98158a1813edaf1e0862cba5f7e5e04f310ed3ffee4710fe67d12",
@@ -2472,6 +2529,7 @@
     "baa2a0c8239bd732da30d0a21d838c1bef9472bb56cd72e15d072d049b4ad4f0",
     "be695d2db1b8d1080490e8a55f4eb1871c48bd516b880ac99905e84d8b726b21",
     "bf2075fa46a526e889999acc438ac85123ab62731d4aaeb787b0446d2fcfbd0d",
+    "c02b734757c69fa58f6b68b3a9bb03e83307d2469dde5536f431ee492d302c63",
     "c100aeb16529ebb155087764e240a2306df232d9d35d5c597af9c72c0f475361",
     "c50891805ca46d2da21acae042dd05fcad7168cba09a45c533455951a8857a8b",
     "c85f75d2b0e7eaf212b93717046c099c4e8ea53b69c4099ed0a267f8ebda29b4",

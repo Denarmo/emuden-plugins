@@ -191,8 +191,36 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
                 if apk is not None and (not apk.get("sha256") or apk.get("size", 0) < 1
                                         or not str(apk.get("url", "")).startswith("https://")):
                     err(f"{path}.android.apk", "must be a pinned https download (url, sha256, size)")
+        elif kind_of == "engine":
+            # EmuDEN's own engine, downloaded like a core where its delivery says "download".
+            if "ecp" in component or "android" in component:
+                err(path, "ecp and android are only for an engine app")
+            delivery = component.get("delivery", {})
+            downloads = component.get("downloads", {})
+            executables = component.get("executable", {})
+            for platform, how in delivery.items():
+                if platform not in PLATFORMS:
+                    err(f"{path}.delivery.{platform}", "unknown platform")
+                if how == "download":
+                    if platform.startswith("android-"):
+                        err(f"{path}.delivery.{platform}", "EmuDEN starts no engine program on Android")
+                    if platform not in downloads:
+                        err(f"{path}.downloads", f"missing for {platform}, whose delivery is download")
+                    if not executables.get(platform):
+                        err(f"{path}.executable", f"missing for {platform}, whose delivery is download")
+            for platform in list(downloads) + list(executables):
+                if delivery.get(platform) != "download":
+                    err(path, f"{platform} has a download or executable, but its delivery is not download")
+            for platform, executable in executables.items():
+                if not safe_relative(executable) or executable.endswith("/"):
+                    err(f"{path}.executable.{platform}", "must be a plain relative path")
+            for platform, download in downloads.items():
+                if download.get("archive") == "zip" and download.get("entry", "") and \
+                        not download["entry"].endswith("/"):
+                    err(f"{path}.downloads.{platform}.entry",
+                        "an engine is a whole zip or a folder inside it, as \"Name/\"")
         elif "ecp" in component or "android" in component or "executable" in component:
-            err(path, "ecp, android and executable are only for an engine app")
+            err(path, "ecp, android and executable are only for an engine app or an engine")
     system_ids = []
     for i, system in enumerate(manifest.get("systems", [])):
         path = f"systems[{i}]"
@@ -287,7 +315,7 @@ def code_class(manifest, trusted=()):
     """none or cores: what the plugin makes run on any platform."""
     result = "none"
     for component in manifest.get("components", []):
-        if component["type"] == "engine-app":
+        if component["type"] == "engine-app" or (component["type"] == "engine" and component.get("downloads")):
             result = "cores"
         if component["type"] == "libretro-core":
             for download in component.get("downloads", {}).values():
@@ -310,7 +338,10 @@ def usable_platforms(manifest):
             if any(downloads) and not any(platform in d or "any" in d for d in downloads):
                 continue
         elif engine == "switch2":
-            if not any(platform in c.get("delivery", {}) for c in components):
+            # A platform whose engine is a download is offered once the download is pinned.
+            if not any(platform in c.get("delivery", {}) and
+                       (c["delivery"][platform] != "download" or platform in c.get("downloads", {}))
+                       for c in components):
                 continue
         out.append(platform)
     return out
