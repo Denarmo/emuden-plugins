@@ -52,14 +52,14 @@ missing or out of range takes the default.
 | `icon` | A PNG of the package, shown in the plugin list (`quick_settings` only, not per layout). |
 | `id` | The choice's id, `a-z`, `0-9`, `_` and `-`, up to 32 characters; the layout's name when missing. Each once per plugin: Settings remembers the choice by it. |
 | `name` | Up to 40 characters; the layout's name ("Grid") when missing. |
-| `layout` | `standard`: EmuDEN's own, a card with the cover, the play time and the controls (pause, rewind, fast-forward, exit), then one row per section. `grid`: big touch tiles, three to five a row by the screen's shape, the cover small in a corner. `compact`: one row per action with its icon, so more fits; the volume sliders inline; two columns on a wide screen. `dock`: the game's cover large with its newest save state, a bar of the first actions under it and "More" for the rest. `split`: the actions on one side and the state slots (with Load and Save) on the other; on an upright screen the slots go below. A choice whose layout this EmuDEN does not have is not listed. |
+| `layout` | `standard`: EmuDEN's own, a card with the cover, the play time and the controls (pause, rewind, fast-forward, exit), then one row per section. `grid`: big touch tiles, three to five a row by the screen's shape, the cover small in a corner. `compact`: one row per action with its icon, so more fits; the volume sliders inline; two columns on a wide screen. `dock`: the game's cover large with its newest save state, a bar of the first actions under it and "More" for the rest. `split`: the actions on one side and the state slots (with Load and Save) on the other; on an upright screen the slots go below. `performance`: a panel with the frame rate (now, and a graph of the last minute), a graph of the last 120 frames' times with the slow ones in the accent, and the sound queue; the actions under it as small tiles, four to seven a row by the screen's shape (`columns` sets it); no cover. A choice whose layout this EmuDEN does not have is not listed. |
 | `colors` | `#rrggbb` or `#rrggbbaa`: `background`, `text`, `dim` (secondary text), `panel` (tiles and rows), `accent` (what is on or chosen: rewinding, a toggle that is on). Only for this page; missing ones are the app's theme, which may be light or dark, so set `text` and `dim` with `background`. |
 | `actions` | The order: these ids first, then the layout's others in its own order. Ids this EmuDEN does not know are skipped. |
 | `hidden` | Ids never shown. Hiding `exit` or `pause` leaves them in the pause menu of the main screen. |
 | `tile_size` | 0.75 to 1.5: the tiles and rows larger or smaller. |
-| `columns` | `grid`: 2 to 6 tiles a row; 0 (the default) picks by the screen's shape. |
+| `columns` | `grid` and `performance`: 2 to 6 tiles a row; 0 (the default) picks by the screen's shape. |
 | `dock` | `dock`: 3 to 7 actions in the bar (5). |
-| `cover` | `false` leaves the game's cover out. |
+| `cover` | `false` leaves the game's cover out (`performance` has none). |
 
 ## Actions
 
@@ -81,7 +81,7 @@ missing or out of range takes the default.
 
 An action is only shown while it applies (rewind needs a core that rewinds, swap a second
 display). The default orders: `standard` pause, rewind, fast_forward, exit, states, screen,
-bfi, controls, cheats, apps, volume. `grid`, `compact` and `split` pause, rewind,
+bfi, controls, cheats, apps, volume. `grid`, `compact`, `split` and `performance` pause, rewind,
 fast_forward, exit, states, screen, swap, fps, bfi, options, buttons, cheats, apps, volume.
 `dock` the same with states before exit, so the bar holds pause, rewind, fast_forward,
 states, exit.

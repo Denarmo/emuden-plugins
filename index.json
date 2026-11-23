@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 91,
-  "generated": "2026-11-23T02:30:38Z",
-  "expires": "2027-03-23T02:30:38Z",
+  "sequence": 92,
+  "generated": "2026-11-23T02:34:47Z",
+  "expires": "2027-03-23T02:34:47Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -711,7 +711,7 @@
     {
       "id": "emuden.lang-es",
       "name": "Español",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
@@ -732,9 +732,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.lang-es-1.0.2.emuplugin",
-        "sha256": "603dfd96834f6ecdbaeea64f475868f961738fbb6d8d0375b6af8222b9ef4b08",
-        "size": 25291
+        "url": "packages/emuden.lang-es-1.0.3.emuplugin",
+        "sha256": "048351005a4f61ff816d5b05d6c7081194c3f050aedc4c5fd7e04e7f3eaf53f3",
+        "size": 25413
       },
       "download_size": {
         "windows-x86_64": 0,
@@ -1367,11 +1367,11 @@
     {
       "id": "emuden.quick-layouts",
       "name": "Quick Layouts",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "kind": "interface",
       "engine": "none",
       "publisher": "EmuDEN",
-      "summary": "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, or controls beside your save states.",
+      "summary": "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, controls beside your save states, or frame rate graphs above small tiles.",
       "group": "",
       "systems": [],
       "api": 1,
@@ -1388,9 +1388,9 @@
       ],
       "code": "none",
       "package": {
-        "url": "packages/emuden.quick-layouts-1.0.1.emuplugin",
-        "sha256": "6982178d1caad72a108cb8c0f3ad632313f493934d66ace243d21b3813bc706f",
-        "size": 3888
+        "url": "packages/emuden.quick-layouts-1.1.0.emuplugin",
+        "sha256": "78aae310292f20bb7a7fbc535aff5bf1b25f33d97b1825b2cb4ea4e15c19f11d",
+        "size": 4109
       },
       "download_size": {
         "windows-x86_64": 0,

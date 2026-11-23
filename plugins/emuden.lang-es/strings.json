@@ -1030,5 +1030,10 @@
   "Working": "Trabajando",
   "Your plugin sources offer nothing yet.": "Tus fuentes de plugins aún no ofrecen nada.",
   "« Rewind": "« Rebobinar",
-  "this device": "este dispositivo"
+  "this device": "este dispositivo",
+  "of {:.0f} fps": "de {:.0f} fps",
+  "{:.1f} ms a frame · slowest {:.1f}": "{:.1f} ms por fotograma · el más lento {:.1f}",
+  "Sound {:.0f} ms queued · {} gaps": "Sonido {:.0f} ms en cola · {} cortes",
+  "Frame rate · last minute": "Frecuencia de imagen · último minuto",
+  "Frame times": "Tiempo por fotograma"
 }
