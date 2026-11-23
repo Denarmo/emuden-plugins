@@ -122,6 +122,11 @@ GBA DS (`gbads`) is built from Denarmo/gba-ds (a fork of kyannon/gba-ds, GPL-3.0
 from the buildbot. It is the GBA core EmuDEN picks for the games it has a second-screen profile for (the `games`
 list in the GBA plugin, by ROM header code); every other GBA game keeps mGBA.
 
+The Switch 2 engine (`nx2`, plugin `emuden.switch2`, GPL-3.0-or-later) is EmuDEN's own, built from
+https://github.com/Denarmo/emuden-switch2 for Windows and Linux (x86_64) and packed by its `tools/package.py`
+(the program in `bin/` with the FFmpeg decoder libraries on Windows, and the notices of every dependency). Its
+builds are in releases `engines-switch2-<date>`. It reads no console keys: it plays NUP dumps.
+
 PSX2 ECP (`psx2-ecp`, 1.3.2-ecp6) is an optional PS2 core on Android only: a standalone app, Denarmo/PSX2 (a fork of
 izzy2lost/PSX2, GPL-3.0, from PCSX2), driven over the Emulator Control Protocol. It is the one core here that needs
 the player's own BIOS (imported in the PSX2 ECP app); DenSX2 needs none. It is the worked

@@ -2,12 +2,12 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "The Switch 2 console, installed by hand; you bring its engine program.",
+  "summary": "Switch 2 games with EmuDEN's own engine, downloaded like a core. NUP dumps only; no keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
@@ -15,10 +15,7 @@
   ],
   "platforms": [
     "windows-x86_64",
-    "linux-x86_64",
-    "linux-aarch64",
-    "macos-arm64",
-    "android-arm64"
+    "linux-x86_64"
   ],
   "systems": [
     {
@@ -74,12 +71,15 @@
       "id": "nx2",
       "type": "engine",
       "name": "Switch 2 engine",
+      "license": "GPL-3.0-or-later",
+      "homepage": "https://github.com/Denarmo/emuden-switch2",
       "delivery": {
-        "windows-x86_64": "manual",
-        "linux-x86_64": "manual",
-        "linux-aarch64": "manual",
-        "macos-arm64": "manual",
-        "android-arm64": "manual"
+        "windows-x86_64": "download",
+        "linux-x86_64": "download"
+      },
+      "executable": {
+        "windows-x86_64": "bin/emuden-switch2.exe",
+        "linux-x86_64": "bin/emuden-switch2"
       }
     }
   ],
