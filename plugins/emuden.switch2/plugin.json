@@ -1,24 +1,21 @@
 {
   "manifest_version": 1,
   "id": "emuden.switch2",
-  "name": "Nintendo Switch 2",
-  "version": "1.0.5",
+  "name": "Nintendo Switch 2 and Switch",
+  "version": "1.1.0",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "The Switch 2 console, installed by hand; you bring its engine program.",
+  "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted dumps only; no firmware or keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
     "settings.v1"
   ],
   "platforms": [
-    "windows-x86_64",
     "linux-x86_64",
-    "linux-aarch64",
-    "macos-arm64",
-    "android-arm64"
+    "windows-x86_64"
   ],
   "systems": [
     {
@@ -54,32 +51,74 @@
           "shape": "card",
           "aspect": 0.68
         }
+      }
+    },
+    {
+      "id": "switch",
+      "name": "Nintendo Switch",
+      "short_name": "Switch",
+      "group": "nintendo",
+      "order": 1,
+      "content": {
+        "extensions": [
+          "nsp",
+          "xci"
+        ],
+        "scanner": "switch2",
+        "folder_aliases": [
+          "switch",
+          "ns",
+          "nx",
+          "nintendo switch",
+          "nintendoswitch"
+        ],
+        "zip": "no"
       },
-      "bios": [
-        {
-          "label": "Firmware",
-          "any_one": false,
-          "files": [
-            {
-              "path": "@firmware",
-              "optional": false
-            }
-          ]
+      "artwork": {
+        "launchbox": "Nintendo Switch"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "switch"
         }
-      ]
+      }
     }
   ],
   "components": [
     {
       "id": "nx2",
       "type": "engine",
-      "name": "Switch 2 engine",
+      "name": "DenNX",
+      "license": "GPL-3.0-or-later",
+      "homepage": "https://github.com/Denarmo/DenNX",
       "delivery": {
-        "windows-x86_64": "manual",
-        "linux-x86_64": "manual",
-        "linux-aarch64": "manual",
-        "macos-arm64": "manual",
-        "android-arm64": "manual"
+        "linux-x86_64": "download",
+        "windows-x86_64": "download"
+      },
+      "executable": {
+        "linux-x86_64": "bin/emuden-switch2",
+        "windows-x86_64": "bin/emuden-switch2.exe"
+      },
+      "version": "2026.11.23",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-switch2-2026-11-23/emuden-switch2-60e04f7fec67-linux-x86_64.zip",
+          "sha256": "c02b734757c69fa58f6b68b3a9bb03e83307d2469dde5536f431ee492d302c63",
+          "size": 6307866,
+          "archive": "zip"
+        },
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-switch2-2026-11-23/emuden-switch2-60e04f7fec67-windows-x86_64.zip",
+          "sha256": "4086c12e504d493d173ab7f3c68d012397217691d0c19c0e1a9d43737cde6813",
+          "size": 51773945,
+          "archive": "zip"
+        }
       }
     }
   ],

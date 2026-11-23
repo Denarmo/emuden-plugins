@@ -133,7 +133,6 @@ class Tool(unittest.TestCase):
     def test_manual_plugins_are_in_no_list(self):
         import plugin_manual
         manual = [f.name for f in plugin_manual.manual_folders(REPO)]
-        self.assertIn("emuden.switch2", manual)
         self.assertFalse(set(manual) & {f.name for f in plugin_tool.plugin_folders(REPO)})
         index = plugin_tool.load_json(REPO / "index.json")
         self.assertFalse(set(manual) & {p["id"] for p in index["plugins"]})

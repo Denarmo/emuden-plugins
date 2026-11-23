@@ -16,7 +16,7 @@ below works before any source is added.
 | `addons.json` | The add-on catalogue; `index` rewrites its entries |
 | `addons/<program id>/<id>/` | One folder per Switch 2 add-on |
 | `plugins/<id>/plugin.json` | One folder per plugin |
-| `manual/<id>/plugin.json`, `manual/<id>.emuplugin` | Console plugins in no list, installed by hand from the signed package (Switch 2: [docs/engines.md](docs/engines.md#switch-2-installed-by-hand)) |
+| `manual/<id>/plugin.json`, `manual/<id>.emuplugin` | Console plugins in no list, installed by hand from the signed package (none at the moment; Switch 2 is in the list: [docs/engines.md](docs/engines.md#switch-2-dennx-emudens-own-engine)) |
 | `shared/<name>/` | Lua shared by several feature plugins, copied into their packages (`docs/feature-plugins.md`) |
 | `packages/` | The packed plugins and add-ons the lists point at |
 | `schema/` | JSON Schemas for the manifest, the list and the add-on files, and `capabilities.json` |
@@ -45,7 +45,7 @@ key, so none is shipped here.
 3. `python -I tools/plugin_tool.py validate --all --trust bundled`
 4. `python -I tools/plugin_tool.py index --trust official --sequence <higher than last time> --days 120`
 5. `python -I tools/plugin_tool.py sign --key /somewhere/safe/emuden-source.key`, then `verify`.
-   `sign` also signs the packages in `manual/`.
+   `sign` also signs the packages in `manual/`, when there are any.
 6. Commit and push `index.json`, `index.json.sig`, `keys/source.pub`, `packages/` and the rest.
 7. Build EmuDEN with the source and the keys (the content of `keys/source.pub`, and of the
    spare's, separated by a comma):

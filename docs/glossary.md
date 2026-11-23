@@ -44,7 +44,7 @@ The names the other pages use, in one place.
 | Source | A signed plugin list: EmuDEN's own (official) or one the player added |
 | Namespace | The start of every plugin id a source may publish: its GitHub owner (`jdoe.`) or host |
 | Official | EmuDEN's own plugins: `emuden.*` from the official source, compiled into the app, or a file signed with EmuDEN's key |
-| Manual plugin | One in no list, installed from a file: `manual/<id>/`, packed and signed as `manual/<id>.emuplugin` (Switch 2) |
+| Manual plugin | One in no list, installed from a file: `manual/<id>/`, packed and signed as `manual/<id>.emuplugin` (none at the moment) |
 | Core | Anything that plays a console: a libretro core or an engine app |
 | Engine app | A standalone emulator that speaks the Emulator Control Protocol |
 | Capability | A name in `needs`: a host feature the plugin uses ([compatibility.md](compatibility.md)) |
