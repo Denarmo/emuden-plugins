@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 92,
-  "generated": "2026-11-23T02:34:47Z",
-  "expires": "2027-03-23T02:34:47Z",
+  "sequence": 93,
+  "generated": "2026-11-23T03:20:17Z",
+  "expires": "2027-03-23T03:20:17Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1773,11 +1773,11 @@
     {
       "id": "emuden.switch2",
       "name": "Nintendo Switch 2 and Switch",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "kind": "console",
       "engine": "switch2",
       "publisher": "EmuDEN",
-      "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted dumps only; no firmware or keys.",
+      "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core (an app of its own on Android). Decrypted dumps only; no firmware or keys.",
       "group": "nintendo",
       "systems": [
         {
@@ -1810,17 +1810,19 @@
       ],
       "platforms": [
         "windows-x86_64",
-        "linux-x86_64"
+        "linux-x86_64",
+        "android-arm64"
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.switch2-1.1.0.emuplugin",
-        "sha256": "47c7d03c467c2ab77db849a9a22c8d9e705e4e40df1c109a69aac18c24353136",
-        "size": 1349
+        "url": "packages/emuden.switch2-1.2.0.emuplugin",
+        "sha256": "6f4e2b54071d93ea8956508d1c1d54f96d5d54d3f16ce24d218a13e88861336b",
+        "size": 1642
       },
       "download_size": {
         "windows-x86_64": 51773945,
-        "linux-x86_64": 6307866
+        "linux-x86_64": 6307866,
+        "android-arm64": 0
       },
       "download_hosts": [
         "github.com"

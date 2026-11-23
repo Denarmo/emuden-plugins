@@ -32,7 +32,12 @@ when a game is first started, like a core:
 
 - `delivery` says per platform how the engine comes: `download` (then `downloads` and
   `executable` are required for that platform) or `manual` (the player brings it). A platform
-  with neither is not offered. Android has no download: EmuDEN starts no engine program there.
+  with neither is not offered. EmuDEN starts no engine program on Android: there `download`
+  means the engine's own app, an `android` object as for an engine app below (`package`,
+  `cert_sha256`, `min_version_code`, a pinned `apk`), with an optional `ecp` descriptor for its
+  level (2 when left out) and capabilities. EmuDEN installs that app like an engine app's and
+  plays the games through it over ECP; DenNX's app is `io.github.denarmo.dennx`, built with
+  `tools/android_app.py` in the engine's repository.
 - A zip without an `entry` is unpacked whole into the app's `engines/switch2/` folder (unpacked
   over, so the player's own files there stay); `entry: "Name/"` unpacks one folder of it.
   EmuDEN records the executable's checksum and offers an update when the list pins another download.
