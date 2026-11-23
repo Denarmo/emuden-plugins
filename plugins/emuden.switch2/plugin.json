@@ -1,13 +1,13 @@
 {
   "manifest_version": 1,
   "id": "emuden.switch2",
-  "name": "Nintendo Switch 2",
+  "name": "Nintendo Switch 2 and Switch",
   "version": "1.1.0",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Switch 2 games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted NUP dumps; no firmware or keys.",
+  "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted dumps only; no firmware or keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
@@ -50,6 +50,42 @@
         "media": {
           "shape": "card",
           "aspect": 0.68
+        }
+      }
+    },
+    {
+      "id": "switch",
+      "name": "Nintendo Switch",
+      "short_name": "Switch",
+      "group": "nintendo",
+      "order": 1,
+      "content": {
+        "extensions": [
+          "nsp",
+          "xci"
+        ],
+        "scanner": "switch2",
+        "folder_aliases": [
+          "switch",
+          "ns",
+          "nx",
+          "nintendo switch",
+          "nintendoswitch"
+        ],
+        "zip": "no"
+      },
+      "artwork": {
+        "launchbox": "Nintendo Switch"
+      },
+      "presentation": {
+        "cover_aspect": 1.0,
+        "handheld": false,
+        "right_stick_holds": false,
+        "layout": "other",
+        "digital_only": false,
+        "media": {
+          "shape": "cartridge",
+          "style": "switch"
         }
       }
     }

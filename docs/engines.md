@@ -15,7 +15,9 @@ no plugin starts anything else.
 
 ## Switch 2: DenNX, EmuDEN's own engine
 
-The Switch 2 console (`emuden.switch2`) is in the official list like every other console. Its
+The Switch 2 plugin (`emuden.switch2`) is in the official list like every other console. It has
+two consoles, `switch2` (`.nup`) and `switch` (Switch 1, `.nsp` and `.xci`, decrypted dumps only),
+both played by the same engine. Its
 engine, DenNX, built from https://github.com/Denarmo/DenNX, is a pinned download of its `engine`
 component, installed on the console's page (Settings > Consoles > Nintendo Switch 2 > Install) or
 when a game is first started, like a core:
