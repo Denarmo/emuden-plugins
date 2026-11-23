@@ -7,7 +7,7 @@
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Switch 2 games with EmuDEN's own engine, downloaded like a core. NUP dumps only; no keys.",
+  "summary": "Switch 2 games with EmuDEN's own engine, downloaded like a core. Decrypted NUP dumps; no firmware or keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
@@ -51,19 +51,7 @@
           "shape": "card",
           "aspect": 0.68
         }
-      },
-      "bios": [
-        {
-          "label": "Firmware",
-          "any_one": false,
-          "files": [
-            {
-              "path": "@firmware",
-              "optional": false
-            }
-          ]
-        }
-      ]
+      }
     }
   ],
   "components": [
