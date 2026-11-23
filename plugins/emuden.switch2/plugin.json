@@ -2,18 +2,19 @@
   "manifest_version": 1,
   "id": "emuden.switch2",
   "name": "Nintendo Switch 2 and Switch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "console",
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted dumps only; no firmware or keys.",
+  "summary": "Switch 2 and Switch games with DenNX, EmuDEN's own engine, downloaded like a core (an app of its own on Android). Decrypted dumps only; no firmware or keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
     "settings.v1"
   ],
   "platforms": [
+    "android-arm64",
     "linux-x86_64",
     "windows-x86_64"
   ],
@@ -98,6 +99,7 @@
       "license": "GPL-3.0-or-later",
       "homepage": "https://github.com/Denarmo/DenNX",
       "delivery": {
+        "android-arm64": "download",
         "linux-x86_64": "download",
         "windows-x86_64": "download"
       },
@@ -118,6 +120,32 @@
           "sha256": "4086c12e504d493d173ab7f3c68d012397217691d0c19c0e1a9d43737cde6813",
           "size": 51773945,
           "archive": "zip"
+        }
+      },
+      "ecp": {
+        "id": "io.github.denarmo.dennx",
+        "level": 2,
+        "capabilities": [
+          "pause",
+          "menu",
+          "fast_forward",
+          "settings",
+          "screenshot",
+          "perf",
+          "hud",
+          "notify",
+          "volume"
+        ]
+      },
+      "android": {
+        "package": "io.github.denarmo.dennx",
+        "cert_sha256": "29fab5c39cdeea0bb3d5a26ab761082e009e47c7b7d7c64d89519bc8fda27ca9",
+        "min_version_code": 279,
+        "apk": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-switch2-2026-11-23/dennx-ae2a80055a5b-android-arm64.apk",
+          "sha256": "78e61b3dd40dcbf52b7d629eca357352498ea6dd78589350b2bcb32099f51a02",
+          "size": 14720307,
+          "archive": "none"
         }
       }
     }

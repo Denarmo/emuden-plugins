@@ -178,6 +178,14 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
             if kind_of == "system-files" and not (
                     download["archive"] == "zip" and download.get("entry", "").endswith("/")):
                 err(f"{where}.entry", "system files are a zip and a folder inside it, as \"Name/\"")
+        def check_android(android):
+            apk = android.get("apk")
+            if apk is None and not android.get("store"):
+                err(f"{path}.android", "needs apk or store")
+            if apk is not None and (not apk.get("sha256") or apk.get("size", 0) < 1
+                                    or not str(apk.get("url", "")).startswith("https://")):
+                err(f"{path}.android.apk", "must be a pinned https download (url, sha256, size)")
+
         if kind_of == "engine-app":
             if not isinstance(component.get("ecp"), dict):
                 err(f"{path}.ecp", "missing: the engine's ECP descriptor")
@@ -185,17 +193,19 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
             if android is None and not component.get("executable"):
                 err(path, "an engine app needs android or executable")
             if android is not None:
-                apk = android.get("apk")
-                if apk is None and not android.get("store"):
-                    err(f"{path}.android", "needs apk or store")
-                if apk is not None and (not apk.get("sha256") or apk.get("size", 0) < 1
-                                        or not str(apk.get("url", "")).startswith("https://")):
-                    err(f"{path}.android.apk", "must be a pinned https download (url, sha256, size)")
+                check_android(android)
         elif kind_of == "engine":
             # EmuDEN's own engine, downloaded like a core where its delivery says "download".
-            if "ecp" in component or "android" in component:
-                err(path, "ecp and android are only for an engine app")
+            # On Android it is an engine app of its own ("android", with its "ecp" level).
             delivery = component.get("delivery", {})
+            android = component.get("android")
+            android_download = any(p.startswith("android-") and how == "download" for p, how in delivery.items())
+            if android is not None:
+                check_android(android)
+                if not android_download:
+                    err(f"{path}.android", "only with an Android delivery of download")
+            elif "ecp" in component:
+                err(f"{path}.ecp", "only with an Android app")
             downloads = component.get("downloads", {})
             executables = component.get("executable", {})
             for platform, how in delivery.items():
@@ -203,7 +213,11 @@ def validate_manifest(manifest, repo, trust="third-party", namespace=None, folde
                     err(f"{path}.delivery.{platform}", "unknown platform")
                 if how == "download":
                     if platform.startswith("android-"):
-                        err(f"{path}.delivery.{platform}", "EmuDEN starts no engine program on Android")
+                        if android is None:
+                            err(f"{path}.android", f"missing for {platform}, whose delivery is download")
+                        if platform in downloads or platform in executables:
+                            err(f"{path}.delivery.{platform}", "EmuDEN starts no engine program on Android")
+                        continue
                     if platform not in downloads:
                         err(f"{path}.downloads", f"missing for {platform}, whose delivery is download")
                     if not executables.get(platform):
@@ -340,7 +354,8 @@ def usable_platforms(manifest):
         elif engine == "switch2":
             # A platform whose engine is a download is offered once the download is pinned.
             if not any(platform in c.get("delivery", {}) and
-                       (c["delivery"][platform] != "download" or platform in c.get("downloads", {}))
+                       (c["delivery"][platform] != "download" or platform in c.get("downloads", {}) or
+                        (platform.startswith("android-") and "android" in c))
                        for c in components):
                 continue
         out.append(platform)
