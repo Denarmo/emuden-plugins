@@ -7,7 +7,7 @@
   "engine": "switch2",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Switch 2 games with EmuDEN's own engine, downloaded like a core. Decrypted NUP dumps; no firmware or keys.",
+  "summary": "Switch 2 games with DenNX, EmuDEN's own engine, downloaded like a core. Decrypted NUP dumps; no firmware or keys.",
   "api": 1,
   "needs": [
     "engine.switch2",
@@ -58,9 +58,9 @@
     {
       "id": "nx2",
       "type": "engine",
-      "name": "Switch 2 engine",
+      "name": "DenNX",
       "license": "GPL-3.0-or-later",
-      "homepage": "https://github.com/Denarmo/emuden-switch2",
+      "homepage": "https://github.com/Denarmo/DenNX",
       "delivery": {
         "windows-x86_64": "download",
         "linux-x86_64": "download"

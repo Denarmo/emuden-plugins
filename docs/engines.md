@@ -13,15 +13,15 @@ may have its own. `"engine": "switch2"` is EmuDEN's own engine and only for its 
 There is no engine for other programs: an emulator that does not speak ECP cannot be a core, and
 no plugin starts anything else.
 
-## Switch 2: EmuDEN's own engine
+## Switch 2: DenNX, EmuDEN's own engine
 
 The Switch 2 console (`emuden.switch2`) is in the official list like every other console. Its
-engine, built from https://github.com/Denarmo/emuden-switch2, is a pinned download of its `engine`
+engine, DenNX, built from https://github.com/Denarmo/DenNX, is a pinned download of its `engine`
 component, installed on the console's page (Settings > Consoles > Nintendo Switch 2 > Install) or
 when a game is first started, like a core:
 
 ```json
-{ "id": "nx2", "type": "engine", "name": "Switch 2 engine", "version": "2026.11.23",
+{ "id": "nx2", "type": "engine", "name": "DenNX", "version": "2026.11.23",
   "delivery": { "windows-x86_64": "download", "linux-x86_64": "download" },
   "downloads": { "windows-x86_64": { "url": "https://github.com/Denarmo/emuden-plugins/releases/download/...",
                                      "sha256": "...", "size": 1234567, "archive": "zip" } },

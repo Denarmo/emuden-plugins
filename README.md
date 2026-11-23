@@ -16,7 +16,7 @@ below works before any source is added.
 | `addons.json` | The add-on catalogue; `index` rewrites its entries |
 | `addons/<program id>/<id>/` | One folder per Switch 2 add-on |
 | `plugins/<id>/plugin.json` | One folder per plugin |
-| `manual/<id>/plugin.json`, `manual/<id>.emuplugin` | Console plugins in no list, installed by hand from the signed package (none at the moment; Switch 2 is in the list: [docs/engines.md](docs/engines.md#switch-2-emudens-own-engine)) |
+| `manual/<id>/plugin.json`, `manual/<id>.emuplugin` | Console plugins in no list, installed by hand from the signed package (none at the moment; Switch 2 is in the list: [docs/engines.md](docs/engines.md#switch-2-dennx-emudens-own-engine)) |
 | `shared/<name>/` | Lua shared by several feature plugins, copied into their packages (`docs/feature-plugins.md`) |
 | `packages/` | The packed plugins and add-ons the lists point at |
 | `schema/` | JSON Schemas for the manifest, the list and the add-on files, and `capabilities.json` |

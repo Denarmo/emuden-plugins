@@ -105,7 +105,7 @@ folder. EmuDEN shows its name, version, publisher and consoles first. A file sig
 key (`plugin.json.sig` beside `plugin.json`) is installed as one of EmuDEN's own; any other is
 unsigned, EmuDEN says that nobody checked it, and it keeps the rules above (no `emuden.` id). It
 goes to `<data>/plugins-local/<id>/` and stays until the console is removed. (The Switch 2
-console is no longer installed this way: it is in the list, [engines.md](engines.md#switch-2-emudens-own-engine).)
+console is no longer installed this way: it is in the list, [engines.md](engines.md#switch-2-dennx-emudens-own-engine).)
 
 ## A feature plugin
 
