@@ -14,8 +14,8 @@
     "settings.v1"
   ],
   "platforms": [
-    "windows-x86_64",
-    "linux-x86_64"
+    "linux-x86_64",
+    "windows-x86_64"
   ],
   "systems": [
     {
@@ -98,12 +98,27 @@
       "license": "GPL-3.0-or-later",
       "homepage": "https://github.com/Denarmo/DenNX",
       "delivery": {
-        "windows-x86_64": "download",
-        "linux-x86_64": "download"
+        "linux-x86_64": "download",
+        "windows-x86_64": "download"
       },
       "executable": {
-        "windows-x86_64": "bin/emuden-switch2.exe",
-        "linux-x86_64": "bin/emuden-switch2"
+        "linux-x86_64": "bin/emuden-switch2",
+        "windows-x86_64": "bin/emuden-switch2.exe"
+      },
+      "version": "2026.11.23",
+      "downloads": {
+        "linux-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-switch2-2026-11-23/emuden-switch2-60e04f7fec67-linux-x86_64.zip",
+          "sha256": "c02b734757c69fa58f6b68b3a9bb03e83307d2469dde5536f431ee492d302c63",
+          "size": 6307866,
+          "archive": "zip"
+        },
+        "windows-x86_64": {
+          "url": "https://github.com/Denarmo/emuden-plugins/releases/download/engines-switch2-2026-11-23/emuden-switch2-60e04f7fec67-windows-x86_64.zip",
+          "sha256": "4086c12e504d493d173ab7f3c68d012397217691d0c19c0e1a9d43737cde6813",
+          "size": 51773945,
+          "archive": "zip"
+        }
       }
     }
   ],

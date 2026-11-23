@@ -1420,5 +1420,23 @@
     "fetched": "2026-11-17",
     "sha256": "4b248b2ab21d1a8f68edaf446d8e01b8e30611947fdd70eff0b573fc17e138ac",
     "size": 8377135
+  },
+  "nx2:windows-x86_64": {
+    "core": "nx2",
+    "platform": "windows-x86_64",
+    "upstream": "https://github.com/Denarmo/DenNX/tree/60e04f7fec679ed7d4d82032748b4edd0cced153 (DenNX, EmuDEN's Switch 1 and Switch 2 engine, built locally)",
+    "license": "GPL-3.0-or-later",
+    "fetched": "2026-11-23",
+    "sha256": "4086c12e504d493d173ab7f3c68d012397217691d0c19c0e1a9d43737cde6813",
+    "size": 51773945
+  },
+  "nx2:linux-x86_64": {
+    "core": "nx2",
+    "platform": "linux-x86_64",
+    "upstream": "https://github.com/Denarmo/DenNX/tree/60e04f7fec679ed7d4d82032748b4edd0cced153 (DenNX, EmuDEN's Switch 1 and Switch 2 engine, built locally)",
+    "license": "GPL-3.0-or-later",
+    "fetched": "2026-11-23",
+    "sha256": "c02b734757c69fa58f6b68b3a9bb03e83307d2469dde5536f431ee492d302c63",
+    "size": 6307866
   }
 }
