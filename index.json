@@ -4,9 +4,9 @@
     "name": "EmuDEN",
     "homepage": ""
   },
-  "sequence": 93,
-  "generated": "2026-11-23T03:20:17Z",
-  "expires": "2027-03-23T03:20:17Z",
+  "sequence": 94,
+  "generated": "2026-11-23T03:56:26Z",
+  "expires": "2027-03-23T03:56:26Z",
   "plugins": [
     {
       "id": "emuden.32x",
@@ -1773,7 +1773,7 @@
     {
       "id": "emuden.switch2",
       "name": "Nintendo Switch 2 and Switch",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "kind": "console",
       "engine": "switch2",
       "publisher": "EmuDEN",
@@ -1815,9 +1815,9 @@
       ],
       "code": "cores",
       "package": {
-        "url": "packages/emuden.switch2-1.2.0.emuplugin",
-        "sha256": "6f4e2b54071d93ea8956508d1c1d54f96d5d54d3f16ce24d218a13e88861336b",
-        "size": 1642
+        "url": "packages/emuden.switch2-1.2.1.emuplugin",
+        "sha256": "864ef820f7531933e14352cbf95f9555b2ee1323eb9f6316703d6ac793cf397f",
+        "size": 1641
       },
       "download_size": {
         "windows-x86_64": 51773945,
