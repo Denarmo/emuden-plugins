@@ -2,11 +2,11 @@
   "manifest_version": 1,
   "id": "emuden.quick-layouts",
   "name": "Quick Layouts",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "kind": "interface",
   "publisher": "EmuDEN",
   "license": "GPL-3.0-or-later",
-  "summary": "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, or controls beside your save states.",
+  "summary": "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, controls beside your save states, or frame rate graphs above small tiles.",
   "api": 1,
   "needs": [
     "kind.interface",
@@ -56,6 +56,19 @@
         "name": "Split",
         "layout": "split",
         "actions": ["pause", "rewind", "fast_forward", "exit"]
+      },
+      {
+        "id": "performance",
+        "name": "Performance",
+        "layout": "performance",
+        "actions": ["pause", "fast_forward", "rewind", "states", "fps", "screen", "exit"],
+        "colors": {
+          "background": "#0e1014",
+          "text": "#eef1f4",
+          "dim": "#9aa3ad",
+          "panel": "#ffffff14",
+          "accent": "#5ce0a066"
+        }
       }
     ]
   },
@@ -64,7 +77,8 @@
       "Compact": "Compacto",
       "Dock": "Barra",
       "Grid": "Cuadrícula",
-      "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, or controls beside your save states.": "Otras formas de colocar los ajustes rápidos de la segunda pantalla mientras juegas: mosaicos táctiles grandes, una lista compacta, una barra bajo el juego o controles junto a tus estados guardados.",
+      "Other ways to lay out the second screen's quick settings while a game plays: big touch tiles, a compact list, a dock under the game, controls beside your save states, or frame rate graphs above small tiles.": "Otras formas de colocar los ajustes rápidos de la segunda pantalla mientras juegas: mosaicos táctiles grandes, una lista compacta, una barra bajo el juego, controles junto a tus estados guardados o gráficas de fotogramas sobre mosaicos pequeños.",
+      "Performance": "Rendimiento",
       "Split": "Dividido"
     }
   }

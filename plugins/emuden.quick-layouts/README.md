@@ -12,6 +12,9 @@ Interface, "Quick settings layout"; "EmuDEN (standard)" there brings the usual o
   under it (pause, rewind, fast-forward, states, exit). "More" opens the rest.
 - **Split**: the controls on one side and the save state slots on the other, so saving or
   loading is one tap. On an upright screen the slots go below.
+- **Performance**: how the game runs on top (the frame rate now and over the last minute, a
+  graph of each frame's time with the slow ones marked, the sound queue) and the actions as
+  small tiles below it.
 
 Every layout reaches the same things as EmuDEN's own: states, screen size and picture, swap
 screens, frame rate counter, black frame insertion, core options, buttons, apps and volumes.
