@@ -1442,10 +1442,10 @@
   "nx2:android-arm64": {
     "core": "nx2",
     "platform": "android-arm64",
-    "upstream": "https://github.com/Denarmo/DenNX/tree/ae2a80055a5b20bcb3ff1eb3c6f5915a004f23cc (DenNX, EmuDEN's Switch 1 and Switch 2 engine, Android app, built locally)",
+    "upstream": "https://github.com/Denarmo/DenNX/tree/8160097824b4e1621ed841110e767867e05844a3 (DenNX, EmuDEN's Switch 1 and Switch 2 engine, Android app, built locally)",
     "license": "GPL-3.0-or-later",
     "fetched": "2026-11-23",
-    "sha256": "78e61b3dd40dcbf52b7d629eca357352498ea6dd78589350b2bcb32099f51a02",
-    "size": 14720307
+    "sha256": "cb52b0ddcf297a2ad6a9a116da1ed3555320932c6a030acbfd1a34f2aedd8de2",
+    "size": 14724011
   }
 }
